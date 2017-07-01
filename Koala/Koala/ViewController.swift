@@ -9,17 +9,52 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+   
+    
+    
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    
+    var imageArray = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        imageArray = [#imageLiteral(resourceName: "imgTwo"), #imageLiteral(resourceName: "imgThree"), #imageLiteral(resourceName: "imgOne")]
+        
+        for i in 0..<imageArray.count {
+            
+            let imageView = UIImageView()
+            imageView.image = imageArray[i]
+            let xPosition = self.view.frame.width * CGFloat(i)
+            imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+            
+            mainScrollView.contentSize.width = mainScrollView.frame.width * CGFloat(i + 1)
+            mainScrollView.addSubview(imageView)
+        }
     }
-
+    
+    
+    
+    
+    
+    var pageHeadings = ["Dance","Record","Share"]
+    var pageImages = ["","",""]
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+   
 
 }
 
