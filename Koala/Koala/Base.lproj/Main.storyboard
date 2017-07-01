@@ -21,17 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-BN-eDv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEv-BN-eDv">
+                                <rect key="frame" x="0.0" y="28" width="375" height="362"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RW7-Qf-07K">
+                                <rect key="frame" x="168" y="398" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.22169488668441772" green="0.31002277135848999" blue="0.3849608302116394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="XEv-BN-eDv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="6mm-2F-33x"/>
-                            <constraint firstItem="XEv-BN-eDv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NHT-o1-Icb"/>
-                            <constraint firstItem="XEv-BN-eDv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tc1-Wo-TNb"/>
-                            <constraint firstItem="XEv-BN-eDv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="fp9-Ca-xkm"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mainScrollView" destination="XEv-BN-eDv" id="ZzE-13-IvZ"/>

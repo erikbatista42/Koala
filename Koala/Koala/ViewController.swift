@@ -33,6 +33,7 @@ class ViewController: UIViewController {
             imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
             
             mainScrollView.contentSize.width = mainScrollView.frame.width * CGFloat(i + 1)
+            mainScrollView.isPagingEnabled = true
             mainScrollView.addSubview(imageView)
         }
     }
