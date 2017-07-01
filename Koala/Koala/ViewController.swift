@@ -20,12 +20,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        imageArray = [#imageLiteral(resourceName: "imgTwo"), #imageLiteral(resourceName: "imgThree"), #imageLiteral(resourceName: "imgOne")]
+        mainScrollView.frame = view.frame
+        
+        imageArray = [#imageLiteral(resourceName: "dance2"), #imageLiteral(resourceName: "imgOne"), #imageLiteral(resourceName: "dance")]
         
         for i in 0..<imageArray.count {
             
             let imageView = UIImageView()
             imageView.image = imageArray[i]
+            imageView.contentMode = .scaleAspectFit
             let xPosition = self.view.frame.width * CGFloat(i)
             imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
             
