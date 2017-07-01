@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
    
     
     
     @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var pageController: UIPageControl!
     
     var imageArray = [UIImage]()
     
@@ -22,22 +23,29 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         mainScrollView.frame = view.frame
         
-        imageArray = [#imageLiteral(resourceName: "dance2"), #imageLiteral(resourceName: "imgOne"), #imageLiteral(resourceName: "dance")]
+        mainScrollView.delegate = self
+        
+        imageArray = [#imageLiteral(resourceName: "Bitmap"), #imageLiteral(resourceName: "Screen Shot 2017-07-01 at 5.12.17 PM")]
         
         for i in 0..<imageArray.count {
             
             let imageView = UIImageView()
             imageView.image = imageArray[i]
-            imageView.contentMode = .scaleAspectFit
+//            imageView.contentMode = .scaleAspectFit
             let xPosition = self.view.frame.width * CGFloat(i)
             imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
             
             mainScrollView.contentSize.width = mainScrollView.frame.width * CGFloat(i + 1)
             mainScrollView.isPagingEnabled = true
+            
             mainScrollView.addSubview(imageView)
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = scrollView.contentOffset.x / scrollView.frame.width
+        pageController.currentPage = Int(page)
+    }
     
     
     

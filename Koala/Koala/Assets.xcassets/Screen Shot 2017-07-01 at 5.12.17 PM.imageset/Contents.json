@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dance.jpg",
+      "filename" : "Screen Shot 2017-07-01 at 5.12.17 PM.png",
       "scale" : "1x"
     },
     {
@@ -12,12 +12,6 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "dance.png",
-      "unassigned" : true,
-      "scale" : "1x"
     }
   ],
   "info" : {
