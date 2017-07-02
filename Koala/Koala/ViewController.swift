@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import FirebaseAuth
+import FacebookLogin
 
 class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate {
     
@@ -34,6 +35,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         UIApplication.shared.statusBarStyle = .lightContent
+        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        loginButton.center = view.center
+        
+        view.addSubview(loginButton)
 
 //       facebookLoginButton.delegate = self
         
