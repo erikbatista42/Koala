@@ -41,23 +41,11 @@
                                 <color key="textColor" red="0.94090783600000005" green="0.94480329750000003" blue="0.96543174980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDv-u4-5dn">
-                                <rect key="frame" x="28" y="534" width="319" height="58"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwF-ZV-0FU">
+                                <rect key="frame" x="67" y="520" width="240" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
-                                <state key="normal" title="LOG IN WITH FACEBOOK">
-                                    <color key="titleColor" red="0.14901960780000001" green="0.2666666667" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WTm-o5-2Ju"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.2094479501247406" green="0.2749074399471283" blue="0.36786758899688721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -70,8 +58,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainScrollView" destination="XEv-BN-eDv" id="ZzE-13-IvZ"/>
-                        <outlet property="pageController" destination="RW7-Qf-07K" id="qwP-A3-fYN"/>
+                        <outlet property="facebookLoginButton" destination="KwF-ZV-0FU" id="hKo-JU-PG6"/>
+                        <outlet property="mainScrollView" destination="XEv-BN-eDv" id="5lH-YD-cse"/>
+                        <outlet property="pageController" destination="RW7-Qf-07K" id="6N5-2K-DAJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -7,23 +7,36 @@
 //
 
 import UIKit
-import QuartzCore
+import Firebase
+import FBSDKLoginKit
+import FirebaseAuth
 
-class ViewController: UIViewController, UIScrollViewDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate {
     
    
     
-    
     @IBOutlet weak var mainScrollView: UIScrollView!
+    
     @IBOutlet weak var pageController: UIPageControl!
+    
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+//    @IBOutlet weak var mainScrollView: UIScrollView!
+//    @IBOutlet weak var pageController: UIPageControl!
+//  
+//    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    
+
+
     
     var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        mainScrollView.frame = view.frame
         
+       facebookLoginButton.delegate = self
+        
+        mainScrollView.frame = view.frame
         mainScrollView.delegate = self
         
         imageArray = [#imageLiteral(resourceName: "sampleImageOne"), #imageLiteral(resourceName: "samp3"), #imageLiteral(resourceName: "sampleImageThree")]
@@ -41,6 +54,40 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             mainScrollView.addSubview(imageView)
         }
+        
+//        self.facebookLoginButton.delegate = self
+    }
+    
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+           
+            print("User logged in with Facebook..")
+        })
+    }
+    
+    
+    
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        try! FIRAuth.auth()?.signOut()
+        
+        
+        print("User logged out of facebook...")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -51,13 +98,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     
     
+    
+    
     var pageHeadings = ["Dance","Record","Share"]
     var pageImages = ["","",""]
     
     
-    @IBAction func logInButton(_ sender: UIButton) {
-        
-    }
+  
     
     
     
