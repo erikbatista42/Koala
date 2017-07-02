@@ -31,9 +31,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             let imageView = UIImageView()
             imageView.image = imageArray[i]
-//            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             let xPosition = self.view.frame.width * CGFloat(i)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: self.mainScrollView.frame.width, height: self.mainScrollView.frame.height)
+            imageView.frame = CGRect(x: xPosition, y: 0, width: 375, height: 425)
             
             mainScrollView.contentSize.width = mainScrollView.frame.width * CGFloat(i + 1)
             mainScrollView.isPagingEnabled = true
