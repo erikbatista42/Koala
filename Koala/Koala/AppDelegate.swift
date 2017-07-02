@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = MainNavigationController()
 
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

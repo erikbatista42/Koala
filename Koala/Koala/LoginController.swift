@@ -12,7 +12,7 @@ import FBSDKLoginKit
 import FirebaseAuth
 import FacebookLogin
 
-class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate {
+class LoginController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDelegate {
     
    
     
@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         UIApplication.shared.statusBarStyle = .lightContent
         
         facebookLoginButton.delegate = self
@@ -55,6 +56,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
         }
         
     }
+//    
+//    func showAboutViewController() {
+//        let loginController = storyboard?.instantiateViewController(withIdentifier: "Startpage") as! ViewController
+//        
+//        DispatchQueue.main.async {
+//            present(AboutViewController, animated: true, completion: nil)
+//        }
+//    }
     
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
