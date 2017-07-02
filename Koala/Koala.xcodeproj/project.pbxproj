@@ -29,6 +29,7 @@
 		E78C63351F087A6000F582B1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E78C63371F088C8F00F582B1 /* facebookLogin-bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "facebookLogin-bridging-Header.h"; path = "../facebookLogin-bridging-Header.h"; sourceTree = "<group>"; };
 		E78C63381F088ED500F582B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E78C633A1F08C67200F582B1 /* Koala.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koala.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 		E78C63041F07313800F582B1 /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				E78C633A1F08C67200F582B1 /* Koala.entitlements */,
 				E78C63051F07313800F582B1 /* AppDelegate.swift */,
 				E78C63071F07313800F582B1 /* ViewController.swift */,
 				E78C63091F07313800F582B1 /* Main.storyboard */,
@@ -130,6 +132,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = DFUU36AARG;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -336,6 +343,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Koala/Koala.entitlements;
 				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = Koala/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -353,6 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Koala/Koala.entitlements;
 				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = Koala/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;

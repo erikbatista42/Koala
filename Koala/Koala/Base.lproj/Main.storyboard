@@ -41,7 +41,7 @@
                                 <color key="textColor" red="0.94090783600000005" green="0.94480329750000003" blue="0.96543174980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwF-ZV-0FU">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwF-ZV-0FU" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="67" y="520" width="240" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="facebookLoginButton" destination="KwF-ZV-0FU" id="hKo-JU-PG6"/>
+                        <outlet property="facebookLoginButton" destination="KwF-ZV-0FU" id="2G6-0x-o2T"/>
                         <outlet property="mainScrollView" destination="XEv-BN-eDv" id="5lH-YD-cse"/>
                         <outlet property="pageController" destination="RW7-Qf-07K" id="6N5-2K-DAJ"/>
                     </connections>

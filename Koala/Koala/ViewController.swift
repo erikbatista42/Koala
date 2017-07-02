@@ -21,10 +21,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
     @IBOutlet weak var pageController: UIPageControl!
     
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
-//    @IBOutlet weak var mainScrollView: UIScrollView!
-//    @IBOutlet weak var pageController: UIPageControl!
-//  
-//    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    
     
 
 
@@ -35,12 +32,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         UIApplication.shared.statusBarStyle = .lightContent
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-        loginButton.center = view.center
         
-        view.addSubview(loginButton)
-
-//       facebookLoginButton.delegate = self
+        facebookLoginButton.delegate = self
         
         mainScrollView.frame = view.frame
         mainScrollView.delegate = self
@@ -61,13 +54,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
             mainScrollView.addSubview(imageView)
         }
         
-//        self.facebookLoginButton.delegate = self
     }
     
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
-            print(error.localizedDescription)
+            print("Failed to login: \(error.localizedDescription)")
             return
         }
         
