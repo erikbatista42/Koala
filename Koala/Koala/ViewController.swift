@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
@@ -54,6 +55,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var pageImages = ["","",""]
     
     
+    @IBAction func logInButton(_ sender: UIButton) {
+        
+    }
     
     
     
