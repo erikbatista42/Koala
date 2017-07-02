@@ -33,8 +33,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, FBSDKLoginButtonDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-       facebookLoginButton.delegate = self
+        UIApplication.shared.statusBarStyle = .lightContent
+
+//       facebookLoginButton.delegate = self
         
         mainScrollView.frame = view.frame
         mainScrollView.delegate = self
