@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         mainScrollView.delegate = self
         
-        imageArray = [#imageLiteral(resourceName: "Bitmap"), #imageLiteral(resourceName: "Screen Shot 2017-07-01 at 5.12.17 PM")]
+        imageArray = [#imageLiteral(resourceName: "sampleImageOne"), #imageLiteral(resourceName: "samp3"), #imageLiteral(resourceName: "sampleImageThree")]
         
         for i in 0..<imageArray.count {
             
