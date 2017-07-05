@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
+		E78C50351F0CD5D90034226F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* ViewController.swift */; };
+		E78C50381F0CD5D90034226F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C50361F0CD5D90034226F /* Main.storyboard */; };
+		E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78C50391F0CD5D90034226F /* Assets.xcassets */; };
+		E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E78C502F1F0CD5D90034226F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E78C50341F0CD5D90034226F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E78C50371F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E78C50391F0CD5D90034226F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E78C502C1F0CD5D90034226F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E78C50261F0CD5D90034226F = {
+			isa = PBXGroup;
+			children = (
+				E78C50311F0CD5D90034226F /* Koala */,
+				E78C50301F0CD5D90034226F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E78C50301F0CD5D90034226F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E78C502F1F0CD5D90034226F /* Koala.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E78C50311F0CD5D90034226F /* Koala */ = {
+			isa = PBXGroup;
+			children = (
+				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
+				E78C50341F0CD5D90034226F /* ViewController.swift */,
+				E78C50361F0CD5D90034226F /* Main.storyboard */,
+				E78C50391F0CD5D90034226F /* Assets.xcassets */,
+				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
+				E78C503E1F0CD5D90034226F /* Info.plist */,
+			);
+			path = Koala;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E78C502E1F0CD5D90034226F /* Koala */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E78C50411F0CD5D90034226F /* Build configuration list for PBXNativeTarget "Koala" */;
+			buildPhases = (
+				E78C502B1F0CD5D90034226F /* Sources */,
+				E78C502C1F0CD5D90034226F /* Frameworks */,
+				E78C502D1F0CD5D90034226F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Koala;
+			productName = Koala;
+			productReference = E78C502F1F0CD5D90034226F /* Koala.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E78C50271F0CD5D90034226F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = swift.lang.eu;
+				TargetAttributes = {
+					E78C502E1F0CD5D90034226F = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = DFUU36AARG;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E78C502A1F0CD5D90034226F /* Build configuration list for PBXProject "Koala" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E78C50261F0CD5D90034226F;
+			productRefGroup = E78C50301F0CD5D90034226F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E78C502E1F0CD5D90034226F /* Koala */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E78C502D1F0CD5D90034226F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */,
+				E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */,
+				E78C50381F0CD5D90034226F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E78C502B1F0CD5D90034226F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E78C50351F0CD5D90034226F /* ViewController.swift in Sources */,
+				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E78C50361F0CD5D90034226F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78C50371F0CD5D90034226F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E78C503C1F0CD5D90034226F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E78C503F1F0CD5D90034226F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E78C50401F0CD5D90034226F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E78C50421F0CD5D90034226F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DFUU36AARG;
+				INFOPLIST_FILE = Koala/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = eu.swiftlang.Koala;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E78C50431F0CD5D90034226F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DFUU36AARG;
+				INFOPLIST_FILE = Koala/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = eu.swiftlang.Koala;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E78C502A1F0CD5D90034226F /* Build configuration list for PBXProject "Koala" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78C503F1F0CD5D90034226F /* Debug */,
+				E78C50401F0CD5D90034226F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E78C50411F0CD5D90034226F /* Build configuration list for PBXNativeTarget "Koala" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E78C50421F0CD5D90034226F /* Debug */,
+				E78C50431F0CD5D90034226F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E78C50271F0CD5D90034226F /* Project object */;
+}
