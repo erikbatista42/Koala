@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */; };
 		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
 		E78C50351F0CD5D90034226F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* ViewController.swift */; };
 		E78C50381F0CD5D90034226F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C50361F0CD5D90034226F /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E78C502F1F0CD5D90034226F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78C50341F0CD5D90034226F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E77CD5E01F0EDF9300BEDCBC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		E78C50261F0CD5D90034226F = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		E78C50311F0CD5D90034226F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
 				E78C50341F0CD5D90034226F /* ViewController.swift */,
 				E78C50361F0CD5D90034226F /* Main.storyboard */,
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78C50351F0CD5D90034226F /* ViewController.swift in Sources */,
+				E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +314,7 @@
 				E78C50431F0CD5D90034226F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
