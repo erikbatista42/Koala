@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */; };
 		E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */; };
 		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
 		E78C50351F0CD5D90034226F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* ViewController.swift */; };
 		E78C50381F0CD5D90034226F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C50361F0CD5D90034226F /* Main.storyboard */; };
 		E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78C50391F0CD5D90034226F /* Assets.xcassets */; };
 		E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */; };
+		E7EDD46E1F0EF0F600848353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EDD46D1F0EF0F600848353 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.debug.xcconfig"; sourceTree = "<group>"; };
+		E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koala.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E78C502F1F0CD5D90034226F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		E78C50391F0CD5D90034226F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7EDD46D1F0EF0F600848353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +37,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A56AC8858FEA5D902FBD1A9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */,
+				EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E77CD5E01F0EDF9300BEDCBC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -50,6 +66,9 @@
 			children = (
 				E78C50311F0CD5D90034226F /* Koala */,
 				E78C50301F0CD5D90034226F /* Products */,
+				E7EDD46D1F0EF0F600848353 /* GoogleService-Info.plist */,
+				A56AC8858FEA5D902FBD1A9B /* Pods */,
+				F588BF1615CF771D0AEE6415 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +94,14 @@
 			path = Koala;
 			sourceTree = "<group>";
 		};
+		F588BF1615CF771D0AEE6415 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E78C50411F0CD5D90034226F /* Build configuration list for PBXNativeTarget "Koala" */;
 			buildPhases = (
+				89F85FFF7280C2179DFC0AF8 /* [CP] Check Pods Manifest.lock */,
 				E78C502B1F0CD5D90034226F /* Sources */,
 				E78C502C1F0CD5D90034226F /* Frameworks */,
 				E78C502D1F0CD5D90034226F /* Resources */,
+				76AD7A7B5BEBEBEE2344814D /* [CP] Embed Pods Frameworks */,
+				F24BAB41FF17A48260442828 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,10 +168,59 @@
 				E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */,
 				E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */,
 				E78C50381F0CD5D90034226F /* Main.storyboard in Resources */,
+				E7EDD46E1F0EF0F600848353 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76AD7A7B5BEBEBEE2344814D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89F85FFF7280C2179DFC0AF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F24BAB41FF17A48260442828 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E78C502B1F0CD5D90034226F /* Sources */ = {
@@ -271,6 +350,7 @@
 		};
 		E78C50421F0CD5D90034226F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DFUU36AARG;
@@ -284,6 +364,7 @@
 		};
 		E78C50431F0CD5D90034226F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DFUU36AARG;
