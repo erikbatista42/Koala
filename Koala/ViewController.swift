@@ -12,13 +12,41 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "plus_photo") .withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if  let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            
+            plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            
+        }
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width/2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func handlePlusPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
     
     let emailTextField: UITextField = {
         let tf = UITextField()
@@ -87,7 +115,35 @@ class ViewController: UIViewController {
                 return
             } else {
                 print("Successfully created user:", user?.uid ?? "" )
-            }
+                
+                guard let image = self.plusPhotoButton.imageView?.image else { return }
+                
+                guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else { return }
+                
+                FIRStorage.storage().reference().child("profile_image").put(uploadData, metadata: nil, completion: { (metadata, err) in
+                    
+                    if let err = err {
+                        print("Failed to upload profile image:", err)
+                    }
+                  guard  let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
+                    print("Successfully uploaded profile image:",profileImageUrl)
+                    
+                })
+                
+//                guard let uid = user?.uid else { return }
+//                
+//                let usernameValues = ["username": username]
+//                let values = [uid: usernameValues]
+//                
+//                FIRDatabase.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+//                    
+//                    if let err = err {
+//                        print("Failed to save user info into database:", err)
+//                        return
+//                    }
+//                    print("Successfully saved user info to database")
+//                })
+         }
         })
     }
 
@@ -116,14 +172,7 @@ class ViewController: UIViewController {
         stackView.spacing = 10
         
         view.addSubview(stackView)
-        
-//                stackView.topAnchor.constraint(equalTo: plusPhotoButton.bottomAnchor, constant: 20).isActive = true
-//                stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
-//                stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
-//                stackView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//        
-//        stackView.anchor(top: plusPhotoButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: 0, paddingRight: 40)
-//    }
+    
         stackView.anchor(top: plusPhotoButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 200)
     }
 }
@@ -153,19 +202,10 @@ extension UIView {
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
+        
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
