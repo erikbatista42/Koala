@@ -23,6 +23,8 @@ class UserProfileHeader: UICollectionViewCell {
     
     let profileImageView: UIImageView = {
         let iv = UIImageView()
+        iv.layer.borderWidth = 1
+        iv.layer.borderColor = UIColor.white.cgColor
         return iv
     }()
     
@@ -36,27 +38,33 @@ class UserProfileHeader: UICollectionViewCell {
     
     let videosLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nvideos"
+        
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
+        attributedText.append(NSAttributedString(string: "videos", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
+        
         label.textAlignment = .center
-        label.textColor = UIColor.white
         label.numberOfLines = 0
         return label
     }()
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nfollowers"
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
+        attributedText.append(NSAttributedString(string: "followers", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
+        label.attributedText = attributedText
         label.textAlignment = .center
-        label.textColor = UIColor.white
         label.numberOfLines = 0
         return label
     }()
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        label.text = "11\nfollowing"
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
+        attributedText.append(NSAttributedString(string: "following", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        label.attributedText = attributedText
         label.textAlignment = .center
-        label.textColor = UIColor.white
         label.numberOfLines = 0
         return label
     }()
