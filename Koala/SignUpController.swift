@@ -62,7 +62,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if isFormValid {
             signUpButton.isEnabled = true
-            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1)
+            signUpButton.backgroundColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         } else {
             signUpButton.isEnabled = true
            signUpButton.backgroundColor = UIColor.rgb(red: 193, green: 201, blue: 209, alpha: 1)
@@ -141,6 +141,11 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                                             return
                                         }
                                         print("Successfully saved user info to database")
+                                        
+                                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+                                        
+                                        mainTabBarController.setupViewControllers()
+                                        self.dismiss(animated: true, completion: nil)
                                     })
                     
                 })
