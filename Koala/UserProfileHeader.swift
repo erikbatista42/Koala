@@ -19,6 +19,16 @@ class UserProfileHeader: UICollectionViewCell {
         return iv
     }()
     
+    let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "@username"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -28,8 +38,11 @@ class UserProfileHeader: UICollectionViewCell {
         profileImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
         profileImageView.layer.cornerRadius = 80/2
         profileImageView.clipsToBounds = true
+        profileImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-         profileImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        addSubview(usernameLabel)
+        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        usernameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
     var user: User? {
