@@ -29,8 +29,7 @@ class MainTabBarController: UITabBarController {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
-       
-    }
+       }
     
     func setupViewControllers() {
         let layout = UICollectionViewFlowLayout()
