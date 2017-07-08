@@ -26,7 +26,7 @@ class LoginController: UIViewController {
         return view
     }()
     
-    let signUpButton: UIButton = {
+    let dontHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
         button.setAttributedTitle(attributedTitle, for: .normal)
@@ -93,8 +93,8 @@ class LoginController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         
-        view.addSubview(signUpButton)
-        signUpButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        view.addSubview(dontHaveAnAccountButton)
+        dontHaveAnAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         setupInputFields()
     }
