@@ -32,19 +32,46 @@ class MainTabBarController: UITabBarController {
        }
     
     func setupViewControllers() {
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
+//        
+        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
+
+        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "record_unselected"), selectedImage: #imageLiteral(resourceName: "record_selected"))
+
+        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected"), selectedImage: #imageLiteral(resourceName: "notifications_selected"))
+        
+        //user profile
         let layout = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layout)
         
-        let navController = UINavigationController(rootViewController: userProfileController)
+        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
-        navController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
-        navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
+        userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
+        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
         
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
         tabBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
         
-        viewControllers = [navController, UIViewController()]
+        viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
+        
+        //modify tab bar items insets
+        guard let items = tabBar.items else { return }
+        
+        for item in items {
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
+    }
+    
+    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+        //home
+        let viewController = rootViewController
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = unselectedImage
+        navController.tabBarItem.selectedImage = selectedImage
+        
+        
+        return navController
     }
 }
