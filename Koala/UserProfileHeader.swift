@@ -22,7 +22,7 @@ class UserProfileHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .green
+        backgroundColor = UIColor.rgb(red: 18, green: 37, blue: 55, alpha: 1)
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)

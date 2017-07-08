@@ -18,7 +18,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         navigationItem.title = FIRAuth.auth()?.currentUser?.uid
         collectionView?.backgroundColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 21, green: 21, blue: 21, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
         
         fetchUser()
