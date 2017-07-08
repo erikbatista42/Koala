@@ -10,13 +10,14 @@
 		1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */; };
 		E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */; };
 		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
-		E78C50351F0CD5D90034226F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* ViewController.swift */; };
+		E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* SignUpController.swift */; };
 		E78C50381F0CD5D90034226F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C50361F0CD5D90034226F /* Main.storyboard */; };
 		E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78C50391F0CD5D90034226F /* Assets.xcassets */; };
 		E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */; };
 		E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556161F0F29A500867FFA /* MainTabBarController.swift */; };
 		E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556181F0F2A7A00867FFA /* UserProfileController.swift */; };
 		E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */; };
+		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7EDD46E1F0EF0F600848353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7EDD46D1F0EF0F600848353 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +27,7 @@
 		E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E78C502F1F0CD5D90034226F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E78C50341F0CD5D90034226F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E78C50341F0CD5D90034226F /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		E78C50371F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E78C50391F0CD5D90034226F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +35,7 @@
 		E7C556161F0F29A500867FFA /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E7C556181F0F2A7A00867FFA /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		E7C5561D1F10C94000867FFA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E7EDD46D1F0EF0F600848353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,11 +91,11 @@
 		E78C50311F0CD5D90034226F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				E7C5561F1F10C97500867FFA /* Login */,
 				E7C5561A1F1032D100867FFA /* UserProfile */,
 				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
 				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
-				E78C50341F0CD5D90034226F /* ViewController.swift */,
 				E78C50361F0CD5D90034226F /* Main.storyboard */,
 				E78C50391F0CD5D90034226F /* Assets.xcassets */,
 				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
@@ -109,6 +111,15 @@
 				E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */,
 			);
 			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		E7C5561F1F10C97500867FFA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E7C5561D1F10C94000867FFA /* LoginController.swift */,
+				E78C50341F0CD5D90034226F /* SignUpController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		F588BF1615CF771D0AEE6415 /* Frameworks */ = {
@@ -244,12 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78C50351F0CD5D90034226F /* ViewController.swift in Sources */,
+				E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */,
 				E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */,
 				E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */,
 				E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */,
 				E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
+				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
