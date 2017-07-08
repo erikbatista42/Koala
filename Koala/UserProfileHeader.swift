@@ -13,18 +13,65 @@ import FirebaseDatabase
 
 class UserProfileHeader: UICollectionViewCell {
     
+    var user: User? {
+        didSet {
+            setUpProfileImage()
+            
+            usernameLabel.text = "@\(user?.username ?? "")"
+        }
+    }
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
         return iv
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@username"
+//        label.text = "@username"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.white
         return label
+    }()
+    
+    let videosLabel: UILabel = {
+        let label = UILabel()
+        label.text = "11\nvideos"
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let followersLabel: UILabel = {
+        let label = UILabel()
+        label.text = "11\nfollowers"
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let followingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "11\nfollowing"
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let editProfileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Edit Profile", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir", size: 14)
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+        button.backgroundColor = UIColor.rgb(red: 40, green: 62, blue: 80, alpha: 1)
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
     }()
     
     
@@ -43,13 +90,26 @@ class UserProfileHeader: UICollectionViewCell {
         addSubview(usernameLabel)
         usernameLabel.anchor(top: profileImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         usernameLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        setupUserStatsView()
+        
+        addSubview(editProfileButton)
+        editProfileButton.anchor(top: videosLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 220, height: 30)
+        editProfileButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
     }
     
-    var user: User? {
-        didSet {
-            setUpProfileImage()
-        }
+    fileprivate func setupUserStatsView() {
+        let stackView = UIStackView(arrangedSubviews: [videosLabel,followersLabel,followingLabel])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 25
+        
+        addSubview(stackView)
+        stackView.anchor(top: usernameLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 50)
+        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
+
     
     fileprivate func setUpProfileImage() {
         
