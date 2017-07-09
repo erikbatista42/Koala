@@ -11,6 +11,7 @@ import UIKit
 class SearchTrackTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .magenta
+//        view.backgroundColor = .magenta
     }
+    
 }
