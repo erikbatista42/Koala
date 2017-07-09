@@ -11,16 +11,32 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        let index = viewControllers?.index(of: viewController)
+        if index == 2 {
+//            let layout = UICollectionViewFlowLayout()
+            
+            let videoSelectorController = VideoSelectorController()
+            let navController = UINavigationController(rootViewController: videoSelectorController)
+            present(navController, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
         
         DispatchQueue.main.async {
             if FIRAuth.auth()?.currentUser == nil {
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
                 self.present(navController, animated: true, completion: nil)
-                
             }
             return
         }
@@ -28,7 +44,6 @@ class MainTabBarController: UITabBarController {
         setupViewControllers()
         
         UIApplication.shared.statusBarStyle = .lightContent
-        
        }
     
     func setupViewControllers() {
