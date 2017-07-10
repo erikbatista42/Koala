@@ -12,38 +12,48 @@ import UIKit
 
 class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
     
-    var searchfar: UISearchBar = {
+    //        UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1) Shoot a dance color
+    //        UIColor.rgb(red: 254, green: 138, blue: 44, alpha: 1) SoundCloud color
+    
+    var soundCloudTracksSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.searchBarStyle = UISearchBarStyle.default
+        searchBar.placeholder = "Search Soundcloud Tracks"
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundColor = .white
+        searchBar.showsCancelButton = true
         return searchBar
     }()
     
-    lazy var searchBar:UISearchBar = UISearchBar()
+    func setupNavBar() {
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = false
+        self.navigationItem.title = "SoundCloud"
+        navigationController?.navigationBar.tintColor = .white
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.white
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchBar.searchBarStyle = UISearchBarStyle.default
-        searchBar.placeholder = " Search Soundcloud Tracks"
-        searchBar.sizeToFit()
-        searchBar.isTranslucent = false
-        searchBar.backgroundImage = UIImage()
-        searchBar.delegate = self
-        
-//        navigationItem.titleView = searchBar
-        view.addSubview(searchBar)
-        
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 249, green: 105, blue: 14, alpha: 1)
-        navigationController?.navigationBar.isTranslucent = false
-        
         view.backgroundColor = UIColor.rgb(red: 102, green: 51, blue: 153, alpha: 1)
         
-//        view.addSubview(searchBar)
+        setupNavBar()
+        
+        view.addSubview(soundCloudTracksSearchBar)
+        soundCloudTracksSearchBar.delegate = self
+        
 
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange textSearched: String) {
-        print(123)
-    }
+    
+//    func searchBar(searchBar: UISearchBar, textDidChange textSearched: String) {
+//        print(123)
+//    }
 }
 
 
