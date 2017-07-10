@@ -8,10 +8,43 @@
 
 import UIKit
 
-class SearchTrackTableView: UITableViewController {
+
+
+class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
+    
+    var searchfar: UISearchBar = {
+        let searchBar = UISearchBar()
+        return searchBar
+    }()
+    
+    lazy var searchBar:UISearchBar = UISearchBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .magenta
+        
+        searchBar.searchBarStyle = UISearchBarStyle.default
+        searchBar.placeholder = " Search Soundcloud Tracks"
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        
+//        navigationItem.titleView = searchBar
+        view.addSubview(searchBar)
+        
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 249, green: 105, blue: 14, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = false
+        
+        view.backgroundColor = UIColor.rgb(red: 102, green: 51, blue: 153, alpha: 1)
+        
+//        view.addSubview(searchBar)
+
     }
     
+    func searchBar(searchBar: UISearchBar, textDidChange textSearched: String) {
+        print(123)
+    }
 }
+
+
+

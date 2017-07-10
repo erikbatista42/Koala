@@ -22,8 +22,16 @@ class VideoSelectorController: UIViewController {
     }()
     
     func shootADance() {
-        let searchTrackTableView = SearchTrackTableView()
-        present(searchTrackTableView, animated: true, completion: nil)
+//        let searchTrackTableView = SearchTrackTableView()
+        
+        
+        
+        let trackSelector = SearchTrackTableView()
+        let navController = UINavigationController(rootViewController: trackSelector)
+        trackSelector.modalTransitionStyle =  .crossDissolve
+        present(navController, animated: true, completion: nil)
+        
+//        self.present(searchTrackTableView, animated: true, completion: nil)
     }
     
     var uploadFromLibraryButton:UIButton = {
@@ -58,7 +66,6 @@ class VideoSelectorController: UIViewController {
         
         view.addSubview(uploadFromLibraryButton)
         uploadFromLibraryButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 365, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
-        
     }
     
     fileprivate func  setupNavigationButtons() {
