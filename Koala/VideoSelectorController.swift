@@ -46,7 +46,6 @@ class VideoSelectorController: UIViewController {
     
     func handleUploadFromLibraryButton() {
         let imagePickerController = UIImagePickerController()
-//        var videoURL: NSURL?
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePickerController.mediaTypes = ["public.movie"]

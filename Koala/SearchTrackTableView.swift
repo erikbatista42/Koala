@@ -20,22 +20,28 @@ class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDel
         searchBar.searchBarStyle = UISearchBarStyle.default
         searchBar.placeholder = "Search Soundcloud Tracks"
         searchBar.sizeToFit()
-        searchBar.isTranslucent = false
+        searchBar.isTranslucent = true
         searchBar.backgroundColor = .white
-        searchBar.showsCancelButton = true
+        
         return searchBar
     }()
     
     func setupNavBar() {
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
-        navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.title = "SoundCloud"
-        navigationController?.navigationBar.tintColor = .white
         let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
+        nav?.tintColor = .white
+        nav?.isTranslucent = false
         nav?.barStyle = UIBarStyle.black
         nav?.tintColor = UIColor.white
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(handleCancel))
+        
+    }
+    
+    func handleCancel() {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -46,14 +52,21 @@ class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDel
         
         view.addSubview(soundCloudTracksSearchBar)
         soundCloudTracksSearchBar.delegate = self
-        
 
     }
     
     
-//    func searchBar(searchBar: UISearchBar, textDidChange textSearched: String) {
-//        print(123)
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
 }
 
 
