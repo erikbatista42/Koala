@@ -55,24 +55,21 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         view.addSubview(soundCloudTracksSearchBar)
         soundCloudTracksSearchBar.delegate = self
         
-        let table: UITableViewController = UITableViewController()
-        let tableView: UITableView = SoundCloudTracksTableView()
+        let table = SoundCloudTracksTableView()
+        let tableView = UITableView()
+        tableView.backgroundColor = .green
         
-        tableView.dataSource = table
-        tableView.delegate = table
+//        tableView.dataSource = table
+//        tableView.delegate = table
+        
         
         self.view.addSubview(tableView)
         tableView.anchor(top: soundCloudTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
     }
     
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
+func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}
+func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
