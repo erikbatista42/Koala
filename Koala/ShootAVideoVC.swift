@@ -27,7 +27,6 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         return searchBar
     }()
     
-    
     func setupNavBar() {
         self.navigationItem.title = "SoundCloud"
         let nav = self.navigationController?.navigationBar
@@ -39,7 +38,6 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(handleCancel))
-        
     }
     
     func handleCancel() {
@@ -55,13 +53,8 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         view.addSubview(soundCloudTracksSearchBar)
         soundCloudTracksSearchBar.delegate = self
         
-        let table = SoundCloudTracksTableView()
-        let tableView = UITableView()
-        tableView.backgroundColor = .green
-        
-//        tableView.dataSource = table
-//        tableView.delegate = table
-        
+//        let table = SoundCloudTracksTableView()
+        let tableView = SoundCloudTracksTV()
         
         self.view.addSubview(tableView)
         tableView.anchor(top: soundCloudTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
