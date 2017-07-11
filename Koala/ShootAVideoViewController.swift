@@ -10,10 +10,11 @@ import UIKit
 
 
 
-class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
+class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {
     
     //        UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1) Shoot a dance color
     //        UIColor.rgb(red: 254, green: 138, blue: 44, alpha: 1) SoundCloud color
+    
     
     var soundCloudTracksSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -26,6 +27,7 @@ class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDel
         return searchBar
     }()
     
+    
     func setupNavBar() {
         self.navigationItem.title = "SoundCloud"
         let nav = self.navigationController?.navigationBar
@@ -36,7 +38,7 @@ class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDel
         nav?.tintColor = UIColor.white
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(handleCancel))
         
     }
     
@@ -52,6 +54,15 @@ class SearchTrackTableView: UIViewController, UITableViewDelegate,UISearchBarDel
         
         view.addSubview(soundCloudTracksSearchBar)
         soundCloudTracksSearchBar.delegate = self
+        
+        let table: UITableViewController = UITableViewController()
+        let tableView: UITableView = SoundCloudTracksTableView()
+        
+        tableView.dataSource = table
+        tableView.delegate = table
+        
+        self.view.addSubview(tableView)
+        tableView.anchor(top: soundCloudTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
     }
     

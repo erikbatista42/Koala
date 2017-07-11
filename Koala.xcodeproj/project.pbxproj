@@ -14,7 +14,8 @@
 		E78C50381F0CD5D90034226F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C50361F0CD5D90034226F /* Main.storyboard */; };
 		E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78C50391F0CD5D90034226F /* Assets.xcassets */; };
 		E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */; };
-		E7B222D71F12DA2900C3D5E3 /* SearchTrackTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B222D61F12DA2900C3D5E3 /* SearchTrackTableView.swift */; };
+		E7B222D71F12DA2900C3D5E3 /* ShootAVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B222D61F12DA2900C3D5E3 /* ShootAVideoViewController.swift */; };
+		E7B222D91F1433C900C3D5E3 /* SoundCloudTracksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B222D81F1433C900C3D5E3 /* SoundCloudTracksTableView.swift */; };
 		E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556161F0F29A500867FFA /* MainTabBarController.swift */; };
 		E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556181F0F2A7A00867FFA /* UserProfileController.swift */; };
 		E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */; };
@@ -34,7 +35,8 @@
 		E78C50391F0CD5D90034226F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7B222D61F12DA2900C3D5E3 /* SearchTrackTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTrackTableView.swift; sourceTree = "<group>"; };
+		E7B222D61F12DA2900C3D5E3 /* ShootAVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootAVideoViewController.swift; sourceTree = "<group>"; };
+		E7B222D81F1433C900C3D5E3 /* SoundCloudTracksTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudTracksTableView.swift; sourceTree = "<group>"; };
 		E7C556161F0F29A500867FFA /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E7C556181F0F2A7A00867FFA /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -131,7 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */,
-				E7B222D61F12DA2900C3D5E3 /* SearchTrackTableView.swift */,
+				E7B222D61F12DA2900C3D5E3 /* ShootAVideoViewController.swift */,
+				E7B222D81F1433C900C3D5E3 /* SoundCloudTracksTableView.swift */,
 			);
 			name = AddVideo;
 			sourceTree = "<group>";
@@ -274,9 +277,10 @@
 				E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */,
 				E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */,
 				E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */,
+				E7B222D91F1433C900C3D5E3 /* SoundCloudTracksTableView.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
-				E7B222D71F12DA2900C3D5E3 /* SearchTrackTableView.swift in Sources */,
+				E7B222D71F12DA2900C3D5E3 /* ShootAVideoViewController.swift in Sources */,
 				E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

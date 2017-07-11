@@ -26,7 +26,7 @@ class VideoSelectorController: UIViewController {
         
         
         
-        let trackSelector = SearchTrackTableView()
+        let trackSelector = ShootAVideoViewController()
         let navController = UINavigationController(rootViewController: trackSelector)
         trackSelector.modalTransitionStyle =  .crossDissolve
         present(navController, animated: true, completion: nil)
