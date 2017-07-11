@@ -13,15 +13,23 @@ class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegat
     let cellId = "CellId"
     let array = ["123", "you a hoe", "lmao"]
     
-
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        image.backgroundColor = .red
+        return image
+    }()
     
     override init(frame: CGRect, style: UITableViewStyle) {
+        
         super.init(frame: frame, style: .plain)
         backgroundColor = .blue
         self.delegate = self
         self.dataSource = self
-        
         register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        
+//        addSubview(imageView)
+//        imageView.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 15, paddingLeft: 15, paddingBottom: 15, paddingRight: 0, width: 50, height: 50)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +43,10 @@ class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
-        cell.textLabel?.text = "yeajshf"
+        cell.textLabel?.text = array[indexPath.row]
+        
+        cell.imageView?.image = #imageLiteral(resourceName: "record_unselected")
+        cell.imageView?.backgroundColor = .magenta
         
         return cell
     }

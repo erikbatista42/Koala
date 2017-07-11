@@ -40,9 +40,7 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(handleCancel))
     }
     
-    func handleCancel() {
-        dismiss(animated: true, completion: nil)
-    }
+    func handleCancel() {dismiss(animated: true, completion: nil)}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +50,8 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         
         view.addSubview(soundCloudTracksSearchBar)
         soundCloudTracksSearchBar.delegate = self
-        
-//        let table = SoundCloudTracksTableView()
+
         let tableView = SoundCloudTracksTV()
-        
         self.view.addSubview(tableView)
         tableView.anchor(top: soundCloudTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
