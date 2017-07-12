@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 
 
 class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchBarDelegate, UISearchDisplayDelegate {

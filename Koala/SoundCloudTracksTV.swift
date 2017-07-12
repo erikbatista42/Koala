@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     let cellId = "CellId"
-    let array = ["123", "you a hoe", "lmao"]
+    let array = ["123", "you a hoe", "haa"]
+    
+    
+    
     
     let imageView: UIImageView = {
         let image = UIImageView()
@@ -27,13 +31,26 @@ class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegat
         self.dataSource = self
         register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-//        addSubview(imageView)
-//        imageView.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 15, paddingLeft: 15, paddingBottom: 15, paddingRight: 0, width: 50, height: 50)
+        httpRequest()
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func httpRequest() {
+        let url = URL(string: "http://api.soundcloud.com/users/3207?client_id=jaxjones")
+        
+        let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            
+            guard let data = data, error == nil else { return }
+            
+            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
+            
+            
+        }
+        task.resume()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
