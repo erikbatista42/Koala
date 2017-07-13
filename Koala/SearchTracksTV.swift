@@ -9,10 +9,10 @@
 import UIKit
 import Alamofire
 
-class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
+class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     let cellId = "CellId"
-    let array = ["123", "you a hoe", "haa"]
+    let array = ["1", "2", "3"]
     
     
     
@@ -31,26 +31,24 @@ class SoundCloudTracksTV: UITableView, UITableViewDataSource, UITableViewDelegat
         self.dataSource = self
         register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-        httpRequest()
-        
+        alamofireGet()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func httpRequest() {
-        let url = URL(string: "http://api.soundcloud.com/users/3207?client_id=jaxjones")
+    func alamofireGet() {
+        guard var url = URL(string: "https://soundcloud.com/connect+client_id") else { return }
         
-        let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-            
-            guard let data = data, error == nil else { return }
-            
-            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
-            
-            
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "Get"
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) in
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) ?? "")
         }
-        task.resume()
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

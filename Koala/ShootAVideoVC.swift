@@ -16,10 +16,10 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
     //        UIColor.rgb(red: 254, green: 138, blue: 44, alpha: 1) SoundCloud color
     
     
-    var soundCloudTracksSearchBar: UISearchBar = {
+    var searchTracksSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBarStyle.default
-        searchBar.placeholder = "Search Soundcloud Tracks"
+        searchBar.placeholder = "Search Spotify Tracks"
         searchBar.sizeToFit()
         searchBar.isTranslucent = true
         searchBar.backgroundColor = .white
@@ -28,7 +28,7 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
     }()
     
     func setupNavBar() {
-        self.navigationItem.title = "SoundCloud"
+        self.navigationItem.title = "Spotify"
         let nav = self.navigationController?.navigationBar
         nav?.barTintColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
         nav?.tintColor = .white
@@ -48,12 +48,12 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         
         setupNavBar()
         
-        view.addSubview(soundCloudTracksSearchBar)
-        soundCloudTracksSearchBar.delegate = self
+        view.addSubview(searchTracksSearchBar)
+        searchTracksSearchBar.delegate = self
 
-        let tableView = SoundCloudTracksTV()
+        let tableView = SearchTracksTV()
         self.view.addSubview(tableView)
-        tableView.anchor(top: soundCloudTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        tableView.anchor(top: searchTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
     }
     
