@@ -31,25 +31,31 @@ class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.dataSource = self
         register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-        alamofireGet()
+        callAlamo()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func alamofireGet() {
-        guard var url = URL(string: "https://soundcloud.com/connect+client_id") else { return }
+   
+    
+    
+    
+    func callAlamo() {
+        guard let url = URL(string: "https://soundcloud.com/connect?client_id=SomeClientIdThatSoundCloudGaveYou") else { return }
         
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "Get"
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) in
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue) ?? "")
+        let task = URLSession.shared.dataTask(with: url as URL) { data, response, error in
+            
+            guard let data = data, error == nil else { return }
+            
+            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
         }
-       
+        
+        task.resume()
     }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
