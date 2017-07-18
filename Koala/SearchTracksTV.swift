@@ -32,6 +32,9 @@ class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
         register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
         callAlamo()
+        
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,5 +74,11 @@ class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        return CGFloat(80)
+    }
+    
 
 }
