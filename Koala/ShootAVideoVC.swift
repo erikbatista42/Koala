@@ -19,18 +19,19 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
     var searchTracksSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBarStyle.default
-        searchBar.placeholder = "Search Spotify Tracks"
+        searchBar.placeholder = "Search Tracks"
         searchBar.sizeToFit()
         searchBar.isTranslucent = true
         searchBar.backgroundColor = .white
+        
         
         return searchBar
     }()
     
     func setupNavBar() {
-        self.navigationItem.title = "Spotify"
+        self.navigationItem.title = "iTunes"
         let nav = self.navigationController?.navigationBar
-        nav?.barTintColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
+        nav?.barTintColor = UIColor.rgb(red: 245, green: 50, blue: 97, alpha: 1)
         nav?.tintColor = .white
         nav?.isTranslucent = false
         nav?.barStyle = UIBarStyle.black
@@ -54,8 +55,14 @@ class ShootAVideoViewController: UIViewController, UITableViewDelegate,UISearchB
         let tableView = SearchTracksTV()
         self.view.addSubview(tableView)
         tableView.anchor(top: searchTracksSearchBar.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-
+        
+        let cancelButtonAttributes: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [String : AnyObject], for: .normal)
+         var prefersStatusBarHidden: Bool {
+            return true
+        }
     }
+    
     
 func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}
 func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}

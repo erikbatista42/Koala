@@ -16,16 +16,13 @@ class VideoSelectorController: UIViewController {
         button.setTitle("Shoot a dance", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir", size: 24)
-        button.backgroundColor = UIColor.rgb(red: 210, green: 77, blue: 87, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 245, green: 50, blue: 97, alpha: 1)
         button.addTarget(self, action: #selector(shootADance), for: .touchUpInside)
         return button
     }()
     
     func shootADance() {
 //        let searchTrackTableView = SearchTrackTableView()
-        
-        
-        
         let trackSelector = ShootAVideoViewController()
         let navController = UINavigationController(rootViewController: trackSelector)
         trackSelector.modalTransitionStyle =  .crossDissolve

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */; };
+		E75944C11F22DDDA0042D738 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75944C01F22DDDA0042D738 /* RecordViewController.swift */; };
 		E77CD5E21F0EDFBF00BEDCBC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */; };
 		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
 		E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* SignUpController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koala.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E75944C01F22DDDA0042D738 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E78C502F1F0CD5D90034226F /* Koala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,15 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		E787A4BD1F21EAA6002F0E20 /* Use Later */ = {
+			isa = PBXGroup;
+			children = (
+				E7B222D81F1433C900C3D5E3 /* SearchTracksTV.swift */,
+				E7B222D61F12DA2900C3D5E3 /* ShootAVideoVC.swift */,
+			);
+			name = "Use Later";
+			sourceTree = "<group>";
+		};
 		E78C50261F0CD5D90034226F = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +108,7 @@
 		E78C50311F0CD5D90034226F /* Koala */ = {
 			isa = PBXGroup;
 			children = (
+				E787A4BD1F21EAA6002F0E20 /* Use Later */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
 				E7C5561F1F10C97500867FFA /* Login */,
 				E7C5561A1F1032D100867FFA /* UserProfile */,
@@ -133,8 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */,
-				E7B222D81F1433C900C3D5E3 /* SearchTracksTV.swift */,
-				E7B222D61F12DA2900C3D5E3 /* ShootAVideoVC.swift */,
+				E75944C01F22DDDA0042D738 /* RecordViewController.swift */,
 			);
 			name = AddVideo;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
+				E75944C11F22DDDA0042D738 /* RecordViewController.swift in Sources */,
 				E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */,
 				E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */,
 			);
