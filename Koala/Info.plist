@@ -6,6 +6,10 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>So you can upload videos from your library </string>
+	<key>NSCameraUsageDescription</key>
+	<string>so you can take mf videos bitch</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Audio</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

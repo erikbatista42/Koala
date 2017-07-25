@@ -53,7 +53,7 @@ class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func parseData(JSONData: Data) {
         do {
-            var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as? JSONStandard
+            let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as? JSONStandard
             print(readableJSON)
         } catch {
             print(error)

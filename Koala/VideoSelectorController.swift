@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class VideoSelectorController: UIViewController {
+class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate {
     
+    
+    func postAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     var shootADanceButton:UIButton = {
         let button = UIButton(type: .system)
@@ -21,12 +29,41 @@ class VideoSelectorController: UIViewController {
         return button
     }()
     
+    let imagePicker: UIImagePickerController! = UIImagePickerController()
+    let saveFileName = "/test.mp4"
+
+    
+    
     func shootADance() {
 //        let searchTrackTableView = SearchTrackTableView()
-        let trackSelector = ShootAVideoViewController()
-        let navController = UINavigationController(rootViewController: trackSelector)
-        trackSelector.modalTransitionStyle =  .crossDissolve
-        present(navController, animated: true, completion: nil)
+//        let trackSelector = ShootAVideoViewController()
+//        let navController = UINavigationController(rootViewController: trackSelector)
+//        trackSelector.modalTransitionStyle =  .crossDissolve
+//        present(navController, animated: true, completion: nil)
+        
+        
+        
+         if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+                
+                //if the camera is available, and if the rear camera is available, the let the image picker do this
+                
+                imagePicker.sourceType = .camera
+                imagePicker.mediaTypes = [kUTTypeMovie as String]
+                imagePicker.allowsEditing = false
+                imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                
+                present(imagePicker, animated: true, completion: nil)
+            } else {
+                postAlert("Rear camera doesn't exist", message: "Application cannot access the camera.")
+            }
+        } else {
+            postAlert("Camera inaccessable", message: "Application cannot access the camera.")
+        }
+        
+        
+
+
         
 //        self.present(searchTrackTableView, animated: true, completion: nil)
     }
