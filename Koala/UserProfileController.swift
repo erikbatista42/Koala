@@ -18,25 +18,24 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
-        
         navigationItem.title = FIRAuth.auth()?.currentUser?.uid
         collectionView?.backgroundColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
-        
         fetchUser()
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
-        
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
         setupLogOutButton()
+        
     }
+    
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
     }
+    
     func handleLogOut() {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -49,7 +48,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
                 self.present(navController, animated: true, completion: nil)
             } catch let signOutErr {
                 print("Failed to sign out", signOutErr)
-            }
+         }
             
         }))
         
@@ -119,12 +118,16 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
 }
-
+                            
 struct User {
     let username: String
     let profileImageUrl: String
+    let video: String
     init(dictionary: [String: Any]) {
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+        self.video = dictionary["Video"] as? String ?? ""
     }
 }
+
+

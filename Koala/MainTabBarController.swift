@@ -17,6 +17,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
+            
 //            let layout = UICollectionViewFlowLayout()
             
             let videoSelectorController = VideoSelectorController()
@@ -66,8 +67,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
-        navigationController?.navigationBar.isTranslucent = false
+        tabBar.barTintColor = UIColor.rgb(red: 56, green: 56, blue: 56, alpha: 1)
+//        navigationController?.navigationBar.isTranslucent = false
+        
         
         viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
         

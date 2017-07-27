@@ -8,6 +8,10 @@
 
 import UIKit
 import MobileCoreServices
+import Firebase
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate {
     
@@ -52,6 +56,9 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 imagePicker.mediaTypes = [kUTTypeMovie as String]
                 imagePicker.allowsEditing = false
                 imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                imagePicker.videoMaximumDuration = 60
+                imagePicker.videoQuality = .typeIFrame1280x720
+                
                 
                 present(imagePicker, animated: true, completion: nil)
             } else {
@@ -61,12 +68,14 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
             postAlert("Camera inaccessable", message: "Application cannot access the camera.")
         }
         
-        
+//        let videoPath = FIRStorage.storage().reference(withPath: <#T##String#>)
+//        guard  let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
 
-
+//        UISaveVideoAtPathToSavedPhotosAlbum(<#T##videoPath: String##String#>, <#T##completionTarget: Any?##Any?#>, <#T##completionSelector: Selector?##Selector?#>, <#T##contextInfo: UnsafeMutableRawPointer?##UnsafeMutableRawPointer?#>)
         
 //        self.present(searchTrackTableView, animated: true, completion: nil)
     }
+    
     
     var uploadFromLibraryButton:UIButton = {
         let button = UIButton(type: .system)
@@ -104,13 +113,9 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     fileprivate func  setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
-        
 //        navigationController?.navigationBar.isTranslucent = false
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleCancel))
-        
-        
     }
     func handleCancel() {
         dismiss(animated: true, completion: nil)
