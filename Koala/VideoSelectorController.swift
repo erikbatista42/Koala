@@ -79,10 +79,10 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 //if the camera is available, and if the rear camera is available, the let the image picker do this
                 imagePicker.sourceType = .camera
                 imagePicker.mediaTypes = [kUTTypeMovie as String]
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
                 imagePicker.videoMaximumDuration = 60
-                imagePicker.videoQuality = .typeIFrame1280x720
+                imagePicker.videoQuality = .typeMedium
                 present(imagePicker, animated: true, completion: nil)
 // imagePickerController(imagePicker, didFinishPickingMediaWithInfo: [saveFileName : kUTTypeMovie])
             } else {
@@ -98,7 +98,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("canceled")
+        dismiss(animated: true, completion: nil)
     }
     
     var uploadFromLibraryButton:UIButton = {
@@ -136,22 +136,73 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         view.addSubview(uploadFromLibraryButton)
         uploadFromLibraryButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 365, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
     }
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
-        
-        let videoURL = info[UIImagePickerControllerReferenceURL] as? NSURL
-        print("\(String(describing: videoURL))" )
-//        guard let path = videoURL?.path else { return }
-//        let videoName = path.lastPathComponent
-//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-//        let documentDirectory = paths.first as String!
-//        let localPath = documentDirectory! + "/" + videoName
-//        guard  let imageData = NSData(contentsOfFile: localPath) else { return }
-//        let image = UIImage(data: imageData as Data)
-        print(123)
         dismiss(animated: true, completion: nil)
+        // Points to the root reference and then points to "videos"
+        let storageVideoRef = FIRStorage.storage().reference().child("videos")
+        
+        // Points to "images/space.jpg"
+        // Note that you can use variables to create child values
+        let fileName = "dancing.mp4"
+        let rootRef = storageVideoRef.child(fileName)
+        
+        // File path is "images/space.jpg"
+        let path = rootRef.fullPath
+        
+        // File name is "dancing.mp4"
+        let name = rootRef.name
+        
+        // Points to "videos"
+        let videos = rootRef.parent()
+        
+        // File located on disk
+        guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else { return }
+        let localFile = videoURL
+        
+        // Create a reference to the file you want to upload
+        let videosRef = FIRStorage.storage().reference().child("videos/" + randomString(length: 20))
+        
+        // Upload the file to the path "images/rivers.jpg"
+        _ = videosRef.putFile(localFile, metadata: nil) { metadata, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print("An error has occured: \(error)")
+                
+            } else {
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                let downloadURL = metadata!.downloadURL()
+                print(downloadURL ?? "")
+            }
+        }
+            
+        }
+    
+    func randomString(length: Int) -> String {
+        let letters: NSString = "abcdefghijklmnopqrtstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+        let len = Int32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let random = arc4random_uniform(UInt32(len))
+            var nextCharacter = letters.character(at: Int(random))
+            randomString += NSString(characters: &nextCharacter, length: 1) as String
+            
+        }
+        return randomString + ".mp4"
     }
+    
+    func getName() -> String {
+        let dateFormatter = DateFormatter()
+        let dateFormat = "yyyyMMddHHmmss"
+        dateFormatter.dateFormat = dateFormat
+        let date = dateFormatter.string(from: Date())
+        let name = date.appending(".mp4")
+        return name
+    }
+    
 
     //    imagePickerController(imagePicker, didFinishPickingMediaWithInfo: [saveFileName : kUTTypeMovie])
     
