@@ -15,11 +15,11 @@ import FirebaseDatabase
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     
-//    var user: User? {
-//        didSet {
-//            
-//        }
-//    }
+    var user: User? {
+        didSet {
+            
+        }
+    }
     
     
     func postAlert(_ title: String, message: String) {
@@ -98,7 +98,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("tht shit was canceled")
+        print("canceled")
     }
     
     var uploadFromLibraryButton:UIButton = {
@@ -140,8 +140,8 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         
         
-//        let videoURL = info[UIImagePickerControllerReferenceURL] as? NSURL
-//        print("\(String(describing: videoURL))" )
+        let videoURL = info[UIImagePickerControllerReferenceURL] as? NSURL
+        print("\(String(describing: videoURL))" )
 //        guard let path = videoURL?.path else { return }
 //        let videoName = path.lastPathComponent
 //        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
