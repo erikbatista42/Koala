@@ -23,7 +23,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             let videoSelectorController = VideoSelectorController()
             let navController = UINavigationController(rootViewController: videoSelectorController)
             present(navController, animated: true, completion: nil)
-            return false
+            return false 
         }
         return true
     }
