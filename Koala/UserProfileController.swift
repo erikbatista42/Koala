@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import Kingfisher
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -67,13 +68,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! MainCollectionViewCell
-        cell.backgroundColor = .blue
-
-        
-        
-        
-
-//        cell.addSubview(imageView)
+        cell.backgroundColor = .clear
+      
         
         
         return cell
