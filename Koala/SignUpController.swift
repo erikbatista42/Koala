@@ -121,7 +121,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else { return }
                 
                 let fileName = NSUUID().uuidString
-                FIRStorage.storage().reference().child("profile_image").child(fileName).put(uploadData, metadata: nil, completion: { (metadata, err) in
+                FIRStorage.storage().reference().child("profile_images").child(fileName).put(uploadData, metadata: nil, completion: { (metadata, err) in
                     
                     if let err = err {
                         print("Failed to upload profile image:", err)

@@ -15,6 +15,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     let cellId = "cellId"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,8 +27,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         fetchUser()
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
+      
         setupLogOutButton()
         
     }
@@ -61,11 +63,18 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath)
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! MainCollectionViewCell
         cell.backgroundColor = .blue
+
+        
+        
+        
+
+//        cell.addSubview(imageView)
+        
         
         return cell
     }
@@ -78,6 +87,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return 1
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(123)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 3
         return CGSize(width: width, height: 175)
@@ -85,7 +98,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
-        
         
         header.user = self.user
         

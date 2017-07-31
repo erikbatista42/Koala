@@ -82,7 +82,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 imagePicker.allowsEditing = true
                 imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
                 imagePicker.videoMaximumDuration = 60
-                imagePicker.videoQuality = .typeMedium
+                imagePicker.videoQuality = .typeIFrame960x540
                 present(imagePicker, animated: true, completion: nil)
 // imagePickerController(imagePicker, didFinishPickingMediaWithInfo: [saveFileName : kUTTypeMovie])
             } else {
@@ -142,21 +142,6 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
         // Points to the root reference and then points to "videos"
         let storageVideoRef = FIRStorage.storage().reference().child("videos")
-        
-        // Points to "images/space.jpg"
-        // Note that you can use variables to create child values
-        let fileName = "dancing.mp4"
-        let rootRef = storageVideoRef.child(fileName)
-        
-        // File path is "images/space.jpg"
-        let path = rootRef.fullPath
-        
-        // File name is "dancing.mp4"
-        let name = rootRef.name
-        
-        // Points to "videos"
-        let videos = rootRef.parent()
-        
         // File located on disk
         guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else { return }
         let localFile = videoURL
@@ -215,16 +200,5 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     }
     func handleCancel() {
         dismiss(animated: true, completion: nil)
-    }
-}
-extension String {
-    var fileURL: URL {
-        return URL(fileURLWithPath: self)
-    }
-    var pathExtension: String {
-        return fileURL.pathExtension
-    }
-    var lastPathComponent: String {
-        return fileURL.lastPathComponent
     }
 }

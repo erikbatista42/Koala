@@ -36,22 +36,22 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let videosLabel: UILabel = {
-        let label = UILabel()
-        
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
-        attributedText.append(NSAttributedString(string: "videos", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedText
-        
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
+//    let videosLabel: UILabel = {
+//        let label = UILabel()
+//        
+//        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
+//        attributedText.append(NSAttributedString(string: "videos", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+//        label.attributedText = attributedText
+//        
+//        label.textAlignment = .center
+//        label.numberOfLines = 0
+//        return label
+//    }()
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
-        attributedText.append(NSAttributedString(string: "followers", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)])
+        attributedText.append(NSAttributedString(string: " followers  •", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.attributedText = attributedText
         label.textAlignment = .center
@@ -61,8 +61,8 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
-        attributedText.append(NSAttributedString(string: "following", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)])
+        attributedText.append(NSAttributedString(string: " following", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -87,7 +87,7 @@ class UserProfileHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.rgb(red: 18, green: 37, blue: 55, alpha: 1)
+        backgroundColor = UIColor.rgb(red: 24, green: 24, blue: 24, alpha: 1)
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
@@ -102,16 +102,16 @@ class UserProfileHeader: UICollectionViewCell {
         setupUserStatsView()
         
         addSubview(editProfileButton)
-        editProfileButton.anchor(top: videosLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 220, height: 30)
+        editProfileButton.anchor(top: followersLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 220, height: 30)
         editProfileButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
     }
     
     fileprivate func setupUserStatsView() {
-        let stackView = UIStackView(arrangedSubviews: [videosLabel,followersLabel,followingLabel])
+        let stackView = UIStackView(arrangedSubviews: [followersLabel,followingLabel])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = 25
+        stackView.spacing = 0
         
         addSubview(stackView)
         stackView.anchor(top: usernameLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 50)
