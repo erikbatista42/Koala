@@ -127,7 +127,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     fileprivate func setUpProfileImage() {
         
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard (FIRAuth.auth()?.currentUser?.uid) != nil else { return }
         //The FIRDatabase.database().reference() gives you access to the firebase database and once you call .child(users) you access to the child of the users of firebase
         //Observe single event is just a fancy word to give me the username instead of observing the uid
         guard let profileImageUrl = user?.profileImageUrl else { return }

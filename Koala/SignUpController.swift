@@ -183,16 +183,11 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         view.backgroundColor = UIColor(red: 240, green: 241, blue: 246, alpha: 1)
        
-        
-       view.addSubview(plusPhotoButton)
+        view.addSubview(plusPhotoButton)
         plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
-//        plusPhotoButton.center = view.center
-
 
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
-        
-         setupInputFields()
+        setupInputFields()
     }
     
     fileprivate func setupInputFields() {

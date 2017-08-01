@@ -11,11 +11,18 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import Kingfisher
+import AVKit
+import AVFoundation
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     
+    var videoDownloadLinks = [String]()
+    var videoThumbnailLinks = [String]()
+    
+    var avPlayerViewController = AVPlayerViewController()
+    var avPlayer: AVPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()

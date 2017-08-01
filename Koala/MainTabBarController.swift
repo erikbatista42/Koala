@@ -17,9 +17,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
-            
-//            let layout = UICollectionViewFlowLayout()
-            
             let videoSelectorController = VideoSelectorController()
             let navController = UINavigationController(rootViewController: videoSelectorController)
             present(navController, animated: true, completion: nil)
@@ -49,7 +46,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func setupViewControllers() {
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
-//        
+
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
 
         let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "record_unselected"), selectedImage: #imageLiteral(resourceName: "record_selected"))
@@ -68,8 +65,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
         tabBar.barTintColor = UIColor.rgb(red: 56, green: 56, blue: 56, alpha: 1)
-//        navigationController?.navigationBar.isTranslucent = false
-        
         
         viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
         
@@ -87,8 +82,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let navController = UINavigationController(rootViewController: viewController)
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
-        
-        
+
         return navController
     }
 }

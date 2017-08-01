@@ -15,6 +15,9 @@ import FirebaseDatabase
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     
+    let imagePicker: UIImagePickerController! = UIImagePickerController()
+    let saveFileName = "/test.mp4"
+    
     var user: User? {
         didSet {
             
@@ -39,40 +42,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         return button
     }()
     
-//    func setupVideo() {
-//        guard let videoPathUrl = user?.video else { return }
-//        let myUrl = NSURL(string: videoPathUrl)
-//        let request = NSURLRequest(url: myUrl as! URL)
-//        
-//        
-//        URLSession.shared.dataTask(with: request) { (data, response, err) in
-//            //Check the err
-//            if let err = err {
-//                print("Failed to fetch profile image", err)
-//                return
-//            }
-//            
-//            guard let data = data else { return }
-//            
-//            let image = UIImage(data: data)
-//            DispatchQueue.main.async {
-//                self.profileImageView.image = image
-//            }
-//            }.resume()
-//    }
-    
-    let imagePicker: UIImagePickerController! = UIImagePickerController()
-    let saveFileName = "/test.mp4"
-
-    
-   
     func shootADance() {
-//        let searchTrackTableView = SearchTrackTableView()
-//        let trackSelector = ShootAVideoViewController()
-//        let navController = UINavigationController(rootViewController: trackSelector)
-//        trackSelector.modalTransitionStyle =  .crossDissolve
-//        present(navController, animated: true, completion: nil)
-        
                  if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
             if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
               
@@ -84,18 +54,13 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 imagePicker.videoMaximumDuration = 60
                 imagePicker.videoQuality = .typeIFrame960x540
                 present(imagePicker, animated: true, completion: nil)
-// imagePickerController(imagePicker, didFinishPickingMediaWithInfo: [saveFileName : kUTTypeMovie])
             } else {
                 postAlert("Rear camera doesn't exist", message: "Application cannot access the camera.")
             }
         } else {
             postAlert("Camera inaccessable", message: "Application cannot access the camera.")
         }
-//        self.present(searchTrackTableView, animated: true, completion: nil)
     }
-    
-    
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -122,13 +87,15 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var prefersStatusBarHidden: Bool { return true }
         self.imagePicker.delegate = self 
-        view.backgroundColor = .black
+        view.backgroundColor = .darkGray
+        shootOrUploadBtns()
         
-        var prefersStatusBarHidden: Bool {
-            return true
-        }
-        
+    }
+    
+    func shootOrUploadBtns() {
         setupNavigationButtons()
         view.addSubview(shootADanceButton)
         shootADanceButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 65, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
@@ -141,7 +108,8 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
         // Points to the root reference and then points to "videos"
-        let storageVideoRef = FIRStorage.storage().reference().child("videos")
+        //Create Storage reference
+        _ = FIRStorage.storage().reference().child("videos")
         // File located on disk
         guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else { return }
         let localFile = videoURL
@@ -161,8 +129,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 print(downloadURL ?? "")
             }
         }
-            
-        }
+    }
     
     func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrtstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
@@ -179,26 +146,10 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         return randomString + ".mp4"
     }
     
-    func getName() -> String {
-        let dateFormatter = DateFormatter()
-        let dateFormat = "yyyyMMddHHmmss"
-        dateFormatter.dateFormat = dateFormat
-        let date = dateFormatter.string(from: Date())
-        let name = date.appending(".mp4")
-        return name
-    }
-    
-
-    //    imagePickerController(imagePicker, didFinishPickingMediaWithInfo: [saveFileName : kUTTypeMovie])
-    
     fileprivate func  setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
-//        navigationController?.navigationBar.isTranslucent = false
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleCancel))
     }
-    func handleCancel() {
-        dismiss(animated: true, completion: nil)
-    }
+    func handleCancel() { dismiss(animated: true, completion: nil) }
 }

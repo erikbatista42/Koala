@@ -11,6 +11,8 @@ import Kingfisher
 
 class MainCollectionViewCell: UICollectionViewCell {
     
+    
+    
     let thumbNailImageView: UIImageView = {
         let thumbnail = UIImageView()
         thumbnail.backgroundColor = UIColor.gray
