@@ -14,6 +14,7 @@ import Kingfisher
 import AVKit
 import AVFoundation
 
+
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
@@ -22,7 +23,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var videoThumbnailLinks = [String]()
     
     var avPlayerViewController = AVPlayerViewController()
-    var avPlayer: AVPlayer?
+    var avPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,34 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
       
         setupLogOutButton()
         
+        loadThumbNail()
+        
+    }
+    
+    func loadThumbNail() {
+        let databaseReference = FIRDatabase.database().reference().child("videos")
+        
+        databaseReference.observe(.childAdded, with: {
+            snapshot in
+            
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            let videoDownloadURL = postDict["videodownloadlink"]!
+            let videoThumbnail = postDict["thumbnail"]!
+            
+            self.videoDownloadLinks.insert(videoDownloadURL as! String, at: 0)
+            self.videoThumbnailLinks.insert(videoThumbnail as! String, at: 0)
+            
+            self.collectionView?.reloadData()
+            print(self.videoDownloadLinks.count)
+            print(self.videoThumbnailLinks.count)
+            
+//            self.vloggiesNumber += 1
+            
+//            self.vloggies.text = String(describing: self.vloggiesNumber)
+        })
+        
+
     }
     
     fileprivate func setupLogOutButton() {
@@ -67,8 +96,26 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         present(alertController, animated: true, completion: nil)
         
     }
-    
+    var numVideos = [uint(Int())]
+//    var numbVideos = uint
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        
+        let refDb = FIRDatabase.database().reference()
+        refDb.child("users/\(FIRAuth.auth()?.currentUser?.uid ?? "")/videos")
+        
+        refDb.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
+            
+            print(snapshot.childrenCount)
+           self.numVideos = [uint(snapshot.childrenCount)]
+            
+
+        })
+        
+        print("num of videos: \(numVideos.count)")
+        
+//        return numVideos.count
         return 7
     }
 
@@ -76,8 +123,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! MainCollectionViewCell
         cell.backgroundColor = .clear
-      
-        
         
         return cell
     }
@@ -90,8 +135,76 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return 1
     }
     
+    func playVideo() {
+        
+//        // Create a reference to the file you want to download
+//         let path = FIRStorage.storage().reference().child("videos/cFnswXmYnDJP6IuvqMud.mp4")
+//        
+//        // Create local filesystem URL
+//        let localURL = URL(string: "videos/cFnswXmYnDJP6IuvqMud.mp4")!
+        
+        // Create a reference with an initial file path and name
+        let pathReference = FIRStorage.storage().reference(withPath: "videos/HWlqz3nxGJt575EJpmfk.mp4")
+        
+        // Create a reference from a Google Cloud Storage URI
+        let gsReference = FIRStorage.storage().reference(forURL: "gs://koala-60599.appspot.com/videos/\(FIRAuth.auth()?.currentUser?.uid ?? ""))")
+        
+        // Create a reference from an HTTPS URL
+        // Note that in the URL, characters are URL escaped!
+        let httpsReference = FIRStorage.storage().reference(forURL: "gs://koala-60599.appspot.com/videos")
+//        
+        // Download to the local filesystem
+//        let downloadTask = pathReference.write(toFile: gsReference) { url, error in
+//            if let error = error {
+//                // Uh-oh, an error occurred!
+//                let alertController = UIAlertController(title: "ERORR", message: "Koala couldn't load video, please try again later", preferredStyle: .alert)
+//                
+//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action -> Void in
+//                    // Put your code here
+//                })
+//                self.present(alertController, animated: true, completion: nil)
+//                print("AN ERROR HAS OCCURED \(error)")
+//                
+//            } else {
+//                // Local file URL for "images/island.jpg" is returned
+//                let player = AVPlayer(url: localURL)
+//                let playerController = AVPlayerViewController()
+//                playerController.player = player
+//                self.present(playerController, animated: true) {
+//                player.play()
+//                }
+//            }
+//        }
+        
+        // Create a reference to the file you want to download
+        let videosRef = FIRStorage.storage().reference().child("videos/cFnswXmYnDJP6IuvqMud.mp4")
+        
+        // Fetch the download URL
+        videosRef.downloadURL { url, error in
+            if let error = error {
+                // Handle any errors
+                print("ERRORRRR: \(error)")
+            } else {
+                // Get the download URL for 'images/stars.jpg'
+                print(videosRef)
+                // Local file URL for "images/island.jpg" is returned
+              guard let theURL = url else { return }
+                    let player = AVPlayer(url: theURL)
+                    let playerController = AVPlayerViewController()
+                    playerController.player = player
+                    self.present(playerController, animated: true) {
+                        player.play()
+                }
+            }
+        }
+    
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(123)
+            print("A cell has been selected")
+//            let linkToDownload = videoDownloadLinks[indexPath.row]
+//            let url = NSURL(string: linkToDownload)
+            playVideo()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -137,11 +250,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 struct User {
     let username: String
     let profileImageUrl: String
-    let video: String
+    let videos: String
     init(dictionary: [String: Any]) {
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-        self.video = dictionary["Video"] as? String ?? ""
+        self.videos = dictionary["Videos"] as? String ?? ""
     }
 }
 

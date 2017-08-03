@@ -47,6 +47,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
   - Kingfisher (3.10.4)
+  - Player (0.5.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher (~> 3.0)
+  - Player (~> 0.5.0)
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
@@ -70,7 +72,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
+  Player: 7bd61af457e558edf938066b03760f035a520837
 
-PODFILE CHECKSUM: 7d806fb16271158e3ab4d377beb6320292cd11f5
+PODFILE CHECKSUM: 9f373adbe4a4c94af396ec8cdab329103973498a
 
 COCOAPODS: 1.2.1

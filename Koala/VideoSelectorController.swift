@@ -115,7 +115,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         let localFile = videoURL
         
         // Create a reference to the file you want to upload
-        let videosRef = FIRStorage.storage().reference().child("videos/" + randomString(length: 20))
+        let videosRef = FIRStorage.storage().reference().child("videos/\(FIRAuth.auth()?.currentUser?.uid ?? "")/" + randomString(length: 20))
         
         // Upload the file to the path "images/rivers.jpg"
         _ = videosRef.putFile(localFile, metadata: nil) { metadata, error in
@@ -129,6 +129,12 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 print(downloadURL ?? "")
             }
         }
+        
+        let refDb: FIRDatabaseReference?
+       
+        refDb = FIRDatabase.database().reference()
+        refDb?.child("users/\(FIRAuth.auth()?.currentUser?.uid ?? "")/videos").childByAutoId().setValue("\(localFile)")
+        
     }
     
     func randomString(length: Int) -> String {

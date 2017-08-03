@@ -13,5 +13,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Kingfisher', '~> 3.0'
+pod 'Player', '~> 0.5.0'
+
 
 end
