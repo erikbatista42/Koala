@@ -83,13 +83,13 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		E787A4BD1F21EAA6002F0E20 /* Future Use */ = {
+		E787A4BD1F21EAA6002F0E20 /* Search Tracks N/A */ = {
 			isa = PBXGroup;
 			children = (
 				E7B222D81F1433C900C3D5E3 /* SearchTracksTV.swift */,
 				E7B222D61F12DA2900C3D5E3 /* ShootAVideoVC.swift */,
 			);
-			name = "Future Use";
+			name = "Search Tracks N/A";
 			sourceTree = "<group>";
 		};
 		E78C50261F0CD5D90034226F = {
@@ -117,6 +117,7 @@
 				FEF5F05D1F390CDD00B8A501 /* Singletons */,
 				FE03F3741F374E8A00C9C1D2 /* M */,
 				FEF5F05C1F390B7C00B8A501 /* V */,
+				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
 				FEF5F0621F390F1B00B8A501 /* C */,
 				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
 			);
@@ -200,11 +201,10 @@
 		FEF5F05C1F390B7C00B8A501 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				E787A4BD1F21EAA6002F0E20 /* Future Use */,
+				E787A4BD1F21EAA6002F0E20 /* Search Tracks N/A */,
 				E7C5561F1F10C97500867FFA /* Login */,
-				E7C5561A1F1032D100867FFA /* UserProfile */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
-				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
+				E7C5561A1F1032D100867FFA /* UserProfile */,
 			);
 			name = V;
 			sourceTree = "<group>";

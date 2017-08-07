@@ -58,8 +58,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 //                let thumbnail = Post(dictionary: dictionary)
                 
                 self.videos.append(video)
-                print(self.videos)
 //                self.videosThumbnails.append(thumbnail)
+                
+                print(self.videos)
+                
+                
             })
         
         self.collectionView?.reloadData()
@@ -107,10 +110,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         
-        cell.video = videos[indexPath.item]
-//        let url = videos[indexPath.row]
-//        let x = cell.getThumbnailImage(forUrl: (url as? URL)!)
-//        cell.thumbNailImageView.image = x
+//        cell.video = videos[indexPath.item]
+        let links =  videos[indexPath.row]
+        let url = NSURL(string: links.videoUrl)
+        let thumnailMaker = cell.getThumbnailImage(forUrl: (url as URL?)!)
+        cell.thumbNailImageView.image = thumnailMaker
         return cell
     }
     
@@ -122,39 +126,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return 1
     }
     
-    func playVideo() {
-                
-//        // Create a reference to the file you want to download
-//        let videosRef = FIRStorage.storage().reference().child("videos/\(currentUserID)/7jPDqwEfY6dBif18Xu20.mp4")
-//        
-//        // Fetch the download URL
-//        videosRef.downloadURL { url, error in
-//            if let error = error {
-//                // Handle any errors
-//                print("ERRORRRR: \(error)")
-//            } else {
-//                // Get the download URL for 'images/stars.jpg'
-//                print(videosRef)
-//                // Local file URL for "images/island.jpg" is returned
-        
-//              guard let theURL = videos else { return }
-//                    let player = AVPlayer(url: theURL)
-//                    let playerController = AVPlayerViewController()
-//                    playerController.player = player
-//                    self.present(playerController, animated: true) {
-//                        player.play()
-//                }
-//            }
-        
-        }
     
 
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let links = videos[indexPath.row]
         print("Links: \(links)")
-//        let ref = FIRStorage.storage().reference().child("videos/\(currentUserID)/7jPDqwEfY6dBif18Xu20.mp4")
         guard let url = NSURL(string: links.videoUrl) else { return }
         let player = AVPlayer(url: url as URL)
         let playerController = avPlayerViewController
@@ -162,8 +139,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         self.present(playerController, animated: true) {
             player.play()
         }
-        
-            playVideo()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
