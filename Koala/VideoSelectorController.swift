@@ -127,7 +127,24 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 // Metadata contains file metadata such as size, content-type, and download URL.
                 guard let downloadURL = metadata!.downloadURL() else { return }
                 print(downloadURL)
-                _ = FIRDatabase.database().reference().child("posts/\(FIRAuth.auth()?.currentUser?.uid ?? "")").childByAutoId().child("videoUrl").setValue("\(downloadURL)")
+                guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+                
+                //GenerateThumbnail
+                
+                
+    let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)//.child("videoUrl").setValue("\(downloadURL)")
+                let ref = userPostRef.childByAutoId()
+                
+                let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "aye"]
+                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                    if let err = err {
+                        print("Failed to save to DB", err)
+                        return
+                    } else {
+                        print("Successfully saved post to DB")
+                    }
+                })
+                
             }
         }
         

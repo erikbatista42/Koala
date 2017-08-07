@@ -53,14 +53,9 @@ class UserProfileVideoCell: UICollectionViewCell {
     
     let thumbNailImageView: UIImageView = {
         let iv = UIImageView()
-        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/koala-60599.appspot.com/o/videos%2FfE7HS5uFzyfyM3ZHV3BHqBirTzr2%2FE6iWSEmIGOta0Cs8JOug.mp4?alt=media&token=97f6716e-1dfa-4414-acb8-f48eed8e55f2")
-        
-        
-        
-        
-        //        iv.kf.setImage(with: url)
-
-//        iv.backgroundColor = UIColor.green
+//        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/koala-60599.appspot.com/o/videos%2FfE7HS5uFzyfyM3ZHV3BHqBirTzr2%2FE6iWSEmIGOta0Cs8JOug.mp4?alt=media&token=97f6716e-1dfa-4414-acb8-f48eed8e55f2")
+//        iv.kf.setImage(with: url)
+        iv.backgroundColor = UIColor.green
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = UIViewContentMode.scaleAspectFill
         iv.layer.masksToBounds = true

@@ -20,9 +20,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
     let cellId = "cellId"
     
-    var videoDownloadLinks = [String]()
-    var videoThumbnailLinks = [String]()
-    
     var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
     
@@ -55,13 +52,14 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             dictionaries.forEach({ (key,value) in
 //                print("key: \(key) , value: \(value)")
                 guard let dictionary = value as? [String: Any] else { return }
-                guard let dic = value as? [String: Any] else { return }
+                
                 
                 let video = Post(dictionary: dictionary)
-                let thumbnail = Post(dictionary: dic)
+//                let thumbnail = Post(dictionary: dictionary)
                 
                 self.videos.append(video)
-                self.videosThumbnails.append(thumbnail)
+                print(self.videos)
+//                self.videosThumbnails.append(thumbnail)
             })
         
         self.collectionView?.reloadData()
@@ -109,7 +107,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         
-//        cell.video = videos[indexPath.item]
+        cell.video = videos[indexPath.item]
 //        let url = videos[indexPath.row]
 //        let x = cell.getThumbnailImage(forUrl: (url as? URL)!)
 //        cell.thumbNailImageView.image = x
@@ -126,42 +124,44 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     func playVideo() {
                 
-        // Create a reference to the file you want to download
-        let videosRef = FIRStorage.storage().reference().child("videos/\(currentUserID)/7jPDqwEfY6dBif18Xu20.mp4")
+//        // Create a reference to the file you want to download
+//        let videosRef = FIRStorage.storage().reference().child("videos/\(currentUserID)/7jPDqwEfY6dBif18Xu20.mp4")
+//        
+//        // Fetch the download URL
+//        videosRef.downloadURL { url, error in
+//            if let error = error {
+//                // Handle any errors
+//                print("ERRORRRR: \(error)")
+//            } else {
+//                // Get the download URL for 'images/stars.jpg'
+//                print(videosRef)
+//                // Local file URL for "images/island.jpg" is returned
         
-        // Fetch the download URL
-        videosRef.downloadURL { url, error in
-            if let error = error {
-                // Handle any errors
-                print("ERRORRRR: \(error)")
-            } else {
-                // Get the download URL for 'images/stars.jpg'
-                print(videosRef)
-                // Local file URL for "images/island.jpg" is returned
-                
-              guard let theURL = url else { return }
-                    let player = AVPlayer(url: theURL)
-                    let playerController = AVPlayerViewController()
-                    playerController.player = player
-                    self.present(playerController, animated: true) {
-                        player.play()
-                }
-            }
+//              guard let theURL = videos else { return }
+//                    let player = AVPlayer(url: theURL)
+//                    let playerController = AVPlayerViewController()
+//                    playerController.player = player
+//                    self.present(playerController, animated: true) {
+//                        player.play()
+//                }
+//            }
+        
         }
     
-    }
-    
+
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let linkToDownload = videoDownloadLinks[indexPath.row]
+        let links = videos[indexPath.row]
+        print("Links: \(links)")
 //        let ref = FIRStorage.storage().reference().child("videos/\(currentUserID)/7jPDqwEfY6dBif18Xu20.mp4")
-//        let url = NSURL(string: linkToDownload)
-//        let player = AVPlayer(url: url as! URL)
-//        let playerController = avPlayerViewController
-//        playerController.player = player
-//        self.present(playerController, animated: true) { 
-//            player.play()
-//        }
+        guard let url = NSURL(string: links.videoUrl) else { return }
+        let player = AVPlayer(url: url as URL)
+        let playerController = avPlayerViewController
+        playerController.player = player
+        self.present(playerController, animated: true) {
+            player.play()
+        }
         
             playVideo()
     }
