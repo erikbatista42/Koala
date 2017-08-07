@@ -22,8 +22,9 @@
 		E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */; };
 		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */; };
-		FE7A2DB51F2F86A0002C79F2 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* MainCollectionViewCell.swift */; };
-		FEA660B71F2AC3E900F85CD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEA660B61F2AC3E900F85CD2 /* GoogleService-Info.plist */; };
+		FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03F3751F374EAF00C9C1D2 /* Post.swift */; };
+		FE03F37C1F37FC0400C9C1D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */; };
+		FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +47,9 @@
 		E7C5561D1F10C94000867FFA /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSelectorController.swift; sourceTree = "<group>"; };
 		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
-		FE7A2DB41F2F86A0002C79F2 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
-		FEA660B61F2AC3E900F85CD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE03F3751F374EAF00C9C1D2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 			children = (
 				E78C50311F0CD5D90034226F /* Koala */,
 				E78C50301F0CD5D90034226F /* Products */,
-				FEA660B61F2AC3E900F85CD2 /* GoogleService-Info.plist */,
 				A56AC8858FEA5D902FBD1A9B /* Pods */,
 				F588BF1615CF771D0AEE6415 /* Frameworks */,
 			);
@@ -112,6 +113,7 @@
 			children = (
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
 				E787A4BD1F21EAA6002F0E20 /* Future Use */,
+				FE03F3741F374E8A00C9C1D2 /* models */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
 				E7C5561F1F10C97500867FFA /* Login */,
 				E7C5561A1F1032D100867FFA /* UserProfile */,
@@ -121,6 +123,7 @@
 				E78C50391F0CD5D90034226F /* Assets.xcassets */,
 				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
 				E78C503E1F0CD5D90034226F /* Info.plist */,
+				FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */,
 			);
 			path = Koala;
 			sourceTree = "<group>";
@@ -130,7 +133,7 @@
 			children = (
 				E7C556181F0F2A7A00867FFA /* UserProfileController.swift */,
 				E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */,
-				FE7A2DB41F2F86A0002C79F2 /* MainCollectionViewCell.swift */,
+				FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */,
 			);
 			name = UserProfile;
 			sourceTree = "<group>";
@@ -159,6 +162,14 @@
 				E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE03F3741F374E8A00C9C1D2 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				FE03F3751F374EAF00C9C1D2 /* Post.swift */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +236,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */,
+				FE03F37C1F37FC0400C9C1D2 /* GoogleService-Info.plist in Resources */,
 				E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */,
-				FEA660B71F2AC3E900F85CD2 /* GoogleService-Info.plist in Resources */,
 				E78C50381F0CD5D90034226F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,11 +302,12 @@
 				E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */,
 				E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */,
 				E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */,
-				FE7A2DB51F2F86A0002C79F2 /* MainCollectionViewCell.swift in Sources */,
+				FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */,
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
 				E75944C11F22DDDA0042D738 /* RecordViewController.swift in Sources */,
+				FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */,
 				E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */,
 				E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */,
 			);

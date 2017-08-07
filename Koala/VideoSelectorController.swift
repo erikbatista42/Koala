@@ -111,29 +111,26 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         //Create Storage reference
         _ = FIRStorage.storage().reference().child("videos")
         // File located on disk
-        guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else { return }
-        let localFile = videoURL
+        guard let imagePickerUrl = info[UIImagePickerControllerMediaURL] as? URL else { return }
+        let videoUrl = imagePickerUrl
         
         // Create a reference to the file you want to upload
         let videosRef = FIRStorage.storage().reference().child("videos/\(FIRAuth.auth()?.currentUser?.uid ?? "")/" + randomString(length: 20))
         
         // Upload the file to the path "images/rivers.jpg"
-        _ = videosRef.putFile(localFile, metadata: nil) { metadata, error in
+        _ = videosRef.putFile(videoUrl, metadata: nil) { metadata, error in
             if let error = error {
                 // Uh-oh, an error occurred!
                 print("An error has occured: \(error)")
                 
             } else {
                 // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata!.downloadURL()
-                print(downloadURL ?? "")
+                guard let downloadURL = metadata!.downloadURL() else { return }
+                print(downloadURL)
+                _ = FIRDatabase.database().reference().child("posts/\(FIRAuth.auth()?.currentUser?.uid ?? "")").childByAutoId().child("videoUrl").setValue("\(downloadURL)")
             }
         }
         
-        let refDb: FIRDatabaseReference?
-       
-        refDb = FIRDatabase.database().reference()
-        refDb?.child("users/\(FIRAuth.auth()?.currentUser?.uid ?? "")/videos").childByAutoId().setValue("\(localFile)")
         
     }
     
