@@ -13,6 +13,8 @@ import AVKit
 
 class UserProfileVideoCell: UICollectionViewCell {
     
+    
+    
     func getThumbnailImage(forUrl url: URL) -> UIImage? {
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
@@ -29,9 +31,8 @@ class UserProfileVideoCell: UICollectionViewCell {
     
     var video: Post? {
         didSet {
-            print(video?.videoUrl ?? "")
-            
             guard let videoUrl = video?.videoUrl else { return }
+            thumbNailImageView.loadImageUrl(UrlString: videoUrl)
             
             guard let url = URL(string: videoUrl) else { return }
             
@@ -51,10 +52,8 @@ class UserProfileVideoCell: UICollectionViewCell {
         }
     }
     
-    let thumbNailImageView: UIImageView = {
-        let iv = UIImageView()
-//        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/koala-60599.appspot.com/o/videos%2FfE7HS5uFzyfyM3ZHV3BHqBirTzr2%2FE6iWSEmIGOta0Cs8JOug.mp4?alt=media&token=97f6716e-1dfa-4414-acb8-f48eed8e55f2")
-//        iv.kf.setImage(with: url)
+    let thumbNailImageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.backgroundColor = UIColor.green
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = UIViewContentMode.scaleAspectFill

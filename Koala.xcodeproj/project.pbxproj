@@ -23,8 +23,11 @@
 		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */; };
 		FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03F3751F374EAF00C9C1D2 /* Post.swift */; };
-		FE03F37C1F37FC0400C9C1D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */; };
+		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
+		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
+		FE6FF0791F3A423F001C3B1A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */; };
 		FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */; };
+		FEA55F041F3CD2880090AE85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEA55F031F3CD2880090AE85 /* GoogleService-Info.plist */; };
 		FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEF5F0601F390D3600B8A501 /* Docs.strings */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +52,11 @@
 		E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSelectorController.swift; sourceTree = "<group>"; };
 		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
 		FE03F3751F374EAF00C9C1D2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
+		FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVideoCell.swift; sourceTree = "<group>"; };
+		FEA55F031F3CD2880090AE85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FEF5F0601F390D3600B8A501 /* Docs.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Docs.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				E77CD5E11F0EDFBF00BEDCBC /* Extensions.swift */,
+				FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -169,6 +176,15 @@
 			name = M;
 			sourceTree = "<group>";
 		};
+		FE5B53F61F39337400B09CDE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				FE5B53F71F39339E00B09CDE /* HomeController.swift */,
+				FE5B53F91F3935E000B09CDE /* HomePostCell.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		FEF5F0591F390AA600B8A501 /* Resource Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +209,7 @@
 		FEF5F05B1F390B1C00B8A501 /* Google */ = {
 			isa = PBXGroup;
 			children = (
-				FE03F37B1F37FC0400C9C1D2 /* GoogleService-Info.plist */,
+				FEA55F031F3CD2880090AE85 /* GoogleService-Info.plist */,
 			);
 			name = Google;
 			sourceTree = "<group>";
@@ -201,6 +217,7 @@
 		FEF5F05C1F390B7C00B8A501 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				FE5B53F61F39337400B09CDE /* Home */,
 				E787A4BD1F21EAA6002F0E20 /* Search Tracks N/A */,
 				E7C5561F1F10C97500867FFA /* Login */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
@@ -290,9 +307,9 @@
 			files = (
 				E78C503D1F0CD5D90034226F /* LaunchScreen.storyboard in Resources */,
 				FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */,
-				FE03F37C1F37FC0400C9C1D2 /* GoogleService-Info.plist in Resources */,
 				E78C503A1F0CD5D90034226F /* Assets.xcassets in Resources */,
 				E78C50381F0CD5D90034226F /* Main.storyboard in Resources */,
+				FEA55F041F3CD2880090AE85 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,10 +377,13 @@
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
+				FE6FF0791F3A423F001C3B1A /* CustomImageView.swift in Sources */,
+				FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */,
 				E75944C11F22DDDA0042D738 /* RecordViewController.swift in Sources */,
 				FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */,
 				E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */,
 				E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */,
+				FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

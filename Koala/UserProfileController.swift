@@ -26,19 +26,20 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = currentUserID
-        
+        fetchUser()
         collectionView?.backgroundColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
-        fetchUser()
+        
         
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
       
-        setupLogOutButton()
+        
         fetchposts()
+        setupLogOutButton()
     }
     var videos = [Post]()
     var videosThumbnails = [Post]()
@@ -50,18 +51,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key,value) in
-//                print("key: \(key) , value: \(value)")
+
                 guard let dictionary = value as? [String: Any] else { return }
-                
-                
                 let video = Post(dictionary: dictionary)
-//                let thumbnail = Post(dictionary: dictionary)
-                
                 self.videos.append(video)
-//                self.videosThumbnails.append(thumbnail)
-                
                 print(self.videos)
-                
                 
             })
         
@@ -98,19 +92,17 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return videos.count
     }
-    
-    
-    
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         
 //        cell.video = videos[indexPath.item]
+        
+        
         let links =  videos[indexPath.row]
         let url = NSURL(string: links.videoUrl)
         let thumnailMaker = cell.getThumbnailImage(forUrl: (url as URL?)!)
@@ -142,8 +134,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 3
-        return CGSize(width: width, height: 175)
+        let width = (view.frame.width - 1) / 2
+        return CGSize(width: width, height: 189)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

@@ -144,11 +144,8 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                         print("Successfully saved post to DB")
                     }
                 })
-                
             }
         }
-        
-        
     }
     
     func randomString(length: Int) -> String {

@@ -45,7 +45,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
        }
     
     func setupViewControllers() {
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: UserProfileController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
 
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
 
@@ -64,7 +64,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.rgb(red: 56, green: 56, blue: 56, alpha: 1)
+        tabBar.barTintColor = UIColor.rgb(red: 54, green: 54, blue: 54, alpha: 1)
         
         viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
         
