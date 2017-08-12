@@ -114,47 +114,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         guard let imagePickerUrl = info[UIImagePickerControllerMediaURL] as? URL else { return }
         let videoUrl = imagePickerUrl
         
-        //GenerateThumbnail
         
-            let asset: AVAsset = AVAsset(url: videoUrl)
-            let imageGenerator = AVAssetImageGenerator(asset: asset)
-            imageGenerator.appliesPreferredTrackTransform = true
-            var time = asset.duration
-            time.value = min(time.value, 3)
-        
-            do {
-                
-                let thumbnailImage = try imageGenerator.copyCGImage(at: time , actualTime: nil)
-                let image = UIImage(cgImage: thumbnailImage)
-                guard let imageData = UIImagePNGRepresentation(image) else { return }
-                
-                if UIImagePNGRepresentation(image) != nil {
-                    print("Image data: \(imageData)")
-                } else {
-                    print("IMG DATA IS NIL")
-                }
-//
-//                 let currentUser = FIRAuth.auth()?.currentUser?.uid
-                let thumbnailStorageRef = FIRStorage.storage().reference()
-
-                let imageRef = thumbnailStorageRef.child("thumbnails/" + randomString(length: 20) + ".png")
-                
-                imageRef.put(imageData, metadata: nil, completion: { (thumbnailMeta, error) in
-                    
-                    if error != nil {
-                        print("An error has occured while uploading thumbnail:",error ?? "")
-                    } else {
-//                        print(12345)
-//                        let dbRef = FIRDatabase.database().reference()
-//                        dbRef.child("posts/\(currentUser ?? "")/").childByAutoId().setValue(["thumbnail":"\(String(describing: thumbnailMeta?.downloadURL()))"])
-                        print("Thumbnail upload to database was successfull", thumbnailMeta?.downloadURL() ?? "")
-                    }
-                })
-                
-            } catch {
-                print("An error has occured while making thumbnail:")
-            }
-    
     
  
 //        let thumbnailDownloadUrl = getThumbnailImage(forUrl: videoUrl)
@@ -172,25 +132,67 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 print("An error has occured: \(error)")
                 
             } else {
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                guard let downloadURL = metadata!.downloadURL() else { return }
-//                guard let thumb = thum!.dow
-                print("ISSA DOWNLOAD URL", downloadURL)
-                guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+                //GenerateThumbnail
                 
-    let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)//.child("videoUrl").setValue("\(downloadURL)")
-                let ref = userPostRef.childByAutoId()
+                let asset: AVAsset = AVAsset(url: videoUrl)
+                let imageGenerator = AVAssetImageGenerator(asset: asset)
+                imageGenerator.appliesPreferredTrackTransform = true
+                var time = asset.duration
+                time.value = min(time.value, 3)
                 
-                let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(""))"]
-                
-                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                    if let err = err {
-                        print("Failed to save video to DB", err)
-                        return
+                do {
+                    
+                    let thumbnailImage = try imageGenerator.copyCGImage(at: time , actualTime: nil)
+                    let image = UIImage(cgImage: thumbnailImage)
+                    guard let imageData = UIImagePNGRepresentation(image) else { return }
+                    
+                    if UIImagePNGRepresentation(image) != nil {
+                        print("Image data: \(imageData)")
                     } else {
-                        print("Successfully saved post to DB")
+                        print("IMG DATA IS NIL")
                     }
-                })
+                    //
+                    //                 let currentUser = FIRAuth.auth()?.currentUser?.uid
+                    let thumbnailStorageRef = FIRStorage.storage().reference()
+                    
+                    let imageRef = thumbnailStorageRef.child("thumbnails/" + self.randomString(length: 20) + ".png")
+                    
+                    imageRef.put(imageData, metadata: nil, completion: { (thumbnailMeta, error) in
+                        
+                        if error != nil {
+                            print("An error has occured while uploading thumbnail:",error ?? "")
+                        } else {
+                            guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
+                            print("Thumbnail upload to database was successfull:", thumbnailUrl)
+                            
+                            // Metadata contains file metadata such as size, content-type, and download URL.
+                            guard let downloadURL = metadata!.downloadURL() else { return }
+                            
+                            print("Video url that was recently uploaded:", downloadURL)
+                            guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+                            
+                            let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)
+                            let ref = userPostRef.childByAutoId()
+                            
+                            let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(thumbnailUrl)"]
+                            
+                            ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                if let err = err {
+                                    print("Failed to save video to DB", err)
+                                    return
+                                } else {
+                                    print("Successfully saved post to DB")
+                                }
+                            })
+
+                        }
+                    })
+                    
+                } catch {
+                    print("An error has occured while making thumbnail:")
+                }
+                
+                
             }
         }
     }
