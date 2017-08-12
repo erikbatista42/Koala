@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
+import AVFoundation
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
     
@@ -107,17 +108,64 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
-        // Points to the root reference and then points to "videos"
-        //Create Storage reference
         _ = FIRStorage.storage().reference().child("videos")
-        // File located on disk
+        
+        // File located on library
         guard let imagePickerUrl = info[UIImagePickerControllerMediaURL] as? URL else { return }
         let videoUrl = imagePickerUrl
         
-        // Create a reference to the file you want to upload
-        let videosRef = FIRStorage.storage().reference().child("videos/\(FIRAuth.auth()?.currentUser?.uid ?? "")/" + randomString(length: 20))
+        //GenerateThumbnail
         
-        // Upload the file to the path "images/rivers.jpg"
+            let asset: AVAsset = AVAsset(url: videoUrl)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
+            imageGenerator.appliesPreferredTrackTransform = true
+            var time = asset.duration
+            time.value = min(time.value, 3)
+        
+            do {
+                
+                let thumbnailImage = try imageGenerator.copyCGImage(at: time , actualTime: nil)
+                let image = UIImage(cgImage: thumbnailImage)
+                guard let imageData = UIImagePNGRepresentation(image) else { return }
+                
+                if UIImagePNGRepresentation(image) != nil {
+                    print("Image data: \(imageData)")
+                } else {
+                    print("IMG DATA IS NIL")
+                }
+//
+//                 let currentUser = FIRAuth.auth()?.currentUser?.uid
+                let thumbnailStorageRef = FIRStorage.storage().reference()
+
+                let imageRef = thumbnailStorageRef.child("thumbnails/" + randomString(length: 20) + ".png")
+                
+                imageRef.put(imageData, metadata: nil, completion: { (thumbnailMeta, error) in
+                    
+                    if error != nil {
+                        print("An error has occured while uploading thumbnail:",error ?? "")
+                    } else {
+//                        print(12345)
+//                        let dbRef = FIRDatabase.database().reference()
+//                        dbRef.child("posts/\(currentUser ?? "")/").childByAutoId().setValue(["thumbnail":"\(String(describing: thumbnailMeta?.downloadURL()))"])
+                        print("Thumbnail upload to database was successfull", thumbnailMeta?.downloadURL() ?? "")
+                    }
+                })
+                
+            } catch {
+                print("An error has occured while making thumbnail:")
+            }
+    
+    
+ 
+//        let thumbnailDownloadUrl = getThumbnailImage(forUrl: videoUrl)
+//        
+//        print("This issa Thumbnail URl: ",thumbnailDownloadUrl)
+        
+        
+        // Create a reference to the file you want to upload
+        let videosRef = FIRStorage.storage().reference().child("videos/\(FIRAuth.auth()?.currentUser?.uid ?? "")/" + randomString(length: 20) + ".mp4")
+        
+        // Upload the file to the path "videosRef"
         _ = videosRef.putFile(videoUrl, metadata: nil) { metadata, error in
             if let error = error {
                 // Uh-oh, an error occurred!
@@ -126,19 +174,18 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
             } else {
                 // Metadata contains file metadata such as size, content-type, and download URL.
                 guard let downloadURL = metadata!.downloadURL() else { return }
-                print(downloadURL)
+//                guard let thumb = thum!.dow
+                print("ISSA DOWNLOAD URL", downloadURL)
                 guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
-                
-                //GenerateThumbnail
-                
                 
     let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)//.child("videoUrl").setValue("\(downloadURL)")
                 let ref = userPostRef.childByAutoId()
                 
-                let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "aye"]
+                let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(""))"]
+                
                 ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
                     if let err = err {
-                        print("Failed to save to DB", err)
+                        print("Failed to save video to DB", err)
                         return
                     } else {
                         print("Successfully saved post to DB")
@@ -160,7 +207,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
             randomString += NSString(characters: &nextCharacter, length: 1) as String
             
         }
-        return randomString + ".mp4"
+        return randomString
     }
     
     fileprivate func  setupNavigationButtons() {

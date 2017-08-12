@@ -41,6 +41,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         fetchposts()
         setupLogOutButton()
     }
+    
     var videos = [Post]()
     var videosThumbnails = [Post]()
    fileprivate func fetchposts() {
@@ -49,7 +50,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     ref.observeSingleEvent(of: .value, with: { (snapshot) in
 
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+        guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key,value) in
 
                 guard let dictionary = value as? [String: Any] else { return }
