@@ -14,6 +14,7 @@ import Kingfisher
 import AVKit
 import AVFoundation
 import MobileCoreServices
+import AlamofireImage
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -43,7 +44,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     var videos = [Post]()
-    var videosThumbnails = [Post]()
+    var thumbnails = [Post]()
    fileprivate func fetchposts() {
     
     let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)
@@ -55,9 +56,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 
                 guard let dictionary = value as? [String: Any] else { return }
                 let video = Post(dictionary: dictionary)
+                let thumbnail = Post(dictionary: dictionary)
+                
+                self.thumbnails.append(thumbnail)
                 self.videos.append(video)
                 print(self.videos)
-                
+                print(self.thumbnails)
             })
         
         self.collectionView?.reloadData()
@@ -101,13 +105,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         
-//        cell.video = videos[indexPath.item]
-        
-        
-        let links =  videos[indexPath.row]
-        let url = NSURL(string: links.videoUrl)
-        let thumnailMaker = cell.getThumbnailImage(forUrl: (url as URL?)!)
-        cell.thumbNailImageView.image = thumnailMaker
+        cell.thumbnail = thumbnails[indexPath.item]
         return cell
     }
     
@@ -118,13 +116,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-    
-    
-
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let links = videos[indexPath.row]
-        print("Links: \(links)")
+        let links = videos[indexPath.item] //change to .row if necessary
+//        print("Links: \(links)")
         guard let url = NSURL(string: links.videoUrl) else { return }
         let player = AVPlayer(url: url as URL)
         let playerController = avPlayerViewController

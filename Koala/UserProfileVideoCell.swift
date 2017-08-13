@@ -13,37 +13,21 @@ import AVKit
 
 class UserProfileVideoCell: UICollectionViewCell {
     
-    
-    
-    func getThumbnailImage(forUrl url: URL) -> UIImage? {
-        let asset: AVAsset = AVAsset(url: url)
-        let imageGenerator = AVAssetImageGenerator(asset: asset)
-        
-        do {
-            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(1, 60) , actualTime: nil)
-            return UIImage(cgImage: thumbnailImage)
-        } catch let error {
-            print(error)
-        }
-        
-        return nil
-    }
-    
-    var video: Post? {
+    var thumbnail: Post? {
         didSet {
-            guard let videoUrl = video?.videoUrl else { return }
-            thumbNailImageView.loadImageUrl(UrlString: videoUrl)
+            guard let thumbnailUrl = thumbnail?.thumbnailUrl else { return }
+            thumbNailImageView.loadImageUrl(UrlString: thumbnailUrl)
             
-            guard let url = URL(string: videoUrl) else { return }
+            guard let url = URL(string: thumbnailUrl) else { return }
             
             URLSession.shared.dataTask(with: url) { (data, response, err) in
                 if let err = err {
-                    print("Failed to fetch Video:", err)
+                    print("Failed to fetch thumbnail:", err)
                     return
                 }
-                guard let videoData = data else { return }
+                guard let thumbnailData = data else { return }
                 
-                let thumbNailImage = UIImage(data: videoData)
+                let thumbNailImage = UIImage(data: thumbnailData)
                 
                 DispatchQueue.main.async {
                     self.thumbNailImageView.image = thumbNailImage
@@ -54,7 +38,7 @@ class UserProfileVideoCell: UICollectionViewCell {
     
     let thumbNailImageView: CustomImageView = {
         let iv = CustomImageView()
-        iv.backgroundColor = UIColor.green
+        iv.backgroundColor = UIColor.clear
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = UIViewContentMode.scaleAspectFill
         iv.layer.masksToBounds = true

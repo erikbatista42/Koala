@@ -8,6 +8,7 @@ use_frameworks!
 target 'Koala' do
   # Pods for Koala
 pod 'Alamofire'#, '~> 4.4'
+pod 'AlamofireImage', '~> 3.1'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
