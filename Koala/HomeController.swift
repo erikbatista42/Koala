@@ -31,7 +31,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var posts = [Post]()
     fileprivate func fetchposts() {
         
-         let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)
+         let ref = FIRDatabase.database().reference().child("posts\(currentUserID)")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
