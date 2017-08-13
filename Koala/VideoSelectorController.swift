@@ -15,7 +15,7 @@ import FirebaseDatabase
 import AVFoundation
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
-    
+    let currentUser = FIRAuth.auth()?.currentUser?.uid
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     let saveFileName = "/test.mp4"
     
@@ -123,7 +123,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         
         // Create a reference to the file you want to upload
-        let videosRef = FIRStorage.storage().reference().child("videos/\(FIRAuth.auth()?.currentUser?.uid ?? "")/" + randomString(length: 20) + ".mp4")
+        let videosRef = FIRStorage.storage().reference().child("videos/\(currentUser)/" + randomString(length: 20) + ".mp4")
         
         // Upload the file to the path "videosRef"
         _ = videosRef.putFile(videoUrl, metadata: nil) { metadata, error in
