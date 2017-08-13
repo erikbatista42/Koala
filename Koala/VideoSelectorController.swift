@@ -174,7 +174,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                             let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)
                             let ref = userPostRef.childByAutoId()
                             
-                            let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(thumbnailUrl)"]
+                            let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(thumbnailUrl)", "creationDate" : Date().timeIntervalSince1970] as [String : Any]
                             
                             ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 if let err = err {

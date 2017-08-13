@@ -15,14 +15,15 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
-            setUpProfileImage()
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            profileImageView.loadImage(UrlString: profileImageUrl)
             
             usernameLabel.text = "@\(user?.username ?? "")"
         }
     }
     
-    let profileImageView: UIImageView = {
-        let iv = UIImageView()
+    let profileImageView: CustomImageView = {
+        let iv = CustomImageView()
         iv.layer.borderWidth = 1
         iv.layer.borderColor = UIColor.white.cgColor
         return iv
@@ -122,33 +123,6 @@ class UserProfileHeader: UICollectionViewCell {
 //        
 //        addSubview(topDividerView)
 //        topDividerView.anchor(top: stackView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-    }
-
-    
-    fileprivate func setUpProfileImage() {
-        
-        guard (FIRAuth.auth()?.currentUser?.uid) != nil else { return }
-        //The FIRDatabase.database().reference() gives you access to the firebase database and once you call .child(users) you access to the child of the users of firebase
-        //Observe single event is just a fancy word to give me the username instead of observing the uid
-        guard let profileImageUrl = user?.profileImageUrl else { return }
-        
-        guard  let url = URL(string: profileImageUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            //check the err
-            
-            if let err = err {
-                print("Failed to fetch profile image", err)
-                return
-            }
-            
-            guard let data = data else { return }
-            
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self.profileImageView.image = image
-            }
-            }.resume()
     }
     
     required init?(coder aDecoder: NSCoder) {

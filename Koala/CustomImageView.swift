@@ -9,7 +9,31 @@
 import UIKit
 
 class CustomImageView: UIImageView {
-    func loadImageUrl(UrlString: String) {
-        print("Loading Image...")
+    
+    var lastURLUsedToLoadImage: String?
+    
+    func loadImage(UrlString: String) {
+        lastURLUsedToLoadImage = UrlString
+        guard let url = URL(string: UrlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            if let err = err {
+                print("Failed to fetch thumbnail:", err)
+                return
+            }
+            
+            if url.absoluteString != self.lastURLUsedToLoadImage {
+                return
+            }
+            
+            guard let thumbnailData = data else { return }
+            
+            let thumbNailImage = UIImage(data: thumbnailData)
+            
+            DispatchQueue.main.async {
+                self.image = thumbNailImage
+            }
+            }.resume()
+
     }
 }

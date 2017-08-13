@@ -39,12 +39,38 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
       
         
-        fetchposts()
+//        fetchposts()
+        fetchOrderedPosts()
         setupLogOutButton()
     }
     
     var videos = [Post]()
     var thumbnails = [Post]()
+    
+    
+    fileprivate func fetchOrderedPosts() {
+        let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)
+        
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            
+            guard let dictionary = snapshot.value as? [String : Any] else { return }
+            
+            let video = Post(dictionary: dictionary)
+            let thumbnail = Post(dictionary: dictionary)
+            
+            self.thumbnails.append(thumbnail)
+            self.videos.append(video)
+
+
+            
+            self.collectionView?.reloadData()
+            
+        }) { (error) in
+            print("Failded to fetch ordered post:", error)
+        }
+    }
+    
+    
    fileprivate func fetchposts() {
     
     let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)

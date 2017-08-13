@@ -16,23 +16,7 @@ class UserProfileVideoCell: UICollectionViewCell {
     var thumbnail: Post? {
         didSet {
             guard let thumbnailUrl = thumbnail?.thumbnailUrl else { return }
-            thumbNailImageView.loadImageUrl(UrlString: thumbnailUrl)
-            
-            guard let url = URL(string: thumbnailUrl) else { return }
-            
-            URLSession.shared.dataTask(with: url) { (data, response, err) in
-                if let err = err {
-                    print("Failed to fetch thumbnail:", err)
-                    return
-                }
-                guard let thumbnailData = data else { return }
-                
-                let thumbNailImage = UIImage(data: thumbnailData)
-                
-                DispatchQueue.main.async {
-                    self.thumbNailImageView.image = thumbNailImage
-                }
-            }.resume()
+            thumbNailImageView.loadImage(UrlString: thumbnailUrl)
         }
     }
     
