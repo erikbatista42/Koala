@@ -30,14 +30,15 @@ class HomePostCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
-            print(post?.videoUrl)
-//            photoImageView.load
+            guard let thumbnailUrl = post?.thumbnailUrl else { return }
+            photoImageView.loadImage(UrlString: thumbnailUrl)
         }
     }
     
-    let photoImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .blue
+    let photoImageView: CustomImageView = {
+        let iv = CustomImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         return iv
     }()
 //    let thumbNailImageView: CustomImageView = {

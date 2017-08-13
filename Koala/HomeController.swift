@@ -74,7 +74,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //        let url = NSURL(string: links.videoUrl)
 //        let thumnailMaker = cell.getThumbnailImage(forUrl: (url as URL?)!)
 //        cell.thumbNailImageView.image = thumnailMaker
-
+        
         
         return cell
     }
