@@ -11,6 +11,8 @@ import UIKit
 //import AVFoundation
 //import Player
 
+
+
 class HomePostCell: UICollectionViewCell {
     
     //Thumbnail generator
