@@ -58,8 +58,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             let video = Post(dictionary: dictionary)
             let thumbnail = Post(dictionary: dictionary)
             
-            self.thumbnails.append(thumbnail)
-            self.videos.append(video)
+            self.thumbnails.insert(thumbnail, at: 0)
+            self.videos.insert(video, at: 0)
 
 
             
