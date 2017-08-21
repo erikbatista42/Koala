@@ -37,18 +37,6 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-//    let videosLabel: UILabel = {
-//        let label = UILabel()
-//        
-//        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 17)])
-//        attributedText.append(NSAttributedString(string: "videos", attributes: [NSForegroundColorAttributeName : UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: 14)]))
-//        label.attributedText = attributedText
-//        
-//        label.textAlignment = .center
-//        label.numberOfLines = 0
-//        return label
-//    }()
-    
     let followersLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "0", attributes: [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16)])
@@ -117,12 +105,6 @@ class UserProfileHeader: UICollectionViewCell {
         addSubview(stackView)
         stackView.anchor(top: usernameLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 24, paddingBottom: 0, paddingRight: 24, width: 0, height: 50)
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
-//        let topDividerView = UIView()
-//        topDividerView.backgroundColor = UIColor.gray
-//        
-//        addSubview(topDividerView)
-//        topDividerView.anchor(top: stackView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     required init?(coder aDecoder: NSCoder) {
