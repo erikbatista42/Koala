@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 import Player
-import FirebaseAuth
+import  FirebaseAuth
 
 
 
@@ -54,12 +54,31 @@ class HomePostCell: UICollectionViewCell {
         return label
     }()
     
+    func handleOptionsButton() {
+        print(123)
+    }
+    
     let optionsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("•••", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "optionsButton").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
         return button
     }()
+    
+    let likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "heart_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleLikeButton), for: .touchUpInside)
+        return button
+    }()
+    
+    let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
+        return button
+    }()
+    
     
         override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,11 +97,14 @@ class HomePostCell: UICollectionViewCell {
             
         optionsButton.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 44, height: 0)
             
-        photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
+        photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
+

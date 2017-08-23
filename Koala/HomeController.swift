@@ -14,11 +14,14 @@ import MobileCoreServices
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    
+    
     let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
     let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .default
         collectionView?.backgroundColor = .white
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
@@ -54,12 +57,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     
     func setupNavigationItems() {
-        navigationItem.title = "Koala"
+        navigationItem.title = "Home"
+        navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir-Black", size: 20)!]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height: CGFloat = 40 + 8 + 8 //Username + userProfileImageView
         height += view.frame.width
+        height += 50
         return CGSize(width: view.frame.width, height: height)
     }
     
