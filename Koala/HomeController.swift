@@ -11,6 +11,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import MobileCoreServices
+import AVFoundation
+import AVKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -62,7 +64,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var height: CGFloat = 40 + 8 + 8 //Username + userProfileImageView
+        var height: CGFloat = 40 + 8 + 8 // username + userProfileImageView
         height += view.frame.width
         height += 50
         return CGSize(width: view.frame.width, height: height)
@@ -85,17 +87,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         return cell
     }
-//    var avPlayerViewController = AVPlayerViewController()
-//    var avPlayer = AVPlayer()
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let links = posts[indexPath.row]
-//        guard let url = NSURL(string: links.videoUrl) else { return }
-//        let player = AVPlayer(url: url as URL)
-//        let playerController = avPlayerViewController
-//        playerController.player = player
-//        self.present(playerController, animated: true) {
-//            player.play()
-//        }
-//    }
+    var avPlayerViewController = AVPlayerViewController()
+    var avPlayer = AVPlayer()
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let links = posts[indexPath.row]
+        guard let url = NSURL(string: links.videoUrl) else { return }
+        let player = AVPlayer(url: url as URL)
+        let playerController = avPlayerViewController
+        playerController.player = player
+        self.present(playerController, animated: true) {
+            player.play()
+        }
+    }
 
 }

@@ -71,6 +71,7 @@ class HomePostCell: UICollectionViewCell {
         //button.addTarget(self, action: #selector(handleLikeButton), for: .touchUpInside)
         return button
     }()
+    
     let likesLabel: UILabel = {
        let label = UILabel()
        label.text = "0 likes"
