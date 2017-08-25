@@ -16,19 +16,15 @@ import FirebaseAuth
 
 class HomePostCell: UICollectionViewCell {
     
-    var user: User? {
-        didSet {
-            guard let profileImageUrl = user?.profileImageUrl else { return }
-            userProfileImageView.loadImage(UrlString: profileImageUrl)
-            
-            usernameLabel.text = "@\(user?.username ?? "")"
-        }
-    }
-    
     var post: Post? {
         didSet {
             guard let thumbnailUrl = post?.thumbnailUrl else { return }
             photoImageView.loadImage(UrlString: thumbnailUrl)
+            
+            usernameLabel.text = post?.user.username
+            
+            guard let profileImageUrl = post?.user.profileImageUrl else { return }
+            userProfileImageView.loadImage(UrlString: profileImageUrl)
         }
     }
     
@@ -51,7 +47,7 @@ class HomePostCell: UICollectionViewCell {
         let label = UILabel()
 //        label.text = "Username"
         
-        let attributedText = NSMutableAttributedString(string: "erikbatista42", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
         
         attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray]))
         label.numberOfLines = 0

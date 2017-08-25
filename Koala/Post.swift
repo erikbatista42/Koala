@@ -9,9 +9,11 @@
 import Foundation
 
 struct Post {
+    let user: User
     let videoUrl: String
     let thumbnailUrl: String
-    init(dictionary: [String: Any]) {
+    init(user: User, dictionary: [String: Any]) {
+        self.user = user
         self.videoUrl = dictionary["videoUrl"] as? String ?? ""
         self.thumbnailUrl = dictionary["thumbnailUrl"] as? String ?? ""
     }

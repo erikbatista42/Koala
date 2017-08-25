@@ -29,32 +29,41 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
         setupNavigationItems()
-        fetchposts()
+        fetchPosts()
     }
     
     
     var posts = [Post]()
-    fileprivate func fetchposts() {
+    fileprivate func fetchPosts() {
         
-         let ref = FIRDatabase.database().reference().child("posts/\(currentUserID)/")
-        
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("users").child(currentUserID).observe(.value, with: { (snapshot) in
+            guard let userDictionary = snapshot.value as? [String: Any] else { return }
+            let user = User(dictionary: userDictionary)
             
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            dictionaries.forEach({ (key,value) in
-                
-                guard let dictionary = value as? [String: Any] else { return }
-                let post = Post(dictionary: dictionary)
-                self.posts.append(post)
-                print(self.posts)
-                
-            })
+            let ref = FIRDatabase.database().reference().child("posts/\(self.currentUserID)/")
             
-            self.collectionView?.reloadData()
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                guard let dictionaries = snapshot.value as? [String: Any] else { return }
+                dictionaries.forEach({ (key,value) in
+                    
+                    guard let dictionary = value as? [String: Any] else { return }
+                    let post = Post(user: user, dictionary: dictionary)
+                    self.posts.append(post)
+                    print(self.posts)
+                })
+                
+                self.collectionView?.reloadData()
+                
+            }) { (error) in
+                print("Failed to fetch videos", error)
+            }
             
         }) { (error) in
-            print("Failed to fetch videos", error)
+            print("Failed to fetch username for posts :", error)
         }
+        
+        
     }
 
     

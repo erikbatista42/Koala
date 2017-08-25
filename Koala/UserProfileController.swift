@@ -39,8 +39,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
       
-        
-//        fetchposts()
         fetchOrderedPosts()
         setupLogOutButton()
     }
@@ -56,8 +54,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             guard let dictionary = snapshot.value as? [String : Any] else { return }
             
-            let video = Post(dictionary: dictionary)
-            let thumbnail = Post(dictionary: dictionary)
+            guard let user = self.user else { return }
+            
+            let video = Post(user: user, dictionary: dictionary)
+            let thumbnail = Post(user: user, dictionary: dictionary)
             
             self.thumbnails.insert(thumbnail, at: 0)
             self.videos.insert(video, at: 0)
@@ -80,10 +80,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 
         guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key,value) in
-
+                
+                guard let user = self.user else { return }
                 guard let dictionary = value as? [String: Any] else { return }
-                let video = Post(dictionary: dictionary)
-                let thumbnail = Post(dictionary: dictionary)
+                let video = Post(user: user, dictionary: dictionary)
+                let thumbnail = Post(user: user, dictionary: dictionary)
                 
                 self.thumbnails.append(thumbnail)
                 self.videos.append(video)
