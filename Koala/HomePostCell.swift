@@ -49,19 +49,20 @@ class HomePostCell: UICollectionViewCell {
 
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Username"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+//        label.text = "Username"
+        
+        let attributedText = NSMutableAttributedString(string: "erikbatista42", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
+        
+        attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray]))
+        label.numberOfLines = 0
+        label.attributedText = attributedText
         return label
     }()
-    
-    func handleOptionsButton() {
-        print(123)
-    }
     
     let optionsButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "optionsButton").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
         return button
     }()
     
@@ -73,8 +74,8 @@ class HomePostCell: UICollectionViewCell {
     }()
     
     let likesLabel: UILabel = {
-       let label = UILabel()
-       label.text = "0 likes"
+        let label = UILabel()
+        label.text = "0 likes"
         label.font = UIFont(name: "AvenirNext-Regular", size: 18)
         label.textColor = UIColor.lightGray
         return label
@@ -86,7 +87,7 @@ class HomePostCell: UICollectionViewCell {
        // button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
         return button
     }()
-    
+
     
         override init(frame: CGRect) {
         super.init(frame: frame)

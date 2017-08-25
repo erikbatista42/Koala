@@ -46,12 +46,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func setupViewControllers() {
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
+        homeNavController.tabBarItem.title = "Home"
 
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
+        searchNavController.tabBarItem.title = "Explore"
 
-        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "record_unselected"), selectedImage: #imageLiteral(resourceName: "record_selected"))
+        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "record_unselected"), selectedImage: #imageLiteral(resourceName: "addButton"))
 
         let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected"), selectedImage: #imageLiteral(resourceName: "notifications_selected"))
+        notificationsNavController.tabBarItem.title = "Activity"
         
         //user profile
         let layout = UICollectionViewFlowLayout()
@@ -61,10 +64,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
         userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
+        userProfileNavController.tabBarItem.title = "Profile"
         
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.rgb(red: 54, green: 54, blue: 54, alpha: 1)
+        tabBar.barTintColor = UIColor.rgb(red: 24, green: 24, blue: 24, alpha: 1)
+        tabBar.isTranslucent = false
         
         viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
         
