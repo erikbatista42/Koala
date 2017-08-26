@@ -1,0 +1,15 @@
+/* 
+  Docs.strings
+  Koala
+
+  Created by Erik on 8/7/17.
+  Copyright © 2017 swift.lang.eu. All rights reserved.
+*/
+
+    //Singleton - A class that can have only one object(An instance of a class)
+    //Ex: The App delegate class is a Singleton
+
+/*
+:-------------Problems Faced-----------:
+ 
+/*
