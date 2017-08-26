@@ -9,9 +9,6 @@
 import UIKit
 import MobileCoreServices
 import Firebase
-import FirebaseAuth
-import FirebaseStorage
-import FirebaseDatabase
 import AVFoundation
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {

@@ -8,26 +8,9 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
 import MobileCoreServices
 import AVFoundation
 import AVKit
-
-extension FIRDatabase {
-    static func fetchUserWithUid(uid: String, completion: @escaping (User) -> () ) {
-                FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
-        
-                    guard let userDictionary = snapshot.value as? [String: Any] else { return }
-        
-                    let user = User(uid: uid, dictionary: userDictionary)
-                    completion(user)
-        
-                }) { (error) in
-                    print("Failed to fetch username for posts :", error)
-                }
-    }
-}
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     

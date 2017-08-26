@@ -6,15 +6,11 @@
 //  Copyright © 2017 swift.lang.eu. All rights reserved.
 //
 
-import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseDatabase
-import Kingfisher
-import AVKit
 import AVFoundation
+import UIKit
+import AVKit
+import Firebase
 import MobileCoreServices
-import AlamofireImage
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     

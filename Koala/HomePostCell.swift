@@ -10,9 +10,6 @@ import UIKit
 import AVKit
 import AVFoundation
 import Player
-import FirebaseAuth
-
-
 
 class HomePostCell: UICollectionViewCell {
     
