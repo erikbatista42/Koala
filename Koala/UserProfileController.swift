@@ -37,7 +37,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.backgroundColor = UIColor.rgb(red: 14, green: 14, blue: 14, alpha: 1)
+        collectionView?.backgroundColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
       
         fetchOrderedPosts()
         setupLogOutButton()
