@@ -65,7 +65,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.titleLabel?.font = UIFont(name: "Avenir", size: 14)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.backgroundColor = UIColor.rgb(red: 40, green: 62, blue: 80, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
         return button
@@ -76,7 +76,7 @@ class UserProfileHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.rgb(red: 24, green: 24, blue: 24, alpha: 1)
+        backgroundColor = UIColor.rgb(red: 27, green: 52, blue: 100, alpha: 1)
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)

@@ -51,9 +51,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
         searchNavController.tabBarItem.title = "Explore"
 
-        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "record_unselected"), selectedImage: #imageLiteral(resourceName: "addButton"))
+        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal))
 
-        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected"), selectedImage: #imageLiteral(resourceName: "notifications_selected"))
+        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "notifications_selected").withRenderingMode(.alwaysOriginal))
         notificationsNavController.tabBarItem.title = "Activity"
         
         //user profile
@@ -68,7 +68,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.rgb(red: 24, green: 24, blue: 24, alpha: 1)
+        tabBar.barTintColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         tabBar.isTranslucent = false
         
         viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]

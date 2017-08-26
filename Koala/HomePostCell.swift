@@ -31,7 +31,6 @@ class HomePostCell: UICollectionViewCell {
     let userProfileImageView: CustomImageView = {
         let iv = CustomImageView()
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .blue
         iv.clipsToBounds = true
         return iv
     }()

@@ -213,9 +213,10 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     }
     
     fileprivate func  setupNavigationButtons() {
+        
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
     }
     func handleCancel() { dismiss(animated: true, completion: nil) }
 }
