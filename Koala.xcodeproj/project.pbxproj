@@ -132,7 +132,6 @@
 				FE03F3741F374E8A00C9C1D2 /* M */,
 				FEF5F05C1F390B7C00B8A501 /* V */,
 				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
-				FEF5F0621F390F1B00B8A501 /* C */,
 				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
 			);
 			name = "Koala-App";
@@ -250,13 +249,6 @@
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
 			);
 			name = Singletons;
-			sourceTree = "<group>";
-		};
-		FEF5F0621F390F1B00B8A501 /* C */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = C;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
