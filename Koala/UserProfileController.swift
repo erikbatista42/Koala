@@ -178,34 +178,18 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     fileprivate func fetchUser() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        //The FIRDatabase.database().reference() gives you access to the firebase database and once you call .child(users) you access to the child of the users of firebase 
-        //Observe single event is just a fancy word to give me the username instead of observing the uid
-        FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
-            print(snapshot.value ?? "")
-            
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            self.user = User(dictionary: dictionary)
+        
+        FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
+            self.user = user
             
             self.navigationItem.title = self.user?.username
             
             self.collectionView?.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch user")
-        }
+
+        }        
     }
 }
                             
-struct User {
-    let username: String
-    let profileImageUrl: String
-    let videos: String
-    init(dictionary: [String: Any]) {
-        self.username = dictionary["username"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
-        self.videos = dictionary["Videos"] as? String ?? ""
-    }
-}
+
 
 

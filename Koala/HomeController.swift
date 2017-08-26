@@ -14,11 +14,23 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 
+extension FIRDatabase {
+    static func fetchUserWithUid(uid: String, completion: @escaping (User) -> () ) {
+                FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
+        
+                    guard let userDictionary = snapshot.value as? [String: Any] else { return }
+        
+                    let user = User(uid: uid, dictionary: userDictionary)
+                    completion(user)
+        
+                }) { (error) in
+                    print("Failed to fetch username for posts :", error)
+                }
+    }
+}
+
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    
-    
-    let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
     let cellId = "cellId"
     
     override func viewDidLoad() {
@@ -35,37 +47,31 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var posts = [Post]()
     fileprivate func fetchPosts() {
+        let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
+          FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+            self.fetchPostsWithUser(user: user)
+        }
+    }
+    fileprivate func fetchPostsWithUser(user: User) {
+        let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
         
-        FIRDatabase.database().reference().child("users").child(currentUserID).observe(.value, with: { (snapshot) in
-            guard let userDictionary = snapshot.value as? [String: Any] else { return }
-            let user = User(dictionary: userDictionary)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            let ref = FIRDatabase.database().reference().child("posts/\(self.currentUserID)/")
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach({ (key,value) in
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                let post = Post(user: user, dictionary: dictionary)
+                self.posts.append(post)
+                print(self.posts)
+            })
             
-            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                guard let dictionaries = snapshot.value as? [String: Any] else { return }
-                dictionaries.forEach({ (key,value) in
-                    
-                    guard let dictionary = value as? [String: Any] else { return }
-                    let post = Post(user: user, dictionary: dictionary)
-                    self.posts.append(post)
-                    print(self.posts)
-                })
-                
-                self.collectionView?.reloadData()
-                
-            }) { (error) in
-                print("Failed to fetch videos", error)
-            }
+            self.collectionView?.reloadData()
             
         }) { (error) in
-            print("Failed to fetch username for posts :", error)
+            print("Failed to fetch posts", error)
         }
-        
-        
     }
-
     
     func setupNavigationItems() {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
