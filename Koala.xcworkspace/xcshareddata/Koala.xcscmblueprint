@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BC6AE5FA0C6693A0F413BC2ED69B4F37BA42E356",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BC6AE5FA0C6693A0F413BC2ED69B4F37BA42E356" : 9223372036854775807,
+    "F29EC795BA99CD02456C8270513AB38C334A793D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D659D3F4-DBEB-4EAD-B654-03EB57B97BA3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BC6AE5FA0C6693A0F413BC2ED69B4F37BA42E356" : "Koala\/",
+    "F29EC795BA99CD02456C8270513AB38C334A793D" : "..\/Downloads\/InstagramFirebase"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Koala",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Koala.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erikbatista42\/Koala.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BC6AE5FA0C6693A0F413BC2ED69B4F37BA42E356"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:bhlvoong\/instagram_firebase.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F29EC795BA99CD02456C8270513AB38C334A793D"
+    }
+  ]
+}
