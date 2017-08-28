@@ -55,13 +55,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     let searchUsersCV: UIView = {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth  = UIScreen.main.bounds.width
-        
         let cv = SearchUsersCV(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-//        cv.collectionView?.bringSubview(toFront: )
-//        cv.collectionView?.clipsToBounds = false
-//        cv.collectionView?.register(UI, forCellWithReuseIdentifier: <#T##String#>)
         cv.bringSubview(toFront: cv)
-        cv.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
+        cv.collectionView.register(UserSearchCVCell.self, forCellWithReuseIdentifier: "cellId")
         return cv
     }()
     
