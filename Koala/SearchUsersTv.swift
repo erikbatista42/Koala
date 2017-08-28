@@ -22,24 +22,23 @@ class SearchUsersTv: UIView, UITableViewDelegate, UITableViewDataSource {
     func setupTv() {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView.isUserInteractionEnabled = true
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         self.addSubview(tableView)
         bringSubview(toFront: tableView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return array.count
     }
-    
+    let array = ["blue", "yellow","green","alright"]
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .gray
-    
+        cell.backgroundColor = .magenta
+        cell.textLabel?.text = array[indexPath.row]
         return cell
     }
     

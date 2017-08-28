@@ -55,11 +55,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     let tableView: UIView = {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
-        
         let tv = SearchUsersTv(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        tv.isUserInteractionEnabled = true
         tv.bringSubview(toFront: tv)
         tv.clipsToBounds = false
+        tv.tableView.backgroundColor = UIColor.rgb(red: 237, green: 233, blue: 255, alpha: 1)
+        tv.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         return tv
     }()
     
@@ -71,6 +71,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         view.addSubview(tableView)
         tableView.isHidden = true
+        
+
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
