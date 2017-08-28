@@ -23,6 +23,7 @@
 		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */; };
 		FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03F3751F374EAF00C9C1D2 /* Post.swift */; };
+		FE34730D1F52B5AE004AE235 /* SearchUsersTv.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE34730C1F52B5AE004AE235 /* SearchUsersTv.swift */; };
 		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
 		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
 		FE6FF0791F3A423F001C3B1A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */; };
@@ -55,6 +56,7 @@
 		E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSelectorController.swift; sourceTree = "<group>"; };
 		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
 		FE03F3751F374EAF00C9C1D2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FE34730C1F52B5AE004AE235 /* SearchUsersTv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsersTv.swift; sourceTree = "<group>"; };
 		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				FEA9F2D31F51F1010022A939 /* UserSearchController.swift */,
+				FE34730C1F52B5AE004AE235 /* SearchUsersTv.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */,
 				FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */,
 				FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */,
+				FE34730D1F52B5AE004AE235 /* SearchUsersTv.swift in Sources */,
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,

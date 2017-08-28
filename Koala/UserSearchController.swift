@@ -34,14 +34,34 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {searchBar.setShowsCancelButton(true, animated: true)}
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        tableView.isHidden = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.text = ""
+        tableView.isHidden = true
     }
-
+    
+    let tableView: UIView = {
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        
+        let tv = SearchUsersTv(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        tv.isUserInteractionEnabled = true
+        tv.bringSubview(toFront: tv)
+        tv.clipsToBounds = false
+        return tv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +69,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         
+        view.addSubview(tableView)
+        tableView.isHidden = true
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
