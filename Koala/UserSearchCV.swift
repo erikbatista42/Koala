@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -40,15 +41,37 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.isUserInteractionEnabled = true
         collectionView.alwaysBounceVertical = true
         self.addSubview(collectionView)
-        
+        fetchUsers()
     }
+    var users = [User]()
+    func fetchUsers() {
+        let ref = FIRDatabase.database().reference().child("users")
+        ref.observe(.value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            //For each iterates through every object in the dictioary
+            dictionaries.forEach({ (key, value) in
+                
+                guard let userDictionary = value as? [String: Any] else { return}
+                let user = User(uid: key, dictionary: userDictionary)
+                self.users.append(user)
+                print(user.uid, user.username)
+            })
+            self.collectionView?.reloadData()
+            
+        }) { (error) in
+            print("failed to fetch users:", error)
+        }
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserSearchCVCell
+        cell.user = users[indexPath.item]
         return cell
     }
     

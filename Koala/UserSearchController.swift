@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate {
     
@@ -70,7 +71,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
         
-
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
