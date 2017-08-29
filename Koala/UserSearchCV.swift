@@ -38,7 +38,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.register(UserSearchCVCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.backgroundColor = UIColor.white
         collectionView.isUserInteractionEnabled = true
-        
+        collectionView.alwaysBounceVertical = true
         self.addSubview(collectionView)
         
     }
