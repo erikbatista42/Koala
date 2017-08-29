@@ -14,6 +14,13 @@ import Firebase
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
+    func updateUsersView(_ users: [User]) {
+        
+        self.users = users
+        print(self.users)
+        self.collectionView.reloadData()
+    }
+    
     let cellId = "cellId"
     var collectionView: UICollectionView!
     

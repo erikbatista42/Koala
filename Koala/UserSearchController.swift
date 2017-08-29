@@ -57,7 +57,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.isHidden = true
     }
     
-    let searchUsersCV: UIView = {
+    let searchUsersCV: SearchUsersCV = {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth  = UIScreen.main.bounds.width
         let cv = SearchUsersCV(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
@@ -110,7 +110,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             return user.username.contains(searchText)
             
         }
-        self.collectionView?.reloadData()
+        searchUsersCV.isHidden = false
+        searchUsersCV.updateUsersView(self.users)
+//        searchUsersCV.upd
+        
+        self.collectionView?.reloadData() 
     }
     
 
