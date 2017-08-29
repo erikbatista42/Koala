@@ -9,7 +9,11 @@
     //Singleton - A class that can have only one object(An instance of a class)
     //Ex: The App delegate class is a Singleton
 
+
+
 /*
 :-------------Problems Faced-----------:
+ lazy var -> used because when we cannot access a let closure with let. So use lazy var
  
 /*
+

@@ -17,6 +17,8 @@ class UserSearchCVCell: UICollectionViewCell {
         }
     }
     
+    
+    
     let profileImageView: CustomImageView = {
         let iv = CustomImageView()
         iv.backgroundColor = .orange

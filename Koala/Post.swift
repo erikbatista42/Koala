@@ -18,3 +18,4 @@ struct Post {
         self.thumbnailUrl = dictionary["thumbnailUrl"] as? String ?? ""
     }
 }
+

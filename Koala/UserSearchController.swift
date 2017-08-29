@@ -10,16 +10,21 @@ import Foundation
 import UIKit
 import Firebase
 
+protocol UserSearchControllerDelegate {
+    func passFilterArray(_ array: Array<Any>?)
+}
+
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate {
-    
+    var delegate: UserSearchControllerDelegate?
     let cellId = "cellId"
     
-    let searchBar: UISearchBar = {
+    lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search"
         sb.barTintColor = UIColor.gray
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230, alpha: 1)
         sb.keyboardAppearance = .dark
+        sb.delegate = self
         return sb
     }()
     
@@ -34,7 +39,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         navigationController?.navigationBar.addSubview(searchBar)
         searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
     }
-    
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
@@ -62,6 +66,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         return cv
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
@@ -70,9 +76,45 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
-        
+        fetchUsers()
+        searchBar.delegate = self
         
     }
+    var users = [User]()
+    func fetchUsers() {
+        let ref = FIRDatabase.database().reference().child("users")
+        ref.observe(.value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            //For each iterates through every object in the dictioary
+            dictionaries.forEach({ (key, value) in
+                
+                guard let userDictionary = value as? [String: Any] else { return}
+                let user = User(uid: key, dictionary: userDictionary)
+                self.users.append(user)
+                print(user.uid, user.username)
+            })
+            self.collectionView?.reloadData()
+            
+        }) { (error) in
+            print("failed to fetch users:", error)
+        }
+    }
+   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        self.users = self.users.filter { (user) -> Bool in
+            print(",here:",user)
+            delegate?.passFilterArray(self.users)
+            return user.username.contains(searchText)
+            
+        }
+        self.collectionView?.reloadData()
+    }
+    
+
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 25

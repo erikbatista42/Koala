@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 
-class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+
+class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
     let cellId = "cellId"
     var collectionView: UICollectionView!
@@ -26,7 +28,9 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCollectionView()
+        
     }
+    
     
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -41,10 +45,13 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.isUserInteractionEnabled = true
         collectionView.alwaysBounceVertical = true
         self.addSubview(collectionView)
+        
+        
         fetchUsers()
     }
     var users = [User]()
     func fetchUsers() {
+        
         let ref = FIRDatabase.database().reference().child("users")
         ref.observe(.value, with: { (snapshot) in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
@@ -63,14 +70,19 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
             print("failed to fetch users:", error)
         }
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+//        let numberOfUsers = UserSearchController.searchBar(users.count) //this would be nice but it doesn't let me it compiles an error with 'Instance member 'searchBar cannot be used on type 'UsersearchController' did you mean to use a value of this type instead?
         return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserSearchCVCell
+        //        let filteredUsers = UserSearchController.searchBar(users.count)
+        //        cell.user = filteredUsers[indexPath.item]
+        
         cell.user = users[indexPath.item]
         return cell
     }
