@@ -12,6 +12,7 @@ import Firebase
 
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate {
     
+    
     let cellId = "cellId"
     
     lazy var searchBar: UISearchBar = {
@@ -75,6 +76,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchUsers()
         searchBar.delegate = self
         
+//        self.navigationController?.pushViewController(UserProfileController, animated: true)
     }
     var filteredUsers = [User]()
     var users = [User]()
@@ -86,6 +88,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             //For each iterates through every object in the dictioary
             dictionaries.forEach({ (key, value) in
                 
+                if key == FIRAuth.auth()?.currentUser?.uid {
+                    return
+                }
                 guard let userDictionary = value as? [String: Any] else { return}
                 let user = User(uid: key, dictionary: userDictionary)
                 self.users.append(user)
