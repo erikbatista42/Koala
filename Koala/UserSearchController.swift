@@ -10,12 +10,8 @@ import Foundation
 import UIKit
 import Firebase
 
-protocol UserSearchControllerDelegate {
-    func passFilterArray(_ array: Array<Any>?)
-}
-
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate {
-    var delegate: UserSearchControllerDelegate?
+    
     let cellId = "cellId"
     
     lazy var searchBar: UISearchBar = {
@@ -80,6 +76,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchBar.delegate = self
         
     }
+    var filteredUsers = [User]()
     var users = [User]()
     func fetchUsers() {
         let ref = FIRDatabase.database().reference().child("users")
@@ -103,16 +100,18 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        
-        self.users = self.users.filter { (user) -> Bool in
-            print(",here:",user)
-            delegate?.passFilterArray(self.users)
-            return user.username.contains(searchText)
-            
+        if searchText.isEmpty {
+            filteredUsers = users
+        } else {
+            filteredUsers = self.users.filter { (user) -> Bool in
+                return user.username.lowercased().contains(searchText.lowercased())
+            }
+        }
+        self.users.sort { (u1, u2) -> Bool in
+            return u1.username.compare(u2.username) == .orderedAscending
         }
         searchUsersCV.isHidden = false
-        searchUsersCV.updateUsersView(self.users)
-//        searchUsersCV.upd
+        searchUsersCV.updateUsersView(self.filteredUsers)
         
         self.collectionView?.reloadData() 
     }

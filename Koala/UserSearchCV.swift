@@ -16,8 +16,8 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     func updateUsersView(_ users: [User]) {
         
-        self.users = users
-        print(self.users)
+        self.filteredUsers = users
+        print(self.filteredUsers)
         self.collectionView.reloadData()
     }
     
@@ -56,6 +56,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         
         fetchUsers()
     }
+    var filteredUsers = [User]()
     var users = [User]()
     func fetchUsers() {
         
@@ -71,6 +72,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
                 self.users.append(user)
                 print(user.uid, user.username)
             })
+            self.filteredUsers = self.users
             self.collectionView?.reloadData()
             
         }) { (error) in
@@ -82,7 +84,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
 //        let numberOfUsers = UserSearchController.searchBar(users.count) //this would be nice but it doesn't let me it compiles an error with 'Instance member 'searchBar cannot be used on type 'UsersearchController' did you mean to use a value of this type instead?
-        return users.count
+        return filteredUsers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,7 +92,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         //        let filteredUsers = UserSearchController.searchBar(users.count)
         //        cell.user = filteredUsers[indexPath.item]
         
-        cell.user = users[indexPath.item]
+        cell.user = filteredUsers[indexPath.item]
         return cell
     }
     
