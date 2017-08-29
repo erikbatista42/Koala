@@ -10,12 +10,17 @@ import Foundation
 import UIKit
 import Firebase
 
-
+protocol MyViewDelegate {
+    func didTapButton()
+}
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
+     var delegate: MyViewDelegate?
+    
+    
+    
     func updateUsersView(_ users: [User]) {
-        
         self.filteredUsers = users
         print(self.filteredUsers)
         self.collectionView.reloadData()
@@ -32,13 +37,18 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         return iv
     }()
     
+
+//    var my: UserSearchController?
     override init(frame: CGRect) {
+
         super.init(frame: frame)
         setupCollectionView()
         
+//        my.searchBar.delegate = self
+//        my = UserSearchController()
+//        my?.searchBar.delegate = self
     }
-    
-    
+
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
@@ -83,15 +93,16 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
             print("failed to fetch users:", error)
         }
     }
-    func pushViewController(completion: () -> ()) {
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let user = filteredUsers[indexPath.item]
         print(user.username)
+        delegate?.didTapButton()
+//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+//        (superview?.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+//        delegate?.didTapButton()
         
-        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-        (superview?.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

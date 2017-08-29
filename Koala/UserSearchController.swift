@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import Firebase
 
-class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate {
+class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, MyViewDelegate {
+    
     
     
     let cellId = "cellId"
@@ -22,6 +23,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230, alpha: 1)
         sb.keyboardAppearance = .dark
         sb.delegate = self
+        
+        
+        
         return sb
     }()
     
@@ -60,6 +64,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         let cv = SearchUsersCV(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         cv.bringSubview(toFront: cv)
         cv.collectionView.register(UserSearchCVCell.self, forCellWithReuseIdentifier: "cellId")
+        
         return cv
     }()
     
@@ -74,10 +79,23 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
         fetchUsers()
-        searchBar.delegate = self
-        
+        searchUsersCV.delegate = self
+//        searchBar.delegate = self
+//        let myView = searchUsersCV
+//        myView.delegate = self
 //        self.navigationController?.pushViewController(UserProfileController, animated: true)
     }
+    
+    
+    func didTapButton() {
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+                (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+        self.navigationController?.pushViewController(userProfileController, animated: true)
+        self.searchBar.isHidden = true
+        print("yo wassaup")
+        
+    }
+    
     var filteredUsers = [User]()
     var users = [User]()
     func fetchUsers() {
@@ -120,9 +138,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         self.collectionView?.reloadData() 
     }
-    
-
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 25

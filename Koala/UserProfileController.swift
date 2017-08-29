@@ -12,8 +12,11 @@ import AVKit
 import Firebase
 import MobileCoreServices
 
+
+
+
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
+    var myUserProfileController: UserProfileController?
     let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
     let cellId = "cellId"
     
