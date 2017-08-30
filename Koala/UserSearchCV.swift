@@ -43,7 +43,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
 
         super.init(frame: frame)
         setupCollectionView()
-        
+         collectionView?.keyboardDismissMode = .onDrag
 //        my.searchBar.delegate = self
 //        my = UserSearchController()
 //        my?.searchBar.delegate = self
@@ -98,10 +98,13 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         let user = filteredUsers[indexPath.item]
         print(user.username)
         delegate?.didTapButton()
-//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        userProfileController.userId = user.uid
+        
 //        (superview?.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
 //        delegate?.didTapButton()
-        
+        collectionView.keyboardDismissMode = .onDrag
         
     }
     

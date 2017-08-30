@@ -80,6 +80,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.isHidden = true
         fetchUsers()
         searchUsersCV.delegate = self
+        
 //        searchBar.delegate = self
 //        let myView = searchUsersCV
 //        myView.delegate = self
@@ -92,8 +93,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         self.navigationController?.pushViewController(userProfileController, animated: true)
         self.searchBar.isHidden = true
-        
-        
+        searchBar.resignFirstResponder()
+       
     }
     
     var filteredUsers = [User]()

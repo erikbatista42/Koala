@@ -16,18 +16,17 @@ import MobileCoreServices
 
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let cellId = "cellId"
+    var userId: String?
+    
     var myUserProfileController: UserProfileController?
     let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
-    let cellId = "cellId"
-    
     var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = currentUserID
-        fetchUser()
-        
         UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
@@ -37,7 +36,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
-      
+        fetchUser()
         fetchOrderedPosts()
         setupLogOutButton()
     }
@@ -176,7 +175,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var user: User?
     
     fileprivate func fetchUser() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        let uid = userId ?? FIRAuth.auth()?.currentUser?.uid ?? ""
+//        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         
         FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
             self.user = user
