@@ -92,7 +92,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         self.navigationController?.pushViewController(userProfileController, animated: true)
         self.searchBar.isHidden = true
-        print("yo wassaup")
+        
         
     }
     
@@ -137,6 +137,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.updateUsersView(self.filteredUsers)
         
         self.collectionView?.reloadData() 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.isHidden = false
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
