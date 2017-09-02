@@ -37,10 +37,7 @@ class UserProfileHeader: UICollectionViewCell {
                 if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
                     self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
                 } else {
-                    self.editProfileFollowButton.setTitle("Follow", for: .normal)
-                    self.editProfileFollowButton.backgroundColor = UIColor.white
-                    self.editProfileFollowButton.setTitleColor(UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1), for: .normal)
-                    self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+                    self.setupFollowStyle()
                 }
                 
             }, withCancel: { (err) in
@@ -64,11 +61,9 @@ class UserProfileHeader: UICollectionViewCell {
                     print("Failed to unfollow user:", err)
                     return
                 }
-                    print("Successfully unfollowed user:", self.user?.username ?? "")
-                self.editProfileFollowButton.setTitle("Follow", for: .normal)
-                self.editProfileFollowButton.backgroundColor = UIColor.white
-                self.editProfileFollowButton.setTitleColor(UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1), for: .normal)
-                self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+                print("Successfully unfollowed user:", self.user?.username ?? "")
+                
+                self.setupFollowStyle()
             })
 
             
@@ -89,6 +84,13 @@ class UserProfileHeader: UICollectionViewCell {
                     self.editProfileFollowButton.setTitleColor(.black, for: .normal)
             }
         }
+    }
+    
+    fileprivate func setupFollowStyle() {
+        self.editProfileFollowButton.setTitle("Follow", for: .normal)
+        self.editProfileFollowButton.backgroundColor = UIColor.white
+        self.editProfileFollowButton.setTitleColor(UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1), for: .normal)
+        self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
     }
     
     let profileImageView: CustomImageView = {
