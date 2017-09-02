@@ -20,8 +20,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     let cellId = "cellId"
     var userId: String?
     
+    
     var myUserProfileController: UserProfileController?
-    let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
     var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
     
@@ -37,7 +37,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.backgroundColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
         fetchUser()
-        fetchOrderedPosts()
+//        fetchOrderedPosts()
         setupLogOutButton()
     }
     
@@ -46,7 +46,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     
     fileprivate func fetchOrderedPosts() {
-        let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)
+        guard let uid = self.user?.uid else { return }
+        let ref = FIRDatabase.database().reference().child("posts").child(uid)
         
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             
@@ -59,43 +60,17 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.thumbnails.insert(thumbnail, at: 0)
             self.videos.insert(video, at: 0)
-
-
             
+//            print("Issaa video", video)
+
             self.collectionView?.reloadData()
-            
+//            print("thumnail boyyy:", video)
         }) { (error) in
             print("Failded to fetch ordered post:", error)
         }
     }
     
-    
-   fileprivate func fetchposts() {
-    
-    let ref = FIRDatabase.database().reference().child("posts").child(currentUserID)
-    
-    ref.observeSingleEvent(of: .value, with: { (snapshot) in
-
-        guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            dictionaries.forEach({ (key,value) in
-                
-                guard let user = self.user else { return }
-                guard let dictionary = value as? [String: Any] else { return }
-                let video = Post(user: user, dictionary: dictionary)
-                let thumbnail = Post(user: user, dictionary: dictionary)
-                
-                self.thumbnails.append(thumbnail)
-                self.videos.append(video)
-                print(self.videos)
-                print(self.thumbnails)
-            })
-        
-        self.collectionView?.reloadData()
-        
-        }) { (error) in
-            print("Failed to fetch videos", error)
-    }
-}
+   
 
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
@@ -175,16 +150,16 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var user: User?
     
     fileprivate func fetchUser() {
-        let uid = userId ?? FIRAuth.auth()?.currentUser?.uid ?? ""
+        let uid = userId ?? (FIRAuth.auth()?.currentUser?.uid ?? "")
         
         FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
             self.user = user
-            
             self.navigationItem.title = self.user?.username
             
             self.collectionView?.reloadData()
-
-        }        
+            
+            self.fetchOrderedPosts()
+        }
     }
 }
                             

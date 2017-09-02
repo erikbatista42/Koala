@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 protocol GetUserSearchControllerDelegate {
-    func searchControllerDidSelect(passedUser: User)
+    func searchControllerDidSelect(passedUser: String)
 }
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
@@ -63,10 +63,13 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.alwaysBounceVertical = true
         self.addSubview(collectionView)
         
-        
         fetchUsers()
     }
     var filteredUsers = [User]()
+    
+    var videos = [Post]()
+    var thumbnails = [Post]()
+    
     var users = [User]()
     func fetchUsers() {
         
@@ -97,9 +100,11 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.keyboardDismissMode = .onDrag
         let user = filteredUsers[indexPath.item]
+//        let videos = self.videos[indexPath.item]
+//        let thumbnails = self.thumbnails[indexPath.item]
         
-        delegate?.searchControllerDidSelect(passedUser: user)
-        
+        delegate?.searchControllerDidSelect(passedUser: user.uid)
+        print("this is the user:",user)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

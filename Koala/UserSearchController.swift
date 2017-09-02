@@ -74,13 +74,16 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.delegate = self
     }
     
-    func searchControllerDidSelect(passedUser: User) {
+    func searchControllerDidSelect(passedUser: String) {
         self.searchBar.isHidden = true
         searchBar.resignFirstResponder()
         
         let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
         
-        userProfileController.userId = passedUser.uid
+        
+        userProfileController.userId = passedUser
+//        userProfileController.videos = [passedVideos]
+//        userProfileController.thumbnails = [passedThumbnail]
         
         (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         
