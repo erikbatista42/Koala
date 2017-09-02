@@ -17,6 +17,21 @@ class UserProfileHeader: UICollectionViewCell {
             profileImageView.loadImage(UrlString: profileImageUrl)
             
             usernameLabel.text = "@\(user?.username ?? "")"
+            
+            setupEditFollowButton()
+            
+        }
+    }
+    
+    fileprivate func setupEditFollowButton() {
+        guard let currentLoggedInCurrentUserId = FIRAuth.auth()?.currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        if currentLoggedInCurrentUserId == userId {
+            //edit Profile
+        } else {
+            editProfileFollowButton.setTitle("Follow", for: .normal)
         }
     }
     
@@ -56,7 +71,7 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let editProfileButton: UIButton = {
+    lazy var editProfileFollowButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Edit Profile", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -66,8 +81,13 @@ class UserProfileHeader: UICollectionViewCell {
         button.backgroundColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(handleEditProfileOrFollow), for: .touchUpInside)
         return button
     }()
+    
+    func handleEditProfileOrFollow() {
+        print("Execute edit profile / follow / unfollow logic ...")
+    }
     
     
     
@@ -88,9 +108,9 @@ class UserProfileHeader: UICollectionViewCell {
         
         setupUserStatsView()
         
-        addSubview(editProfileButton)
-        editProfileButton.anchor(top: followersLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 220, height: 30)
-        editProfileButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        addSubview(editProfileFollowButton)
+        editProfileFollowButton.anchor(top: followersLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 220, height: 30)
+        editProfileFollowButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
     }
     

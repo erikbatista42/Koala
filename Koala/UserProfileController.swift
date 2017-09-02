@@ -162,7 +162,4 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
 }
-                            
-
-
 

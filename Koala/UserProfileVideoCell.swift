@@ -25,7 +25,6 @@ class UserProfileVideoCell: UICollectionViewCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = UIViewContentMode.scaleAspectFill
         iv.layer.masksToBounds = true
-        iv.backgroundColor = .blue
         return iv
     }()
     
