@@ -87,6 +87,22 @@ class UserProfileHeader: UICollectionViewCell {
     
     func handleEditProfileOrFollow() {
         print("Execute edit profile / follow / unfollow logic ...")
+        
+        guard let currentLoggedInUserId = FIRAuth.auth()?.currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        let ref = FIRDatabase.database().reference().child("following").child(currentLoggedInUserId)
+        
+        let values = [userId: 1]
+        ref.updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("failed to follow user")
+                return
+            } else {
+                print("successfully followed user:", self.user?.username ?? "")
+            }
+        }
     }
     
     
