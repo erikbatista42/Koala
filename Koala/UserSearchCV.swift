@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import Firebase
 
-protocol MyViewDelegate {
-    func didTapButton()
+protocol GetUserSearchControllerDelegate {
+    func searchControllerDidSelect(passedUser: User)
 }
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
-     var delegate: MyViewDelegate?
+     var delegate: GetUserSearchControllerDelegate?
     
     
     
@@ -95,16 +95,10 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let user = filteredUsers[indexPath.item]
-        print(user.username)
-        delegate?.didTapButton()
-        
-        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-        userProfileController.userId = user.uid
-        
-//        (superview?.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-//        delegate?.didTapButton()
         collectionView.keyboardDismissMode = .onDrag
+        let user = filteredUsers[indexPath.item]
+        
+        delegate?.searchControllerDidSelect(passedUser: user)
         
     }
     

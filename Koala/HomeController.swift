@@ -30,7 +30,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var posts = [Post]()
     fileprivate func fetchPosts() {
-        let currentUserID = FIRAuth.auth()?.currentUser?.uid ?? ""
+        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
           FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
             self.fetchPostsWithUser(user: user)
         }

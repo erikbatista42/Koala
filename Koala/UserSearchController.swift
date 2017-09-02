@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, MyViewDelegate {
-    
-    
+class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, GetUserSearchControllerDelegate {
     
     let cellId = "cellId"
     
@@ -23,9 +21,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230, alpha: 1)
         sb.keyboardAppearance = .dark
         sb.delegate = self
-        
-        
-        
         return sb
     }()
     
@@ -68,33 +63,28 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         return cv
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
         fetchUsers()
         searchUsersCV.delegate = self
-        
-//        searchBar.delegate = self
-//        let myView = searchUsersCV
-//        myView.delegate = self
-//        self.navigationController?.pushViewController(UserProfileController, animated: true)
     }
     
-    
-    func didTapButton() {
-        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-                (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-        self.navigationController?.pushViewController(userProfileController, animated: true)
+    func searchControllerDidSelect(passedUser: User) {
         self.searchBar.isHidden = true
         searchBar.resignFirstResponder()
-       
+        
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        userProfileController.userId = passedUser.uid
+        
+        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+        
+        self.navigationController?.pushViewController(userProfileController, animated: true)
     }
     
     var filteredUsers = [User]()
