@@ -18,7 +18,8 @@ class HomePostCell: UICollectionViewCell {
             guard let thumbnailUrl = post?.thumbnailUrl else { return }
             photoImageView.loadImage(UrlString: thumbnailUrl)
             
-            usernameLabel.text = post?.user.username
+//            usernameLabel.text = "\(post?.user.username ?? "")\n\(timeLabel.attributedText?.string ?? "")"
+            usernameLabel.text  = post?.user.username
             
             guard let profileImageUrl = post?.user.profileImageUrl else { return }
             userProfileImageView.loadImage(UrlString: profileImageUrl)
@@ -42,8 +43,7 @@ class HomePostCell: UICollectionViewCell {
 
     let usernameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "Username"
-        
+    
         let attributedText = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
         
         attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray]))
@@ -84,17 +84,31 @@ class HomePostCell: UICollectionViewCell {
     let timeLabel: UILabel = {
         let label = UILabel()
         
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
+    
+        label.attributedText = attributedText
         return label
     }()
+    
+    let usernameButton: UIButton = {
+       let button = UIButton()
+       button.setTitle("username", for: .normal)
+        return button
+    }()
+    
+    
     
         override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(usernameButton)
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
         addSubview(optionsButton)
         addSubview(photoImageView)
         addSubview(timeLabel)
+        
+        usernameButton.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: timeLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
             
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
             userProfileImageView.layer.cornerRadius = 40/2
@@ -107,7 +121,8 @@ class HomePostCell: UICollectionViewCell {
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
             
         
-        timeLabel.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: optionsButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+        timeLabel.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: optionsButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+//            timeLabel.anchor(top: usernameLabel.bottomAnchor?, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: optionsButton.leftAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
             
         setupActionButtons()
         
@@ -116,11 +131,11 @@ class HomePostCell: UICollectionViewCell {
     func setupTimeLabel() {
       guard let post = self.post else { return }
         
-      let timeAgoDisplay = post.creationDate.description
-      let attributedText = NSMutableAttributedString(string: "")
+      let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName : UIColor.lightGray])
         
-        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 8)]))
         timeLabel.attributedText = attributedText
+//        print("this is it:", timeLabel.attributedText?.string)
     }
     
     fileprivate func setupActionButtons() {
@@ -130,7 +145,6 @@ class HomePostCell: UICollectionViewCell {
         stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 120, height: 50)
         addSubview(shareButton)
         shareButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom:  nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 25, width: 40, height: 50)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
