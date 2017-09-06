@@ -22,6 +22,7 @@ class HomePostCell: UICollectionViewCell {
             
             guard let profileImageUrl = post?.user.profileImageUrl else { return }
             userProfileImageView.loadImage(UrlString: profileImageUrl)
+            setupTimeLabel()
         }
     }
     
@@ -79,17 +80,21 @@ class HomePostCell: UICollectionViewCell {
        // button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
         return button
     }()
-
+    
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
+    }()
     
         override init(frame: CGRect) {
         super.init(frame: frame)
-            
-//        backgroundColor = .gray
         
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
         addSubview(optionsButton)
         addSubview(photoImageView)
+        addSubview(timeLabel)
             
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
             userProfileImageView.layer.cornerRadius = 40/2
@@ -101,7 +106,21 @@ class HomePostCell: UICollectionViewCell {
         photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
             
+        
+        timeLabel.anchor(top: topAnchor, left: nil, bottom: photoImageView.topAnchor, right: optionsButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+            
         setupActionButtons()
+        
+    }
+    
+    func setupTimeLabel() {
+      guard let post = self.post else { return }
+        
+      let timeAgoDisplay = post.creationDate.description
+      let attributedText = NSMutableAttributedString(string: "")
+        
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 8)]))
+        timeLabel.attributedText = attributedText
     }
     
     fileprivate func setupActionButtons() {
