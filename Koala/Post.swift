@@ -9,10 +9,15 @@
 import Foundation
 
 struct Post {
+    
+    var id: String?
+    
     let user: User
     let videoUrl: String
     let thumbnailUrl: String
     let creationDate: Date
+    
+    var hasLiked = false
     
     init(user: User, dictionary: [String: Any]) {
         self.user = user

@@ -11,12 +11,20 @@ import AVKit
 import AVFoundation
 import Player
 
+protocol HomePostCellDelegate {
+    func didLike(for cell: HomePostCell)
+}
+
 class HomePostCell: UICollectionViewCell {
+    
+    var delegate: HomePostCellDelegate?
     
     var post: Post? {
         didSet {
             guard let thumbnailUrl = post?.thumbnailUrl else { return }
             photoImageView.loadImage(UrlString: thumbnailUrl)
+            
+            likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "heart_selected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "heart_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
             
 //            usernameLabel.text = "\(post?.user.username ?? "")\n\(timeLabel.attributedText?.string ?? "")"
             usernameLabel.text  = post?.user.username
@@ -59,12 +67,18 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-    let likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "heart_icon").withRenderingMode(.alwaysOriginal), for: .normal)
-        //button.addTarget(self, action: #selector(handleLikeButton), for: .touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "heart_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         return button
     }()
+    
+    func handleLike() {
+        print("handle liked button tapped")
+        delegate?.didLike(for: self)
+    }
     
     let likesLabel: UILabel = {
         let label = UILabel()
@@ -95,8 +109,6 @@ class HomePostCell: UICollectionViewCell {
        button.setTitle("username", for: .normal)
         return button
     }()
-    
-    
     
         override init(frame: CGRect) {
         super.init(frame: frame)

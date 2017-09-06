@@ -12,7 +12,7 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
     
     let cellId = "cellId"
     
@@ -83,17 +83,27 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             dictionaries.forEach({ (key,value) in
                 
                 guard let dictionary = value as? [String: Any] else { return }
-                let post = Post(user: user, dictionary: dictionary)
-                self.posts.append(post)
+                var  post = Post(user: user, dictionary: dictionary)
+                post.id = key
+                guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+                FIRDatabase.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
+                    if let value = snapshot.value as? Int, value == 1 {
+                        post.hasLiked = true
+                    } else {
+                        post.hasLiked = false
+                    }
+                    self.posts.append(post)
+                    
+                    self.posts.sort(by: { (p1, p2) -> Bool in
+                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+                    })
+                    self.collectionView?.reloadData()
+
+                }, withCancel: { (err) in
+                    print("Failed to fetch info for post")
+                })
                 print(self.posts)
             })
-            
-            self.posts.sort(by: { (p1, p2) -> Bool in
-                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-            })
-            
-            self.collectionView?.reloadData()
-            
         }) { (error) in
             print("Failed to fetch posts", error)
         }
@@ -122,15 +132,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         
         cell.post = posts[indexPath.item]
-        
-//        let links =  posts[indexPath.row]
-//        let url = NSURL(string: links.videoUrl)
-//        let thumnailMaker = cell.getThumbnailImage(forUrl: (url as URL?)!)
-//        cell.thumbNailImageView.image = thumnailMaker
-        
-        
+        cell.delegate = self
         return cell
     }
+    
     var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -143,5 +148,25 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             player.play()
         }
     }
-
+    
+    
+    func didLike(for cell: HomePostCell) {
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        var post = self.posts[indexPath.item]
+        print(post.user.username)
+        guard let postId = post.id else { return }
+        print("this issa post id:", postId)
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        let values = [uid : post.hasLiked == true ? 0 : 1]
+        FIRDatabase.database().reference().child("likes").child(postId).updateChildValues(values) { (err, _) in
+            if let err = err {
+                print("Failed to like post", err)
+                return
+            }
+            print("Successfully liked post")
+            post.hasLiked = !post.hasLiked
+            self.posts[indexPath.item] = post
+            self.collectionView?.reloadItems(at: [indexPath])
+        }
+    }
 }
