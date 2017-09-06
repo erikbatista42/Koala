@@ -23,11 +23,22 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
+        let refreshControll = UIRefreshControl()
+        refreshControll.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControll
         setupNavigationItems()
+        
+        fetchAllPost()
+    }
+    
+    func handleRefresh() {
+        print("handling refresh..")
+        posts.removeAll()
+        fetchAllPost()
+    }
+    
+    fileprivate func fetchAllPost() {
         fetchPosts()
-//        FIRDatabase.fetchUserWithUid(uid: "Z8NBcoygSHcg1wXtCZqeCVdUev12") { (user) in
-//            self.fetchPostsWithUser(user: user)
-//        }
         fetchFollowingUserIds()
     }
     
@@ -44,7 +55,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }) { (err) in
             print("failed to fetch following users ids:", err)
         }
-        }
+    }
     
     
     var posts = [Post]()
@@ -58,6 +69,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            self.collectionView?.refreshControl?.endRefreshing()
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key,value) in
