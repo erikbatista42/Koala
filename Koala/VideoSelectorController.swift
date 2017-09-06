@@ -102,6 +102,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         uploadFromLibraryButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 365, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
     }
     
+    static let updateFeedNotificationName = NSNotification.Name(rawValue: "update feed")
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
@@ -173,12 +174,16 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                             
                             let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(thumbnailUrl)", "creationDate" : Date().timeIntervalSince1970] as [String : Any]
                             
+                            
+                            NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
+                            
                             ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 if let err = err {
                                     print("Failed to save video to DB", err)
                                     return
                                 } else {
                                     print("Successfully saved post to DB")
+                                    
                                 }
                             })
 
@@ -191,6 +196,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 
                 
             }
+            
         }
     }
     

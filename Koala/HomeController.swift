@@ -18,6 +18,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: VideoSelectorController.updateFeedNotificationName, object: nil)
+        
         UIApplication.shared.statusBarStyle = .lightContent
         collectionView?.backgroundColor = .white
         
@@ -29,6 +32,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupNavigationItems()
         
         fetchAllPost()
+    }
+    
+    func handleUpdateFeed() {
+        handleRefresh()
     }
     
     func handleRefresh() {
