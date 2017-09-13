@@ -64,7 +64,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    
     var posts = [Post]()
     fileprivate func fetchPosts() {
         guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }

@@ -14,6 +14,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     let cellId = "cellId"
     
+    
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search"
@@ -43,7 +44,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
-        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -59,7 +59,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         let cv = SearchUsersCV(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         cv.bringSubview(toFront: cv)
         cv.collectionView.register(UserSearchCVCell.self, forCellWithReuseIdentifier: "cellId")
-        
         return cv
     }()
     
@@ -67,12 +66,96 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         super.viewDidLoad()
         setupNavBarAndSearchBar()
         collectionView?.backgroundColor = .white
-        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
         fetchUsers()
         searchUsersCV.delegate = self
+        fetchAllPost()
     }
+    
+//    var posts = [Post]()
+//    fileprivate func fetchPosts() {
+//        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
+//        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+//            self.fetchPostsWithUser(user: user)
+//        }
+//    }
+    
+    func handleUpdateFeed() {
+        handleRefresh()
+    }
+    
+    func handleRefresh() {
+        print("handling refresh..")
+        posts.removeAll()
+        fetchAllPost()
+    }
+    
+    fileprivate func fetchAllPost() {
+        fetchPosts()
+        fetchFollowingUserIds()
+    }
+    
+    fileprivate func fetchFollowingUserIds() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+            userIdsDictionary.forEach({ (key,  value) in
+                FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
+                    self.fetchPostsWithUser(user: user)
+                })
+            })
+        }) { (err) in
+            print("failed to fetch following users ids:", err)
+        }
+    }
+    
+    var posts = [Post]()
+    fileprivate func fetchPosts() {
+        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
+        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+            self.fetchPostsWithUser(user: user)
+        }
+    }
+    fileprivate func fetchPostsWithUser(user: User) {
+        let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            self.collectionView?.refreshControl?.endRefreshing()
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach({ (key,value) in
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                var  post = Post(user: user, dictionary: dictionary)
+                post.id = key
+                guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+                FIRDatabase.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
+                    if let value = snapshot.value as? Int, value == 1 {
+                        post.hasLiked = true
+                    } else {
+                        post.hasLiked = false
+                    }
+                    self.posts.append(post)
+                    
+                    self.posts.sort(by: { (p1, p2) -> Bool in
+                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+                    })
+                    self.collectionView?.reloadData()
+                    
+                }, withCancel: { (err) in
+                    print("Failed to fetch info for post")
+                })
+                print(self.posts)
+            })
+        }) { (error) in
+            print("Failed to fetch posts", error)
+        }
+    }
+
     
     func searchControllerDidSelect(passedUser: String) {
         self.searchBar.isHidden = true
@@ -109,7 +192,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 print(user.uid, user.username)
             })
             self.collectionView?.reloadData()
-            
+
         }) { (error) in
             print("failed to fetch users:", error)
         }
@@ -138,13 +221,21 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchBar.isHidden = false
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(123)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
+        print("number of posts fetched: \(posts.count)")
+        return posts.count
+//        return 8
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .purple
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
+        cell.backgroundColor = .blue
+        
+        cell.thumbnail = posts[indexPath.item]
         return cell
     }
     

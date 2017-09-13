@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.barTintColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         tabBar.isTranslucent = false
         
-        viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
+        viewControllers = [searchNavController, homeNavController, recordNavController ,notificationsNavController,userProfileNavController]
         
         //modify tab bar items insets
         guard let items = tabBar.items else { return }

@@ -11,7 +11,7 @@ import Firebase
 
 extension FIRDatabase {
     static func fetchUserWithUid(uid: String, completion: @escaping (User) -> () ) {
-        FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
+                FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
             
             guard let userDictionary = snapshot.value as? [String: Any] else { return }
             

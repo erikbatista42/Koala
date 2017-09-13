@@ -88,9 +88,8 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         var prefersStatusBarHidden: Bool { return true }
         self.imagePicker.delegate = self 
-        view.backgroundColor = .darkGray
+        view.backgroundColor = UIColor.rgb(red: 245, green: 50, blue: 97, alpha: 1)
         shootOrUploadBtns()
-        
     }
     
     func shootOrUploadBtns() {
@@ -112,9 +111,6 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         guard let imagePickerUrl = info[UIImagePickerControllerMediaURL] as? URL else { return }
         let videoUrl = imagePickerUrl
         
-        
-    
- 
 //        let thumbnailDownloadUrl = getThumbnailImage(forUrl: videoUrl)
 //        
 //        print("This issa Thumbnail URl: ",thumbnailDownloadUrl)
@@ -123,15 +119,14 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         // Create a reference to the file you want to upload
         let videosRef = FIRStorage.storage().reference().child("videos/\(currentUser)/" + randomString(length: 20) + ".mp4")
         
+        let allVideos = FIRStorage.storage().reference().child("all_videos/" + randomString(length: 20) + ".mp4")
+        
         // Upload the file to the path "videosRef"
-        _ = videosRef.putFile(videoUrl, metadata: nil) { metadata, error in
+        _ = allVideos.putFile(videoUrl, metadata: nil) { metadata, error in
             if let error = error {
-                // Uh-oh, an error occurred!
                 print("An error has occured: \(error)")
-                
             } else {
                 //GenerateThumbnail
-                
                 let asset: AVAsset = AVAsset(url: videoUrl)
                 let imageGenerator = AVAssetImageGenerator(asset: asset)
                 imageGenerator.appliesPreferredTrackTransform = true
@@ -139,7 +134,6 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 time.value = min(time.value, 3)
                 
                 do {
-                    
                     let thumbnailImage = try imageGenerator.copyCGImage(at: time , actualTime: nil)
                     let image = UIImage(cgImage: thumbnailImage)
                     guard let imageData = UIImagePNGRepresentation(image) else { return }
@@ -149,8 +143,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                     } else {
                         print("IMG DATA IS NIL")
                     }
-                    //
-                    //                 let currentUser = FIRAuth.auth()?.currentUser?.uid
+                    
                     let thumbnailStorageRef = FIRStorage.storage().reference()
                     
                     let imageRef = thumbnailStorageRef.child("thumbnails/" + self.randomString(length: 20) + ".png")
@@ -183,20 +176,15 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                     return
                                 } else {
                                     print("Successfully saved post to DB")
-                                    
                                 }
                             })
-
                         }
                     })
                     
                 } catch {
                     print("An error has occured while making thumbnail:")
                 }
-                
-                
             }
-            
         }
     }
     
@@ -210,13 +198,11 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
             let random = arc4random_uniform(UInt32(len))
             var nextCharacter = letters.character(at: Int(random))
             randomString += NSString(characters: &nextCharacter, length: 1) as String
-            
         }
         return randomString
     }
     
     fileprivate func  setupNavigationButtons() {
-        
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)

@@ -12,9 +12,6 @@ import AVKit
 import Firebase
 import MobileCoreServices
 
-
-
-
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
@@ -44,7 +41,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var videos = [Post]()
     var thumbnails = [Post]()
     
-    
     fileprivate func fetchOrderedPosts() {
         guard let uid = self.user?.uid else { return }
         let ref = FIRDatabase.database().reference().child("posts").child(uid)
@@ -60,18 +56,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.thumbnails.insert(thumbnail, at: 0)
             self.videos.insert(video, at: 0)
-            
-//            print("Issaa video", video)
-
             self.collectionView?.reloadData()
-//            print("thumnail boyyy:", video)
         }) { (error) in
             print("Failded to fetch ordered post:", error)
         }
     }
     
-   
-
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
     }
@@ -88,14 +78,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
                 self.present(navController, animated: true, completion: nil)
             } catch let signOutErr {
                 print("Failed to sign out", signOutErr)
-         }
-            
-        }))
-        
+        }
+    }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         present(alertController, animated: true, completion: nil)
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -106,7 +92,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         
-        cell.thumbnail = thumbnails[indexPath.item]
+        cell.post = thumbnails[indexPath.item]
         return cell
     }
     
@@ -130,9 +116,16 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = (view.frame.width - 1) / 2
+//        return CGSize(width: width, height: 189)
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 1) / 2
-        return CGSize(width: width, height: 189)
+        var height: CGFloat = 40 + 8 + 8 // username + userProfileImageView
+        height += view.frame.width
+        height += 50
+        return CGSize(width: view.frame.width, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

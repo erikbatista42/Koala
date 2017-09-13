@@ -26,6 +26,7 @@
 		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
 		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
 		FE6FF0791F3A423F001C3B1A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */; };
+		FE70E5141F60D9E600AF4D50 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */; };
 		FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */; };
 		FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */; };
 		FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */; };
@@ -61,6 +62,7 @@
 		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVideoCell.swift; sourceTree = "<group>"; };
 		FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCV.swift; sourceTree = "<group>"; };
 		FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCVCell.swift; sourceTree = "<group>"; };
@@ -199,6 +201,14 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		FE70E5121F60D9A800AF4D50 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
 		FEA9F2D21F51F0DD0022A939 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +253,7 @@
 			children = (
 				FE5B53F61F39337400B09CDE /* Home */,
 				FEA9F2D21F51F0DD0022A939 /* Search */,
+				FE70E5121F60D9A800AF4D50 /* Explore */,
 				E7C5561F1F10C97500867FFA /* Login */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
 				E787A4BD1F21EAA6002F0E20 /* Search Tracks N/A */,
@@ -396,6 +407,7 @@
 				FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */,
 				FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */,
 				FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */,
+				FE70E5141F60D9E600AF4D50 /* ExploreCell.swift in Sources */,
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,
