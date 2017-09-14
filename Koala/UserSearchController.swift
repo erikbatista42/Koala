@@ -93,15 +93,15 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     fileprivate func fetchAllPost() {
-        fetchPosts()
-        fetchFollowingUserIds()
+//        fetchPosts()
+        fetchAllPostsFromUserIds()
     }
     
-    fileprivate func fetchFollowingUserIds() {
+    fileprivate func fetchAllPostsFromUserIds() {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
             
-            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+            guard let userIdsDictionary = children.value as? [String: Any] else { return }
             userIdsDictionary.forEach({ (key,  value) in
                 FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
                     self.fetchPostsWithUser(user: user)
@@ -119,6 +119,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             self.fetchPostsWithUser(user: user)
         }
     }
+    
     fileprivate func fetchPostsWithUser(user: User) {
         let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
         
@@ -155,14 +156,12 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             print("Failed to fetch posts", error)
         }
     }
-
     
     func searchControllerDidSelect(passedUser: String) {
         self.searchBar.isHidden = true
         searchBar.resignFirstResponder()
         
         let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-        
         
         userProfileController.userId = passedUser
 //        userProfileController.videos = [passedVideos]
