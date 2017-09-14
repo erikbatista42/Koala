@@ -78,7 +78,7 @@ extension Date {
             unit = "m"
         }
         
-        return "\(quotient) \(unit)\(quotient == 1 ? "" : "")"
+        return "\(quotient)\(unit)\(quotient == 1 ? "" : "")"
         
     }
 }

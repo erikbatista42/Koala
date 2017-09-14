@@ -18,9 +18,6 @@ class SearchTracksTV: UITableView, UITableViewDataSource, UITableViewDelegate {
     let token = "BQAL5DQILSJL1BWbSVXGtcdl3I_o1pnPWrIYhL555g462Icn9PzZfQ1hK13SFe3DMf0lUGbtcVBbvOzwJRuKkDBZfJdOSMnrVeAeEkma67qk0aeClpH4vVUtH4mSuCVUTSUaN3X0cbOxVGpZxe0s4Or9ahmMrZFZeE7Z8tU6lsYN72kYg5xZMHSbsw2oyF4fyVZS7ifdFO_K3NLfCaZgFKqJcR_YaGLuYXhXXqDfAhhbcznXTS6gb4Hoi4vLX-p45-rh8oEO_VjMZJ6fZ1yrwXzWs-ZT8vCY16nHi5xgIrBthiW5PgT9t7VkXoYV0RgYZsaDm3pf"
     typealias JSONStandard = [String: AnyObject]
     
-    
-    
-    
     let imageView: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .red

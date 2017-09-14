@@ -52,7 +52,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal))
 
-        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "notifications_selected").withRenderingMode(.alwaysOriginal))
+        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "notifications_selected").withRenderingMode(.alwaysOriginal), rootViewController: ActivityTVC())
         notificationsNavController.tabBarItem.title = "Activity"
         
         //user profile
@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.barTintColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         tabBar.isTranslucent = false
         
-        viewControllers = [searchNavController, homeNavController, recordNavController ,notificationsNavController,userProfileNavController]
+        viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
         
         //modify tab bar items insets
         guard let items = tabBar.items else { return }

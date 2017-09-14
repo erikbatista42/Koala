@@ -163,6 +163,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 return
             }
             print("Successfully liked post")
+            print("\(uid) just liked: \(postId)")
             post.hasLiked = !post.hasLiked
             self.posts[indexPath.item] = post
             self.collectionView?.reloadItems(at: [indexPath])
