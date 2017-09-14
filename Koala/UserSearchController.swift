@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import AVFoundation
+import AVKit
 
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, GetUserSearchControllerDelegate {
     
@@ -98,7 +100,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     fileprivate func fetchAllPostsFromUserIds() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+//        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
             
             guard let userIdsDictionary = children.value as? [String: Any] else { return }
@@ -220,8 +222,18 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchBar.isHidden = false
     }
     
+    var avPlayerViewController = AVPlayerViewController()
+    var avPlayer = AVPlayer()
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(123)
+        let links = posts[indexPath.row]
+        guard let url = NSURL(string: links.videoUrl) else { return }
+        let player = AVPlayer(url: url as URL)
+        let playerController = avPlayerViewController
+        playerController.player = player
+        self.present(playerController, animated: true) {
+            player.play()
+        }
+
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
