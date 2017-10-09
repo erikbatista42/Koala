@@ -48,6 +48,8 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - Hero (0.3.6)
+  - KBVideoPlayer (1.3)
   - Kingfisher (3.10.4)
   - Player (0.5.1)
 
@@ -58,6 +60,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - Hero
+  - KBVideoPlayer
   - Kingfisher (~> 3.0)
   - Player (~> 0.5.0)
 
@@ -75,9 +79,11 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
+  KBVideoPlayer: 17a40cc37eaed9d979ae66120914598195be98e4
   Kingfisher: dc3a4983e86d2dfa89513664983a82340c11a289
   Player: 7bd61af457e558edf938066b03760f035a520837
 
-PODFILE CHECKSUM: 0feada5fd23792daa11ca7c02132e6228882b9fb
+PODFILE CHECKSUM: 408b5bd4e827580c5b79cee68b390730bc53bb88
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

@@ -28,18 +28,18 @@ class LoginController: UIViewController {
     }()
     
     let dontHaveAnAccountButton: UIButton = {
-        let button = UIButton(type: .system)
+        let yes = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        yes.setAttributedTitle(attributedTitle, for: .normal)
         
         
         
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
 
         
-        button.setTitle("Don't have an account? Sign Up", for: .normal)
-        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
-        return button
+        yes.setTitle("Don't have an account? Sign Up", for: .normal)
+        yes.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        return yes
     }()
     func handleShowSignUp() {
         let signUpController = SignUpController()

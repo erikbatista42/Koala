@@ -30,6 +30,7 @@ class UserProfileHeader: UICollectionViewCell {
         
         if currentLoggedInCurrentUserId == userId {
             //edit Profile
+            
         } else {
             //check if following
             FIRDatabase.database().reference().child("following").child(currentLoggedInCurrentUserId).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -47,16 +48,21 @@ class UserProfileHeader: UICollectionViewCell {
             
         }
     }
+    
     func handleEditProfileOrFollow() {
         print("Execute edit profile / follow / unfollow logic ...")
+        
+        if editProfileFollowButton.titleLabel?.text == "Edit Profile" {
+            print("im supposed to pop a view")
+
+        }
         
         guard let currentLoggedInUserId = FIRAuth.auth()?.currentUser?.uid else { return }
         
         guard let userId = user?.uid else { return }
         
         if editProfileFollowButton.titleLabel?.text == "Unfollow" {
-            
-            FIRDatabase.database().reference().child("following").child(currentLoggedInUserId).child(userId).removeValue(completionBlock: { (err, ref) in
+             FIRDatabase.database().reference().child("following").child(currentLoggedInUserId).child(userId).removeValue(completionBlock: { (err, ref) in
                 if let err = err {
                     print("Failed to unfollow user:", err)
                     return
@@ -84,6 +90,8 @@ class UserProfileHeader: UICollectionViewCell {
                     self.editProfileFollowButton.setTitleColor(.black, for: .normal)
             }
         }
+        
+        
     }
     
     fileprivate func setupFollowStyle() {

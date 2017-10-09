@@ -37,6 +37,7 @@
 		FEA9F2CE1F51E58C0022A939 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CD1F51E58C0022A939 /* User.swift */; };
 		FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */; };
 		FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2D31F51F1010022A939 /* UserSearchController.swift */; };
+		FEC30ECA1F746373006FB580 /* editProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC30EC91F746373006FB580 /* editProfileVC.swift */; };
 		FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEF5F0601F390D3600B8A501 /* Docs.strings */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		FEA9F2CD1F51E58C0022A939 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		FEA9F2D31F51F1010022A939 /* UserSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		FEC30EC91F746373006FB580 /* editProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editProfileVC.swift; sourceTree = "<group>"; };
 		FEF5F0601F390D3600B8A501 /* Docs.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Docs.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 			children = (
 				E7C556181F0F2A7A00867FFA /* UserProfileController.swift */,
 				E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */,
+				FEC30EC91F746373006FB580 /* editProfileVC.swift */,
 				FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */,
 			);
 			name = UserProfile;
@@ -366,9 +369,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/KBVideoPlayer/KBVideoPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KBVideoPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -381,13 +401,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Koala-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F24BAB41FF17A48260442828 /* [CP] Copy Pods Resources */ = {
@@ -424,6 +447,7 @@
 				FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */,
 				FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */,
 				FE70E5141F60D9E600AF4D50 /* ExploreCell.swift in Sources */,
+				FEC30ECA1F746373006FB580 /* editProfileVC.swift in Sources */,
 				E7B222D91F1433C900C3D5E3 /* SearchTracksTV.swift in Sources */,
 				E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */,
 				E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */,

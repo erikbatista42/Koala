@@ -8,10 +8,24 @@
 
 import UIKit
 import Firebase
+import Hero
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        isHeroEnabled = true
+//        if selectedViewController == nil || viewController == selectedViewController {
+//            return false
+//        }
+//        
+//        let fromView = selectedViewController!.view
+//        let toView = viewController.view
+//        
+//        
+//        
+////        UIView.transition(from: fromView!, to: toView!, duration: 1, options: [], completion: nil)
+////        UIView.transition(from: fromView!, to: toView!, duration: 1, options: .showHideTransitionViews, completion: nil)
+        
         
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
