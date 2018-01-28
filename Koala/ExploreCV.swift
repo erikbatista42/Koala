@@ -27,15 +27,16 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.delegate = self
         fetchAllPost()
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .white
         self.view.addSubview(collectionView)
         
-        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
-        self.view.addSubview(navBar)
-        let navItem = UINavigationItem(title: "SomeTitle")
-//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(handleDone)
-//        navItem.rightBarButtonItem = doneItem
-        navBar.setItems([navItem], animated: false)
+        let navBar = navigationController?.navigationBar
+        navBar?.topItem?.title = "Explore"
+        navBar?.barTintColor   = UIColor.rgb(red: 48, green: 73, blue: 119, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+
+        
+        
     }
     
     func handleDone() {
@@ -139,7 +140,7 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
        
-        cell.backgroundColor = UIColor.orange
+        cell.backgroundColor = UIColor.clear
         cell.thumbnail = posts[indexPath.item]
         
         return cell

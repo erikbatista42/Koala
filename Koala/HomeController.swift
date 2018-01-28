@@ -78,9 +78,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //            self.dismiss(animated: true, completion: nil)
 //        }
     }
-    
-    
-    
+
     @objc func handleUpdateFeed() {
         handleRefresh()
     }
