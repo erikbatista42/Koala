@@ -64,9 +64,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         return cv
     }()
     
-    //    let alarmCollectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    //    let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
