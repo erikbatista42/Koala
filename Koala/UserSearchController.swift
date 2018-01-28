@@ -270,4 +270,3 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
 }
-

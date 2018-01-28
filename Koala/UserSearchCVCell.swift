@@ -16,9 +16,7 @@ class UserSearchCVCell: UICollectionViewCell {
             profileImageView.loadImage(UrlString: profileImageUrl)
         }
     }
-    
-    
-    
+
     let profileImageView: CustomImageView = {
         let iv = CustomImageView()
         iv.backgroundColor = .orange
@@ -50,13 +48,11 @@ class UserSearchCVCell: UICollectionViewCell {
         self.addSubview(usernameLabel)
         usernameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        
         let seperatorView = UIView()
         addSubview(seperatorView)
         seperatorView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         seperatorView.anchor(top: nil, left: usernameLabel.leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
-        
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
