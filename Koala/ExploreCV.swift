@@ -15,32 +15,31 @@ import AVKit
 class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     let cellId = "cellId"
-    
     var collectionView: UICollectionView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-//        layout.itemSize = CGSize(width: 111, height: 111)
-        
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.delegate   = self
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.delegate = self
-//        fetchUsers()
         fetchAllPost()
-        
-        
         collectionView.backgroundColor = .blue
-        
         self.view.addSubview(collectionView)
         
+        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        self.view.addSubview(navBar)
+        let navItem = UINavigationItem(title: "SomeTitle")
+//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(handleDone)
+//        navItem.rightBarButtonItem = doneItem
+        navBar.setItems([navItem], animated: false)
+    }
+    
+    func handleDone() {
+        print("done")
     }
     
     func handleUpdateFeed() {
@@ -54,14 +53,11 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     fileprivate func fetchAllPost() {
-        //        fetchPosts()
         fetchAllPostsFromUserIds()
     }
     
     fileprivate func fetchAllPostsFromUserIds() {
-        //        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
-            
             guard let userIdsDictionary = children.value as? [String: Any] else { return }
             userIdsDictionary.forEach({ (key,  value) in
                 FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
@@ -133,15 +129,12 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
         self.present(playerController, animated: true) {
             player.play()
         }
-        
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("number of posts fetched: \(posts.count)")
         return posts.count
-        //        return 8
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
@@ -156,7 +149,6 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
         let width = (view.frame.width - 2) / 3
         return CGSize(width: width, height: 189)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1

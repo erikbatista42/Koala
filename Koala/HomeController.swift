@@ -58,23 +58,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     @objc func handleExploreButton() {
-        //        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        //        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
-        //            do {
-        //                try FIRAuth.auth()?.signOut()
-        //                let loginController = LoginController()
-        //                let navController = UINavigationController(rootViewController: loginController)
-        //                self.present(ExploreCV, animated: true, completion: nil)
-        //            } catch let signOutErr {
-        //                print("Failed to sign out", signOutErr)
-        //            }
-        //        }))
-        //        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        //        present(alertController, animated: true, completion: nil)
-        //        present(, animated: true, completion: nil)
-        let userSearchController = ExploreCV()
-        present(userSearchController, animated: true, completion: nil)
+
+        let exploreCollectionView = ExploreCV()
+        let navigationController = UINavigationController(rootViewController: exploreCollectionView)
+        
+        present(navigationController, animated: true, completion: nil)
+        
+//        func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+//            let presentedViewController = ExploreCV()
+//
+//            let dismissButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: Selector(("dismissPopover:")))
+//
+//            presentedViewController.navigationItem.rightBarButtonItem = dismissButton
+//
+//            return navigationController
+//        }
+        
+//        func dismissPopover(sender: AnyObject) {
+//            self.dismiss(animated: true, completion: nil)
+//        }
     }
+    
+    
     
     @objc func handleUpdateFeed() {
         handleRefresh()
