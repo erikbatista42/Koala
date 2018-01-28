@@ -22,20 +22,20 @@ class ExploreCell: UICollectionViewCell {
             guard let thumbnailUrl = post?.thumbnailUrl else { return }
             thumbNailImageView.loadImage(UrlString: thumbnailUrl)
             
-//            likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "heart_selected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "heart_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
-//            
+            //            likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "heart_selected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "heart_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
+            //
             //            usernameLabel.text = "\(post?.user.username ?? "")\n\(timeLabel.attributedText?.string ?? "")"
-//            usernameLabel.text  = post?.user.username
+            //            usernameLabel.text  = post?.user.username
             
-//            guard let profileImageUrl = post?.user.profileImageUrl else { return }
-//            userProfileImageView.loadImage(UrlString: profileImageUrl)
-//            setupTimeLabel()
+            //            guard let profileImageUrl = post?.user.profileImageUrl else { return }
+            //            userProfileImageView.loadImage(UrlString: profileImageUrl)
+            //            setupTimeLabel()
         }
     }
     
     let thumbNailImageView: CustomImageView = {
         let iv = CustomImageView()
-//        iv.backgroundColor = UIColor.gray
+        //        iv.backgroundColor = UIColor.gray
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = UIViewContentMode.scaleAspectFill
         iv.layer.masksToBounds = true
@@ -52,3 +52,4 @@ class ExploreCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

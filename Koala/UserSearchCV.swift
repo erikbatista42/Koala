@@ -16,9 +16,7 @@ protocol GetUserSearchControllerDelegate {
 
 class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UISearchBarDelegate {
     
-     var delegate: GetUserSearchControllerDelegate?
-    
-    
+    var delegate: GetUserSearchControllerDelegate?
     
     func updateUsersView(_ users: [User]) {
         self.filteredUsers = users
@@ -30,25 +28,24 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     var collectionView: UICollectionView!
     
     let profileImageView: CustomImageView = {
-       let iv = CustomImageView()
+        let iv = CustomImageView()
         iv.backgroundColor = .magenta
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
     }()
     
-
-//    var my: UserSearchController?
+    //    var my: UserSearchController?
     override init(frame: CGRect) {
-
+        
         super.init(frame: frame)
         setupCollectionView()
-         collectionView?.keyboardDismissMode = .onDrag
-//        my.searchBar.delegate = self
-//        my = UserSearchController()
-//        my?.searchBar.delegate = self
+        collectionView?.keyboardDismissMode = .onDrag
+        //        my.searchBar.delegate = self
+        //        my = UserSearchController()
+        //        my?.searchBar.delegate = self
     }
-
+    
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
@@ -100,8 +97,8 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.keyboardDismissMode = .onDrag
         let user = filteredUsers[indexPath.item]
-//        let videos = self.videos[indexPath.item]
-//        let thumbnails = self.thumbnails[indexPath.item]
+        //        let videos = self.videos[indexPath.item]
+        //        let thumbnails = self.thumbnails[indexPath.item]
         
         delegate?.searchControllerDidSelect(passedUser: user.uid)
         print("this is the user:",user)
@@ -109,7 +106,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-//        let numberOfUsers = UserSearchController.searchBar(users.count) //this would be nice but it doesn't let me it compiles an error with 'Instance member 'searchBar cannot be used on type 'UsersearchController' did you mean to use a value of this type instead?
+        //        let numberOfUsers = UserSearchController.searchBar(users.count) //this would be nice but it doesn't let me it compiles an error with 'Instance member 'searchBar cannot be used on type 'UsersearchController' did you mean to use a value of this type instead?
         return filteredUsers.count
     }
     
@@ -139,3 +136,4 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         fatalError("init(coder:) has not been implemented")
     }
 }
+

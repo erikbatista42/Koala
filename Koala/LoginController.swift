@@ -29,19 +29,19 @@ class LoginController: UIViewController {
     
     let dontHaveAnAccountButton: UIButton = {
         let yes = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         yes.setAttributedTitle(attributedTitle, for: .normal)
         
         
         
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
 
         
         yes.setTitle("Don't have an account? Sign Up", for: .normal)
         yes.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return yes
     }()
-    func handleShowSignUp() {
+    @objc func handleShowSignUp() {
         let signUpController = SignUpController()
         navigationController?.pushViewController(signUpController, animated: true)
     }
@@ -67,7 +67,7 @@ class LoginController: UIViewController {
         return tf
     }()
     
-    func handleTextInputChange() {
+    @objc func handleTextInputChange() {
         let isFormValid = emailTextField.text?.characters.count ?? 0 > 0 && passwordTextField.text?.characters.count ?? 0 > 0
         
         if isFormValid {
@@ -92,7 +92,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    func handleLogin() {
+    @objc func handleLogin() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, err) in

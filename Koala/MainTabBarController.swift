@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import Hero
+//import Hero
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     

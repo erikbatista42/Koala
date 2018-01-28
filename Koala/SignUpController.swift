@@ -38,7 +38,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         dismiss(animated: true, completion: nil)
     }
     
-    func handlePlusPhoto() {
+    @objc func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
@@ -54,7 +54,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
-    func handleTextInputChange() {
+    @objc func handleTextInputChange() {
         let isFormValid = emailTextField.text?.characters.count ?? 0 > 0 && usernameTextField.text?.characters.count ?? 0 > 0 && passwordTextField.text?.characters.count ?? 0 > 0
         
         if isFormValid {
@@ -101,7 +101,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         return button
     }()
-    func handleSignup() {
+    @objc func handleSignup() {
         guard let email = emailTextField.text, email.characters.count > 0 else { return }
         guard let username = usernameTextField.text, username.characters.count > 0 else { return }
         guard let password = passwordTextField.text, password.characters.count > 0 else { return }
@@ -154,12 +154,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     let alreadyHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         
         
-        attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
+        attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
         
         
         button.setTitle("Don't have an account? Sign Up", for: .normal)
@@ -167,7 +167,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         return button
     }()
     
-    func handleAlreadyHaveAnAccount() {
+    @objc func handleAlreadyHaveAnAccount() {
       _ =  navigationController?.popViewController(animated: true)
     }
 

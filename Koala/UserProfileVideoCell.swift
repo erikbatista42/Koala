@@ -51,9 +51,9 @@ class UserProfileVideoCell: UICollectionViewCell {
     let usernameLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
         
-        attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.lightGray]))
+        attributedText.append(NSAttributedString(string: "\n1 week ago", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray]))
         label.numberOfLines = 0
         label.attributedText = attributedText
         return label
@@ -74,7 +74,7 @@ class UserProfileVideoCell: UICollectionViewCell {
         return button
     }()
     
-    func handleLike() {
+    @objc func handleLike() {
         print("handle liked button tapped")
 //        delegate?.didLike(for: self)
     }
@@ -97,7 +97,7 @@ class UserProfileVideoCell: UICollectionViewCell {
     let timeLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "", attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)])
         
         label.attributedText = attributedText
         return label
@@ -145,7 +145,7 @@ class UserProfileVideoCell: UICollectionViewCell {
         guard let post = self.post else { return }
         
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
-        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName : UIColor.lightGray])
+        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor : UIColor.lightGray])
         
         timeLabel.attributedText = attributedText
         //        print("this is it:", timeLabel.attributedText?.string)

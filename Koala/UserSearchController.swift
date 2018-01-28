@@ -28,9 +28,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }()
     
     fileprivate func setupNavBarAndSearchBar() {
-        let cancelButtonAttributes: NSDictionary = [NSForegroundColorAttributeName: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [String : AnyObject], for: .normal)
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
+        let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [NSAttributedStringKey : AnyObject], for: .normal)
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
         
         let navBar = navigationController?.navigationBar
@@ -64,6 +64,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         return cv
     }()
     
+    //    let alarmCollectionView:UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    //    let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
@@ -76,13 +79,13 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchAllPost()
     }
     
-//    var posts = [Post]()
-//    fileprivate func fetchPosts() {
-//        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
-//        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
-//            self.fetchPostsWithUser(user: user)
-//        }
-//    }
+    //    var posts = [Post]()
+    //    fileprivate func fetchPosts() {
+    //        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
+    //        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+    //            self.fetchPostsWithUser(user: user)
+    //        }
+    //    }
     
     func handleUpdateFeed() {
         handleRefresh()
@@ -95,12 +98,12 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     fileprivate func fetchAllPost() {
-//        fetchPosts()
+        //        fetchPosts()
         fetchAllPostsFromUserIds()
     }
     
     fileprivate func fetchAllPostsFromUserIds() {
-//        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        //        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
         FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
             
             guard let userIdsDictionary = children.value as? [String: Any] else { return }
@@ -127,7 +130,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            self.collectionView?.refreshControl?.endRefreshing()
+            if #available(iOS 10.0, *) {
+                self.collectionView?.refreshControl?.endRefreshing()
+            } else {
+                // Fallback on earlier versions
+            }
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach({ (key,value) in
@@ -161,13 +168,14 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     func searchControllerDidSelect(passedUser: String) {
         self.searchBar.isHidden = true
+        
         searchBar.resignFirstResponder()
         
         let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
         
         userProfileController.userId = passedUser
-//        userProfileController.videos = [passedVideos]
-//        userProfileController.thumbnails = [passedThumbnail]
+        //        userProfileController.videos = [passedVideos]
+        //        userProfileController.thumbnails = [passedThumbnail]
         
         (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         
@@ -193,12 +201,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 print(user.uid, user.username)
             })
             self.collectionView?.reloadData()
-
         }) { (error) in
             print("failed to fetch users:", error)
         }
     }
-   
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText.isEmpty {
@@ -214,7 +221,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.isHidden = false
         searchUsersCV.updateUsersView(self.filteredUsers)
         
-        self.collectionView?.reloadData() 
+        self.collectionView?.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -233,19 +240,18 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         self.present(playerController, animated: true) {
             player.play()
         }
-
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("number of posts fetched: \(posts.count)")
         return posts.count
-//        return 8
+        //        return 8
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
-        cell.backgroundColor = .blue
-        
+        //        cell.backgroundColor = .blue
         cell.thumbnail = posts[indexPath.item]
         return cell
     }
@@ -262,5 +268,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-   
+    
 }
+

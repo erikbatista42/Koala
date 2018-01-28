@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+//Fetches username for posts
 extension FIRDatabase {
     static func fetchUserWithUid(uid: String, completion: @escaping (User) -> () ) {
                 FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in

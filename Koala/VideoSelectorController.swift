@@ -40,7 +40,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         return button
     }()
     
-    func shootADance() {
+    @objc func shootADance() {
                  if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
             if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
               
@@ -75,7 +75,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         return button
     }()
     
-    func handleUploadFromLibraryButton() {
+    @objc func handleUploadFromLibraryButton() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -207,5 +207,5 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
     }
-    func handleCancel() { dismiss(animated: true, completion: nil) }
+    @objc func handleCancel() { dismiss(animated: true, completion: nil) }
 }

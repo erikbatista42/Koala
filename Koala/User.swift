@@ -13,10 +13,13 @@ struct User {
     let username: String
     let profileImageUrl: String
     let videos: String
+    let numOfPosts: String
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.videos = dictionary["Videos"] as? String ?? ""
+        self.numOfPosts = dictionary["posts"] as? String ?? ""
     }
 }
+
