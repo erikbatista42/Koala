@@ -112,7 +112,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if #available(iOS 10.0, *) {
+            if #available(iOS 0.0, *) {
                 self.collectionView?.refreshControl?.endRefreshing()
             } else {
                 // Fallback on earlier versions
