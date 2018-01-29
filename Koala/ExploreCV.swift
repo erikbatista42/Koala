@@ -35,8 +35,16 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
         navBar?.barTintColor   = UIColor.rgb(red: 48, green: 73, blue: 119, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
 
+        dismissButton()
         
-        
+    }
+    
+    fileprivate func dismissButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss))
+    }
+    
+    @objc func handleDismiss() {
+        dismiss(animated: true, completion: nil)
     }
     
     func handleDone() {

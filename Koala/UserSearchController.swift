@@ -167,16 +167,16 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         self.searchBar.isHidden = true
         
         searchBar.resignFirstResponder()
-        
-        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-        
-        userProfileController.userId = passedUser
-        //        userProfileController.videos = [passedVideos]
-        //        userProfileController.thumbnails = [passedThumbnail]
-        
-        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-        
-        self.navigationController?.pushViewController(userProfileController, animated: true)
+        // FIX THIS
+//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+//
+//        userProfileController.userId = passedUser
+//        //        userProfileController.videos = [passedVideos]
+//        //        userProfileController.thumbnails = [passedThumbnail]
+//
+//        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+//
+//        self.navigationController?.pushViewController(userProfileController, animated: true)
     }
     
     var filteredUsers = [User]()

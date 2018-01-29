@@ -51,32 +51,23 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
         setupNavigationItems()
         fetchAllPost()
-        setupExploreButton()
+        setupBarButtons()
     }
-    fileprivate func setupExploreButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleExploreButton))
+    fileprivate func setupBarButtons() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleExploreButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSearchButton))
     }
     
     @objc func handleExploreButton() {
-
         let exploreCollectionView = ExploreCV()
         let navigationController = UINavigationController(rootViewController: exploreCollectionView)
-        
         present(navigationController, animated: true, completion: nil)
-        
-//        func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-//            let presentedViewController = ExploreCV()
-//
-//            let dismissButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: Selector(("dismissPopover:")))
-//
-//            presentedViewController.navigationItem.rightBarButtonItem = dismissButton
-//
-//            return navigationController
-//        }
-        
-//        func dismissPopover(sender: AnyObject) {
-//            self.dismiss(animated: true, completion: nil)
-//        }
+    }
+    
+    @objc func handleSearchButton() {
+        let exploreCollectionView = UserProfileController()
+//        let navigationController = UINavigationController(rootViewController: exploreCollectionView)
+        present(exploreCollectionView, animated: true, completion: nil)
     }
 
     @objc func handleUpdateFeed() {

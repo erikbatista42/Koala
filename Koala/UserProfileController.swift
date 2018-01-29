@@ -12,9 +12,12 @@ import AVKit
 import Firebase
 import MobileCoreServices
 
-class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout, editProfileAlertView {
+class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, editProfileAlertView {
     
     weak var delegate: editProfileAlertView?
+    
+    var myCollectionView: UICollectionView!
+    let layout = UICollectionViewFlowLayout()
     
     func showAlert() {
         print("hey yo you suck")
@@ -35,14 +38,24 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
         
         //        collectionView?.backgroundColor = .white
-        collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
-        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.backgroundColor = UIColor.white
-        collectionView?.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
+        
+        
+        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        myCollectionView.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
+        
+        myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
+//        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
+        myCollectionView.backgroundColor = UIColor.white
+        myCollectionView.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
         
         fetchUser()
         fetchOrderedPosts()
         setupLogOutButton()
+        
+        myCollectionView.delegate   = self
+        myCollectionView.dataSource = self
+        self.view.addSubview(myCollectionView)
     }
     
     var videos = [Post]()
@@ -63,7 +76,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.thumbnails.insert(thumbnail, at: 0)
             self.videos.insert(video, at: 0)
-            self.collectionView?.reloadData()
+//            self.collectionView?.reloadData()
+            self.myCollectionView.reloadData()
         }) { (error) in
             print("Failded to fetch ordered post:", error)
         }
@@ -98,7 +112,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         present(alertController, animated: true, completion: nil)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         cell.post = thumbnails[indexPath.item]
         cell.layer.masksToBounds = true
@@ -107,7 +121,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = videos[indexPath.item]
         guard let url = NSURL(string: links.videoUrl) else { return }
         let player = AVPlayer(url: url as URL)
@@ -128,7 +142,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return CGSize(width: view.frame.width - 27.5, height: height)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
         header.user = self.user
         return header
@@ -138,7 +152,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return CGSize(width: view.frame.width, height: 235)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("num of items")
         return videos.count
     }
@@ -161,9 +175,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username
-            
-            self.collectionView?.reloadData()
-            
+//            collectionView?.reloadData()
+            self.myCollectionView.reloadData()
             self.fetchOrderedPosts()
         }
     }

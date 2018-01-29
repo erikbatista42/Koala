@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         
         let index = viewControllers?.index(of: viewController)
-        if index == 2 {
+        if index == 1 {
             let videoSelectorController = VideoSelectorController()
             let navController = UINavigationController(rootViewController: videoSelectorController)
             present(navController, animated: true, completion: nil)
@@ -58,11 +58,11 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func setupViewControllers() {
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
-        homeNavController.tabBarItem.title = "Home"
+//        homeNavController.tabBarItem.title = "Home"
 
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
         
-        searchNavController.tabBarItem.title = "Explore"
+//        searchNavController.tabBarItem.title = "Explore"
 
         let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal))
 
@@ -70,21 +70,21 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         notificationsNavController.tabBarItem.title = "Activity"
         
         //user profile
-        let layout = UICollectionViewFlowLayout()
-        let userProfileController = UserProfileController(collectionViewLayout: layout)
-        
-        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
-        
-        userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
-        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
-        userProfileNavController.tabBarItem.title = "Profile"
-        
+//        let layout = UICollectionViewFlowLayout()
+//        let userProfileController = UserProfileController(collectionViewLayout: layout)
+//
+//        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
+//
+//        userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
+//        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
+//        userProfileNavController.tabBarItem.title = "Profile"
+//
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
         tabBar.tintColor = UIColor.white
         tabBar.barTintColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
         tabBar.isTranslucent = false
         
-        viewControllers = [homeNavController, searchNavController, recordNavController ,notificationsNavController,userProfileNavController]
+        viewControllers = [homeNavController, recordNavController, searchNavController]
         
         //modify tab bar items insets
         guard let items = tabBar.items else { return }
