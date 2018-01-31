@@ -44,6 +44,8 @@ class HomePostCell: UICollectionViewCell {
         let iv = CustomImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
+        iv.layer.borderWidth = 1
+        iv.layer.borderColor = UIColor.white.cgColor
         return iv
     }()
     
@@ -128,7 +130,7 @@ class HomePostCell: UICollectionViewCell {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black])
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white])
         label.attributedText = attributedText
         return label
     }()
@@ -143,7 +145,7 @@ class HomePostCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)
+        backgroundColor = .clear 
         addSubview(usernameButton)
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
@@ -151,13 +153,26 @@ class HomePostCell: UICollectionViewCell {
         addSubview(photoImageView)
         addSubview(timeLabel)
         
-        userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 100, paddingBottom: 0, paddingRight: 0, width: 35, height: 35)
+        self.contentView.layer.cornerRadius = 2.0
+        self.contentView.layer.borderWidth = 1.0
+        self.contentView.layer.borderColor = UIColor.clear.cgColor
+        self.contentView.layer.masksToBounds = true
+        
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOpacity = 1.0
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+        
+        
+        userProfileImageView.anchor(top: photoImageView.topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 35/2, height: 35/2)
         userProfileImageView.layer.cornerRadius = 35/2
         
-        usernameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+//        usernameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        photoImageView.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6).isActive = true
+        photoImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+//        photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6).isActive = true
         
         setupBottomCellButtonsAndLabels()
         
@@ -171,44 +186,45 @@ class HomePostCell: UICollectionViewCell {
     func setupTimeLabel() {
         guard let post = self.post else { return }
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
-        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor : UIColor.black])
+        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor : UIColor.white])
         timeLabel.attributedText = attributedText
     }
     
-    let stackViewBorders: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10.0
-        view.layer.borderWidth = 1.0
-        view.layer.borderColor = UIColor.black.cgColor
-        return view
-    }()
+//    let stackViewBorders: UIView = {
+//        let view = UIView()
+//        view.layer.cornerRadius = 10.0
+//        view.layer.borderWidth = 1.0
+//        view.layer.borderColor = UIColor.black.cgColor
+//        return view
+//    }()
     
     fileprivate func setupBottomCellButtonsAndLabels() {
-        let timeAndOptionsStackView = UIStackView(arrangedSubviews: [timeLabel]) //[timeLabel,optionsButton])
+        let timeAndOptionsStackView = UIStackView(arrangedSubviews: [timeLabel, userProfileImageView]) //[timeLabel,optionsButton])
         timeAndOptionsStackView.distribution = .fillEqually
+        timeAndOptionsStackView.spacing = 10
         addSubview(timeAndOptionsStackView)
-        timeAndOptionsStackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 3, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 49, height: 40)
-        
-        addSubview(shareButton)
-        shareButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom:  nil, right: rightAnchor, paddingTop: 0, paddingLeft: 100, paddingBottom: 0, paddingRight: 92, width: 40, height: 50)
-        
-        addSubview(stackViewBorders)
-        stackViewBorders.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 80, height: 30)
-        
-        let likeButtonAndLikesLabelStackView = UIStackView(arrangedSubviews: [likesLabel,likeButton])
-        likeButtonAndLikesLabelStackView.distribution = .fillEqually
-        likeButtonAndLikesLabelStackView.backgroundColor = UIColor.magenta
-        addSubview(likeButtonAndLikesLabelStackView)
-        
-        likeButtonAndLikesLabelStackView.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 50, height: 40)
+        timeAndOptionsStackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 25, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 75, height: 35)
+
+//        addSubview(shareButton)
+//        shareButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom:  nil, right: rightAnchor, paddingTop: 0, paddingLeft: 100, paddingBottom: 0, paddingRight: 92, width: 40, height: 50)
+//
+//        addSubview(stackViewBorders)
+//        stackViewBorders.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 80, height: 30)
+//
+//        let likeButtonAndLikesLabelStackView = UIStackView(arrangedSubviews: [likesLabel,likeButton])
+//        likeButtonAndLikesLabelStackView.distribution = .fillEqually
+//        likeButtonAndLikesLabelStackView.backgroundColor = UIColor.magenta
+//        addSubview(likeButtonAndLikesLabelStackView)
+//
+//        likeButtonAndLikesLabelStackView.anchor(top: photoImageView.bottomAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 3, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 50, height: 40)
     }
     
-    func setupUsernameAndProfileImage() {
-        let stackView = UIStackView(arrangedSubviews: [userProfileImageView,usernameLabel])
-        stackView.distribution = .fillEqually
-        addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
-    }
+//    func setupTimeLabelAndProfileImage() {
+//        let stackView = UIStackView(arrangedSubviews: [timeLabel,userProfileImageView])
+//        stackView.distribution = .fillEqually
+//        addSubview(stackView)
+//        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

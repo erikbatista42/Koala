@@ -67,7 +67,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = .magenta
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
@@ -168,15 +168,15 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         searchBar.resignFirstResponder()
         // FIX THIS
-//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-//
-//        userProfileController.userId = passedUser
-//        //        userProfileController.videos = [passedVideos]
-//        //        userProfileController.thumbnails = [passedThumbnail]
-//
-//        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-//
-//        self.navigationController?.pushViewController(userProfileController, animated: true)
+        let userProfileController = UserProfileController(nibName:nil, bundle:nil)
+
+        userProfileController.userId = passedUser
+        //        userProfileController.videos = [passedVideos]
+        //        userProfileController.thumbnails = [passedThumbnail]
+
+        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+
+        self.navigationController?.pushViewController(userProfileController, animated: true)
     }
     
     var filteredUsers = [User]()
@@ -248,8 +248,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
-        //        cell.backgroundColor = .blue
         cell.thumbnail = posts[indexPath.item]
+        
+        // Makes cell corners round
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 17
         return cell
     }
     
