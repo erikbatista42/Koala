@@ -30,7 +30,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     fileprivate func setupNavBarAndSearchBar() {
         let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [NSAttributedStringKey : AnyObject], for: .normal)
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
+        navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.isTranslucent = false
         
         let navBar = navigationController?.navigationBar
@@ -67,7 +67,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
-        collectionView?.backgroundColor = .magenta
+        collectionView?.backgroundColor = .white
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
@@ -252,7 +252,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         
         // Makes cell corners round
         cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 17
+        cell.layer.cornerRadius = 15
         return cell
     }
     

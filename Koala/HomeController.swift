@@ -36,7 +36,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         UIApplication.shared.statusBarStyle = .lightContent
         //        collectionView?.backgroundColor = .white
 //        collectionView?.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
-            collectionView?.backgroundColor = .magenta
+            collectionView?.backgroundColor = .black
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -55,7 +55,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupBarButtons()
     }
     fileprivate func setupBarButtons() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSearchButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "profile_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleUserProfileButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShareButton))
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleShareButton))
     }
@@ -73,10 +73,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         present(activityViewController, animated: true, completion: nil)
     }
     
-    @objc func handleSearchButton() {
-        let exploreCollectionView = UserProfileController()
-        let exloreNavigationController = UINavigationController(rootViewController: exploreCollectionView)
-        present(exloreNavigationController, animated: true, completion: nil)
+    @objc func handleUserProfileButton() {
+        let userProfileController = UserProfileController(nibName:nil, bundle:nil)
+        
+        (ExploreCV() as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+
+        self.navigationController?.pushViewController(userProfileController, animated: true)
     }
 
     @objc func handleUpdateFeed() {
@@ -160,7 +162,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 208, green: 2, blue: 27, alpha: 1)
         
         navigationController?.navigationBar.isTranslucent = true
-        let navBarImage = UIImage(named: "Bitmap.png")
+        let navBarImage = UIImage(named: "blurbg.png")
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(navBarImage, for: .default)
         navigationController?.view.backgroundColor = .clear

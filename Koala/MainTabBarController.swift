@@ -57,14 +57,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
        }
     
     func setupViewControllers() {
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "homeicon8"), selectedImage: #imageLiteral(resourceName: "homeicon8"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
 //        homeNavController.tabBarItem.title = "Home"
 
-        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "explore"), selectedImage: #imageLiteral(resourceName: "explore"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
         
 //        searchNavController.tabBarItem.title = "Explore"
 
-        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addButton").withRenderingMode(.alwaysOriginal))
+        let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addicon8").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addicon8").withRenderingMode(.alwaysOriginal))
 
         let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "notifications_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "notifications_selected").withRenderingMode(.alwaysOriginal), rootViewController: ActivityTVC())
         notificationsNavController.tabBarItem.title = "Activity"
@@ -80,8 +80,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 //        userProfileNavController.tabBarItem.title = "Profile"
 //
         //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
-        tabBar.tintColor = UIColor.white
-        tabBar.barTintColor = UIColor.rgb(red: 47, green: 72, blue: 121, alpha: 1)
+        tabBar.tintColor = UIColor.black
+        tabBar.barTintColor = UIColor.white
         tabBar.isTranslucent = false
         
         viewControllers = [homeNavController, recordNavController, searchNavController]

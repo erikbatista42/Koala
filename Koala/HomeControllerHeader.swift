@@ -36,7 +36,7 @@ class HomeControllerHeader: UICollectionViewCell {
         button.backgroundColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(handleSearchButton), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(handleUserProfileButton), for: .touchUpInside)
         return button
     }()
     
