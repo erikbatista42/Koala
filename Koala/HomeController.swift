@@ -272,8 +272,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         present(activityViewController, animated: true, completion: nil)
     }
     
-    var avPlayerViewController = AVPlayerViewController()
+    var avPlayerViewController = VideoPlayerViewController()
+    
     var avPlayer = AVPlayer()
+    var playerLayer: AVPlayerLayer!
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
         guard let url = NSURL(string: links.videoUrl) else { return }
@@ -284,6 +287,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             player.play()
         }
     }
+    
+
 //
 //    func didLike(for cell: HomePostCell) {
 //

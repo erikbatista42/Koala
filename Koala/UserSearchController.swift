@@ -17,6 +17,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     let cellId = "cellId"
     
     
+    
+    
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search"
@@ -74,6 +76,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchUsers()
         searchUsersCV.delegate = self
         fetchAllPost()
+        UIApplication.shared.statusBarStyle = .default
     }
     
     //    var posts = [Post]()
