@@ -32,10 +32,10 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
+        UIApplication.shared.statusBarStyle = .default
+        navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.black]
         
         //        collectionView?.backgroundColor = .white
         

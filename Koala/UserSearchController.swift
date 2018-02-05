@@ -15,10 +15,7 @@ import AVKit
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, GetUserSearchControllerDelegate {
     
     let cellId = "cellId"
-    
-    
-    
-    
+ 
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search"
@@ -30,7 +27,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }()
     
     fileprivate func setupNavBarAndSearchBar() {
-        let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.black]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [NSAttributedStringKey : AnyObject], for: .normal)
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.isTranslucent = false

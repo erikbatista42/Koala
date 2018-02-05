@@ -57,7 +57,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
        }
     
     func setupViewControllers() {
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "homeicon8"), selectedImage: #imageLiteral(resourceName: "homeicon8"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_selected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
 //        homeNavController.tabBarItem.title = "Home"
 
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "explore"), selectedImage: #imageLiteral(resourceName: "explore"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
@@ -79,9 +79,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 //        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
 //        userProfileNavController.tabBarItem.title = "Profile"
 //
-        //        tabBar.tintColor = UIColor.rgb(red: 160, green: 160, blue: 160, alpha: 1)
-        tabBar.tintColor = UIColor.black
-        tabBar.barTintColor = UIColor.white
+        tabBar.tintColor = .white
+//        tabBar.tintColor = UIColor.rgb(red: 118, green: 133, blue: 182, alpha: 1)
+        tabBar.barTintColor = UIColor.rgb(red: 28, green: 34, blue: 55, alpha: 1)
         tabBar.isTranslucent = false
         
         viewControllers = [homeNavController, recordNavController, searchNavController]

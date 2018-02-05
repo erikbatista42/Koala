@@ -33,7 +33,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         super.viewDidLoad()
         
         //        NotificationCenter.default.addObserver(self, selector: #selector(reload(likesLabelNotification:homePostCellNotification:)), name: NSNotification.Name(rawValue: "homePostCellRawValue"), object: nil)
-        UIApplication.shared.statusBarStyle = .lightContent
+        
         //        collectionView?.backgroundColor = .white
 //        collectionView?.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
             collectionView?.backgroundColor = .black
@@ -158,14 +158,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupNavigationItems() {
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 208, green: 2, blue: 27, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
         
         navigationController?.navigationBar.isTranslucent = true
-        let navBarImage = UIImage(named: "blurbg.png")
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(navBarImage, for: .default)
-        navigationController?.view.backgroundColor = .clear
+//        let navBarImage = UIImage(named: "blurbg.png")
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(navBarImage, for: .default)
+//        navigationController?.view.backgroundColor = .clear
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
