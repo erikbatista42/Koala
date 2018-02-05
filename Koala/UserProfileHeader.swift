@@ -46,8 +46,8 @@ class UserProfileHeader: UICollectionViewCell {
             print(snapshot.childrenCount)
             let numOfChildrens = snapshot.childrenCount
             
-            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-            attributedText.append(NSAttributedString(string: "\n following", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+            attributedText.append(NSAttributedString(string: "\n following", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
             self.followingLabel.attributedText = attributedText
             self.followingLabel.textAlignment = .center
             self.followingLabel.numberOfLines = 0
@@ -63,8 +63,8 @@ class UserProfileHeader: UICollectionViewCell {
             print(snapshot.childrenCount)
             let numOfChildrens = snapshot.childrenCount
             
-            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-            attributedText.append(NSAttributedString(string: "\n followers", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+            attributedText.append(NSAttributedString(string: "\n fans", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
             self.followersLabel.attributedText = attributedText
             self.followersLabel.textAlignment = .center
             self.followersLabel.numberOfLines = 0
@@ -72,7 +72,7 @@ class UserProfileHeader: UICollectionViewCell {
             print("failed to fetch num of posts: ",error)
         })
         
-        // Number of vloggies label
+        // Number of videos label
         let numOfPostsRef = FIRDatabase.database().reference().child("posts").child(uid)
         
         numOfPostsRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
@@ -80,8 +80,8 @@ class UserProfileHeader: UICollectionViewCell {
             print(snapshot.childrenCount)
             let numOfChildrens = snapshot.childrenCount
             
-            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-            attributedText.append(NSAttributedString(string: "\n vloggies", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+            let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+            attributedText.append(NSAttributedString(string: "\n videos", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
             self.vloggiesLabel.attributedText = attributedText
             self.vloggiesLabel.textAlignment = .center
             self.vloggiesLabel.numberOfLines = 0
@@ -186,7 +186,7 @@ class UserProfileHeader: UICollectionViewCell {
     let profileImageView: CustomImageView = {
         let iv = CustomImageView()
         iv.layer.borderWidth = 1
-        iv.layer.borderColor = UIColor.white.cgColor
+        iv.layer.borderColor = UIColor.rgb(red: 44, green: 53, blue: 151, alpha: 1).cgColor
         return iv
     }()
     
@@ -194,15 +194,15 @@ class UserProfileHeader: UICollectionViewCell {
         let label = UILabel()
         //        label.text = "@username"
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.darkGray
+        label.textColor = UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1)
         return label
     }()
     
     let vloggiesLabel: UILabel = {
         //Fetch num of posts
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-        attributedText.append(NSAttributedString(string: "\n vloggies", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+        attributedText.append(NSAttributedString(string: "\n vloggies", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -211,9 +211,8 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-        attributedText.append(NSAttributedString(string: "\n followers", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
-        label.attributedText = attributedText
+        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+        attributedText.append(NSAttributedString(string: "\n fans", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -222,8 +221,8 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
-        attributedText.append(NSAttributedString(string: "\n following", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+        let attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
+        attributedText.append(NSAttributedString(string: "\n following", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 171, green: 185, blue: 199, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -249,7 +248,7 @@ class UserProfileHeader: UICollectionViewCell {
         
         //        backgroundColor = UIColor.rgb(red: 27, green: 52, blue: 100, alpha: 1)
         //        backgroundColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1) // red
-        backgroundColor = .white
+        backgroundColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
         //        backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1) // Type of gray
         
         addSubview(profileImageView)

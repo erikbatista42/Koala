@@ -27,9 +27,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }()
     
     fileprivate func setupNavBarAndSearchBar() {
-        let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        let cancelButtonAttributes: NSDictionary = [NSAttributedStringKey.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as? [NSAttributedStringKey : AnyObject], for: .normal)
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
         navigationController?.navigationBar.isTranslucent = false
         
         let navBar = navigationController?.navigationBar
@@ -73,7 +73,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchUsers()
         searchUsersCV.delegate = self
         fetchAllPost()
-        UIApplication.shared.statusBarStyle = .default
+        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     //    var posts = [Post]()
