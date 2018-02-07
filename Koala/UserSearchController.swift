@@ -66,7 +66,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
@@ -258,7 +258,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 2
-        return CGSize(width: width, height: 350)
+        return CGSize(width: width, height: 325)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

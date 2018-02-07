@@ -134,6 +134,8 @@ class UserProfileHeader: UICollectionViewCell {
                 self.setupFollowStyle()
             })
             
+            self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
+            
             //followers
             let followersRef = FIRDatabase.database().reference().child("followers").child(userId).child(currentUserId)
             followersRef.removeValue(completionBlock: { (err, followersRef) in
@@ -159,7 +161,7 @@ class UserProfileHeader: UICollectionViewCell {
                 }
                 print("successfully followed user:", self.user?.username ?? "")
                 self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
-                self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
+                self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
                 self.editProfileFollowButton.setTitleColor(.white, for: .normal)
             }
             
@@ -178,9 +180,11 @@ class UserProfileHeader: UICollectionViewCell {
     
     fileprivate func setupFollowStyle() {
         self.editProfileFollowButton.setTitle("Follow", for: .normal)
-        self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 211, green: 211, blue: 211, alpha: 1)
-        self.editProfileFollowButton.setTitleColor(UIColor.darkGray, for: .normal)
-        self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+        self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
+        self.editProfileFollowButton.setTitleColor(UIColor.white, for: .normal)
+        self.editProfileFollowButton.layer.borderColor = UIColor.white.cgColor
+        self.editProfileFollowButton.layer.borderWidth = 1
+        
     }
     
     let profileImageView: CustomImageView = {
@@ -236,7 +240,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.titleLabel?.font = UIFont(name: "Avenir", size: 14)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.backgroundColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 28, green: 34, blue: 55, alpha: 1)
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(handleEditProfileOrFollow), for: .touchUpInside)

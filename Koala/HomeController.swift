@@ -36,7 +36,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         UIApplication.shared.statusBarStyle = .lightContent
         //        collectionView?.backgroundColor = .white
 //        collectionView?.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
-            collectionView?.backgroundColor = .black
+            collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -55,6 +55,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setupBarButtons()
     }
     fileprivate func setupBarButtons() {
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "profile_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleUserProfileButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShareButton))
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleShareButton))
@@ -198,7 +199,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 2
-        return CGSize(width: width, height: 350)
+        return CGSize(width: width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

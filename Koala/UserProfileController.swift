@@ -46,7 +46,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         
         myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
 //        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        myCollectionView.backgroundColor = UIColor.white
+        myCollectionView.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
 //        myCollectionView.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
         
         fetchUser()
@@ -88,10 +88,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         present(alertController, animated: true, completion: nil)
     }
     
-    //    func fetchFollowing() {
-    //
-    //    }
-    
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
     }
@@ -115,9 +111,8 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         cell.post = thumbnails[indexPath.item]
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 17
-//        cell.delegate = self as? UserProfileCellDelegate
+//        cell.layer.masksToBounds = true
+//        cell.layer.cornerRadius = 17
         return cell
     }
     
@@ -136,11 +131,11 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     //        return CGSize(width: width, height: 189)
     //    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("size for item at")
-        let height: CGFloat = 310 // username + userProfileImageView
-        return CGSize(width: view.frame.width - 27.5, height: height)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        print("size for item at")
+//        let height: CGFloat = 310 // username + userProfileImageView
+//        return CGSize(width: view.frame.width - 27.5, height: height)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
@@ -153,29 +148,29 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("num of items")
         return videos.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        print("minimum line spacing")
-        return 20
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 2) / 3
+        return CGSize(width: width, height: 189)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        print("minimum interit item spacing for section at")
-        return 5
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
     
     var user: User?
     
     fileprivate func fetchUser() {
         let uid = userId ?? (FIRAuth.auth()?.currentUser?.uid ?? "")
-        
         FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username
-//            collectionView?.reloadData()
             self.myCollectionView.reloadData()
             self.fetchOrderedPosts()
         }
