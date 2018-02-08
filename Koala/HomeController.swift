@@ -18,6 +18,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var user: User? {
         didSet {
+//            guard let profileImageUrl = user?.profileImageUrl else { return }
+//            profileImageView.loadImage(UrlString: profileImageUrl)
             
             //            usernameLabel.text = "@\(user?.username ?? "")"
             //            guard let numOfPosts = user?.numOfPosts else { return }
@@ -43,6 +45,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(HomeControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HomeControllerHeaderId")
         
         let refreshControll = UIRefreshControl()
+        
         refreshControll.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         
         if #available(iOS 10.0, *) {
@@ -54,9 +57,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchAllPost()
         setupBarButtons()
     }
+    
+    let profileImageView: CustomImageView = {
+        let iv = CustomImageView()
+        iv.layer.borderWidth = 1
+        iv.layer.borderColor = UIColor.rgb(red: 44, green: 53, blue: 151, alpha: 1).cgColor
+        iv.backgroundColor = .magenta
+        return iv
+    }()
+    
+    let profileBUtton: UIButton = {
+       let bi = UIButton(type: .system)
+        bi.backgroundColor = .magenta
+        bi.titleLabel?.text = "pro"
+        return bi
+    }()
+
+    
     fileprivate func setupBarButtons() {
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "profile_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleUserProfileButton))
+//        view.addSubview(<#T##view: UIView##UIView#>)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
+        print("PRofile image view\(profileImageView.image)")
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: profileImageView.image, style: .plain, target: self, action: #selector(handleUserProfileButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShareButton))
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleShareButton))
     }
@@ -123,9 +145,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
+             self.posts.removeAll()
             if #available(iOS 0.0, *) {
+               
+                
                 self.collectionView?.refreshControl?.endRefreshing()
+                self.collectionView?.refreshControl?.tintColor = .white
             } else {
                 // Fallback on earlier versions
             }
@@ -148,7 +173,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     self.posts.sort(by: { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
+                    
                     self.collectionView?.reloadData()
+                    
                 }, withCancel: { (err) in
                     print("Failed to fetch info for post", err)
                 })
