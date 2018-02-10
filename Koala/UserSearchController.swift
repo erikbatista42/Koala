@@ -173,9 +173,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         userProfileController.userId = passedUser
         //        userProfileController.videos = [passedVideos]
         //        userProfileController.thumbnails = [passedThumbnail]
-
         (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-
         self.navigationController?.pushViewController(userProfileController, animated: true)
     }
     
