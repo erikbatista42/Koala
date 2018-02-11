@@ -28,7 +28,6 @@ class UserProfileHeader: UICollectionViewCell {
             
             guard let numOfPosts = user?.numOfPosts else { return }
             vloggiesLabel.text = "\(numOfPosts)"
-            print("this is the number of posts: \(numOfPosts)")
             
             setupEditFollowButton()
             //            followingLabel.text = user?.videos

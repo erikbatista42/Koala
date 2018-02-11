@@ -15,29 +15,21 @@ import AVKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var hpc: HomePostCell!
+    var userId: String?
     
     var user: User? {
         didSet {
 //            guard let profileImageUrl = user?.profileImageUrl else { return }
 //            profileImageView.loadImage(UrlString: profileImageUrl)
-            
-            //            usernameLabel.text = "@\(user?.username ?? "")"
-            //            guard let numOfPosts = user?.numOfPosts else { return }
-            //            vloggiesLabel.text = "\(numOfPosts)"
-            //            print("this is the number of posts: \(numOfPosts)")
-            //nothing here
         }
     }
+    
     
     let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        NotificationCenter.default.addObserver(self, selector: #selector(reload(likesLabelNotification:homePostCellNotification:)), name: NSNotification.Name(rawValue: "homePostCellRawValue"), object: nil)
         UIApplication.shared.statusBarStyle = .lightContent
-        //        collectionView?.backgroundColor = .white
-//        collectionView?.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
             collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
@@ -62,18 +54,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let iv = CustomImageView()
         iv.layer.borderWidth = 1
         iv.layer.borderColor = UIColor.rgb(red: 44, green: 53, blue: 151, alpha: 1).cgColor
-        iv.backgroundColor = .magenta
         return iv
     }()
     
     lazy var profileButton: UIButton = {
        let button = UIButton(type: .custom)
-        button.backgroundColor = .blue
-        button.layer.borderWidth = 2.0
+        button.frame.size = CGSize(width: 30, height: 30)
+        button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = 15
         button.clipsToBounds = true
-        let image = UIImage(named: "gear.png")
+        let image = profileImageView.image
         button.setBackgroundImage(image, for: .normal)
         button.addTarget(self, action: #selector(profileButtonPressed), for: .touchUpInside)
         return button
@@ -81,25 +72,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     @objc func profileButtonPressed() {
         print(123)
+        print("thisss",profileImageView.image ?? "")
+        print("user:", user?.username as Any)
     }
-    
-    let buttonView: UIView = {
-        let bv = UIView()
-        bv.backgroundColor = .magenta
-        return bv
-    }()
 
     
     fileprivate func setupBarButtons() {
-//        view.addSubview(<#T##view: UIView##UIView#>)
-        let leftBarBtn = UIBarButtonItem.init(customView: profileButton)
-        navigationItem.leftBarButtonItem = leftBarBtn
-//        buttonView.addSubview(profileButton)
-//        buttonView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 90, height: 30)
-//        print("PRofile image view\(profileImageView.image)")
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: profileImageView.image, style: .plain, target: self, action: #selector(handleUserProfileButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "profile_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleUserProfileButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShareButton))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleShareButton))
     }
     
     lazy var shareButton: UIButton = {
@@ -111,7 +91,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     @objc func handleShareButton() {
         let activityViewController = UIActivityViewController(
-            activityItems: ["Check out this video I found called Koala"],applicationActivities: nil)
+            activityItems: ["Check out this app I found called Koala"],applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -209,24 +189,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func setupNavigationItems() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
-        
         navigationController?.navigationBar.isTranslucent = false
-//        let navBarImage = UIImage(named: "blurbg.png")
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.setBackgroundImage(navBarImage, for: .default)
-//        navigationController?.view.backgroundColor = .clear
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height: CGFloat = 310 // username + userProfileImageView
-//        return CGSize(width: view.frame.width - 27.5, height: height)
-//    }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 2
@@ -236,8 +204,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
@@ -250,68 +216,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         //        self.hpc = cell
-        
-        //        NotificationCenter.default.addObserver(self, selector: #selector(reload(likesLabelNotification:)), name: NSNotification.Name(rawValue: "refresh"), object: nil)
-        
         cell.post = posts[indexPath.item]
-        //        cell.delegate = self
-        
-        // Makes cell corners round
-        //        cell.layer.masksToBounds = true
-        //        cell.layer.cornerRadius = 17
         return cell
     } 
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
-//    }
-    
-    
-    
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    //        return CGSize(width: view.frame.width, height: 5)
-    //    }
-    //
-    //    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    //        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeControllerHeaderId", for: indexPath) as! HomeControllerHeader
-    //
-    //        return header
-    //    }
-    
-//    @objc func reload(likesLabelNotification: Notification) {
-    
-        //        guard let likesLabel = likesLabelNotification.userInfo?["likesLabelInfo"] as? UILabel else { return }
-        //        guard let indexPath = collectionView?.indexPath(for: hpc) else { return }
-        //
-        //        let post = self.posts[indexPath.item]
-        //        guard let postId = post.id else { return }
-        //        let postUserId = post.user.uid
-        //
-        ////        guard let uid = self.user?.uid else { return }
-        //        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        //
-        //        let numOfLikesRef = FIRDatabase.database().reference().child("likes").child(postId)
-        //
-        //        numOfLikesRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-        //            likesLabel.isHidden = false
-        //
-        //            let numOfChildrens = snapshot.childrenCount
-        //            likesLabel.text = "\(numOfChildrens)"
-        //            print("Snapshot:", snapshot)
-        //            print("childrens: ", numOfChildrens)
-        //            print("post user:", postUserId)
-        //            print("self user uid: ", uid)
-        //        }, withCancel: { (error) in
-        //            print("failed to fetch num of posts: ",error)
-        //        })
-        //        self.posts[indexPath.item] = post
-        //
-        //        self.collectionView?.reloadData()
-//    }
+
     
     func didPressShareButton(for cell: HomePostCell) {
         
