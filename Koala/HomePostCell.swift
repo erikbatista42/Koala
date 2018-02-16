@@ -166,8 +166,8 @@ class HomePostCell: UICollectionViewCell {
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         
         
-        userProfileImageView.anchor(top: photoImageView.topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 35/2, height: 35/2)
-        userProfileImageView.layer.cornerRadius = 35/2
+        userProfileImageView.anchor(top: photoImageView.topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 30/2, height: 30/2)
+        userProfileImageView.layer.cornerRadius = 30/2
         
 //        usernameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: photoImageView.topAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
@@ -199,12 +199,14 @@ class HomePostCell: UICollectionViewCell {
 //    }()
     
     fileprivate func setupBottomCellButtonsAndLabels() {
-        let timeAndOptionsStackView = UIStackView(arrangedSubviews: [timeLabel, userProfileImageView]) //[timeLabel,optionsButton])
+        let timeAndOptionsStackView = UIStackView(arrangedSubviews: [userProfileImageView]) //[timeLabel,optionsButton])
         timeAndOptionsStackView.distribution = .fillEqually
         timeAndOptionsStackView.spacing = 10
         addSubview(timeAndOptionsStackView)
-        timeAndOptionsStackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 25, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 75, height: 35)
+        timeAndOptionsStackView.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 25, paddingLeft: 0, paddingBottom: -8, paddingRight: 8, width: 30, height: 30)
 
+        addSubview(timeLabel)
+        timeLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
 //        addSubview(shareButton)
 //        shareButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom:  nil, right: rightAnchor, paddingTop: 0, paddingLeft: 100, paddingBottom: 0, paddingRight: 92, width: 40, height: 50)
 //
