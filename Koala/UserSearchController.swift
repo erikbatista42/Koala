@@ -75,7 +75,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         fetchAllPost()
         UIApplication.shared.statusBarStyle = .lightContent
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
-
+        collectionView?.showsHorizontalScrollIndicator = false
+        collectionView?.showsVerticalScrollIndicator = false
     }
     
     //    var posts = [Post]()
