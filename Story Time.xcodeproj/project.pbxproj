@@ -21,6 +21,7 @@
 		FE15DBEF203867D3005215E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */; };
 		FE219CFA20388616008166C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE219CF920388616008166C3 /* Assets.xcassets */; };
 		FE219D0220388DA8008166C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE219D0020388DA8008166C3 /* Main.storyboard */; };
+		FE219D042038AF03008166C3 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE219D032038AF03008166C3 /* MessageComposer.swift */; };
 		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
 		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
 		FE66A9F72022BD6D00B193A8 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE66A9F62022BD6D00B193A8 /* VideoPlayerViewController.swift */; };
@@ -65,6 +66,7 @@
 		FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FE219CF920388616008166C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE219D0120388DA8008166C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Downloads/InstagramFirebase/ios/InstagramFirebase/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE219D032038AF03008166C3 /* MessageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		FE66A9F62022BD6D00B193A8 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		E77CD5E01F0EDF9300BEDCBC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FE219D032038AF03008166C3 /* MessageComposer.swift */,
 				FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */,
 				FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */,
 			);
@@ -486,6 +489,7 @@
 				FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */,
 				E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */,
 				FE66A9F72022BD6D00B193A8 /* VideoPlayerViewController.swift in Sources */,
+				FE219D042038AF03008166C3 /* MessageComposer.swift in Sources */,
 				E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */,
 				FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */,
 			);
