@@ -43,6 +43,7 @@
 		FEBB7C4C201D73D700ACD87A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C4B201D73D700ACD87A /* Date.swift */; };
 		FEBB7C4E201D73E100ACD87A /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C4D201D73E100ACD87A /* RGB.swift */; };
 		FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEF5F0601F390D3600B8A501 /* Docs.strings */; };
+		FEF786802037B7AF00C4B570 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF7867F2037B7AF00C4B570 /* PinterestLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		FEBB7C4B201D73D700ACD87A /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FEBB7C4D201D73E100ACD87A /* RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		FEF5F0601F390D3600B8A501 /* Docs.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Docs.strings; sourceTree = "<group>"; };
+		FEF7867F2037B7AF00C4B570 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				FEA9F2D31F51F1010022A939 /* UserSearchController.swift */,
 				FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */,
 				FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */,
+				FEF7867F2037B7AF00C4B570 /* PinterestLayout.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */,
 				E7C5561C1F1032EB00867FFA /* UserProfileHeader.swift in Sources */,
 				FE717A1E1F6A2D8300C16B09 /* ActivityTVC.swift in Sources */,
+				FEF786802037B7AF00C4B570 /* PinterestLayout.swift in Sources */,
 				FEBB7C4A201D73CD00ACD87A /* Constraints.swift in Sources */,
 				E7C556191F0F2A7A00867FFA /* UserProfileController.swift in Sources */,
 				FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */,

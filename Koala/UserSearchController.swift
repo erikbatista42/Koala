@@ -74,6 +74,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.delegate = self
         fetchAllPost()
         UIApplication.shared.statusBarStyle = .lightContent
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+
     }
     
     //    var posts = [Post]()
@@ -251,20 +253,26 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         // Makes cell corners round
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 15
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 2
+        let width = (view.frame.width - 2.1) / 2.1
         return CGSize(width: width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
     
+    
+    func random(maximum: UInt32, minimum: CGFloat = 0) -> CGFloat {
+        return max(CGFloat(arc4random_uniform(maximum)), minimum)
+    }
 }
+
