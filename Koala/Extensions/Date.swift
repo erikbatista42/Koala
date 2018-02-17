@@ -23,22 +23,22 @@ extension Date {
         let unit: String
         if secondsAgo < minute {
             quotient = secondsAgo
-            unit = "s"
+            unit = " just now"
         } else if secondsAgo < hour {
             quotient = secondsAgo / minute
-            unit = "m"
+            unit = " minutes ago"
         } else if secondsAgo < day {
             quotient = secondsAgo / hour
-            unit = "h"
+            unit = " hours ago"
         } else if secondsAgo < week {
             quotient = secondsAgo / day
-            unit = "d"
+            unit = " days ago"
         } else if secondsAgo < month {
             quotient = secondsAgo / week
-            unit = "w"
+            unit = " weeks ago"
         } else {
             quotient = secondsAgo / month
-            unit = "m"
+            unit = " months ago"
         }
         
         return "\(quotient)\(unit)\(quotient == 1 ? "" : "")"

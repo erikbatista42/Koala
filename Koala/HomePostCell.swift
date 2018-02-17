@@ -201,7 +201,7 @@ class HomePostCell: UICollectionViewCell {
     func setupTimeLabel() {
         guard let post = self.post else { return }
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
-        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor : UIColor.white])
+        let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor : UIColor.white])
         timeLabel.attributedText = attributedText
     }
     
@@ -221,7 +221,7 @@ class HomePostCell: UICollectionViewCell {
         timeAndOptionsStackView.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 25, paddingLeft: 0, paddingBottom: -8, paddingRight: 8, width: 30, height: 30)
 
         addSubview(timeLabel)
-        timeLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        timeLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 150, height: 50)
 //        addSubview(shareButton)
 //        shareButton.anchor(top: photoImageView.bottomAnchor, left: nil, bottom:  nil, right: rightAnchor, paddingTop: 0, paddingLeft: 100, paddingBottom: 0, paddingRight: 92, width: 40, height: 50)
 //
