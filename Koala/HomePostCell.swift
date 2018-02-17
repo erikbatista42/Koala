@@ -143,6 +143,19 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
+    let blurView: UIView = {
+        let view = UIView()
+//        view.layer.masksToBounds = false
+//        view.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        view.layer.shadowOpacity = 0.5
+//        view.layer.shadowRadius = 1
+       
+//        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//        view.backgroundColor = .black
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "blurbg.png")!)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear 
@@ -152,6 +165,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(optionsButton)
         addSubview(photoImageView)
         addSubview(timeLabel)
+        addSubview(blurView)
         
         self.contentView.layer.cornerRadius = 2.0
         self.contentView.layer.borderWidth = 1.0
@@ -159,12 +173,13 @@ class HomePostCell: UICollectionViewCell {
         self.contentView.layer.masksToBounds = true
         
 //        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.layer.shadowRadius = 2.0
-        self.layer.shadowOpacity = 1.0
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+//        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//        self.layer.shadowRadius = 2.0
+//        self.layer.shadowOpacity = 1.0
+//        self.layer.masksToBounds = false
+//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         
+        blurView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 150, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         userProfileImageView.anchor(top: photoImageView.topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 30/2, height: 30/2)
         userProfileImageView.layer.cornerRadius = 30/2

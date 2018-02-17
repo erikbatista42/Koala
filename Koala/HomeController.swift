@@ -217,6 +217,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         //        self.hpc = cell
         cell.post = posts[indexPath.item]
+        
+//        let shadowPath2 = UIBezierPath(rect: cell.bounds)
+////        cell.layer.masksToBounds = false
+//        cell.layer.shadowColor = UIColor.red.cgColor
+//        cell.layer.shadowOffset = CGSize(width: CGFloat(1.0), height: CGFloat(3.0))
+//        cell.layer.shadowOpacity = 1
+//        cell.layer.shadowPath = shadowPath2.cgPath
+        
         return cell
     } 
 
