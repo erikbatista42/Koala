@@ -20,7 +20,7 @@ class LoginController: UIViewController {
         logoImageView.contentMode = .scaleAspectFill
         
         view.addSubview(logoImageView)
-        logoImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 50)
+        logoImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
@@ -31,12 +31,12 @@ class LoginController: UIViewController {
     
     let dontHaveAnAccountButton: UIButton = {
         let yes = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         yes.setAttributedTitle(attributedTitle, for: .normal)
         
         
         
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white]))
 
         
         yes.setTitle("Don't have an account? Sign Up", for: .normal)
@@ -50,17 +50,24 @@ class LoginController: UIViewController {
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.textColor = .white
+        tf.tintColor = .white
+        let attributedTitle = NSMutableAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
+        tf.attributedPlaceholder = attributedTitle
         tf.font = UIFont.systemFont(ofSize: 15.0)
+        tf.autocapitalizationType = .none
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.textColor = .white
+        tf.tintColor = .white
+        let attributedTitle = NSMutableAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
+        tf.attributedPlaceholder = attributedTitle
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 15.0)
@@ -74,19 +81,21 @@ class LoginController: UIViewController {
         
         if isFormValid {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
+            loginButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
+            loginButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 193, green: 201, blue: 209, alpha: 1)
+            loginButton.backgroundColor = UIColor(white: 1, alpha: 0.3)
+            loginButton.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .normal)
         }
     }
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 193, green: 201, blue: 209, alpha: 1)
+        button.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .normal)
+        button.backgroundColor = UIColor(white: 1, alpha: 0.3)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
         button.isEnabled = false
@@ -118,7 +127,7 @@ class LoginController: UIViewController {
         
         view.addSubview(logoContainerView)
         logoContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 150)
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         
         navigationController?.isNavigationBarHidden = true
         

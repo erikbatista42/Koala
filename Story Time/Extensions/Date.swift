@@ -23,7 +23,7 @@ extension Date {
         let unit: String
         if secondsAgo < minute {
             quotient = secondsAgo
-            unit = " just now"
+            unit = " seconds now"
         } else if secondsAgo < hour {
             quotient = secondsAgo / minute
             unit = " minutes ago"
