@@ -25,9 +25,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
             plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
             
         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            
             plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-            
         }
         
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width/2

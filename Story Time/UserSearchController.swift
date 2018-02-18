@@ -172,14 +172,20 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchBar.resignFirstResponder()
         // FIX THIS
         let userProfileController = UserProfileController(nibName:nil, bundle:nil)
-
+        userProfileController.rightBarButtonIsHidden = true
         userProfileController.userId = passedUser
         //        userProfileController.videos = [passedVideos]
         //        userProfileController.thumbnails = [passedThumbnail]
         (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         self.navigationController?.pushViewController(userProfileController, animated: true)
+        
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            let vc = segue.destination as! UserProfileController
+//            vc.leftBarButtonIsHidden = true
+//    }
+//    
     var filteredUsers = [User]()
     var users = [User]()
     func fetchUsers() {

@@ -20,6 +20,8 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     var myCollectionView: UICollectionView!
     let layout = UICollectionViewFlowLayout()
     
+    var rightBarButtonIsHidden: Bool?
+    
     func showAlert() {
         print("hey yo you suck")
     }
@@ -91,6 +93,9 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
+        if rightBarButtonIsHidden == true {
+                self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     @objc func handleLogOut() {

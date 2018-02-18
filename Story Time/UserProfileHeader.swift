@@ -114,8 +114,6 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     @objc func handleEditProfileOrFollow() {
-        print("Execute edit profile / follow / unfollow logic ...")
-        
         guard let currentUserId = FIRAuth.auth()?.currentUser?.uid else { return }
         
         guard let userId = user?.uid else { return }
@@ -146,10 +144,10 @@ class UserProfileHeader: UICollectionViewCell {
             })
             
         } else if editProfileFollowButton.titleLabel?.text == "Edit Profile" {
-            
-            delegate?.showAlert()
+//            delegate?.showAlert()
+            print("Edit Profile feature coming soon!")
         } else {
-            //            //following
+            //following
             let ref = FIRDatabase.database().reference().child("following").child(currentUserId)
             
             let values = [userId: 1]
