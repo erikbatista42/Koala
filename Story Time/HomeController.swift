@@ -113,9 +113,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         fetchAllPost()
     }
-    
-    
-    
+
     fileprivate func fetchAllPost() {
         fetchPosts()
         fetchFollowingUserIds()
@@ -150,8 +148,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
              self.posts.removeAll()
             if #available(iOS 0.0, *) {
-               
-                
                 self.collectionView?.refreshControl?.endRefreshing()
                 self.collectionView?.refreshControl?.tintColor = .white
             } else {
@@ -195,7 +191,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

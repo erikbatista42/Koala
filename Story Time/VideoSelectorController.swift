@@ -30,13 +30,15 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         self.present(alert, animated: true, completion: nil)
     }
     
-    var shootADanceButton:UIButton = {
+    var shootAStoryButton:UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Shoot a dance", for: .normal)
+        button.setTitle("Shoot a Story", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir", size: 24)
-        button.backgroundColor = UIColor.rgb(red: 245, green: 50, blue: 97, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
         button.addTarget(self, action: #selector(shootADance), for: .touchUpInside)
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = false
         return button
     }()
     
@@ -66,12 +68,13 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     
     var uploadFromLibraryButton:UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Upload from library", for: .normal)
+        button.setTitle("Upload From Library", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir", size: 24)
-        button.backgroundColor = UIColor.rgb(red: 102, green: 51, blue: 153, alpha: 1)
+        button.backgroundColor = UIColor.rgb(red: 250, green: 107, blue: 65, alpha: 1)
         button.addTarget(self, action: #selector(handleUploadFromLibraryButton), for: .touchUpInside)
-        
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = false
         return button
     }()
     
@@ -88,18 +91,34 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         var prefersStatusBarHidden: Bool { return true }
         self.imagePicker.delegate = self 
-        view.backgroundColor = UIColor.rgb(red: 245, green: 50, blue: 97, alpha: 1)
+        view.backgroundColor = UIColor.rgb(red: 28, green: 34, blue: 55, alpha: 1)
         shootOrUploadBtns()
+        setupUserStatsView()
     }
     
     func shootOrUploadBtns() {
         setupNavigationButtons()
-        view.addSubview(shootADanceButton)
-        shootADanceButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 65, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
+        view.addSubview(shootAStoryButton)
+//        shootAStoryButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 100, paddingLeft: 100, paddingBottom: 0, paddingRight: 100, width: 0, height: 100)
+//        shootAStoryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         
         view.addSubview(uploadFromLibraryButton)
-        uploadFromLibraryButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 365, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
+//        uploadFromLibraryButton.anchor(top: shootAStoryButton.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 100, paddingLeft: 100, paddingBottom: 0, paddingRight: 100, width: 0, height: 100)
+//        uploadFromLibraryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
+    
+    fileprivate func setupUserStatsView() {
+        let stackView = UIStackView(arrangedSubviews: [shootAStoryButton,uploadFromLibraryButton])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 15
+        
+        view.addSubview(stackView)
+        stackView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 120, paddingLeft: 24, paddingBottom: -55, paddingRight: 24, width: 0, height: 50)
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
     
     static let updateFeedNotificationName = NSNotification.Name(rawValue: "update feed")
     
@@ -205,7 +224,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     fileprivate func  setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 59, green: 89, blue: 152, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 28, green: 34, blue: 55, alpha: 1)
     }
     @objc func handleCancel() { dismiss(animated: true, completion: nil) }
 }
