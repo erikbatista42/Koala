@@ -74,7 +74,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         searchUsersCV.delegate = self
         fetchAllPost()
         UIApplication.shared.statusBarStyle = .lightContent
-        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
     }
@@ -276,7 +276,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
-    
     
     func random(maximum: UInt32, minimum: CGFloat = 0) -> CGFloat {
         return max(CGFloat(arc4random_uniform(maximum)), minimum)

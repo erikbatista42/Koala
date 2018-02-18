@@ -29,6 +29,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.showsHorizontalScrollIndicator = false
+        collectionView?.showsVerticalScrollIndicator = false
         UIApplication.shared.statusBarStyle = .lightContent
             collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         
