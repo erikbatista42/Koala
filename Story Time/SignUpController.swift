@@ -45,10 +45,14 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.textColor = .white
+        tf.tintColor = .white
+        tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 15.0)
+        let attributedTitle = NSMutableAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
+        tf.attributedPlaceholder = attributedTitle
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
@@ -57,29 +61,39 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if isFormValid {
             signUpButton.isEnabled = true
-            signUpButton.backgroundColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
+            signUpButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
+            signUpButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             signUpButton.isEnabled = true
-           signUpButton.backgroundColor = UIColor.rgb(red: 193, green: 201, blue: 209, alpha: 1)
+            signUpButton.backgroundColor = UIColor(white: 1, alpha: 0.3)
+            signUpButton.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .normal)
         }
     }
     
     let usernameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "username"
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.textColor = .white
+        tf.tintColor = .white
+        tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 15.0)
+        let attributedTitle = NSMutableAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
+        tf.attributedPlaceholder = attributedTitle
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.textColor = .white
+        tf.tintColor = .white
+        tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 15.0)
+        let attributedTitle = NSMutableAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
+        tf.attributedPlaceholder = attributedTitle
         tf.isSecureTextEntry = true
          tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
@@ -88,15 +102,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     let signUpButton: UIButton = {
        let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 193, green: 201, blue: 209, alpha: 1)
+        button.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        button.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .normal)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.white, for: .normal)
-        
         button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
-        
         button.isEnabled = false
-        
         return button
     }()
     @objc func handleSignup() {
@@ -152,12 +163,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     let alreadyHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         
         
-        attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)]))
+        attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white]))
         
         
         button.setTitle("Don't have an account? Sign Up", for: .normal)
@@ -172,11 +183,9 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
         view.addSubview(alreadyHaveAnAccountButton)
         alreadyHaveAnAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
-        
-        view.backgroundColor = UIColor(red: 240, green: 241, blue: 246, alpha: 1)
        
         view.addSubview(plusPhotoButton)
         plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)

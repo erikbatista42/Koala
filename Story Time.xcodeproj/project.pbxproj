@@ -198,13 +198,13 @@
 			name = UserProfile;
 			sourceTree = "<group>";
 		};
-		E7C5561F1F10C97500867FFA /* Login */ = {
+		E7C5561F1F10C97500867FFA /* Login/SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				E7C5561D1F10C94000867FFA /* LoginController.swift */,
 				E78C50341F0CD5D90034226F /* SignUpController.swift */,
 			);
-			name = Login;
+			name = Login/SignUp;
 			sourceTree = "<group>";
 		};
 		E7C556201F11A4BB00867FFA /* AddVideo */ = {
@@ -346,7 +346,7 @@
 		FEF5F05C1F390B7C00B8A501 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				E7C5561F1F10C97500867FFA /* Login */,
+				E7C5561F1F10C97500867FFA /* Login/SignUp */,
 				FE5B53F61F39337400B09CDE /* Home */,
 				FE70E5121F60D9A800AF4D50 /* Explore */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,

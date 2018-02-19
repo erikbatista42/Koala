@@ -49,6 +49,7 @@
 	<string>LaunchScreen</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NeoSans.otf</string>
 		<string>NeoSans-Italic.otf</string>
 		<string>NeoSans-Light.otf</string>
 		<string>NeoSans-Black.otf</string>

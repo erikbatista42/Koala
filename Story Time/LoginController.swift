@@ -69,8 +69,9 @@ class LoginController: UIViewController {
         tf.tintColor = .white
         let attributedTitle = NSMutableAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.4)])
         tf.attributedPlaceholder = attributedTitle
-        tf.font = UIFont.systemFont(ofSize: 15.0)
+//        tf.font = UIFont.systemFont(ofSize: 15.0)
         tf.autocapitalizationType = .none
+        
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
