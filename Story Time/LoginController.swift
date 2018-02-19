@@ -94,7 +94,7 @@ class LoginController: UIViewController {
         
         if isFormValid {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1)
+            loginButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
             loginButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             loginButton.isEnabled = true
