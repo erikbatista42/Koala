@@ -23,9 +23,17 @@ class LoginController: UIViewController {
         logoImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
         view.backgroundColor = UIColor.rgb(red: 41, green: 54, blue: 76, alpha: 1)
         
+        let label = UILabel()
+        view.addSubview(label)
+//        label.font = UIFont(name: "Helvetica", size: 16)
+        let attributedTitle = NSMutableAttributedString(string: "Story Time", attributes: [NSAttributedStringKey.font : UIFont.init(name: "NeoSans-Italic", size: 50) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white])
+        label.attributedText = attributedTitle
+        label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 75, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.textAlignment = .center
         return view
     }()
     
@@ -33,8 +41,6 @@ class LoginController: UIViewController {
         let yes = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.5)])
         yes.setAttributedTitle(attributedTitle, for: .normal)
-        
-        
         
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white]))
 
@@ -81,7 +87,7 @@ class LoginController: UIViewController {
         
         if isFormValid {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
+            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1)
             loginButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             loginButton.isEnabled = true

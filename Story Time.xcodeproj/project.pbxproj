@@ -18,6 +18,18 @@
 		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */; };
 		FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03F3751F374EAF00C9C1D2 /* Post.swift */; };
+		FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074024203A7E56000A7536 /* NeoSans-Black.otf */; };
+		FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */; };
+		FE074028203A7E77000A7536 /* NeoSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */; };
+		FE074029203A7E77000A7536 /* NeoSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */; };
+		FE07402A203A7E77000A7536 /* NeoSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074025203A7E57000A7536 /* NeoSans-Italic.otf */; };
+		FE07402B203A7E77000A7536 /* NeoSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074023203A7E56000A7536 /* NeoSans-Light.otf */; };
+		FE07402C203A7E77000A7536 /* NeoSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */; };
+		FE07402D203A7E77000A7536 /* NeoSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074021203A7E53000A7536 /* NeoSans-Medium.otf */; };
+		FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */; };
+		FE07402F203A7E77000A7536 /* NeoSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401D203A7E51000A7536 /* NeoSans.otf */; };
+		FE074030203A7E77000A7536 /* NeoSansStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */; };
+		FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */; };
 		FE15DBEF203867D3005215E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */; };
 		FE219CFA20388616008166C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE219CF920388616008166C3 /* Assets.xcassets */; };
 		FE219D0220388DA8008166C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE219D0020388DA8008166C3 /* Main.storyboard */; };
@@ -53,7 +65,7 @@
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78C50341F0CD5D90034226F /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Story Time/Info.plist"; sourceTree = "<group>"; };
+		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Story Time/Info.plist"; sourceTree = "<group>"; };
 		E7B222D61F12DA2900C3D5E3 /* ShootAVideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShootAVideoVC.swift; sourceTree = "<group>"; };
 		E7B222D81F1433C900C3D5E3 /* SearchTracksTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTracksTV.swift; sourceTree = "<group>"; };
 		E7C556161F0F29A500867FFA /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -63,6 +75,18 @@
 		E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSelectorController.swift; sourceTree = "<group>"; };
 		EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.release.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.release.xcconfig"; sourceTree = "<group>"; };
 		FE03F3751F374EAF00C9C1D2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Bold.otf"; sourceTree = "<group>"; };
+		FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-MediumItalic.otf"; sourceTree = "<group>"; };
+		FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-LightItalic.otf"; sourceTree = "<group>"; };
+		FE07401D203A7E51000A7536 /* NeoSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NeoSans.otf; sourceTree = "<group>"; };
+		FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BlackItalic.otf"; sourceTree = "<group>"; };
+		FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Regular.otf"; sourceTree = "<group>"; };
+		FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Light.otf"; sourceTree = "<group>"; };
+		FE074021203A7E53000A7536 /* NeoSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Medium.otf"; sourceTree = "<group>"; };
+		FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BoldItalic.otf"; sourceTree = "<group>"; };
+		FE074023203A7E56000A7536 /* NeoSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Light.otf"; sourceTree = "<group>"; };
+		FE074024203A7E56000A7536 /* NeoSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Black.otf"; sourceTree = "<group>"; };
+		FE074025203A7E57000A7536 /* NeoSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Italic.otf"; sourceTree = "<group>"; };
 		FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FE219CF920388616008166C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE219D0120388DA8008166C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Downloads/InstagramFirebase/ios/InstagramFirebase/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,6 +234,33 @@
 			name = M;
 			sourceTree = "<group>";
 		};
+		FE073FFD203A77AF000A7536 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FE074019203A7E38000A7536 /* NeoSans */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		FE074019203A7E38000A7536 /* NeoSans */ = {
+			isa = PBXGroup;
+			children = (
+				FE074024203A7E56000A7536 /* NeoSans-Black.otf */,
+				FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */,
+				FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */,
+				FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */,
+				FE074025203A7E57000A7536 /* NeoSans-Italic.otf */,
+				FE074023203A7E56000A7536 /* NeoSans-Light.otf */,
+				FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */,
+				FE074021203A7E53000A7536 /* NeoSans-Medium.otf */,
+				FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */,
+				FE07401D203A7E51000A7536 /* NeoSans.otf */,
+				FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */,
+				FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */,
+			);
+			name = NeoSans;
+			sourceTree = "<group>";
+		};
 		FE5B53F61F39337400B09CDE /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +316,7 @@
 		FEF5F0591F390AA600B8A501 /* Resource Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE073FFD203A77AF000A7536 /* Fonts */,
 				FE219CF920388616008166C3 /* Assets.xcassets */,
 				FEF5F05A1F390B1200B8A501 /* System */,
 				FEF5F05B1F390B1C00B8A501 /* Google */,
@@ -378,10 +430,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE074029203A7E77000A7536 /* NeoSans-BoldItalic.otf in Resources */,
+				FE074030203A7E77000A7536 /* NeoSansStd-Light.otf in Resources */,
+				FE07402F203A7E77000A7536 /* NeoSans.otf in Resources */,
 				FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */,
+				FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */,
+				FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */,
 				FE219CFA20388616008166C3 /* Assets.xcassets in Resources */,
+				FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */,
 				FE15DBEF203867D3005215E2 /* GoogleService-Info.plist in Resources */,
+				FE07402D203A7E77000A7536 /* NeoSans-Medium.otf in Resources */,
+				FE074028203A7E77000A7536 /* NeoSans-Bold.otf in Resources */,
+				FE07402A203A7E77000A7536 /* NeoSans-Italic.otf in Resources */,
+				FE07402B203A7E77000A7536 /* NeoSans-Light.otf in Resources */,
 				FE219D0220388DA8008166C3 /* Main.storyboard in Resources */,
+				FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */,
+				FE07402C203A7E77000A7536 /* NeoSans-LightItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

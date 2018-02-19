@@ -47,6 +47,12 @@
 	<string>Main</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NeoSans-Italic.otf</string>
+		<string>NeoSans-Light.otf</string>
+		<string>NeoSans-Black.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
