@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class LoginController: UIViewController {
     
     let isFirstLaunch = UserDefaults.isFirstLaunch()
@@ -34,6 +35,12 @@ class LoginController: UIViewController {
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 //        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         label.textAlignment = .center
+        
+        label.layer.shadowColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1).cgColor
+        label.layer.shadowRadius = 3.0
+        label.layer.shadowOpacity = 1.0
+        label.layer.shadowOffset = CGSize(width: 4, height: 4)
+        label.layer.masksToBounds = false
         return view
     }()
     
