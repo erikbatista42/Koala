@@ -14,7 +14,12 @@ import AVKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    
+    
+    
+    
     var hpc: HomePostCell!
+//    var delegate: VideoUrlDelegate?
     var userId: String?
     
     var user: User? {
@@ -32,7 +37,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
         UIApplication.shared.statusBarStyle = .lightContent
-            collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
+        collectionView?.backgroundColor = .white
         
         collectionView?.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
         
@@ -149,7 +154,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
              self.posts.removeAll()
             if #available(iOS 0.0, *) {
                 self.collectionView?.refreshControl?.endRefreshing()
-                self.collectionView?.refreshControl?.tintColor = .white
+                self.collectionView?.refreshControl?.tintColor = .black
             } else {
                 // Fallback on earlier versions
             }
@@ -246,14 +251,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
         guard let url = NSURL(string: links.videoUrl) else { return }
-        let player = AVPlayer(url: url as URL)
+//        let player = AVPlayer(url: url as URL)
+        var player = avPlayerViewController.player
+        player = AVPlayer(url: url as URL)
         let playerController = avPlayerViewController
         playerController.player = player
+        
         self.present(playerController, animated: true) {
-            player.play()
+            player?.play()
         }
     }
-    
+  
 
 //
 //    func didLike(for cell: HomePostCell) {

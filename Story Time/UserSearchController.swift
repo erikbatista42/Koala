@@ -66,7 +66,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarAndSearchBar()
-        collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
+//        collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1) // purple
+        collectionView?.backgroundColor = .white
         collectionView?.register(ExploreCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(searchUsersCV)
         searchUsersCV.isHidden = true
@@ -248,9 +249,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("number of posts fetched: \(posts.count)")
         return posts.count
-        //        return 8
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -260,7 +259,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         // Makes cell corners round
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 15
-        
         return cell
     }
     

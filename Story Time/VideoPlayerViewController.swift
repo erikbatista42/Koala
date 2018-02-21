@@ -9,10 +9,16 @@
 import UIKit
 import AVFoundation
 
+//protocol VideoUrlDelegate {
+//    func passVideoUrl(passedVideoUrl: NSURL)
+//}
+
 class VideoPlayerViewController: UIViewController {
     
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
+    
+//    var delegate: VideoUrlDelegate?
     
     let videoView: UIView = {
        let vidView = UIView()
@@ -20,32 +26,40 @@ class VideoPlayerViewController: UIViewController {
         return vidView
     }()
     
+//    var url = URL(string: "https://firebasestorage.googleapis.com/v0/b/koala-60599.appspot.com/o/videos%2FOptional(%22Z8NBcoygSHcg1wXtCZqeCVdUev12%22)%2FJacfaUVaQsbi9Uc0184E.mp4?alt=media&token=e65756eb-1642-4e9e-8080-f42621322b70")!
+    
+//     guard let url = NSURL(string: links.videoUrl) else { return }
+//    var videoUrl = URL(string: ())!
+    
+    var videoUrl: URL!
+    
+//    let videoUrl = URL(String)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/vlogr-9384d.appspot.com/o/all_videos%2Fv0t1ICaujj4NuHt6ApgS.mp4?alt=media&token=16ca09af-a3c1-4985-af47-fef7969c9bbc")!
-//        player = AVPlayer(url: url)
-//
-//        playerLayer = AVPlayerLayer(player: player)
-//
-//        videoView.layer.addSublayer(playerLayer)
-//
+        view.backgroundColor = .black
+//        print("issa:", videoUrl)
+//        player = AVPlayer(url: videoUrl)
+//        url = URL(string: "https://www.apple.com")
+
+        playerLayer = AVPlayerLayer(player: player)
+
+        videoView.layer.addSublayer(playerLayer)
+
         view.addSubview(videoView)
         videoView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
+
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//        player.play()
-//
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        player.play()
+
+    }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        playerLayer.frame = view.bounds
-//    }
-    
-    
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playerLayer.frame = view.bounds
+    }
+ 
 }

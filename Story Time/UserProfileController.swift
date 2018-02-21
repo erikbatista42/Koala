@@ -49,7 +49,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         
         myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
 //        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        myCollectionView.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1)
+        myCollectionView.backgroundColor = UIColor.white
 //        myCollectionView.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
         
         fetchUser()
