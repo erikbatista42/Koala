@@ -25,23 +25,14 @@ class VideoPlayerViewController: UIViewController {
         
         return vidView
     }()
-    
-//    var url = URL(string: "https://firebasestorage.googleapis.com/v0/b/koala-60599.appspot.com/o/videos%2FOptional(%22Z8NBcoygSHcg1wXtCZqeCVdUev12%22)%2FJacfaUVaQsbi9Uc0184E.mp4?alt=media&token=e65756eb-1642-4e9e-8080-f42621322b70")!
-    
-//     guard let url = NSURL(string: links.videoUrl) else { return }
-//    var videoUrl = URL(string: ())!
-    
+
     var videoUrl: URL!
-    
-//    let videoUrl = URL(String)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-//        print("issa:", videoUrl)
-//        player = AVPlayer(url: videoUrl)
-//        url = URL(string: "https://www.apple.com")
-
+        self.tabBarController?.tabBar.isHidden = true
+        
         playerLayer = AVPlayerLayer(player: player)
 
         videoView.layer.addSublayer(playerLayer)
@@ -54,12 +45,24 @@ class VideoPlayerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         player.play()
-
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         playerLayer.frame = view.bounds
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if let play = player {
+            print("stopped")
+            play.pause()
+            player = nil
+            
+            print("player deallocated")
+        } else {
+            print("player was already deallocated")
+        }
     }
  
 }

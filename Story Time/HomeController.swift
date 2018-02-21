@@ -219,14 +219,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         //        self.hpc = cell
         cell.post = posts[indexPath.item]
-        
-//        let shadowPath2 = UIBezierPath(rect: cell.bounds)
-////        cell.layer.masksToBounds = false
-//        cell.layer.shadowColor = UIColor.red.cgColor
-//        cell.layer.shadowOffset = CGSize(width: CGFloat(1.0), height: CGFloat(3.0))
-//        cell.layer.shadowOpacity = 1
-//        cell.layer.shadowPath = shadowPath2.cgPath
-        
         return cell
     } 
 
@@ -251,15 +243,24 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
         guard let url = NSURL(string: links.videoUrl) else { return }
-//        let player = AVPlayer(url: url as URL)
         var player = avPlayerViewController.player
         player = AVPlayer(url: url as URL)
         let playerController = avPlayerViewController
         playerController.player = player
         
-        self.present(playerController, animated: true) {
-            player?.play()
-        }
+//
+//        let userProfileController = UserProfileController(nibName:nil, bundle:nil)
+//
+//        (ExploreCV() as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
+//
+//        self.navigationController?.pushViewController(userProfileController, animated: true)
+        self.navigationController?.pushViewController(playerController, animated: true)
+        playerController.player.play()
+        
+        
+//        self.present(playerController, animated: true) {
+//            player?.play()
+//        }
     }
   
 
