@@ -14,10 +14,6 @@ import AVKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    
-    
-    
-    
     var hpc: HomePostCell!
 //    var delegate: VideoUrlDelegate?
     var userId: String?
@@ -34,6 +30,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
         UIApplication.shared.statusBarStyle = .lightContent
@@ -49,9 +46,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         if #available(iOS 10.0, *) {
             collectionView?.refreshControl = refreshControll
+            
         } else {
             // Fallback on earlier versions
+            
         }
+        
         setupNavigationItems()
         fetchAllPost()
         setupBarButtons()
@@ -245,17 +245,22 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         guard let url = NSURL(string: links.videoUrl) else { return }
         var player = avPlayerViewController.player
         player = AVPlayer(url: url as URL)
+        let playerItem = AVPlayerItem(url: url as URL)
+        avPlayer.replaceCurrentItem(with: playerItem)
         let playerController = avPlayerViewController
         playerController.player = player
         
-//
 //        let userProfileController = UserProfileController(nibName:nil, bundle:nil)
 //
 //        (ExploreCV() as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
 //
 //        self.navigationController?.pushViewController(userProfileController, animated: true)
         self.navigationController?.pushViewController(playerController, animated: true)
-        playerController.player.play()
+//        playerController.player.play()
+        
+//        DispatchQueue.main.async() {
+//            self.avPlayerViewController.playerLayer.removeFromSuperlayer()
+//        }
         
         
 //        self.present(playerController, animated: true) {
