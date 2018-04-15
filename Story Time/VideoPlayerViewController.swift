@@ -33,14 +33,19 @@ class VideoPlayerViewController: UIViewController {
         self.view.layer.addSublayer(playerLayer)
         playerLayer.frame = view.bounds
         player!.play()
-
+        
+        // Make repeat when it reaches the end
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
+            self.player?.seek(to: kCMTimeZero)
+            self.player?.play()
+        }
+        
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         player!.pause()
         player = nil
         playerLayer.removeFromSuperlayer()
-      
     }
 
 }
