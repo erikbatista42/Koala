@@ -12,7 +12,13 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 
+protocol GetUserFromCellDelegate {
+    func getUser(username: String, profileImage: String, postURL: String)
+}
+
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var getUserDelegate: GetUserFromCellDelegate?
     
     var hpc: HomePostCell!
 //    var delegate: VideoUrlDelegate?
@@ -240,8 +246,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var avPlayer = AVPlayer()
     var playerLayer: AVPlayerLayer!
     
+    static var didSelectPostUsername: String!
+    static var didSelectPostProfileImageURL: String!
+    static var didSelectPostVideoURL: String!
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
+        
+        HomeController.didSelectPostUsername = posts[indexPath.row].user.username
+        HomeController.didSelectPostProfileImageURL = posts[indexPath.row].user.profileImageUrl
+        HomeController.didSelectPostVideoURL = posts[indexPath.row].videoUrl
+        
+        getUserDelegate?.getUser(username: HomeController.didSelectPostUsername, profileImage: HomeController.didSelectPostProfileImageURL, postURL: HomeController.didSelectPostVideoURL)
+        
         guard let url = NSURL(string: links.videoUrl) else { return }
         var player = avPlayerViewController.player
         player = AVPlayer(url: url as URL)
@@ -249,27 +266,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         avPlayer.replaceCurrentItem(with: playerItem)
         let playerController = avPlayerViewController
         playerController.player = player
-        
-//        let userProfileController = UserProfileController(nibName:nil, bundle:nil)
-//
-//        (ExploreCV() as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
-//
-//        self.navigationController?.pushViewController(userProfileController, animated: true)
+     
         self.navigationController?.pushViewController(playerController, animated: true)
-//        playerController.player.play()
-        
-//        DispatchQueue.main.async() {
-//            self.avPlayerViewController.playerLayer.removeFromSuperlayer()
-//        }
-        
-        
-//        self.present(playerController, animated: true) {
-//            player?.play()
-//        }
     }
   
-
-//
 //    func didLike(for cell: HomePostCell) {
 //
 //        guard let indexPath = collectionView?.indexPath(for: cell) else { return }

@@ -8,8 +8,13 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
-class VideoPlayerViewController: UIViewController {
+
+
+class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
+    
+    
     
     var hc: HomeController!
     var player: AVPlayer!
@@ -20,9 +25,44 @@ class VideoPlayerViewController: UIViewController {
        return vidView
     }()
     
+    let userProfileImageView: CustomImageView = {
+        let iv = CustomImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.borderWidth = 1
+        iv.layer.borderColor = UIColor.white.cgColor
+        iv.backgroundColor = .magenta
+        return iv
+    }()
+    
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white])
+        label.attributedText = attributedText
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        view.addSubview(userProfileImageView)
+//        view.addSubview(timeLabel)
+        
+        userProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+//        userProfileImageView.layer.cornerRadius = 30/2
+        
+        
+//        view.addSubview(timeLabel)
+//        timeLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 150, height: 50)
+    }
+    
+    func getUser(username: String, profileImage: String, postURL: String) {
+        guard let profileImageUrl = HomeController.didSelectPostProfileImageURL else { return }
+        userProfileImageView.loadImage(UrlString: profileImageUrl)
+        print("user post profile image: ", HomeController.didSelectPostProfileImageURL)
+        print("user post username: ", HomeController.didSelectPostUsername)
+        print("user post URL: ", HomeController.didSelectPostVideoURL)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,8 +79,12 @@ class VideoPlayerViewController: UIViewController {
             self.player?.seek(to: kCMTimeZero)
             self.player?.play()
         }
-        
+
+        let callGetUserFunction = "call"
+        getUser(username: callGetUserFunction, profileImage: callGetUserFunction, postURL: callGetUserFunction)
     }
+    
+    
 
     override func viewDidDisappear(_ animated: Bool) {
         player!.pause()
