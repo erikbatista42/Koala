@@ -46,10 +46,7 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        view.addSubview(userProfileImageView)
-//        view.addSubview(timeLabel)
-        
-        userProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+      
 //        userProfileImageView.layer.cornerRadius = 30/2
         
         
@@ -69,11 +66,14 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         super.viewDidAppear(true)
         playerLayer = AVPlayerLayer(player: player)
         view.addSubview(videoView)
-        videoView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+
+//        videoView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.view.layer.addSublayer(playerLayer)
+        view.addSubview(userProfileImageView)
         playerLayer.frame = view.bounds
         player!.play()
-        
+        userProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         // Make repeat when it reaches the end
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
             self.player?.seek(to: kCMTimeZero)
