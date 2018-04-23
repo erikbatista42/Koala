@@ -32,6 +32,8 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         iv.layer.borderWidth = 1
         iv.layer.borderColor = UIColor.white.cgColor
         iv.backgroundColor = .magenta
+        iv.layer.cornerRadius = 25
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -73,7 +75,9 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         view.addSubview(userProfileImageView)
         playerLayer.frame = view.bounds
         player!.play()
+        
         userProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        
         // Make repeat when it reaches the end
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
             self.player?.seek(to: kCMTimeZero)
