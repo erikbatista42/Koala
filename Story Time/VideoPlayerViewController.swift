@@ -37,31 +37,38 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         return iv
     }()
     
-    let timeLabel: UILabel = {
-        let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white])
-        label.attributedText = attributedText
-        return label
+    lazy var profileImageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 1
+//        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 25
+        button.clipsToBounds = true
+        button.setImage(userProfileImageView.image, for: .normal)
+        button.addTarget(self, action: #selector(handleprofileImageButton), for: .touchUpInside)
+        return button
     }()
+    
+    @objc func handleprofileImageButton() {
+        print(123)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-      
-//        userProfileImageView.layer.cornerRadius = 30/2
-        
-        
-//        view.addSubview(timeLabel)
-//        timeLabel.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 150, height: 50)
     }
     
     func getUser(username: String, profileImage: String, postURL: String) {
         guard let profileImageUrl = HomeController.didSelectPostProfileImageURL else { return }
         userProfileImageView.loadImage(UrlString: profileImageUrl)
+        
         print("user post profile image: ", HomeController.didSelectPostProfileImageURL)
         print("user post username: ", HomeController.didSelectPostUsername)
         print("user post URL: ", HomeController.didSelectPostVideoURL)
+        
+        profileImageButton.setBackgroundImage(userProfileImageView.image, for: .normal)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,11 +79,11 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
 
 //        videoView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.view.layer.addSublayer(playerLayer)
-        view.addSubview(userProfileImageView)
+        view.addSubview(profileImageButton)
         playerLayer.frame = view.bounds
         player!.play()
         
-        userProfileImageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        profileImageButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 18, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         
         // Make repeat when it reaches the end
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in
