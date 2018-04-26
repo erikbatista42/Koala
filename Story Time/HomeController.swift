@@ -36,7 +36,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        self.tabBarController?.tabBar.layer.zPosition = 0
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
         UIApplication.shared.statusBarStyle = .lightContent
@@ -104,7 +104,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     @objc func handleShareButton() {
         let activityViewController = UIActivityViewController(
-            activityItems: ["Check out this app I found called Koala"],applicationActivities: nil)
+            activityItems: ["Check out this app I found called Story Time"],applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -271,7 +271,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let playerController = avPlayerViewController
         playerController.player = player
      
-        self.navigationController?.pushViewController(playerController, animated: true)
+        let objCreateEventVC = playerController
+        objCreateEventVC.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(playerController, animated: true)
+        
+        self.navigationController?.pushViewController(objCreateEventVC, animated: false)
     }
   
 //    func didLike(for cell: HomePostCell) {

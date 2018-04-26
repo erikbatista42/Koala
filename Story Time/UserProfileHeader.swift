@@ -41,8 +41,6 @@ class UserProfileHeader: UICollectionViewCell {
         let followingRef = FIRDatabase.database().reference().child("following").child(uid)
         
         followingRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-            print("Got number of users following from selected user")
-            print(snapshot.childrenCount)
             let numOfChildrens = snapshot.childrenCount
             
             let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
@@ -58,8 +56,7 @@ class UserProfileHeader: UICollectionViewCell {
         let numOfFollowersRef = FIRDatabase.database().reference().child("followers").child(uid)
         
         numOfFollowersRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-            print("Got number of followers from selected user")
-            print(snapshot.childrenCount)
+            
             let numOfChildrens = snapshot.childrenCount
             
             let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
@@ -75,8 +72,7 @@ class UserProfileHeader: UICollectionViewCell {
         let numOfPostsRef = FIRDatabase.database().reference().child("posts").child(uid)
         
         numOfPostsRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
-            print("Got number of posts from selected user")
-            print(snapshot.childrenCount)
+            
             let numOfChildrens = snapshot.childrenCount
             
             let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])

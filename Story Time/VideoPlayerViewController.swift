@@ -86,6 +86,9 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        
+//        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     func getUser(username: String, profileImage: String, postURL: String) {
