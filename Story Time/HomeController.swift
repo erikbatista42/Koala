@@ -247,15 +247,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var playerLayer: AVPlayerLayer!
     
     static var didSelectPostUsername: String!
+    static var didSelectPostUid: String!
     static var didSelectPostProfileImageURL: String!
     static var didSelectPostVideoURL: String!
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
         
         HomeController.didSelectPostUsername = posts[indexPath.row].user.username
+        HomeController.didSelectPostUid = posts[indexPath.row].user.uid
         HomeController.didSelectPostProfileImageURL = posts[indexPath.row].user.profileImageUrl
         HomeController.didSelectPostVideoURL = posts[indexPath.row].videoUrl
+        
         
         getUserDelegate?.getUser(username: HomeController.didSelectPostUsername, profileImage: HomeController.didSelectPostProfileImageURL, postURL: HomeController.didSelectPostVideoURL)
         
