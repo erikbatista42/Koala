@@ -39,6 +39,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //        self.tabBarController?.tabBar.layer.zPosition = 0
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.showsVerticalScrollIndicator = false
+        
         UIApplication.shared.statusBarStyle = .lightContent
         collectionView?.backgroundColor = .white
         

@@ -46,7 +46,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         myCollectionView.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        
+        myCollectionView.alwaysBounceVertical = true
         myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
 //        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
         myCollectionView.backgroundColor = UIColor.white
