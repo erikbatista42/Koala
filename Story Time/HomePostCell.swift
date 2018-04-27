@@ -145,13 +145,6 @@ class HomePostCell: UICollectionViewCell {
     
     let blurView: UIView = {
         let view = UIView()
-//        view.layer.masksToBounds = false
-//        view.layer.shadowOffset = CGSize(width: 0, height: 3)
-//        view.layer.shadowOpacity = 0.5
-//        view.layer.shadowRadius = 1
-       
-//        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
-//        view.backgroundColor = .black
         view.backgroundColor = UIColor(patternImage: UIImage(named: "blurbg.png")!)
         return view
     }()
@@ -201,6 +194,7 @@ class HomePostCell: UICollectionViewCell {
     func setupTimeLabel() {
         guard let post = self.post else { return }
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        print("its working: ", timeAgoDisplay)
         let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor : UIColor.white])
         timeLabel.attributedText = attributedText
     }

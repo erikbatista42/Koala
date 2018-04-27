@@ -149,7 +149,7 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
        
         cell.backgroundColor = UIColor.clear
-        cell.thumbnail = posts[indexPath.item]
+        cell.post = posts[indexPath.item]
         
         return cell
     }

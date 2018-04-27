@@ -254,7 +254,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ExploreCell
-        cell.thumbnail = posts[indexPath.item]
+        cell.post = posts[indexPath.item]
         
         // Makes cell corners round
         cell.layer.masksToBounds = true
