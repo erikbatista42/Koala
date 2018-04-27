@@ -12,9 +12,17 @@ import Firebase
 import AVFoundation
 import AVKit
 
+protocol GetUserFromUserSearchControllerCellDelegate {
+    func getUser(username: String, profileImage: String, postURL: String)
+}
+
 class UserSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout,UISearchBarDelegate, UISearchDisplayDelegate, GetUserSearchControllerDelegate {
     
+    var getUserDelegate: GetUserFromUserSearchControllerCellDelegate?
+    
     let cellId = "cellId"
+    
+    
  
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
@@ -62,9 +70,13 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         cv.collectionView.register(UserSearchCVCell.self, forCellWithReuseIdentifier: "cellId")
         return cv
     }()
+    static var staticSearchBar: UISearchBar?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserSearchController.staticSearchBar = searchBar
+        
         setupNavBarAndSearchBar()
 //        collectionView?.backgroundColor = UIColor.rgb(red: 77, green: 90, blue: 255, alpha: 1) // purple
         collectionView?.backgroundColor = .white
@@ -93,7 +105,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func handleRefresh() {
-        print("handling refresh..")
         posts.removeAll()
         fetchAllPost()
     }
@@ -160,7 +171,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 }, withCancel: { (err) in
                     print("Failed to fetch info for post")
                 })
-                print(self.posts)
+//                print(self.posts)
             })
         }) { (error) in
             print("Failed to fetch posts", error)
@@ -203,7 +214,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 guard let userDictionary = value as? [String: Any] else { return}
                 let user = User(uid: key, dictionary: userDictionary)
                 self.users.append(user)
-                print(user.uid, user.username)
             })
             self.collectionView?.reloadData()
         }) { (error) in
@@ -229,22 +239,43 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         self.collectionView?.reloadData()
     }
     
+    
+    static var didSelectPostUsername: String!
+    static var didSelectPostUid: String!
+    static var didSelectPostProfileImageURL: String!
+    static var didSelectPostVideoURL: String!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         searchBar.isHidden = false
     }
     
-    var avPlayerViewController = AVPlayerViewController()
+//    var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
+    var avPlayerViewController = ExploreVideoPlayer()
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
+        
+        UserSearchController.didSelectPostUsername = posts[indexPath.row].user.username
+        UserSearchController.didSelectPostUid = posts[indexPath.row].user.uid
+        UserSearchController.didSelectPostProfileImageURL = posts[indexPath.row].user.profileImageUrl
+        UserSearchController.didSelectPostVideoURL = posts[indexPath.row].videoUrl
+
+        getUserDelegate?.getUser(username: UserSearchController.didSelectPostUsername, profileImage: UserSearchController.didSelectPostProfileImageURL, postURL: UserSearchController.didSelectPostVideoURL)
+        
         guard let url = NSURL(string: links.videoUrl) else { return }
-        let player = AVPlayer(url: url as URL)
+        var player = avPlayerViewController.player
+        player = AVPlayer(url: url as URL)
+        let playerItem = AVPlayerItem(url: url as URL)
+        avPlayer.replaceCurrentItem(with: playerItem)
         let playerController = avPlayerViewController
         playerController.player = player
-        self.present(playerController, animated: true) {
-            player.play()
-        }
+        
+        let objCreateEventVC = playerController
+        objCreateEventVC.hidesBottomBarWhenPushed = true
+        //        self.navigationController?.pushViewController(playerController, animated: true)
+        
+        self.navigationController?.pushViewController(objCreateEventVC, animated: false)
         
     }
     

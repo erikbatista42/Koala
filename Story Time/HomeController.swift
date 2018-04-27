@@ -12,13 +12,13 @@ import MobileCoreServices
 import AVFoundation
 import AVKit
 
-protocol GetUserFromCellDelegate {
+protocol GetUserFromHomeControllerCellDelegate {
     func getUser(username: String, profileImage: String, postURL: String)
 }
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var getUserDelegate: GetUserFromCellDelegate?
+    var getUserDelegate: GetUserFromHomeControllerCellDelegate?
     
     var hpc: HomePostCell!
 //    var delegate: VideoUrlDelegate?
@@ -242,7 +242,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         present(activityViewController, animated: true, completion: nil)
     }
     
-    var avPlayerViewController = VideoPlayerViewController()
+    var avPlayerViewController = HomeControllerVideoPlayer()
     
     var avPlayer = AVPlayer()
     var playerLayer: AVPlayerLayer!

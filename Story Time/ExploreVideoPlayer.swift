@@ -1,8 +1,8 @@
 //
-//  VideoPlayerViewController.swift
-//  Koala
+//  ExploreVideoPlayer.swift
+//  Story Time
 //
-//  Created by Erik Batista on 1/31/18.
+//  Created by Erik Batista on 4/27/18.
 //  Copyright © 2018 swift.lang.eu. All rights reserved.
 //
 
@@ -10,15 +10,14 @@ import UIKit
 import AVFoundation
 import Firebase
 
-class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
-    
-    var hc: HomeController!
+class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegate {
+
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!
     
     let videoView: UIView = {
-       let vidView = UIView()
-       return vidView
+        let vidView = UIView()
+        return vidView
     }()
     
     let userProfileImageView: CustomImageView = {
@@ -35,9 +34,9 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
     
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.layer.borderColor = UIColor.white.cgColor
-//        button.layer.borderWidth = 1
-//        button.layer.cornerRadius = 25
+        //        button.layer.borderColor = UIColor.white.cgColor
+        //        button.layer.borderWidth = 1
+        //        button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon"), for: .normal)
         button.contentMode = .scaleToFill
@@ -56,7 +55,7 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)
-//        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
@@ -77,29 +76,24 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
         
         let userProfileController = UserProfileController(nibName:nil, bundle:nil)
         
-        userProfileController.userId = HomeController.didSelectPostUid
+        userProfileController.userId = UserSearchController.didSelectPostUid
         
-//        (searchUsersCV.next as? UIViewController)?.navigationController?.pushViewController(userProfileController, animated: true)
         self.navigationController?.pushViewController(userProfileController, animated: true)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-
+        
     }
     
     func getUser(username: String, profileImage: String, postURL: String) {
-        guard let profileImageUrl = HomeController.didSelectPostProfileImageURL else { return }
+        guard let profileImageUrl = UserSearchController.didSelectPostProfileImageURL else { return }
         userProfileImageView.loadImage(UrlString: profileImageUrl)
         
-        print("user post profile image: ", HomeController.didSelectPostProfileImageURL)
-        print("user post username: ", HomeController.didSelectPostUsername)
-        print("user post URL: ", HomeController.didSelectPostVideoURL)
-        
         profileImageButton.setBackgroundImage(userProfileImageView.image, for: .normal)
-        videoURL = "\(HomeController.didSelectPostVideoURL)"
-        print("video url var: ", videoURL)
+        videoURL = "\(UserSearchController.didSelectPostVideoURL)"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,15 +116,18 @@ class VideoPlayerViewController: UIViewController, GetUserFromCellDelegate {
             self.player?.seek(to: kCMTimeZero)
             self.player?.play()
         }
-
+        
         let callGetUserFunction = "call"
         getUser(username: callGetUserFunction, profileImage: callGetUserFunction, postURL: callGetUserFunction)
+        
+        UserSearchController.staticSearchBar?.isHidden = true
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         player!.pause()
-//        player = nil
+        //        player = nil
         playerLayer.removeFromSuperlayer()
     }
-
+    
 }
+
