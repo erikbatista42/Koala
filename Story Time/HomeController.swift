@@ -89,6 +89,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print("thisss",profileImageView.image ?? "")
         print("user:", user?.username as Any)
     }
+    
+    lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "People's videos will pop up here once you follow them!"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = UIColor.gray
+        label.numberOfLines = 3
+        label.textAlignment = .center
+        
+        return label
+    }()
 
     
     fileprivate func setupBarButtons() {
@@ -211,6 +223,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if posts.count == 0
+        
+        {
+            view.addSubview(noDataLabel)
+            noDataLabel.frame = CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+            collectionView.backgroundView = nil
+        } else {
+            noDataLabel.isHidden = true 
+        }
         return posts.count
     }
     
@@ -226,6 +248,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         //        self.hpc = cell
         cell.post = posts[indexPath.item]
+        
         return cell
     } 
 
