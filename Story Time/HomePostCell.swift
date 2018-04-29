@@ -194,7 +194,6 @@ class HomePostCell: UICollectionViewCell {
     func setupTimeLabel() {
         guard let post = self.post else { return }
         let timeAgoDisplay = post.creationDate.timeAgoDisplay()
-        print("its working: ", timeAgoDisplay)
         let attributedText = NSMutableAttributedString(string: timeAgoDisplay, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor : UIColor.white])
         timeLabel.attributedText = attributedText
     }

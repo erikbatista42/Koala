@@ -44,13 +44,13 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
         return button
     }()
     
-    var videoURL = ""
+    var videoURL: String!
     
     @objc func handleShareButton() {
         
         
         // set up activity view controller
-        let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
+        let textToShare = ["Check out this story I found in storytime: \(videoURL)" ]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
@@ -85,7 +85,6 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        
     }
     
     func getUser(username: String, profileImage: String, postURL: String) {

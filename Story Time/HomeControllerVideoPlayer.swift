@@ -45,7 +45,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         return button
     }()
     
-    var videoURL = ""
+    var videoURL: String!
     
     @objc func handleShareButton() {
         
