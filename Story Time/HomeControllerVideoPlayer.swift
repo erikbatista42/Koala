@@ -39,7 +39,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
 //        button.layer.borderWidth = 1
 //        button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.setBackgroundImage(#imageLiteral(resourceName: "share_icon"), for: .normal)
+        button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
         button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
         return button
@@ -108,9 +108,9 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         playerLayer.frame = view.bounds
         player!.play()
         
-        shareButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 35, height: 40)
+        shareButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 50, height: 50)
         
-        profileImageButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -25, paddingRight: 18, width: 50, height: 50)
+        profileImageButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -35, paddingRight: 18, width: 50, height: 50)
         
         // Make repeat when it reaches the end
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: self.player.currentItem, queue: .main) { _ in

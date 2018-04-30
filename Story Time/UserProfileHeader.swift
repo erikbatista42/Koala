@@ -9,14 +9,10 @@
 import UIKit
 import Firebase
 
-protocol editProfileAlertView: class {
-    func showAlert()
-}
+
 
 class UserProfileHeader: UICollectionViewCell {
     
-    
-    weak var delegate: editProfileAlertView?
     
     var user: User? {
         didSet {
@@ -140,8 +136,9 @@ class UserProfileHeader: UICollectionViewCell {
             })
             
         } else if editProfileFollowButton.titleLabel?.text == "Edit Profile" {
-//            delegate?.showAlert()
-            print("Edit Profile feature coming soon!")
+            let alertController = UIAlertController(title: "Stay tuned!", message: "The feature to edit your profile is coming soon 🙃", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+           self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         } else {
             //following
             let ref = FIRDatabase.database().reference().child("following").child(currentUserId)
@@ -243,10 +240,7 @@ class UserProfileHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //        backgroundColor = UIColor.rgb(red: 27, green: 52, blue: 100, alpha: 1)
-        //        backgroundColor = UIColor.rgb(red: 206, green: 12, blue: 36, alpha: 1) // red
         backgroundColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
-        //        backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1) // Type of gray
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)

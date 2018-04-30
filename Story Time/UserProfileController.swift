@@ -12,19 +12,14 @@ import AVKit
 import Firebase
 import MobileCoreServices
 
-class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, editProfileAlertView {
-    
-    weak var delegate: editProfileAlertView?
+class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+
     let messageComposer = MessageComposer()
     
     var myCollectionView: UICollectionView!
     let layout = UICollectionViewFlowLayout()
     
     var rightBarButtonIsHidden: Bool?
-    
-    func showAlert() {
-        print("hey yo you suck")
-    }
     
     let cellId = "cellId"
     var userId: String?
@@ -85,11 +80,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
             print("Failded to fetch ordered post:", error)
         }
     }
-    func editProfileAlert() {
-        let alertController = UIAlertController(title: "Stay tuned!", message: "The feature to edit your profile is coming soon 🙃", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        present(alertController, animated: true, completion: nil)
-    }
     
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
@@ -134,6 +124,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         cell.post = thumbnails[indexPath.item]
 //        cell.layer.masksToBounds = true
 //        cell.layer.cornerRadius = 17
+        
         return cell
     }
     
