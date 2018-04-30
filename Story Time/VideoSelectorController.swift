@@ -195,6 +195,9 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                     return
                                 } else {
                                     print("Successfully saved post to DB")
+                                    let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
+                                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    self.present(alertController, animated: true, completion: nil)
                                 }
                             })
                         }

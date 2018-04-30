@@ -118,6 +118,9 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
             
             if let err = error {
                 print("Failed to create user:", err)
+                let alertController = UIAlertController(title: "ERROR", message: "\(err.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
                 return
             } else {
                 print("Successfully created user:", user?.uid ?? "" )
@@ -167,7 +170,6 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         
-        
         attributedTitle.append(NSAttributedString(string: "Sign in", attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.white]))
         
         
@@ -192,6 +194,10 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
 
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         setupInputFields()
+        
+//        if (passwordTextField.text?.count)! < 5 {
+//            print("password must be at least 6 characters long")
+//        }
     }
     
     fileprivate func setupInputFields() {

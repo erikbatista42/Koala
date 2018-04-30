@@ -124,6 +124,9 @@ class LoginController: UIViewController {
             
             if let err = err {
                 print("Failed to sign in with email:", err)
+                let alertController = UIAlertController(title: "ERROR", message: "\(err.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
             print("Successfully logged back in with user:", user?.uid ?? "")
