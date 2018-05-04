@@ -43,6 +43,7 @@
 		FE717A201F6A328D00C16B09 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE717A1F1F6A328D00C16B09 /* ActivityCell.swift */; };
 		FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */; };
 		FE7C87A2209344B70031576B /* ExploreVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C87A1209344B70031576B /* ExploreVideoPlayer.swift */; };
+		FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */; };
 		FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */; };
 		FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */; };
 		FE9470E31F55318200F0E45F /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E21F55318200F0E45F /* global.swift */; };
@@ -101,6 +102,7 @@
 		FE717A1F1F6A328D00C16B09 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVideoCell.swift; sourceTree = "<group>"; };
 		FE7C87A1209344B70031576B /* ExploreVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVideoPlayer.swift; sourceTree = "<group>"; };
+		FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_Screen.storyboard; sourceTree = "<group>"; };
 		FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCV.swift; sourceTree = "<group>"; };
 		FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCVCell.swift; sourceTree = "<group>"; };
 		FE9470E21F55318200F0E45F /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				FE219D0020388DA8008166C3 /* Main.storyboard */,
 				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
 				E78C503E1F0CD5D90034226F /* Info.plist */,
+				FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -404,7 +407,7 @@
 				TargetAttributes = {
 					E78C502E1F0CD5D90034226F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = DFUU36AARG;
+						DevelopmentTeam = RL292UUN9S;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -438,6 +441,7 @@
 				FE07402F203A7E77000A7536 /* NeoSans.otf in Resources */,
 				FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */,
 				FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */,
+				FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */,
 				FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */,
 				FE219CFA20388616008166C3 /* Assets.xcassets in Resources */,
 				FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */,
@@ -684,10 +688,10 @@
 			baseConfigurationReference = 607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFUU36AARG;
+				DEVELOPMENT_TEAM = RL292UUN9S;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = eu.swiftlang.Koala;
+				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -699,10 +703,10 @@
 			baseConfigurationReference = EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFUU36AARG;
+				DEVELOPMENT_TEAM = RL292UUN9S;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = eu.swiftlang.Koala;
+				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

@@ -93,7 +93,7 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
         
         profileImageButton.setBackgroundImage(userProfileImageView.image, for: .normal)
         videoURL = "\(UserSearchController.didSelectPostVideoURL)"
-    }
+    } 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
