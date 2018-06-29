@@ -12,6 +12,8 @@ import AVKit
 
 class UserProfileVideoCell: UICollectionViewCell {
     
+    var getUserDelegate: GetUserFromUserPorfileCellDelegate?
+    
 //    var thumbnail: Post? {
 //        didSet {
 //            guard let thumbnailUrl = thumbnail?.thumbnailUrl else { return }

@@ -32,7 +32,6 @@
 		FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */; };
 		FE15DBEF203867D3005215E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */; };
 		FE219CFA20388616008166C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE219CF920388616008166C3 /* Assets.xcassets */; };
-		FE219D0220388DA8008166C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE219D0020388DA8008166C3 /* Main.storyboard */; };
 		FE219D042038AF03008166C3 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE219D032038AF03008166C3 /* MessageComposer.swift */; };
 		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
 		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
@@ -47,6 +46,8 @@
 		FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */; };
 		FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */; };
 		FE9470E31F55318200F0E45F /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E21F55318200F0E45F /* global.swift */; };
+		FEA0AD4D20E24442001826D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA0AD4C20E24442001826D2 /* Main.storyboard */; };
+		FEA0AD4F20E688F5001826D2 /* UserProfileVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */; };
 		FEA9F2CE1F51E58C0022A939 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CD1F51E58C0022A939 /* User.swift */; };
 		FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */; };
 		FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2D31F51F1010022A939 /* UserSearchController.swift */; };
@@ -91,7 +92,6 @@
 		FE074025203A7E57000A7536 /* NeoSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Italic.otf"; sourceTree = "<group>"; };
 		FE15DBEE203867D2005215E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FE219CF920388616008166C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FE219D0120388DA8008166C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../../Downloads/InstagramFirebase/ios/InstagramFirebase/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE219D032038AF03008166C3 /* MessageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
@@ -106,6 +106,8 @@
 		FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCV.swift; sourceTree = "<group>"; };
 		FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCVCell.swift; sourceTree = "<group>"; };
 		FE9470E21F55318200F0E45F /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		FEA0AD4C20E24442001826D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVideoPlayer.swift; sourceTree = "<group>"; };
 		FEA9F2CD1F51E58C0022A939 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		FEA9F2D31F51F1010022A939 /* UserSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				E7C556181F0F2A7A00867FFA /* UserProfileController.swift */,
 				E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */,
 				FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */,
+				FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */,
 			);
 			name = UserProfile;
 			sourceTree = "<group>";
@@ -334,10 +337,10 @@
 		FEF5F05A1F390B1200B8A501 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				FE219D0020388DA8008166C3 /* Main.storyboard */,
 				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
 				E78C503E1F0CD5D90034226F /* Info.plist */,
 				FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */,
+				FEA0AD4C20E24442001826D2 /* Main.storyboard */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -407,7 +410,7 @@
 				TargetAttributes = {
 					E78C502E1F0CD5D90034226F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = RL292UUN9S;
+						DevelopmentTeam = DFUU36AARG;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -442,6 +445,7 @@
 				FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */,
 				FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */,
 				FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */,
+				FEA0AD4D20E24442001826D2 /* Main.storyboard in Resources */,
 				FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */,
 				FE219CFA20388616008166C3 /* Assets.xcassets in Resources */,
 				FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */,
@@ -450,7 +454,6 @@
 				FE074028203A7E77000A7536 /* NeoSans-Bold.otf in Resources */,
 				FE07402A203A7E77000A7536 /* NeoSans-Italic.otf in Resources */,
 				FE07402B203A7E77000A7536 /* NeoSans-Light.otf in Resources */,
-				FE219D0220388DA8008166C3 /* Main.storyboard in Resources */,
 				FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */,
 				FE07402C203A7E77000A7536 /* NeoSans-LightItalic.otf in Resources */,
 			);
@@ -534,6 +537,7 @@
 				FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */,
 				FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */,
 				FEBB7C43201D71C800ACD87A /* ExploreCV.swift in Sources */,
+				FEA0AD4F20E688F5001826D2 /* UserProfileVideoPlayer.swift in Sources */,
 				E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */,
 				FEBB7C4C201D73D700ACD87A /* Date.swift in Sources */,
 				E7C556171F0F29A500867FFA /* MainTabBarController.swift in Sources */,
@@ -577,14 +581,6 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = "Story Time";
-			sourceTree = "<group>";
-		};
-		FE219D0020388DA8008166C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE219D0120388DA8008166C3 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -688,10 +684,10 @@
 			baseConfigurationReference = 607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RL292UUN9S;
+				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
+				PRODUCT_BUNDLE_IDENTIFIER = com.erikbatista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -703,10 +699,10 @@
 			baseConfigurationReference = EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RL292UUN9S;
+				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
+				PRODUCT_BUNDLE_IDENTIFIER = com.erikbatista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

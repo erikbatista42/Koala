@@ -53,7 +53,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>Launch_Screen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Launch_Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -12,8 +12,14 @@ import AVKit
 import Firebase
 import MobileCoreServices
 
+protocol GetUserFromUserPorfileCellDelegate {
+    func getUser(username: String, profileImage: String, postURL: String)
+}
+
 class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
+    var getUserDelegate: GetUserFromUserPorfileCellDelegate?
+    
     let messageComposer = MessageComposer()
     
     var myCollectionView: UICollectionView!
@@ -23,10 +29,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     
     let cellId = "cellId"
     var userId: String?
-    
-    var myUserProfileController: UserProfileController?
-    var avPlayerViewController = AVPlayerViewController()
-    var avPlayer = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,15 +130,40 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         return cell
     }
     
+    var avPlayerViewController = UserProfileVideoPlayer()
+    
+    var avPlayer = AVPlayer()
+    var playerLayer: AVPlayerLayer!
+    
+    static var didSelectPostUsername: String!
+    static var didSelectPostUid: String!
+    static var didSelectPostProfileImageURL: String!
+    static var didSelectPostVideoURL: String!
+    
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = videos[indexPath.item]
+        
+        UserProfileController.didSelectPostUsername = videos[indexPath.row].user.username
+        UserProfileController.didSelectPostUid = videos[indexPath.row].user.uid
+        UserProfileController.didSelectPostProfileImageURL = videos[indexPath.row].user.profileImageUrl
+        UserProfileController.didSelectPostVideoURL = videos[indexPath.row].videoUrl
+        
+        
+        getUserDelegate?.getUser(username: UserProfileController.didSelectPostUsername, profileImage: UserProfileController.didSelectPostProfileImageURL, postURL: UserProfileController.didSelectPostVideoURL)
+        
         guard let url = NSURL(string: links.videoUrl) else { return }
-        let player = AVPlayer(url: url as URL)
+        var player = avPlayerViewController.player
+        player = AVPlayer(url: url as URL)
+        let playerItem = AVPlayerItem(url: url as URL)
+        avPlayer.replaceCurrentItem(with: playerItem)
         let playerController = avPlayerViewController
         playerController.player = player
-        self.present(playerController, animated: true) {
-            player.play()
-        }
+        
+        let objCreateEventVC = playerController
+        objCreateEventVC.hidesBottomBarWhenPushed = true
+        //        self.navigationController?.pushViewController(playerController, animated: true)
+        
+        self.navigationController?.pushViewController(objCreateEventVC, animated: false)
     }
     //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     //        let width = (view.frame.width - 1) / 2
