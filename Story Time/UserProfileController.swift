@@ -39,7 +39,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         
         //        collectionView?.backgroundColor = .white
         
-        
         myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         myCollectionView.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
@@ -52,7 +51,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         fetchUser()
         fetchOrderedPosts()
         setupLogOutButton()
-        
         myCollectionView.delegate   = self
         myCollectionView.dataSource = self
         self.view.addSubview(myCollectionView)
@@ -86,7 +84,19 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
         if rightBarButtonIsHidden == true {
-                self.navigationItem.rightBarButtonItem = nil
+//                self.navigationItem.rightBarButtonItem = nil
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "Block", style: .destructive, handler: { (_) in
+                let alertController = UIAlertController(title: "User has been blocked!", message: "You will no longer see posts from this user", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                self.videos = []
+                self.myCollectionView.reloadData()
+                
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
         }
     }
     

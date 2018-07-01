@@ -48,14 +48,44 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
     
     @objc func handleOptionsButton() {
         
+//
+//        // set up activity view controller
+//        let textToShare = ["Check out this story I found in storytime: \(videoURL)" ]
+//        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+//        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+//
+//        // exclude some activity types from the list (optional)
+//        //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+//
+//        // present the view controller
+//        self.present(activityViewController, animated: true, completion: nil)
         
-        // set up activity view controller
-        let textToShare = ["Check out this story I found in storytime: \(videoURL)" ]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        let activityViewController = UIAlertController()
+
+        let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive, handler: { (action) -> Void in
+            print("flag button tapped")
+        })
         
-        // exclude some activity types from the list (optional)
-        //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        let  reportButton = UIAlertAction(title: "Report ⚠️", style: .destructive, handler: { (action) -> Void in
+            print("report button tapped")
+        })
+        
+        let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
+            let textToShare = ["Check out this story I found in storytime: \(self.videoURL)"]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            // exclude some activity types from the list (optional)
+            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        activityViewController.addAction(flagButton)
+        activityViewController.addAction(reportButton)
+        activityViewController.addAction(shareButton)
+        activityViewController.addAction(cancelButton)
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)

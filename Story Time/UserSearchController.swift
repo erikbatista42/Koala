@@ -185,6 +185,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         // FIX THIS
         let userProfileController = UserProfileController(nibName:nil, bundle:nil)
         userProfileController.rightBarButtonIsHidden = true
+        
         userProfileController.userId = passedUser
         //        userProfileController.videos = [passedVideos]
         //        userProfileController.thumbnails = [passedThumbnail]
