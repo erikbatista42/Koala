@@ -61,21 +61,26 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
 //        self.present(activityViewController, animated: true, completion: nil)
         
         let activityViewController = UIAlertController()
-
-        let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive, handler: { (action) -> Void in
-            print("flag button tapped")
-        })
         
-        let  reportButton = UIAlertAction(title: "Report ⚠️", style: .destructive, handler: { (action) -> Void in
-            print("report button tapped")
-        })
+        let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive) { (action) in
+            let alertController = UIAlertController(title: "This post has been Flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        let reportButton = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
+            let alertController = UIAlertController(title: "This post has been Reported!", message: "We will review this post and will update you within under 24 hours", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
         
         let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
             let textToShare = ["Check out this story I found in storytime: \(self.videoURL)"]
-            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             // exclude some activity types from the list (optional)
             //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+            self.present(shareActivityViewController, animated: true, completion: nil)
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
@@ -109,6 +114,7 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
         userProfileController.userId = UserSearchController.didSelectPostUid
         
         self.navigationController?.pushViewController(userProfileController, animated: true)
+        userProfileController.rightBarButtonIsHidden = true
     }
     
     

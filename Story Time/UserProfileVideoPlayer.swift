@@ -62,7 +62,11 @@ class UserProfileVideoPlayer: UIViewController, GetUserFromHomeControllerCellDel
         })
         
         let  deleteButton = UIAlertAction(title: "Delete 🗑", style: .destructive, handler: { (action) -> Void in
-            print("report button tapped")
+            print("delete button pressed")
+            let ref = FIRDatabase.database().reference()
+            guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+            ref.child("posts").child(uid).removeValue()
+            
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
