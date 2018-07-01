@@ -33,7 +33,7 @@ class UserProfileVideoPlayer: UIViewController, GetUserFromHomeControllerCellDel
         return iv
     }()
     
-    lazy var shareButton: UIButton = {
+    lazy var optionsButton: UIButton = {
         let button = UIButton(type: .system)
         //        button.layer.borderColor = UIColor.white.cgColor
         //        button.layer.borderWidth = 1
@@ -41,22 +41,37 @@ class UserProfileVideoPlayer: UIViewController, GetUserFromHomeControllerCellDel
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
         return button
     }()
     
     var videoURL: String!
     
-    @objc func handleShareButton() {
+    @objc func handleOptionsButton() {
         
+//        let alertController = UIAlertController(title: "Action Sheet", message: "What would you like to do?", preferredStyle: .ActionSheet)
         
-        // set up activity view controller
-        let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        let activityViewController = UIAlertController()
         
-        // exclude some activity types from the list (optional)
-        //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        let  shareButton = UIAlertAction(title: "Share 👥", style: .destructive, handler: { (action) -> Void in
+            let textToShare = ["Check out this story I found in storytime: \(self.videoURL)"]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            // exclude some activity types from the list (optional)
+            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        })
+        
+        let  deleteButton = UIAlertAction(title: "Delete 🗑", style: .destructive, handler: { (action) -> Void in
+            print("report button tapped")
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        activityViewController.addAction(shareButton)
+         activityViewController.addAction(deleteButton)
+        activityViewController.addAction(cancelButton)
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
@@ -103,12 +118,12 @@ class UserProfileVideoPlayer: UIViewController, GetUserFromHomeControllerCellDel
         view.addSubview(videoView)
         
         self.view.layer.addSublayer(playerLayer)
-        view.addSubview(shareButton)
+        view.addSubview(optionsButton)
         view.addSubview(profileImageButton)
         playerLayer.frame = view.bounds
         player!.play()
         
-        shareButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 50, height: 50)
+        optionsButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 50, height: 50)
         
         profileImageButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -35, paddingRight: 18, width: 50, height: 50)
         

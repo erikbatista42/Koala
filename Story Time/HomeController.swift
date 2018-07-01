@@ -105,20 +105,43 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func setupBarButtons() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "profile_unselected").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleUserProfileButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleShareButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleOptionsButton))
     }
     
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "share_icon").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
         return button
     }()
     
-    @objc func handleShareButton() {
-        let activityViewController = UIActivityViewController(
-            activityItems: ["Check out this app I found called Story Time"],applicationActivities: nil)
-        present(activityViewController, animated: true, completion: nil)
+    @objc func handleOptionsButton() {
+        
+        let activityViewController = UIAlertController()
+        
+        let contactCreaterButton = UIAlertAction(title: "Contact Creator 📩", style: .default, handler: { (action) -> Void in
+            print(123)
+            // exclude some activity types from the list (optional)
+            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        })
+        
+        let shareApp = UIAlertAction(title: "Share App 👥", style: .default, handler: { (action) -> Void in
+            print("share app button tapped")
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        activityViewController.addAction(contactCreaterButton)
+        activityViewController.addAction(shareApp)
+        activityViewController.addAction(cancelButton)
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+//        let activityViewController = UIActivityViewController(
+//            activityItems: ["Check out this app I found called Story Time"],applicationActivities: nil)
+//        present(activityViewController, animated: true, completion: nil)
     }
     
     @objc func handleUserProfileButton() {

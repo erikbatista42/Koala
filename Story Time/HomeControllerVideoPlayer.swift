@@ -41,15 +41,13 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
         return button
     }()
     
     var videoURL: String!
     
-    @objc func handleShareButton() {
-        
-        
+    @objc func handleOptionsButton() {
         // set up activity view controller
         let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
