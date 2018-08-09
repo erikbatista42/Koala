@@ -85,7 +85,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
     
     @objc func profileButtonPressed() {
-        print(123)
         print("thisss",profileImageView.image ?? "")
         print("user:", user?.username as Any)
     }

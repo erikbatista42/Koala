@@ -292,7 +292,6 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 15
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

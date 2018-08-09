@@ -46,7 +46,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
     }()
     
     var videoURL: String!
-    
+    var flaggedPostUrl: String!
     @objc func handleOptionsButton() {
 //        // set up activity view controller
 //        let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
@@ -62,7 +62,23 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         let activityViewController = UIAlertController()
         
         let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive) { (action) in
-            let alertController = UIAlertController(title: "This post has been Flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+//            videoURL = "\(HomeController.didSelectPostVideoURL)"
+            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL)"
+            print("post flagged: \(self.flaggedPostUrl)")
+            
+            let values = ["\(FIRAuth.auth()?.currentUser?.uid ?? "")": "\(self.flaggedPostUrl)"]
+            
+            FIRDatabase.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to flag post:", err)
+                    return
+                }
+                print("Successfully flagged post -> info to db")
+            })
+
+            
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
