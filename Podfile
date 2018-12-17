@@ -5,17 +5,11 @@ platform :ios, '10.0'
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
-target 'Koala' do
+target 'Story Time' do
   # Pods for Koala
-pod 'Alamofire'#, '~> 4.4'
-pod 'AlamofireImage', '~> 3.1'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
-pod 'Kingfisher', '~> 3.0'
-pod 'Player', '~> 0.5.0'
-pod 'KBVideoPlayer'
-pod 'Hero'
 
 end

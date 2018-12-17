@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */; };
+		CC159B22044E7965CAB673EB /* Pods_Story_Time.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B582035AEC7C9C2EA3E0C63C /* Pods_Story_Time.framework */; };
 		E78C50331F0CD5D90034226F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50321F0CD5D90034226F /* AppDelegate.swift */; };
 		E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78C50341F0CD5D90034226F /* SignUpController.swift */; };
 		E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B222D61F12DA2900C3D5E3 /* ShootAVideoVC.swift */; };
@@ -62,7 +63,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F779214B098CF9639153BC6 /* Pods-Story Time.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story Time.release.xcconfig"; path = "Pods/Target Support Files/Pods-Story Time/Pods-Story Time.release.xcconfig"; sourceTree = "<group>"; };
 		607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Koala.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Koala/Pods-Koala.debug.xcconfig"; sourceTree = "<group>"; };
+		B582035AEC7C9C2EA3E0C63C /* Pods_Story_Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Story_Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0067CAAB1351D22F4451396 /* Pods-Story Time.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story Time.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Story Time/Pods-Story Time.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Koala.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C502F1F0CD5D90034226F /* Story Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Story Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A672AC8EE6A3F770CFC0DB1 /* Pods_Koala.framework in Frameworks */,
+				CC159B22044E7965CAB673EB /* Pods_Story_Time.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +143,8 @@
 			children = (
 				607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */,
 				EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */,
+				D0067CAAB1351D22F4451396 /* Pods-Story Time.debug.xcconfig */,
+				3F779214B098CF9639153BC6 /* Pods-Story Time.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				E5B8D3615B3E4173D29C7442 /* Pods_Koala.framework */,
+				B582035AEC7C9C2EA3E0C63C /* Pods_Story_Time.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,7 +395,6 @@
 				E78C502C1F0CD5D90034226F /* Frameworks */,
 				E78C502D1F0CD5D90034226F /* Resources */,
 				76AD7A7B5BEBEBEE2344814D /* [CP] Embed Pods Frameworks */,
-				F24BAB41FF17A48260442828 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,7 +417,7 @@
 				TargetAttributes = {
 					E78C502E1F0CD5D90034226F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = RL292UUN9S;
+						DevelopmentTeam = DFUU36AARG;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -468,30 +475,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Story Time/Pods-Story Time-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/KBVideoPlayer/KBVideoPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KBVideoPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Story Time/Pods-Story Time-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		89F85FFF7280C2179DFC0AF8 /* [CP] Check Pods Manifest.lock */ = {
@@ -505,26 +504,11 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Koala-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Story Time-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F24BAB41FF17A48260442828 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Koala/Pods-Koala-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -681,10 +665,10 @@
 		};
 		E78C50421F0CD5D90034226F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 607CDAE2C58EB5474D0F8367 /* Pods-Koala.debug.xcconfig */;
+			baseConfigurationReference = D0067CAAB1351D22F4451396 /* Pods-Story Time.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RL292UUN9S;
+				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
@@ -696,10 +680,10 @@
 		};
 		E78C50431F0CD5D90034226F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA75FC6CA32C412BA1DAF5DB /* Pods-Koala.release.xcconfig */;
+			baseConfigurationReference = 3F779214B098CF9639153BC6 /* Pods-Story Time.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RL292UUN9S;
+				DEVELOPMENT_TEAM = DFUU36AARG;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";

@@ -116,11 +116,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     fileprivate func fetchAllPostsFromUserIds() {
         //        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
+        Database.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
             
             guard let userIdsDictionary = children.value as? [String: Any] else { return }
             userIdsDictionary.forEach({ (key,  value) in
-                FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
+                Database.fetchUserWithUid(uid: key, completion: { (user) in
                     self.fetchPostsWithUser(user: user)
                 })
             })
@@ -131,14 +131,14 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     var posts = [Post]()
     fileprivate func fetchPosts() {
-        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        Database.fetchUserWithUid(uid: currentUserID) { (user) in
             self.fetchPostsWithUser(user: user)
         }
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
-        let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
+        let ref = Database.database().reference().child("posts/\(user.uid)/")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -154,8 +154,8 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
                 guard let dictionary = value as? [String: Any] else { return }
                 var  post = Post(user: user, dictionary: dictionary)
                 post.id = key
-                guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-                FIRDatabase.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
                     if let value = snapshot.value as? Int, value == 1 {
                         post.hasLiked = true
                     } else {
@@ -202,14 +202,14 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     var filteredUsers = [User]()
     var users = [User]()
     func fetchUsers() {
-        let ref = FIRDatabase.database().reference().child("users")
+        let ref = Database.database().reference().child("users")
         ref.observe(.value, with: { (snapshot) in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
             //For each iterates through every object in the dictioary
             dictionaries.forEach({ (key, value) in
                 
-                if key == FIRAuth.auth()?.currentUser?.uid {
+                if key == Auth.auth().currentUser?.uid {
                     return
                 }
                 guard let userDictionary = value as? [String: Any] else { return}

@@ -10,9 +10,9 @@ import Foundation
 import Firebase
 
 //Fetches username for posts
-extension FIRDatabase {
+extension Database {
     static func fetchUserWithUid(uid: String, completion: @escaping (User) -> () ) {
-                FIRDatabase.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
+        Database.database().reference().child("users").child(uid).observe(.value, with: { (snapshot) in
             
             guard let userDictionary = snapshot.value as? [String: Any] else { return }
             

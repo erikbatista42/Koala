@@ -12,7 +12,7 @@ import Firebase
 import AVFoundation
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
-    let currentUser = FIRAuth.auth()?.currentUser?.uid
+    let currentUser = Auth.auth().currentUser?.uid
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     let saveFileName = "/test.mp4"
     
@@ -124,7 +124,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
-        _ = FIRStorage.storage().reference().child("videos")
+        _ = Storage.storage().reference().child("videos")
         
         // File located on library
         guard let imagePickerUrl = info[UIImagePickerControllerMediaURL] as? URL else { return }
@@ -136,12 +136,12 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         
         // Create a reference to the file you want to upload
-        let videosRef = FIRStorage.storage().reference().child("videos/\(currentUser)/" + randomString(length: 20) + ".mp4")
+        let videosRef = Storage.storage().reference().child("videos/\(currentUser)/" + randomString(length: 20) + ".mp4")
         
-        let allVideos = FIRStorage.storage().reference().child("all_videos/" + randomString(length: 20) + ".mp4")
+        let allVideos = Storage.storage().reference().child("all_videos/" + randomString(length: 20) + ".mp4")
         
         // Upload the file to the path "videosRef"
-        _ = allVideos.putFile(videoUrl, metadata: nil) { metadata, error in
+        _ = allVideos.putFile(from: videoUrl, metadata: nil) { metadata, error in
             if let error = error {
                 print("An error has occured: \(error)")
             } else {
@@ -163,43 +163,65 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                         print("IMG DATA IS NIL")
                     }
                     
-                    let thumbnailStorageRef = FIRStorage.storage().reference()
+                    // FIX DOWNLOAD URL
+                    
+                    let thumbnailStorageRef = Storage.storage().reference()
                     
                     let imageRef = thumbnailStorageRef.child("thumbnails/" + self.randomString(length: 20) + ".png")
                     
-                    imageRef.put(imageData, metadata: nil, completion: { (thumbnailMeta, error) in
+                    imageRef.putData(imageData, metadata: nil, completion: { (thumbnailMeta, error) in
                         
                         if error != nil {
                             print("An error has occured while uploading thumbnail:",error ?? "")
                         } else {
-                            guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
-                            print("Thumbnail upload to database was successfull:", thumbnailUrl)
+                            imageRef.downloadURL(completion: { (url, error) in
+                                // if error happens
+                                guard url != nil else {
+                                    print(error?.localizedDescription as Any)
+                                    return
+                                }
+//                                guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
+                                print("Thumbnail upload to database was successfull:", url)
+                            })
+ 
                             
                             // Metadata contains file metadata such as size, content-type, and download URL.
-                            guard let downloadURL = metadata!.downloadURL() else { return }
-                            
-                            print("Video url that was recently uploaded:", downloadURL)
-                            guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
-                            
-                            let userPostRef = FIRDatabase.database().reference().child("posts").child(currentUser)
-                            let ref = userPostRef.childByAutoId()
-                            
-                            let values = ["videoUrl": "\(downloadURL)", "thumbnailUrl": "\(thumbnailUrl)", "creationDate" : Date().timeIntervalSince1970] as [String : Any]
-                            
-                            
-                            NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
-                            
-                            ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                                if let err = err {
-                                    print("Failed to save video to DB", err)
+                            allVideos.downloadURL(completion: { (url, error) in
+                                
+                                // if error happens
+                                guard url != nil else {
+                                    print(error?.localizedDescription as Any)
                                     return
-                                } else {
-                                    print("Successfully saved post to DB")
-                                    let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
-                                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                    self.present(alertController, animated: true, completion: nil)
                                 }
+//                                guard let downloadURL = metadata!.downloadURL() else { return }
+                                
+//                                print("Video url that was recently uploaded:", downloadURL)
+                                guard let currentUser = Auth.auth().currentUser?.uid else { return }
+                                
+                                let userPostRef = Database.database().reference().child("posts").child(currentUser)
+                                let ref = userPostRef.childByAutoId()
+                                
+                                let values = ["videoUrl": "\(url)", "thumbnailUrl": "\(url)", "creationDate": Date().timeIntervalSince1970] as [String : Any]
+                                
+                                NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
+                                
+                                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                    if let err = err {
+                                        print("Failed to save video to DB", err)
+                                        return
+                                    } else {
+                                        print("Successfully saved post to DB")
+                                        let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
+                                        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                        self.present(alertController, animated: true, completion: nil)
+                                    }
+                                })
                             })
+                            
+
+                            
+                            
+
                         }
                     })
                     

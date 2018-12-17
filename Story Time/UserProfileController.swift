@@ -61,7 +61,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     
     fileprivate func fetchOrderedPosts() {
         guard let uid = self.user?.uid else { return }
-        let ref = FIRDatabase.database().reference().child("posts").child(uid)
+        let ref = Database.database().reference().child("posts").child(uid)
         
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             
@@ -118,7 +118,7 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
             do {
-                try FIRAuth.auth()?.signOut()
+                try Auth.auth().signOut()
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
                 self.present(navController, animated: true, completion: nil)
@@ -157,7 +157,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         UserProfileController.didSelectPostUid = videos[indexPath.row].user.uid
         UserProfileController.didSelectPostProfileImageURL = videos[indexPath.row].user.profileImageUrl
         UserProfileController.didSelectPostVideoURL = videos[indexPath.row].videoUrl
-        
         
         getUserDelegate?.getUser(username: UserProfileController.didSelectPostUsername, profileImage: UserProfileController.didSelectPostProfileImageURL, postURL: UserProfileController.didSelectPostVideoURL)
         
@@ -216,8 +215,8 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     var user: User?
     
     fileprivate func fetchUser() {
-        let uid = userId ?? (FIRAuth.auth()?.currentUser?.uid ?? "")
-        FIRDatabase.fetchUserWithUid(uid: uid) { (user) in
+        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
+        Database.fetchUserWithUid(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username
             self.myCollectionView.reloadData()

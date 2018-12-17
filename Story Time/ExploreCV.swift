@@ -66,10 +66,10 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     fileprivate func fetchAllPostsFromUserIds() {
-        FIRDatabase.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
+        Database.database().reference().child("posts").observeSingleEvent(of: .value, with: { (children) in
             guard let userIdsDictionary = children.value as? [String: Any] else { return }
             userIdsDictionary.forEach({ (key,  value) in
-                FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
+                Database.fetchUserWithUid(uid: key, completion: { (user) in
                     self.fetchPostsWithUser(user: user)
                 })
             })
@@ -80,14 +80,14 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
     
     var posts = [Post]()
     fileprivate func fetchPosts() {
-        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        Database.fetchUserWithUid(uid: currentUserID) { (user) in
             self.fetchPostsWithUser(user: user)
         }
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
-        let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
+        let ref = Database.database().reference().child("posts/\(user.uid)/")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -103,8 +103,8 @@ class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollecti
                 guard let dictionary = value as? [String: Any] else { return }
                 var  post = Post(user: user, dictionary: dictionary)
                 post.id = key
-                guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-                FIRDatabase.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child("likes").child(key).child(uid).observe(.value, with: { (snapshot) in
                     if let value = snapshot.value as? Int, value == 1 {
                         post.hasLiked = true
                     } else {

@@ -120,7 +120,7 @@ class LoginController: UIViewController {
     @objc func handleLogin() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, err) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
             
             if let err = err {
                 print("Failed to sign in with email:", err)
@@ -129,7 +129,7 @@ class LoginController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-            print("Successfully logged back in with user:", user?.uid ?? "")
+//            print("Successfully logged back in with user:", user.uid ?? "")
             
             guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
             

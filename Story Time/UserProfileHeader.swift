@@ -34,9 +34,9 @@ class UserProfileHeader: UICollectionViewCell {
     func setupHeaderLabels() {
         guard let uid = self.user?.uid else { return }
         // following label
-        let followingRef = FIRDatabase.database().reference().child("following").child(uid)
+        let followingRef = Database.database().reference().child("following").child(uid)
         
-        followingRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
+        followingRef.observe(.value, with: { (snapshot: DataSnapshot!) in
             let numOfChildrens = snapshot.childrenCount
             
             let attributedText = NSMutableAttributedString(string: "\(numOfChildrens)", attributes: [NSAttributedStringKey.foregroundColor : UIColor.rgb(red: 120, green: 226, blue: 250, alpha: 1), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)])
@@ -49,9 +49,9 @@ class UserProfileHeader: UICollectionViewCell {
         })
         
         // Number of followers label
-        let numOfFollowersRef = FIRDatabase.database().reference().child("followers").child(uid)
+        let numOfFollowersRef = Database.database().reference().child("followers").child(uid)
         
-        numOfFollowersRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
+        numOfFollowersRef.observe(.value, with: { (snapshot: DataSnapshot!) in
             
             let numOfChildrens = snapshot.childrenCount
             
@@ -65,9 +65,9 @@ class UserProfileHeader: UICollectionViewCell {
         })
         
         // Number of videos label
-        let numOfPostsRef = FIRDatabase.database().reference().child("posts").child(uid)
+        let numOfPostsRef = Database.database().reference().child("posts").child(uid)
         
-        numOfPostsRef.observe(.value, with: { (snapshot: FIRDataSnapshot!) in
+        numOfPostsRef.observe(.value, with: { (snapshot: DataSnapshot!) in
             
             let numOfChildrens = snapshot.childrenCount
             
@@ -82,7 +82,7 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupEditFollowButton() {
-        guard let currentLoggedInCurrentUserId = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentLoggedInCurrentUserId = Auth.auth().currentUser?.uid else { return }
         
         guard let userId = user?.uid else { return }
         
@@ -91,7 +91,7 @@ class UserProfileHeader: UICollectionViewCell {
         } else {
             
             //check if following
-            FIRDatabase.database().reference().child("following").child(currentLoggedInCurrentUserId).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            Database.database().reference().child("following").child(currentLoggedInCurrentUserId).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
                     self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
@@ -106,14 +106,14 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     @objc func handleEditProfileOrFollow() {
-        guard let currentUserId = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
         guard let userId = user?.uid else { return }
         
         if editProfileFollowButton.titleLabel?.text == "Unfollow" {
             
             //following
-            let ref = FIRDatabase.database().reference().child("following").child(currentUserId).child(userId)
+            let ref = Database.database().reference().child("following").child(currentUserId).child(userId)
             ref.removeValue(completionBlock: { (err, ref) in
                 if let err = err {
                     print("Failed to unfollow user:", err)
@@ -126,7 +126,7 @@ class UserProfileHeader: UICollectionViewCell {
             self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 252, green: 41, blue: 125, alpha: 1)
             
             //followers
-            let followersRef = FIRDatabase.database().reference().child("followers").child(userId).child(currentUserId)
+            let followersRef = Database.database().reference().child("followers").child(userId).child(currentUserId)
             followersRef.removeValue(completionBlock: { (err, followersRef) in
                 if let err = err {
                     print("failed to put user on followers: ", err)
@@ -141,7 +141,7 @@ class UserProfileHeader: UICollectionViewCell {
            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         } else {
             //following
-            let ref = FIRDatabase.database().reference().child("following").child(currentUserId)
+            let ref = Database.database().reference().child("following").child(currentUserId)
             
             let values = [userId: 1]
             ref.updateChildValues(values) { (err, ref) in
@@ -156,7 +156,7 @@ class UserProfileHeader: UICollectionViewCell {
             }
             
             //Followers
-            let followersRef = FIRDatabase.database().reference().child("followers").child(userId)
+            let followersRef = Database.database().reference().child("followers").child(userId)
             let followerValues = [currentUserId: 1]
             followersRef.updateChildValues(followerValues, withCompletionBlock: { (err, followersRef) in
                 if err != nil {

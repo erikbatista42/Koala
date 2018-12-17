@@ -68,9 +68,9 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
             self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL)"
             print("post flagged: \(self.flaggedPostUrl)")
             
-            let values = ["\(FIRAuth.auth()?.currentUser?.uid ?? "")": "\(self.flaggedPostUrl)"]
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl)"]
             
-            FIRDatabase.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+            Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if let err = err {
                     print("Failed to flag post:", err)
                     return
@@ -109,7 +109,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
-            }
+        }
     
     lazy var profileImageButton: UIButton = {
         let button = UIButton(type: .system)

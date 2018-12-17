@@ -166,12 +166,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchFollowingUserIds() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
             userIdsDictionary.forEach({ (key,  value) in
-                FIRDatabase.fetchUserWithUid(uid: key, completion: { (user) in
+                Database.fetchUserWithUid(uid: key, completion: { (user) in
                     self.fetchPostsWithUser(user: user)
                 })
             })
@@ -182,14 +182,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var posts = [Post]()
     fileprivate func fetchPosts() {
-        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
-        FIRDatabase.fetchUserWithUid(uid: currentUserID) { (user) in
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        Database.fetchUserWithUid(uid: currentUserID) { (user) in
             self.fetchPostsWithUser(user: user)
         }
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
-        let ref = FIRDatabase.database().reference().child("posts/\(user.uid)/")
+        let ref = Database.database().reference().child("posts/\(user.uid)/")
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
              self.posts.removeAll()
@@ -206,8 +206,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 guard let dictionary = value as? [String: Any] else { return }
                 var post = Post(user: user, dictionary: dictionary)
                 post.id = key
-                guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-                FIRDatabase.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                Database.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                     if let value = snapshot.value as? Int, value == 1 {
                         post.hasLiked = true
                     } else {
@@ -272,7 +272,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         cell.post = posts[indexPath.item]
         
         return cell
-    } 
+    }
 
     
     func didPressShareButton(for cell: HomePostCell) {

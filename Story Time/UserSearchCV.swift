@@ -70,7 +70,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     var users = [User]()
     func fetchUsers() {
         
-        let ref = FIRDatabase.database().reference().child("users")
+        let ref = Database.database().reference().child("users")
         ref.observe(.value, with: { (snapshot) in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
@@ -78,7 +78,7 @@ class SearchUsersCV: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
             
             //Omit yourself from the searching list
             dictionaries.forEach({ (key, value) in
-                if key == FIRAuth.auth()?.currentUser?.uid {
+                if key == Auth.auth().currentUser?.uid {
                     return
                 }
                 guard let userDictionary = value as? [String: Any] else { return}
