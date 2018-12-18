@@ -253,7 +253,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
 //    var avPlayerViewController = AVPlayerViewController()
     var avPlayer = AVPlayer()
-    var avPlayerViewController = ExploreVideoPlayer()
+    var avPlayerViewController = ExploreVideoPlayerController()
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let links = posts[indexPath.row]
         

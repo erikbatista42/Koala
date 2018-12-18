@@ -12,6 +12,7 @@ import Firebase
 import AVFoundation
 
 class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+    
     let currentUser = Auth.auth().currentUser?.uid
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     let saveFileName = "/test.mp4"

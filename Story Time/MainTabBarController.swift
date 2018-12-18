@@ -66,19 +66,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         let recordNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "addicon8").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "addicon8").withRenderingMode(.alwaysOriginal))
 
-        let notificationsNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected").withRenderingMode(.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "heart_selected").withRenderingMode(.alwaysOriginal), rootViewController: ActivityTVC())
-        notificationsNavController.tabBarItem.title = "Activity"
         
-        //user profile
-//        let layout = UICollectionViewFlowLayout()
-//        let userProfileController = UserProfileController(collectionViewLayout: layout)
-//
-//        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
-//
-//        userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
-//        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
-//        userProfileNavController.tabBarItem.title = "Profile"
-//
         tabBar.tintColor = .white
 //        tabBar.tintColor = UIColor.rgb(red: 118, green: 133, blue: 182, alpha: 1)
         tabBar.barTintColor = UIColor.rgb(red: 28, green: 34, blue: 55, alpha: 1)

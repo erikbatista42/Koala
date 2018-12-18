@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 
-class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegate {
+class ExploreVideoPlayerController: UIViewController, GetUserFromHomeControllerCellDelegate {
 
     var player: AVPlayer!
     var playerLayer: AVPlayerLayer!

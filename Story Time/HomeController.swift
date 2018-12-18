@@ -146,7 +146,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     @objc func handleUserProfileButton() {
         let userProfileController = UserProfileController(nibName:nil, bundle:nil)
         
-        ExploreVC().navigationController?.pushViewController(userProfileController, animated: true)
+        ExploreController().navigationController?.pushViewController(userProfileController, animated: true)
 
         self.navigationController?.pushViewController(userProfileController, animated: true)
     }
