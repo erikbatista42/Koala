@@ -12,7 +12,7 @@ import Firebase
 import AVFoundation
 import AVKit
 
-class ExploreCV: UIViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class ExploreVC: UIViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     let cellId = "cellId"
     var collectionView: UICollectionView!

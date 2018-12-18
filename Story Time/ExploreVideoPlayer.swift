@@ -75,7 +75,7 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
         }
         
         let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
-            let textToShare = ["Check out this story I found in storytime: \(self.videoURL)"]
+            let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
             let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             // exclude some activity types from the list (optional)
@@ -128,7 +128,7 @@ class ExploreVideoPlayer: UIViewController, GetUserFromHomeControllerCellDelegat
         userProfileImageView.loadImage(UrlString: profileImageUrl)
         
         profileImageButton.setBackgroundImage(userProfileImageView.image, for: .normal)
-        videoURL = "\(UserSearchController.didSelectPostVideoURL)"
+        videoURL = "\(UserSearchController.didSelectPostVideoURL ?? "")"
     } 
     
     override func viewDidAppear(_ animated: Bool) {

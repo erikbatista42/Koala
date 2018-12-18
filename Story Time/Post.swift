@@ -6,7 +6,6 @@
 //  Copyright © 2017 swift.lang.eu. All rights reserved.
 //
 
-// Trying to show commits
 import Foundation
 
 struct Post {

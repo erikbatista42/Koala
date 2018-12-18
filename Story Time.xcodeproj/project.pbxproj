@@ -45,14 +45,14 @@
 		FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */; };
 		FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */; };
 		FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */; };
-		FE9470E31F55318200F0E45F /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E21F55318200F0E45F /* global.swift */; };
+		FE9470E31F55318200F0E45F /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E21F55318200F0E45F /* Global.swift */; };
 		FEA0AD4D20E24442001826D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA0AD4C20E24442001826D2 /* Main.storyboard */; };
 		FEA0AD4F20E688F5001826D2 /* UserProfileVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */; };
 		FEA9F2CE1F51E58C0022A939 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CD1F51E58C0022A939 /* User.swift */; };
 		FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */; };
 		FEA9F2D41F51F1010022A939 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2D31F51F1010022A939 /* UserSearchController.swift */; };
 		FEBB7C41201D71C100ACD87A /* HomeControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C40201D71C100ACD87A /* HomeControllerHeader.swift */; };
-		FEBB7C43201D71C800ACD87A /* ExploreCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C42201D71C800ACD87A /* ExploreCV.swift */; };
+		FEBB7C43201D71C800ACD87A /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C42201D71C800ACD87A /* ExploreVC.swift */; };
 		FEBB7C48201D73C400ACD87A /* UserDefaults+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C47201D73C400ACD87A /* UserDefaults+isFirstLaunch.swift */; };
 		FEBB7C4A201D73CD00ACD87A /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C49201D73CD00ACD87A /* Constraints.swift */; };
 		FEBB7C4C201D73D700ACD87A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C4B201D73D700ACD87A /* Date.swift */; };
@@ -105,14 +105,14 @@
 		FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_Screen.storyboard; sourceTree = "<group>"; };
 		FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCV.swift; sourceTree = "<group>"; };
 		FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCVCell.swift; sourceTree = "<group>"; };
-		FE9470E21F55318200F0E45F /* global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		FE9470E21F55318200F0E45F /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		FEA0AD4C20E24442001826D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVideoPlayer.swift; sourceTree = "<group>"; };
 		FEA9F2CD1F51E58C0022A939 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
 		FEA9F2D31F51F1010022A939 /* UserSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		FEBB7C40201D71C100ACD87A /* HomeControllerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeControllerHeader.swift; sourceTree = "<group>"; };
-		FEBB7C42201D71C800ACD87A /* ExploreCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCV.swift; sourceTree = "<group>"; };
+		FEBB7C42201D71C800ACD87A /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		FEBB7C47201D73C400ACD87A /* UserDefaults+isFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+isFirstLaunch.swift"; sourceTree = "<group>"; };
 		FEBB7C49201D73CD00ACD87A /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		FEBB7C4B201D73D700ACD87A /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -183,8 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				FEF5F05D1F390CDD00B8A501 /* Singletons */,
-				FE03F3741F374E8A00C9C1D2 /* M */,
-				FEF5F05C1F390B7C00B8A501 /* V */,
+				FE03F3741F374E8A00C9C1D2 /* Model */,
+				FEE1662521C86917003696AF /* Controller */,
+				FEF5F05C1F390B7C00B8A501 /* View */,
 				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
 				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
 				FEBB7C44201D732400ACD87A /* Extensions */,
@@ -204,13 +205,13 @@
 			name = UserProfile;
 			sourceTree = "<group>";
 		};
-		E7C5561F1F10C97500867FFA /* Login/SignUp */ = {
+		E7C5561F1F10C97500867FFA /* Login/SignUp Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E7C5561D1F10C94000867FFA /* LoginController.swift */,
 				E78C50341F0CD5D90034226F /* SignUpController.swift */,
 			);
-			name = Login/SignUp;
+			name = "Login/SignUp Controllers";
 			sourceTree = "<group>";
 		};
 		E7C556201F11A4BB00867FFA /* AddVideo */ = {
@@ -222,14 +223,14 @@
 			name = AddVideo;
 			sourceTree = "<group>";
 		};
-		FE03F3741F374E8A00C9C1D2 /* M */ = {
+		FE03F3741F374E8A00C9C1D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FE03F3751F374EAF00C9C1D2 /* Post.swift */,
 				FEA9F2CD1F51E58C0022A939 /* User.swift */,
-				FE9470E21F55318200F0E45F /* global.swift */,
+				FE9470E21F55318200F0E45F /* Global.swift */,
 			);
-			name = M;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		FE073FFD203A77AF000A7536 /* Fonts */ = {
@@ -259,16 +260,13 @@
 			name = NeoSans;
 			sourceTree = "<group>";
 		};
-		FE5B53F61F39337400B09CDE /* Home */ = {
+		FE5B53F61F39337400B09CDE /* Home Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE5B53F71F39339E00B09CDE /* HomeController.swift */,
 				FE5B53F91F3935E000B09CDE /* HomePostCell.swift */,
 				FEBB7C40201D71C100ACD87A /* HomeControllerHeader.swift */,
-				FE66A9F62022BD6D00B193A8 /* HomeControllerVideoPlayer.swift */,
-				FEBB7C42201D71C800ACD87A /* ExploreCV.swift */,
 			);
-			name = Home;
+			name = "Home Views";
 			sourceTree = "<group>";
 		};
 		FE70E5121F60D9A800AF4D50 /* Explore */ = {
@@ -322,6 +320,33 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FEE1662521C86917003696AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E7C5561F1F10C97500867FFA /* Login/SignUp Controllers */,
+				FEE1662621C86991003696AF /* Home Controllers */,
+				FEE1662721C86AA8003696AF /* Explore Controllers */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FEE1662621C86991003696AF /* Home Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE5B53F71F39339E00B09CDE /* HomeController.swift */,
+				FE66A9F62022BD6D00B193A8 /* HomeControllerVideoPlayer.swift */,
+			);
+			name = "Home Controllers";
+			sourceTree = "<group>";
+		};
+		FEE1662721C86AA8003696AF /* Explore Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FEBB7C42201D71C800ACD87A /* ExploreVC.swift */,
+			);
+			name = "Explore Controllers";
+			sourceTree = "<group>";
+		};
 		FEF5F0591F390AA600B8A501 /* Resource Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,24 +378,23 @@
 			name = Google;
 			sourceTree = "<group>";
 		};
-		FEF5F05C1F390B7C00B8A501 /* V */ = {
+		FEF5F05C1F390B7C00B8A501 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E7C5561F1F10C97500867FFA /* Login/SignUp */,
-				FE5B53F61F39337400B09CDE /* Home */,
+				FE5B53F61F39337400B09CDE /* Home Views */,
 				FE70E5121F60D9A800AF4D50 /* Explore */,
 				E7C556201F11A4BB00867FFA /* AddVideo */,
 				FE717A1C1F6A2D3F00C16B09 /* Activity */,
 				E7C5561A1F1032D100867FFA /* UserProfile */,
 			);
-			name = V;
+			name = View;
 			sourceTree = "<group>";
 		};
 		FEF5F05D1F390CDD00B8A501 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
-				FEF5F0601F390D3600B8A501 /* Docs.strings */,
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
+				FEF5F0601F390D3600B8A501 /* Docs.strings */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -520,7 +544,7 @@
 			files = (
 				FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */,
 				FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */,
-				FEBB7C43201D71C800ACD87A /* ExploreCV.swift in Sources */,
+				FEBB7C43201D71C800ACD87A /* ExploreVC.swift in Sources */,
 				FEA0AD4F20E688F5001826D2 /* UserProfileVideoPlayer.swift in Sources */,
 				E78C50351F0CD5D90034226F /* SignUpController.swift in Sources */,
 				FEBB7C4C201D73D700ACD87A /* Date.swift in Sources */,
@@ -544,7 +568,7 @@
 				FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */,
 				FE717A201F6A328D00C16B09 /* ActivityCell.swift in Sources */,
 				FEA9F2CE1F51E58C0022A939 /* User.swift in Sources */,
-				FE9470E31F55318200F0E45F /* global.swift in Sources */,
+				FE9470E31F55318200F0E45F /* Global.swift in Sources */,
 				FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */,
 				E7B222D71F12DA2900C3D5E3 /* ShootAVideoVC.swift in Sources */,
 				FE66A9F72022BD6D00B193A8 /* HomeControllerVideoPlayer.swift in Sources */,

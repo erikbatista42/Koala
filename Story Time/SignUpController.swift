@@ -111,12 +111,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         return button
     }()
     @objc func handleSignup() {
-        guard let email = emailTextField.text, email.characters.count > 0 else { return }
-        guard let username = usernameTextField.text, username.characters.count > 0 else { return }
-        guard let password = passwordTextField.text, password.characters.count > 0 else { return }
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user: AuthDataResult, error: Error?) in
+        guard let email = emailTextField.text, email.isEmpty else { return }
+        guard let username = usernameTextField.text, username.isEmpty else { return }
+        guard let password = passwordTextField.text, password.isEmpty else { return }
+        Auth.auth().createUser(withEmail: email, password: password, completion: ({ (user: AuthDataResult, error: Error?) in
             
-        
+            
             
             
             
@@ -149,10 +149,10 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                                 print(error?.localizedDescription as Any)
                                 return
                             }
-                        
+                            
                             guard let profileImgUrl = url else { return }
                             
-                             let uid = user.user.uid
+                            let uid = user.user.uid
                             
                             
                             let dictionaryValues = ["username": username, "profileImageUrl": profileImgUrl] as [String : Any]
@@ -176,7 +176,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 })
                 
             }
-            } as! AuthDataResultCallback)
+            } as! AuthDataResultCallback))
     }
         
                 
@@ -243,7 +243,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         setupInputFields()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -251,7 +251,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y = -175
             }
@@ -259,14 +259,14 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 175
             }
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }

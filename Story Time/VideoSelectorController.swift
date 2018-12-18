@@ -50,7 +50,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                 imagePicker.sourceType = .camera
                 imagePicker.mediaTypes = [kUTTypeMovie as String]
                 imagePicker.allowsEditing = true
-                imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                imagePicker.delegate = self
                 imagePicker.videoMaximumDuration = 60
                 imagePicker.videoQuality = .typeIFrame960x540
                 present(imagePicker, animated: true, completion: nil)
@@ -81,7 +81,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
     @objc func handleUploadFromLibraryButton() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePickerController.delegate = self
         imagePickerController.mediaTypes = ["public.movie"]
         present(imagePickerController, animated: true, completion: nil)
     }
@@ -136,7 +136,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         
         // Create a reference to the file you want to upload
-        let videosRef = Storage.storage().reference().child("videos/\(currentUser)/" + randomString(length: 20) + ".mp4")
+        _ = Storage.storage().reference().child("videos/\(String(describing: currentUser))/" + randomString(length: 20) + ".mp4")
         
         let allVideos = Storage.storage().reference().child("all_videos/" + randomString(length: 20) + ".mp4")
         
@@ -181,7 +181,8 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                     return
                                 }
 //                                guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
-                                print("Thumbnail upload to database was successfull:", url)
+                                guard let thumbnailURL = url else { return }
+                                print("Thumbnail upload to database was successfull:", thumbnailURL)
                             })
  
                             
@@ -201,7 +202,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                 let userPostRef = Database.database().reference().child("posts").child(currentUser)
                                 let ref = userPostRef.childByAutoId()
                                 
-                                let values = ["videoUrl": "\(url)", "thumbnailUrl": "\(url)", "creationDate": Date().timeIntervalSince1970] as [String : Any]
+                                let values = ["videoUrl": "\(String(describing: url))", "thumbnailUrl": "\(String(describing: url))", "creationDate": Date().timeIntervalSince1970] as [String : Any]
                                 
                                 NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
                                 

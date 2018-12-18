@@ -65,10 +65,10 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
             let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
 //            videoURL = "\(HomeController.didSelectPostVideoURL)"
-            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL)"
-            print("post flagged: \(self.flaggedPostUrl)")
+            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post flagged: \(self.flaggedPostUrl ?? "")")
             
-            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl)"]
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl ?? "")"]
             
             Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if let err = err {
@@ -90,7 +90,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         }
         
         let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
-            let textToShare = ["Check out this story I found in storytime: \(self.videoURL)"]
+            let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
             let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             // exclude some activity types from the list (optional)
@@ -143,7 +143,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         userProfileImageView.loadImage(UrlString: profileImageUrl)
         
         profileImageButton.setBackgroundImage(userProfileImageView.image, for: .normal)
-        videoURL = "\(HomeController.didSelectPostVideoURL)"
+        videoURL = "\(HomeController.didSelectPostVideoURL ?? "")"
     }
     
     override func viewDidAppear(_ animated: Bool) {
