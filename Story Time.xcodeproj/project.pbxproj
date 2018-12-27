@@ -417,7 +417,7 @@
 				TargetAttributes = {
 					E78C502E1F0CD5D90034226F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = DFUU36AARG;
+						DevelopmentTeam = RL292UUN9S;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -687,7 +687,7 @@
 			baseConfigurationReference = E8E8DD054DBEDFBCF8460568 /* Pods-Story Time.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFUU36AARG;
+				DEVELOPMENT_TEAM = RL292UUN9S;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
@@ -702,7 +702,7 @@
 			baseConfigurationReference = 94B3E636E83195EE000CB30A /* Pods-Story Time.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DFUU36AARG;
+				DEVELOPMENT_TEAM = RL292UUN9S;
 				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";

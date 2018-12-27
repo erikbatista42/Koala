@@ -20,6 +20,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var getUserDelegate: GetUserFromHomeControllerCellDelegate?
     
+    let messageComposer = MessageComposer()
+    
     var hpc: HomePostCell!
 //    var delegate: VideoUrlDelegate?
     var userId: String?
@@ -119,9 +121,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let activityViewController = UIAlertController()
         
         let contactCreaterButton = UIAlertAction(title: "Contact Creator 📩", style: .default, handler: { (action) -> Void in
-            print(123)
-            // exclude some activity types from the list (optional)
-            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+            if (self.messageComposer.canSendText()) {
+                
+                // Obtain a configured MFMessageComposeViewController
+                let messageComposeVC = self.messageComposer.configuredMessageComposeViewController()
+                //            presentedViewController(messageComposeVC, animated: true, completion: nil)
+                self.present(messageComposeVC, animated: true, completion: nil)
+            } else {
+                let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                self.present(errorAlert, animated: true, completion: nil)
+            }
         })
         
         let shareApp = UIAlertAction(title: "Share App 👥", style: .default, handler: { (action) -> Void in

@@ -102,19 +102,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     
     @objc func handleLogOut() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Give Feedback", style: .default, handler: { (_) in
-            if (self.messageComposer.canSendText()) {
-                
-                // Obtain a configured MFMessageComposeViewController
-                let messageComposeVC = self.messageComposer.configuredMessageComposeViewController()
-                //            presentedViewController(messageComposeVC, animated: true, completion: nil)
-                self.present(messageComposeVC, animated: true, completion: nil)
-            } else {
-                let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-        }))
         
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
             do {

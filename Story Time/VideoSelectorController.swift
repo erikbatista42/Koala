@@ -137,7 +137,7 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
         
         
         // Create a reference to the file you want to upload
-        _ = Storage.storage().reference().child("videos/\(String(describing: currentUser))/" + randomString(length: 20) + ".mp4")
+        _ = Storage.storage().reference().child("videos/\(currentUser ?? ""))/" + randomString(length: 20) + ".mp4")
         
         let allVideos = Storage.storage().reference().child("all_videos/" + randomString(length: 20) + ".mp4")
         
@@ -178,14 +178,13 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                             imageRef.downloadURL(completion: { (url, error) in
                                 // if error happens
                                 guard url != nil else {
-                                    print(error?.localizedDescription as Any)
+                                    print("An error has occured while uploading thumbnail:: ",error?.localizedDescription as Any)
                                     return
                                 }
 //                                guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
                                 guard let thumbnailURL = url else { return }
                                 print("Thumbnail upload to database was successfull:", thumbnailURL)
                             })
- 
                             
                             // Metadata contains file metadata such as size, content-type, and download URL.
                             allVideos.downloadURL(completion: { (url, error) in
@@ -203,27 +202,25 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                 let userPostRef = Database.database().reference().child("posts").child(currentUser)
                                 let ref = userPostRef.childByAutoId()
                                 
-                                let values = ["videoUrl": "\(String(describing: url))", "thumbnailUrl": "\(String(describing: url))", "creationDate": Date().timeIntervalSince1970] as [String : Any]
                                 
-                                NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
-                                
-                                ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                                    if let err = err {
-                                        print("Failed to save video to DB", err)
-                                        return
-                                    } else {
-                                        print("Successfully saved post to DB")
-                                        let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
-                                        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                        self.present(alertController, animated: true, completion: nil)
-                                    }
-                                })
+                                if let myURL = url {
+                                    let values = ["videoUrl": "\(myURL)", "thumbnailUrl": "\(myURL)", "creationDate": Date().timeIntervalSince1970] as [String : Any]
+                                    
+                                    NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
+                                    
+                                    ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                        if let err = err {
+                                            print("Failed to save video to DB", err)
+                                            return
+                                        } else {
+                                            print("Successfully saved post to DB")
+                                            let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
+                                            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                            self.present(alertController, animated: true, completion: nil)
+                                        }
+                                    })
+                                }
                             })
-                            
-
-                            
-                            
-
                         }
                     })
                     

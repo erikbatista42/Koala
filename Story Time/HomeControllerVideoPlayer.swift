@@ -61,7 +61,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         
         let activityViewController = UIAlertController()
         
-        let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive) { (action) in
+        let flagButton = UIAlertAction(title: "Flag as inappropriate🚩", style: .destructive) { (action) in
             let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
 //            videoURL = "\(HomeController.didSelectPostVideoURL)"
