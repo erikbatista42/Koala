@@ -54,6 +54,8 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         myCollectionView.delegate   = self
         myCollectionView.dataSource = self
         self.view.addSubview(myCollectionView)
+        let bottomHeight = ((self.tabBarController?.tabBar.frame.height ?? 0) * 2) + 15 // used to fix the over scroll over collection view
+        myCollectionView.contentInset.bottom = bottomHeight
     }
     
     var videos = [Post]()
