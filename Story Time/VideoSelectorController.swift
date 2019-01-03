@@ -184,27 +184,25 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
 //                                guard let thumbnailUrl = thumbnailMeta?.downloadURL() else { return }
                                 guard let thumbnailURL = url else { return }
                                 print("Thumbnail upload to database was successfull:", thumbnailURL)
-                            })
-                            
-                            // Metadata contains file metadata such as size, content-type, and download URL.
-                            allVideos.downloadURL(completion: { (url, error) in
                                 
-                                // if error happens
-                                guard url != nil else {
-                                    print(error?.localizedDescription as Any)
-                                    return
-                                }
-//                                guard let downloadURL = metadata!.downloadURL() else { return }
-                                
-//                                print("Video url that was recently uploaded:", downloadURL)
-                                guard let currentUser = Auth.auth().currentUser?.uid else { return }
-                                
-                                let userPostRef = Database.database().reference().child("posts").child(currentUser)
-                                let ref = userPostRef.childByAutoId()
-                                
-                                
-                                if let myURL = url {
-                                    let values = ["videoUrl": "\(myURL)", "thumbnailUrl": "\(myURL)", "creationDate": Date().timeIntervalSince1970] as [String : Any]
+                                allVideos.downloadURL(completion: { (url, error) in
+                                    
+                                    // if error happens
+                                    guard url != nil else {
+                                        print(error?.localizedDescription as Any)
+                                        return
+                                    }
+                                    //                                guard let downloadURL = metadata!.downloadURL() else { return }
+                                    
+                                    //                                print("Video url that was recently uploaded:", downloadURL)
+                                    guard let currentUser = Auth.auth().currentUser?.uid else { return }
+                                    
+                                    let userPostRef = Database.database().reference().child("posts").child(currentUser)
+                                    let ref = userPostRef.childByAutoId()
+                                    
+                                    guard let vidURL = url?.absoluteString else { return }
+                                    
+                                    let values = ["videoUrl": "\(vidURL)", "thumbnailUrl": "\(thumbnailURL)", "creationDate": Date().timeIntervalSince1970] as [String : Any]
                                     
                                     NotificationCenter.default.post(name: VideoSelectorController.updateFeedNotificationName, object: nil)
                                     
@@ -213,14 +211,18 @@ class VideoSelectorController: UIViewController, UIImagePickerControllerDelegate
                                             print("Failed to save video to DB", err)
                                             return
                                         } else {
-                                            print("Successfully saved post to DB")
+                                            print("Successfully saved post to DB: \(vidURL)")
                                             let alertController = UIAlertController(title: "Your video has been uploaded!", message: "Go to your profile to look at it", preferredStyle: UIAlertControllerStyle.alert)
                                             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                             self.present(alertController, animated: true, completion: nil)
                                         }
                                     })
-                                }
+                                    
+                                })
                             })
+                            
+                            // Metadata contains file metadata such as size, content-type, and download URL.
+                            
                         }
                     })
                     
