@@ -53,7 +53,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
     
     
     var videoURL: String!
-    var flaggedPostUrl: String!
+    var flaggedOrReportedPostUrl: String!
     
     @objc func handleReportButton() {
         
@@ -62,10 +62,10 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
             let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
             //            videoURL = "\(HomeController.didSelectPostVideoURL)"
-            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
-            print("post flagged: \(self.flaggedPostUrl ?? "")")
+            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post flagged: \(self.flaggedOrReportedPostUrl ?? "")")
             
-            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl ?? "")"]
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
             
             Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if let err = err {
@@ -81,7 +81,25 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         }
         
         let removeVideo = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
-            print("report btn pressed")
+            
+            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post reported: \(self.flaggedOrReportedPostUrl ?? "")")
+            
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
+            
+            Database.database().reference().child("postsReported").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to flag post:", err)
+                    return
+                }
+                print("Successfully reported post -> info to db")
+            })
+            
+            let reportAlertController = UIAlertController(title: "This post has been Reported!", message: "We will review this post and will update you within under 24 hours", preferredStyle: UIAlertControllerStyle.alert)
+            
+            reportAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(reportAlertController, animated: true, completion: nil)
+            
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -109,10 +127,10 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
             let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
 //            videoURL = "\(HomeController.didSelectPostVideoURL)"
-            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
-            print("post flagged: \(self.flaggedPostUrl ?? "")")
+            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post flagged: \(self.flaggedOrReportedPostUrl ?? "")")
             
-            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl ?? "")"]
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
             
             Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if let err = err {

@@ -135,7 +135,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         })
         
         let shareApp = UIAlertAction(title: "Share App 👥", style: .default, handler: { (action) -> Void in
-            print("share app button tapped")
+            print("share app button tapped") // storytime landing page url
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
@@ -280,7 +280,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         //        self.hpc = cell
         cell.post = posts[indexPath.item]
-        
         return cell
     }
 
@@ -332,6 +331,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //        self.navigationController?.pushViewController(playerController, animated: true)
         
         self.navigationController?.pushViewController(objCreateEventVC, animated: false)
+        
     }
   
 //    func didLike(for cell: HomePostCell) {
