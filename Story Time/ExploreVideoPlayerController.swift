@@ -32,6 +32,15 @@ class ExploreVideoPlayerController: UIViewController, GetUserFromHomeControllerC
         return iv
     }()
     
+    lazy var reportButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.clipsToBounds = true
+        button.setBackgroundImage(#imageLiteral(resourceName: "report"), for: .normal)
+        button.contentMode = .scaleToFill
+        button.addTarget(self, action: #selector(handleReportButton), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         //        button.layer.borderColor = UIColor.white.cgColor
@@ -40,60 +49,76 @@ class ExploreVideoPlayerController: UIViewController, GetUserFromHomeControllerC
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
         return button
     }()
     
     var videoURL: String!
+    var flaggedOrReportedPostUrl: String!
     
-    @objc func handleOptionsButton() {
+    @objc func handleReportButton() {
         
-//
-//        // set up activity view controller
-//        let textToShare = ["Check out this story I found in storytime: \(videoURL)" ]
-//        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-//        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-//
-//        // exclude some activity types from the list (optional)
-//        //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-//
-//        // present the view controller
-//        self.present(activityViewController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Unfavorable content?", message: nil, preferredStyle: .alert)
+        let flagAction = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
+            let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //            videoURL = "\(HomeController.didSelectPostVideoURL)"
+            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post flagged: \(self.flaggedOrReportedPostUrl ?? "")")
+            
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
+            
+            Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to flag post:", err)
+                    return
+                }
+                print("Successfully flagged post -> info to db")
+            })
+            
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        let removeVideo = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
+            
+            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post reported: \(self.flaggedOrReportedPostUrl ?? "")")
+            
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
+            
+            Database.database().reference().child("postsReported").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to flag post:", err)
+                    return
+                }
+                print("Successfully reported post -> info to db")
+            })
+            
+            let reportAlertController = UIAlertController(title: "This post has been Reported!", message: "We will review this post and will update you within under 24 hours", preferredStyle: UIAlertControllerStyle.alert)
+            
+            reportAlertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(reportAlertController, animated: true, completion: nil)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(removeVideo)
+        alertController.addAction(flagAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func handleShareButton() {
         
         let activityViewController = UIAlertController()
         
-        let flagButton = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
-            let alertController = UIAlertController(title: "This post has been Flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
+        let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
+        let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        self.present(shareActivityViewController, animated: true, completion: nil)
         
-        let reportButton = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
-            let alertController = UIAlertController(title: "This post has been Reported!", message: "We will review this post and will update you within under 24 hours", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
-            let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
-            let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-            // exclude some activity types from the list (optional)
-            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-            self.present(shareActivityViewController, animated: true, completion: nil)
-        })
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            print("Cancel button tapped")
-        })
-        
-        activityViewController.addAction(flagButton)
-        activityViewController.addAction(reportButton)
-        activityViewController.addAction(shareButton)
-        activityViewController.addAction(cancelButton)
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
     }
     
     lazy var profileImageButton: UIButton = {
@@ -137,10 +162,14 @@ class ExploreVideoPlayerController: UIViewController, GetUserFromHomeControllerC
         view.addSubview(videoView)
         
         self.view.layer.addSublayer(playerLayer)
+        view.addSubview(reportButton)
         view.addSubview(shareButton)
         view.addSubview(profileImageButton)
         playerLayer.frame = view.bounds
         player!.play()
+        
+        
+        reportButton.anchor(top: nil, left: nil, bottom: shareButton.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -15, paddingRight: 18, width: 50, height: 50)
         
         shareButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 50, height: 50)
         

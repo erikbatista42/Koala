@@ -47,7 +47,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(handleOptionsButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
         return button
     }()
     
@@ -109,68 +109,15 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func handleOptionsButton() {
-//        // set up activity view controller
-//        let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
-//        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-//        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-//
-//        // exclude some activity types from the list (optional)
-////        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-//
-//        // present the view controller
-//        self.present(activityViewController, animated: true, completion: nil)
+    @objc func handleShareButton() {
         
         let activityViewController = UIAlertController()
         
-        let flagButton = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
-            let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            
-//            videoURL = "\(HomeController.didSelectPostVideoURL)"
-            self.flaggedOrReportedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
-            print("post flagged: \(self.flaggedOrReportedPostUrl ?? "")")
-            
-            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedOrReportedPostUrl ?? "")"]
-            
-            Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
-                if let err = err {
-                    print("Failed to flag post:", err)
-                    return
-                }
-                print("Successfully flagged post -> info to db")
-            })
+        let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
+        let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        self.present(shareActivityViewController, animated: true, completion: nil)
 
-            
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        let reportButton = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
-            let alertController = UIAlertController(title: "This post has been Reported!", message: "We will review this post and will update you within under 24 hours", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        let  shareButton = UIAlertAction(title: "Share 👥", style: .default, handler: { (action) -> Void in
-            let textToShare = ["Check out this story I found in storytime: \(self.videoURL ?? "")"]
-            let shareActivityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-            // exclude some activity types from the list (optional)
-            //        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-            self.present(shareActivityViewController, animated: true, completion: nil)
-        })
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            print("Cancel button tapped")
-        })
-        
-        activityViewController.addAction(flagButton)
-        activityViewController.addAction(reportButton)
-        activityViewController.addAction(shareButton)
-        activityViewController.addAction(cancelButton)
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
         }
     
     lazy var profileImageButton: UIButton = {
