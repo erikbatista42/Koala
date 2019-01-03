@@ -62,7 +62,7 @@ class ExploreVideoPlayerController: UIViewController, GetUserFromHomeControllerC
         
         let activityViewController = UIAlertController()
         
-        let flagButton = UIAlertAction(title: "Flag 🚩", style: .destructive) { (action) in
+        let flagButton = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
             let alertController = UIAlertController(title: "This post has been Flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)

@@ -110,16 +110,15 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         button.isEnabled = false
         return button
     }()
+    
     @objc func handleSignup() {
-        guard let email = emailTextField.text, email.isEmpty else { return }
-        guard let username = usernameTextField.text, username.isEmpty else { return }
-        guard let password = passwordTextField.text, password.isEmpty else { return }
-        Auth.auth().createUser(withEmail: email, password: password, completion: ({ (user: AuthDataResult, error: Error?) in
-            
-            
-            
-            
-            
+        print(123)
+        guard let email = emailTextField.text, email.characters.count > 0 else { return }
+        guard let username = usernameTextField.text, username.characters.count > 0 else { return }
+        guard let password = passwordTextField.text, password.characters.count > 0 else { return }
+        print(1234)
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let err = error {
                 print("Failed to create user:", err)
                 let alertController = UIAlertController(title: "ERROR", message: "\(err.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
@@ -127,7 +126,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 self.present(alertController, animated: true, completion: nil)
                 return
             } else {
-                print("Successfully created user: ", user.user.uid)
+                print("Successfully created user: ", user?.user.uid ?? "")
                 
                 guard let image = self.plusPhotoButton.imageView?.image else { return }
                 
@@ -150,9 +149,9 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                                 return
                             }
                             
-                            guard let profileImgUrl = url else { return }
+                            guard let profileImgUrl = url?.absoluteString else { return }
                             
-                            let uid = user.user.uid
+                            let uid = user?.user.uid
                             
                             
                             let dictionaryValues = ["username": username, "profileImageUrl": profileImgUrl] as [String : Any]
@@ -176,40 +175,70 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 })
                 
             }
-            } as! AuthDataResultCallback))
-    }
+            }
+        }
         
-                
-                    
-              
-                    
-//                  guard  let profileImageUrl = metadata?.downloadURL()?.absoluteString else { return }
-//                    print("Successfully uploaded profile image:",profileImageUrl)
-////
-//                                    guard let uid = user.user.uid else { return }
-                    
-//                                    let dictionaryValues = ["username": username, "profileImageUrl": profileImageUrl]
-//                                    let values = [uid: dictionaryValues]
-                    
-//                    Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+//        Auth.auth().createUser(withEmail: email, password: password, completion: ({ (user: AuthDataResult, error: Error?) in
+//         print(12345)
+//            if let err = error {
+//                print("Failed to create user:", err)
+//                let alertController = UIAlertController(title: "ERROR", message: "\(err.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//                self.present(alertController, animated: true, completion: nil)
+//                return
+//            } else {
+//                print("Successfully created user: ", user.user.uid)
 //
-//                                        if let err = err {
-//                                            print("Failed to save user info into database:", err)
-//                                            return
-//                                        }
-//                                        print("Successfully saved user info to database")
+//                guard let image = self.plusPhotoButton.imageView?.image else { return }
 //
-//                                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+//                guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else { return }
 //
-//                                        mainTabBarController.setupViewControllers()
-//                                        self.dismiss(animated: true, completion: nil)
-//                                    })
+//                let fileName = NSUUID().uuidString
+//
+//                let profileImgRef = Storage.storage().reference().child("profile_images").child(fileName)
+//                profileImgRef.putData(uploadData, metadata: nil, completion: { (metadata, err) in
+//
+//                    if let err = err {
+//                        print("Failed to upload profile image:", err)
+//                    } else {
+//                        print("successfully uploaded profile image to db")
+//
+//                        profileImgRef.downloadURL(completion: { (url, error) in
+//                            // if error happens
+//                            guard url != nil else {
+//                                print(error?.localizedDescription as Any)
+//                                return
+//                            }
+//
+//                            guard let profileImgUrl = url else { return }
+//
+//                            let uid = user.user.uid
+//
+//
+//                            let dictionaryValues = ["username": username, "profileImageUrl": profileImgUrl] as [String : Any]
+//                            let values = [uid: dictionaryValues]
+//
+//                            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+//                                if let err = err {
+//                                    print("Failed to save user info into database:", err)
+//                                    return
+//                                }
+//                                print("Successfully saved user info to database")
+//
+//                                guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+//
+//                                mainTabBarController.setupViewControllers()
+//                                self.dismiss(animated: true, completion: nil)
+//                            })
+//                        })
+//                    }
 //
 //                })
 //
-//
-//         }
-//            } as! AuthDataResultCallback)
+//            }
+//            } as? AuthDataResultCallback))
+//    }
+        
     
     
     let alreadyHaveAnAccountButton: UIButton = {

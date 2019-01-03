@@ -33,11 +33,17 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         return iv
     }()
     
+    lazy var reportButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.clipsToBounds = true
+        button.setBackgroundImage(#imageLiteral(resourceName: "report"), for: .normal)
+        button.contentMode = .scaleToFill
+        button.addTarget(self, action: #selector(handleReportButton), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.layer.borderColor = UIColor.white.cgColor
-//        button.layer.borderWidth = 1
-//        button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.setBackgroundImage(#imageLiteral(resourceName: "share_icon_circled"), for: .normal)
         button.contentMode = .scaleToFill
@@ -45,8 +51,46 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         return button
     }()
     
+    
     var videoURL: String!
     var flaggedPostUrl: String!
+    
+    @objc func handleReportButton() {
+        
+        let alertController = UIAlertController(title: "Unfavorable content?", message: nil, preferredStyle: .alert)
+        let flagAction = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
+            let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            //            videoURL = "\(HomeController.didSelectPostVideoURL)"
+            self.flaggedPostUrl = "\(HomeController.didSelectPostVideoURL ?? "")"
+            print("post flagged: \(self.flaggedPostUrl ?? "")")
+            
+            let values = ["\(Auth.auth().currentUser?.uid ?? "")": "\(self.flaggedPostUrl ?? "")"]
+            
+            Database.database().reference().child("postsFlagged").childByAutoId().updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to flag post:", err)
+                    return
+                }
+                print("Successfully flagged post -> info to db")
+            })
+            
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        let removeVideo = UIAlertAction(title: "Report ⚠️", style: .destructive) { (action) in
+            print("report btn pressed")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(removeVideo)
+        alertController.addAction(flagAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func handleOptionsButton() {
 //        // set up activity view controller
 //        let textToShare = ["Check out this story I found in storytime: \(videoURL)"]
@@ -61,7 +105,7 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         
         let activityViewController = UIAlertController()
         
-        let flagButton = UIAlertAction(title: "Flag as inappropriate🚩", style: .destructive) { (action) in
+        let flagButton = UIAlertAction(title: "Flag as inappropriate 🚩", style: .destructive) { (action) in
             let alertController = UIAlertController(title: "This post has been flagged!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             
 //            videoURL = "\(HomeController.didSelectPostVideoURL)"
@@ -152,10 +196,13 @@ class HomeControllerVideoPlayer: UIViewController, GetUserFromHomeControllerCell
         view.addSubview(videoView)
         
         self.view.layer.addSublayer(playerLayer)
+        view.addSubview(reportButton)
         view.addSubview(shareButton)
         view.addSubview(profileImageButton)
         playerLayer.frame = view.bounds
         player!.play()
+        
+        reportButton.anchor(top: nil, left: nil, bottom: shareButton.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -15, paddingRight: 18, width: 50, height: 50)
         
         shareButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 18, width: 50, height: 50)
         
