@@ -135,7 +135,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         })
         
         let shareApp = UIAlertAction(title: "Share App 👥", style: .default, handler: { (action) -> Void in
-            print("share app button tapped") // storytime landing page url
+            print("https://erikbatista42.github.io/storytime/") // storytime landing page url
+            let activityViewController = UIAlertController()
+            
         })
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
