@@ -30,33 +30,18 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     let cellId = "cellId"
     var userId: String?
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
-        
-        //        collectionView?.backgroundColor = .white
-        
-        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        myCollectionView.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        myCollectionView.alwaysBounceVertical = true
-        myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
-//        collectionView?.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
-        myCollectionView.backgroundColor = UIColor.white
-//        myCollectionView.backgroundColor = UIColor.rgb(red: 205, green: 212, blue: 221, alpha: 1)
-        
+        setupNavBar()
+        setupCollectionView()
         fetchUser()
         fetchOrderedPosts()
         setupLogOutButton()
-        myCollectionView.delegate   = self
-        myCollectionView.dataSource = self
-        self.view.addSubview(myCollectionView)
-        let bottomHeight = ((self.tabBarController?.tabBar.frame.height ?? 0) * 2) + 15 // used to fix the over scroll over collection view
-        myCollectionView.contentInset.bottom = bottomHeight
     }
+    
+
     
     var videos = [Post]()
     var thumbnails = [Post]()
@@ -76,7 +61,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
             
             self.thumbnails.insert(thumbnail, at: 0)
             self.videos.insert(video, at: 0)
-//            self.collectionView?.reloadData()
             self.myCollectionView.reloadData()
         }) { (error) in
             print("Failded to fetch ordered post:", error)
@@ -86,7 +70,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
         if rightBarButtonIsHidden == true {
-//                self.navigationItem.rightBarButtonItem = nil
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "Block", style: .destructive, handler: { (_) in
                 let alertController = UIAlertController(title: "User has been blocked!", message: "You will no longer see posts from this user", preferredStyle: UIAlertControllerStyle.alert)
@@ -123,8 +106,6 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId , for: indexPath) as! UserProfileVideoCell
         cell.post = thumbnails[indexPath.item]
-//        cell.layer.masksToBounds = true
-//        cell.layer.cornerRadius = 17
         
         return cell
     }
@@ -159,20 +140,9 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
         
         let objCreateEventVC = playerController
         objCreateEventVC.hidesBottomBarWhenPushed = true
-        //        self.navigationController?.pushViewController(playerController, animated: true)
         
         self.navigationController?.pushViewController(objCreateEventVC, animated: false)
     }
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let width = (view.frame.width - 1) / 2
-    //        return CGSize(width: width, height: 189)
-    //    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print("size for item at")
-//        let height: CGFloat = 310 // username + userProfileImageView
-//        return CGSize(width: view.frame.width - 27.5, height: height)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
@@ -211,6 +181,27 @@ class UserProfileController: UIViewController, UICollectionViewDelegateFlowLayou
             self.myCollectionView.reloadData()
             self.fetchOrderedPosts()
         }
+    }
+    
+    fileprivate func setupCollectionView() {
+        myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        myCollectionView.register(UserProfileVideoCell.self, forCellWithReuseIdentifier: cellId)
+        myCollectionView.alwaysBounceVertical = true
+        myCollectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
+        myCollectionView.backgroundColor = UIColor.white
+        myCollectionView.delegate   = self
+        myCollectionView.dataSource = self
+        self.view.addSubview(myCollectionView)
+        let bottomHeight = ((self.tabBarController?.tabBar.frame.height ?? 0) * 2) + 15 // used to fix the over scroll over collection view
+        myCollectionView.contentInset.bottom = bottomHeight
+    }
+    
+    fileprivate func setupNavBar() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 33, green: 41, blue: 67, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Black", size: 20) ?? "", NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 }
 
