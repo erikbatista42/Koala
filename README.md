@@ -1,2 +1,2 @@
 # Story-Time
-*ReadMe Coming soon*
+*ReadMe Coming soon!*
