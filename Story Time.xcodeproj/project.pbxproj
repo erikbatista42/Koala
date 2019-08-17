@@ -16,18 +16,6 @@
 		E7C5561E1F10C94000867FFA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5561D1F10C94000867FFA /* LoginController.swift */; };
 		E7C556221F11A4DD00867FFA /* VideoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */; };
 		FE03F3761F374EAF00C9C1D2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03F3751F374EAF00C9C1D2 /* Post.swift */; };
-		FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074024203A7E56000A7536 /* NeoSans-Black.otf */; };
-		FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */; };
-		FE074028203A7E77000A7536 /* NeoSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */; };
-		FE074029203A7E77000A7536 /* NeoSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */; };
-		FE07402A203A7E77000A7536 /* NeoSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074025203A7E57000A7536 /* NeoSans-Italic.otf */; };
-		FE07402B203A7E77000A7536 /* NeoSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074023203A7E56000A7536 /* NeoSans-Light.otf */; };
-		FE07402C203A7E77000A7536 /* NeoSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */; };
-		FE07402D203A7E77000A7536 /* NeoSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074021203A7E53000A7536 /* NeoSans-Medium.otf */; };
-		FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */; };
-		FE07402F203A7E77000A7536 /* NeoSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401D203A7E51000A7536 /* NeoSans.otf */; };
-		FE074030203A7E77000A7536 /* NeoSansStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */; };
-		FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */; };
 		FE219D042038AF03008166C3 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE219D032038AF03008166C3 /* MessageComposer.swift */; };
 		FE5B53F81F39339E00B09CDE /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F71F39339E00B09CDE /* HomeController.swift */; };
 		FE5B53FB1F393EB500B09CDE /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5B53F91F3935E000B09CDE /* HomePostCell.swift */; };
@@ -36,11 +24,9 @@
 		FE70E5141F60D9E600AF4D50 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */; };
 		FE7A2DB51F2F86A0002C79F2 /* UserProfileVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */; };
 		FE7C87A2209344B70031576B /* ExploreVideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C87A1209344B70031576B /* ExploreVideoPlayerController.swift */; };
-		FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */; };
 		FE9470DD1F54A68900F0E45F /* UserSearchCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */; };
 		FE9470E11F54D94A00F0E45F /* UserSearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */; };
 		FE9470E31F55318200F0E45F /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9470E21F55318200F0E45F /* Global.swift */; };
-		FEA0AD4D20E24442001826D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA0AD4C20E24442001826D2 /* Main.storyboard */; };
 		FEA0AD4F20E688F5001826D2 /* UserProfileVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */; };
 		FEA9F2CE1F51E58C0022A939 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CD1F51E58C0022A939 /* User.swift */; };
 		FEA9F2D01F51EE2F0022A939 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */; };
@@ -51,8 +37,22 @@
 		FEBB7C4A201D73CD00ACD87A /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C49201D73CD00ACD87A /* Constraints.swift */; };
 		FEBB7C4C201D73D700ACD87A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C4B201D73D700ACD87A /* Date.swift */; };
 		FEBB7C4E201D73E100ACD87A /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB7C4D201D73E100ACD87A /* RGB.swift */; };
-		FED9D8F921D98FC3005985AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FED9D8F821D98FC3005985AE /* GoogleService-Info.plist */; };
-		FEDA9BA82307966000F29A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BA72307965F00F29A2C /* Assets.xcassets */; };
+		FEDA9BC323079E1A00F29A2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BAF23079E1A00F29A2C /* GoogleService-Info.plist */; };
+		FEDA9BC423079E1A00F29A2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB123079E1A00F29A2C /* Assets.xcassets */; };
+		FEDA9BC523079E1A00F29A2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB223079E1A00F29A2C /* Main.storyboard */; };
+		FEDA9BC723079E1A00F29A2C /* Launch_Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB423079E1A00F29A2C /* Launch_Screen.storyboard */; };
+		FEDA9BC823079E1A00F29A2C /* NeoSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB723079E1A00F29A2C /* NeoSans-Bold.otf */; };
+		FEDA9BC923079E1A00F29A2C /* NeoSansStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB823079E1A00F29A2C /* NeoSansStd-Light.otf */; };
+		FEDA9BCA23079E1A00F29A2C /* NeoSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BB923079E1A00F29A2C /* NeoSans-MediumItalic.otf */; };
+		FEDA9BCB23079E1A00F29A2C /* NeoSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBA23079E1A00F29A2C /* NeoSans-Italic.otf */; };
+		FEDA9BCC23079E1A00F29A2C /* NeoSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBB23079E1A00F29A2C /* NeoSans.otf */; };
+		FEDA9BCD23079E1A00F29A2C /* NeoSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBC23079E1A00F29A2C /* NeoSans-Black.otf */; };
+		FEDA9BCE23079E1A00F29A2C /* NeoSansStd-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBD23079E1A00F29A2C /* NeoSansStd-Regular.otf */; };
+		FEDA9BCF23079E1A00F29A2C /* NeoSans-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBE23079E1A00F29A2C /* NeoSans-BlackItalic.otf */; };
+		FEDA9BD023079E1A00F29A2C /* NeoSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BBF23079E1A00F29A2C /* NeoSans-Light.otf */; };
+		FEDA9BD123079E1A00F29A2C /* NeoSans-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BC023079E1A00F29A2C /* NeoSans-LightItalic.otf */; };
+		FEDA9BD223079E1A00F29A2C /* NeoSans-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BC123079E1A00F29A2C /* NeoSans-BoldItalic.otf */; };
+		FEDA9BD323079E1A00F29A2C /* NeoSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FEDA9BC223079E1A00F29A2C /* NeoSans-Medium.otf */; };
 		FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */ = {isa = PBXBuildFile; fileRef = FEF5F0601F390D3600B8A501 /* Docs.strings */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +62,6 @@
 		E78C502F1F0CD5D90034226F /* Story Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Story Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78C50321F0CD5D90034226F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78C50341F0CD5D90034226F /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
-		E78C503C1F0CD5D90034226F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E78C503E1F0CD5D90034226F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Story Time/Info.plist"; sourceTree = "<group>"; };
 		E7C556161F0F29A500867FFA /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E7C556181F0F2A7A00867FFA /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
@@ -71,18 +69,6 @@
 		E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSelectorController.swift; sourceTree = "<group>"; };
 		E8E8DD054DBEDFBCF8460568 /* Pods-Story Time.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Story Time.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Story Time/Pods-Story Time.debug.xcconfig"; sourceTree = "<group>"; };
 		FE03F3751F374EAF00C9C1D2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Bold.otf"; sourceTree = "<group>"; };
-		FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-MediumItalic.otf"; sourceTree = "<group>"; };
-		FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-LightItalic.otf"; sourceTree = "<group>"; };
-		FE07401D203A7E51000A7536 /* NeoSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NeoSans.otf; sourceTree = "<group>"; };
-		FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BlackItalic.otf"; sourceTree = "<group>"; };
-		FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Regular.otf"; sourceTree = "<group>"; };
-		FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Light.otf"; sourceTree = "<group>"; };
-		FE074021203A7E53000A7536 /* NeoSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Medium.otf"; sourceTree = "<group>"; };
-		FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BoldItalic.otf"; sourceTree = "<group>"; };
-		FE074023203A7E56000A7536 /* NeoSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Light.otf"; sourceTree = "<group>"; };
-		FE074024203A7E56000A7536 /* NeoSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Black.otf"; sourceTree = "<group>"; };
-		FE074025203A7E57000A7536 /* NeoSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Italic.otf"; sourceTree = "<group>"; };
 		FE219D032038AF03008166C3 /* MessageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		FE5B53F71F39339E00B09CDE /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		FE5B53F91F3935E000B09CDE /* HomePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
@@ -91,11 +77,9 @@
 		FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
 		FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVideoCell.swift; sourceTree = "<group>"; };
 		FE7C87A1209344B70031576B /* ExploreVideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVideoPlayerController.swift; sourceTree = "<group>"; };
-		FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_Screen.storyboard; sourceTree = "<group>"; };
 		FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCV.swift; sourceTree = "<group>"; };
 		FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCVCell.swift; sourceTree = "<group>"; };
 		FE9470E21F55318200F0E45F /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		FEA0AD4C20E24442001826D2 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVideoPlayer.swift; sourceTree = "<group>"; };
 		FEA9F2CD1F51E58C0022A939 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
@@ -106,8 +90,23 @@
 		FEBB7C49201D73CD00ACD87A /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		FEBB7C4B201D73D700ACD87A /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FEBB7C4D201D73E100ACD87A /* RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
-		FED9D8F821D98FC3005985AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FEDA9BA72307965F00F29A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		FEDA9BAF23079E1A00F29A2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FEDA9BB123079E1A00F29A2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FEDA9BB223079E1A00F29A2C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FEDA9BB323079E1A00F29A2C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEDA9BB423079E1A00F29A2C /* Launch_Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch_Screen.storyboard; sourceTree = "<group>"; };
+		FEDA9BB723079E1A00F29A2C /* NeoSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Bold.otf"; sourceTree = "<group>"; };
+		FEDA9BB823079E1A00F29A2C /* NeoSansStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Light.otf"; sourceTree = "<group>"; };
+		FEDA9BB923079E1A00F29A2C /* NeoSans-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-MediumItalic.otf"; sourceTree = "<group>"; };
+		FEDA9BBA23079E1A00F29A2C /* NeoSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Italic.otf"; sourceTree = "<group>"; };
+		FEDA9BBB23079E1A00F29A2C /* NeoSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NeoSans.otf; sourceTree = "<group>"; };
+		FEDA9BBC23079E1A00F29A2C /* NeoSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Black.otf"; sourceTree = "<group>"; };
+		FEDA9BBD23079E1A00F29A2C /* NeoSansStd-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSansStd-Regular.otf"; sourceTree = "<group>"; };
+		FEDA9BBE23079E1A00F29A2C /* NeoSans-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BlackItalic.otf"; sourceTree = "<group>"; };
+		FEDA9BBF23079E1A00F29A2C /* NeoSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Light.otf"; sourceTree = "<group>"; };
+		FEDA9BC023079E1A00F29A2C /* NeoSans-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-LightItalic.otf"; sourceTree = "<group>"; };
+		FEDA9BC123079E1A00F29A2C /* NeoSans-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-BoldItalic.otf"; sourceTree = "<group>"; };
+		FEDA9BC223079E1A00F29A2C /* NeoSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoSans-Medium.otf"; sourceTree = "<group>"; };
 		FEF5F0601F390D3600B8A501 /* Docs.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Docs.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,21 +133,20 @@
 		E77CD5E01F0EDF9300BEDCBC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				FE219D032038AF03008166C3 /* MessageComposer.swift */,
 				FE6FF0781F3A423F001C3B1A /* CustomImageView.swift */,
 				FEA9F2CF1F51EE2F0022A939 /* FirebaseUtils.swift */,
+				FE219D032038AF03008166C3 /* MessageComposer.swift */,
 			);
-			name = Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E78C50261F0CD5D90034226F = {
 			isa = PBXGroup;
 			children = (
 				E78C50311F0CD5D90034226F /* Story-Time-App */,
-				FEF5F0591F390AA600B8A501 /* Resource Files */,
-				E78C50301F0CD5D90034226F /* Products */,
-				FE968148DED0C2C1694B6E7A /* Pods */,
 				6E6D2DE4B02D59A5A2BCD01D /* Frameworks */,
+				FE968148DED0C2C1694B6E7A /* Pods */,
+				E78C50301F0CD5D90034226F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,14 +162,14 @@
 			isa = PBXGroup;
 			children = (
 				FEF5F05D1F390CDD00B8A501 /* Singletons */,
-				FE03F3741F374E8A00C9C1D2 /* Model */,
-				FEE1662521C86917003696AF /* Controller */,
-				FEF5F05C1F390B7C00B8A501 /* View */,
-				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
+				FE03F3741F374E8A00C9C1D2 /* Models */,
+				FEE1662521C86917003696AF /* Controllers */,
+				FEF5F05C1F390B7C00B8A501 /* Views */,
 				FEBB7C44201D732400ACD87A /* Extensions */,
+				E77CD5E01F0EDF9300BEDCBC /* Utilities */,
+				FEDA9BAD23079E1A00F29A2C /* Resource Files */,
 			);
-			name = "Story-Time-App";
-			path = "Story Time";
+			path = "Story-Time-App";
 			sourceTree = "<group>";
 		};
 		E7C5561A1F1032D100867FFA /* UserProfile Views */ = {
@@ -180,16 +178,16 @@
 				E7C5561B1F1032EB00867FFA /* UserProfileHeader.swift */,
 				FE7A2DB41F2F86A0002C79F2 /* UserProfileVideoCell.swift */,
 			);
-			name = "UserProfile Views";
+			path = "UserProfile Views";
 			sourceTree = "<group>";
 		};
-		E7C5561F1F10C97500867FFA /* Login/SignUp Controllers */ = {
+		E7C5561F1F10C97500867FFA /* Login-SignUp Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E7C5561D1F10C94000867FFA /* LoginController.swift */,
 				E78C50341F0CD5D90034226F /* SignUpController.swift */,
 			);
-			name = "Login/SignUp Controllers";
+			path = "Login-SignUp Controllers";
 			sourceTree = "<group>";
 		};
 		E7C556201F11A4BB00867FFA /* AddVideo Controllers */ = {
@@ -197,53 +195,26 @@
 			children = (
 				E7C556211F11A4DD00867FFA /* VideoSelectorController.swift */,
 			);
-			name = "AddVideo Controllers";
+			path = "AddVideo Controllers";
 			sourceTree = "<group>";
 		};
-		FE03F3741F374E8A00C9C1D2 /* Model */ = {
+		FE03F3741F374E8A00C9C1D2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FE9470E21F55318200F0E45F /* Global.swift */,
 				FE03F3751F374EAF00C9C1D2 /* Post.swift */,
 				FEA9F2CD1F51E58C0022A939 /* User.swift */,
-				FE9470E21F55318200F0E45F /* Global.swift */,
 			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		FE073FFD203A77AF000A7536 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				FE074019203A7E38000A7536 /* NeoSans */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
-		FE074019203A7E38000A7536 /* NeoSans */ = {
-			isa = PBXGroup;
-			children = (
-				FE074024203A7E56000A7536 /* NeoSans-Black.otf */,
-				FE07401E203A7E52000A7536 /* NeoSans-BlackItalic.otf */,
-				FE07401A203A7E4F000A7536 /* NeoSans-Bold.otf */,
-				FE074022203A7E56000A7536 /* NeoSans-BoldItalic.otf */,
-				FE074025203A7E57000A7536 /* NeoSans-Italic.otf */,
-				FE074023203A7E56000A7536 /* NeoSans-Light.otf */,
-				FE07401C203A7E50000A7536 /* NeoSans-LightItalic.otf */,
-				FE074021203A7E53000A7536 /* NeoSans-Medium.otf */,
-				FE07401B203A7E50000A7536 /* NeoSans-MediumItalic.otf */,
-				FE07401D203A7E51000A7536 /* NeoSans.otf */,
-				FE074020203A7E53000A7536 /* NeoSansStd-Light.otf */,
-				FE07401F203A7E52000A7536 /* NeoSansStd-Regular.otf */,
-			);
-			name = NeoSans;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FE5B53F61F39337400B09CDE /* Home Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE5B53F91F3935E000B09CDE /* HomePostCell.swift */,
 				FEBB7C40201D71C100ACD87A /* HomeControllerHeader.swift */,
+				FE5B53F91F3935E000B09CDE /* HomePostCell.swift */,
 			);
-			name = "Home Views";
+			path = "Home Views";
 			sourceTree = "<group>";
 		};
 		FE70E5121F60D9A800AF4D50 /* Explore Views */ = {
@@ -252,7 +223,7 @@
 				FEA9F2D21F51F0DD0022A939 /* Search Views */,
 				FE70E5131F60D9E600AF4D50 /* ExploreCell.swift */,
 			);
-			name = "Explore Views";
+			path = "Explore Views";
 			sourceTree = "<group>";
 		};
 		FE968148DED0C2C1694B6E7A /* Pods */ = {
@@ -270,31 +241,87 @@
 				FE9470DC1F54A68900F0E45F /* UserSearchCV.swift */,
 				FE9470E01F54D94A00F0E45F /* UserSearchCVCell.swift */,
 			);
-			name = "Search Views";
+			path = "Search Views";
 			sourceTree = "<group>";
 		};
 		FEBB7C44201D732400ACD87A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FEBB7C47201D73C400ACD87A /* UserDefaults+isFirstLaunch.swift */,
 				FEBB7C49201D73CD00ACD87A /* Constraints.swift */,
 				FEBB7C4B201D73D700ACD87A /* Date.swift */,
 				FEBB7C4D201D73E100ACD87A /* RGB.swift */,
+				FEBB7C47201D73C400ACD87A /* UserDefaults+isFirstLaunch.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		FEE1662521C86917003696AF /* Controller */ = {
+		FEDA9BAD23079E1A00F29A2C /* Resource Files */ = {
 			isa = PBXGroup;
 			children = (
-				E7C5561F1F10C97500867FFA /* Login/SignUp Controllers */,
-				FEE1662921C8ED1F003696AF /* User Profile Controllers */,
-				FEE1662621C86991003696AF /* Home Controllers */,
+				FEDA9BAE23079E1A00F29A2C /* Google */,
+				FEDA9BB023079E1A00F29A2C /* System */,
+				FEDA9BB523079E1A00F29A2C /* Fonts */,
+			);
+			path = "Resource Files";
+			sourceTree = "<group>";
+		};
+		FEDA9BAE23079E1A00F29A2C /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA9BAF23079E1A00F29A2C /* GoogleService-Info.plist */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		FEDA9BB023079E1A00F29A2C /* System */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA9BB123079E1A00F29A2C /* Assets.xcassets */,
+				FEDA9BB223079E1A00F29A2C /* Main.storyboard */,
+				FEDA9BB323079E1A00F29A2C /* Info.plist */,
+				FEDA9BB423079E1A00F29A2C /* Launch_Screen.storyboard */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		FEDA9BB523079E1A00F29A2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA9BB623079E1A00F29A2C /* NeoSans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FEDA9BB623079E1A00F29A2C /* NeoSans */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA9BB723079E1A00F29A2C /* NeoSans-Bold.otf */,
+				FEDA9BB823079E1A00F29A2C /* NeoSansStd-Light.otf */,
+				FEDA9BB923079E1A00F29A2C /* NeoSans-MediumItalic.otf */,
+				FEDA9BBA23079E1A00F29A2C /* NeoSans-Italic.otf */,
+				FEDA9BBB23079E1A00F29A2C /* NeoSans.otf */,
+				FEDA9BBC23079E1A00F29A2C /* NeoSans-Black.otf */,
+				FEDA9BBD23079E1A00F29A2C /* NeoSansStd-Regular.otf */,
+				FEDA9BBE23079E1A00F29A2C /* NeoSans-BlackItalic.otf */,
+				FEDA9BBF23079E1A00F29A2C /* NeoSans-Light.otf */,
+				FEDA9BC023079E1A00F29A2C /* NeoSans-LightItalic.otf */,
+				FEDA9BC123079E1A00F29A2C /* NeoSans-BoldItalic.otf */,
+				FEDA9BC223079E1A00F29A2C /* NeoSans-Medium.otf */,
+			);
+			path = NeoSans;
+			sourceTree = "<group>";
+		};
+		FEE1662521C86917003696AF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				E7C556201F11A4BB00867FFA /* AddVideo Controllers */,
 				FEE1662721C86AA8003696AF /* Explore Controllers */,
+				FEE1662621C86991003696AF /* Home Controllers */,
+				E7C5561F1F10C97500867FFA /* Login-SignUp Controllers */,
+				FEE1662921C8ED1F003696AF /* User Profile Controllers */,
 				E7C556161F0F29A500867FFA /* MainTabBarController.swift */,
 			);
-			name = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		FEE1662621C86991003696AF /* Home Controllers */ = {
@@ -303,7 +330,7 @@
 				FE5B53F71F39339E00B09CDE /* HomeController.swift */,
 				FE66A9F62022BD6D00B193A8 /* HomeControllerVideoPlayer.swift */,
 			);
-			name = "Home Controllers";
+			path = "Home Controllers";
 			sourceTree = "<group>";
 		};
 		FEE1662721C86AA8003696AF /* Explore Controllers */ = {
@@ -313,7 +340,7 @@
 				FEBB7C42201D71C800ACD87A /* ExploreController.swift */,
 				FE7C87A1209344B70031576B /* ExploreVideoPlayerController.swift */,
 			);
-			name = "Explore Controllers";
+			path = "Explore Controllers";
 			sourceTree = "<group>";
 		};
 		FEE1662821C8EC23003696AF /* Search Controller */ = {
@@ -330,48 +357,17 @@
 				E7C556181F0F2A7A00867FFA /* UserProfileController.swift */,
 				FEA0AD4E20E688F5001826D2 /* UserProfileVideoPlayer.swift */,
 			);
-			name = "User Profile Controllers";
+			path = "User Profile Controllers";
 			sourceTree = "<group>";
 		};
-		FEF5F0591F390AA600B8A501 /* Resource Files */ = {
+		FEF5F05C1F390B7C00B8A501 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE073FFD203A77AF000A7536 /* Fonts */,
-				FEF5F05A1F390B1200B8A501 /* System */,
-				FEF5F05B1F390B1C00B8A501 /* Google */,
-			);
-			name = "Resource Files";
-			path = Koala;
-			sourceTree = "<group>";
-		};
-		FEF5F05A1F390B1200B8A501 /* System */ = {
-			isa = PBXGroup;
-			children = (
-				FEDA9BA72307965F00F29A2C /* Assets.xcassets */,
-				E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */,
-				E78C503E1F0CD5D90034226F /* Info.plist */,
-				FE84C06C2099E557009F1790 /* Launch_Screen.storyboard */,
-				FEA0AD4C20E24442001826D2 /* Main.storyboard */,
-			);
-			name = System;
-			sourceTree = "<group>";
-		};
-		FEF5F05B1F390B1C00B8A501 /* Google */ = {
-			isa = PBXGroup;
-			children = (
-				FED9D8F821D98FC3005985AE /* GoogleService-Info.plist */,
-			);
-			name = Google;
-			sourceTree = "<group>";
-		};
-		FEF5F05C1F390B7C00B8A501 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FE5B53F61F39337400B09CDE /* Home Views */,
 				FE70E5121F60D9A800AF4D50 /* Explore Views */,
+				FE5B53F61F39337400B09CDE /* Home Views */,
 				E7C5561A1F1032D100867FFA /* UserProfile Views */,
 			);
-			name = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FEF5F05D1F390CDD00B8A501 /* Singletons */ = {
@@ -380,7 +376,7 @@
 				E78C50321F0CD5D90034226F /* AppDelegate.swift */,
 				FEF5F0601F390D3600B8A501 /* Docs.strings */,
 			);
-			name = Singletons;
+			path = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,23 +443,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEDA9BA82307966000F29A2C /* Assets.xcassets in Resources */,
-				FE074029203A7E77000A7536 /* NeoSans-BoldItalic.otf in Resources */,
-				FE074030203A7E77000A7536 /* NeoSansStd-Light.otf in Resources */,
-				FE07402F203A7E77000A7536 /* NeoSans.otf in Resources */,
+				FEDA9BD223079E1A00F29A2C /* NeoSans-BoldItalic.otf in Resources */,
+				FEDA9BD123079E1A00F29A2C /* NeoSans-LightItalic.otf in Resources */,
 				FEF5F0611F390D3600B8A501 /* Docs.strings in Resources */,
-				FE074026203A7E77000A7536 /* NeoSans-Black.otf in Resources */,
-				FE84C06D2099E558009F1790 /* Launch_Screen.storyboard in Resources */,
-				FEA0AD4D20E24442001826D2 /* Main.storyboard in Resources */,
-				FE07402E203A7E77000A7536 /* NeoSans-MediumItalic.otf in Resources */,
-				FE074027203A7E77000A7536 /* NeoSans-BlackItalic.otf in Resources */,
-				FE07402D203A7E77000A7536 /* NeoSans-Medium.otf in Resources */,
-				FE074028203A7E77000A7536 /* NeoSans-Bold.otf in Resources */,
-				FED9D8F921D98FC3005985AE /* GoogleService-Info.plist in Resources */,
-				FE07402A203A7E77000A7536 /* NeoSans-Italic.otf in Resources */,
-				FE07402B203A7E77000A7536 /* NeoSans-Light.otf in Resources */,
-				FE074031203A7E77000A7536 /* NeoSansStd-Regular.otf in Resources */,
-				FE07402C203A7E77000A7536 /* NeoSans-LightItalic.otf in Resources */,
+				FEDA9BCF23079E1A00F29A2C /* NeoSans-BlackItalic.otf in Resources */,
+				FEDA9BCD23079E1A00F29A2C /* NeoSans-Black.otf in Resources */,
+				FEDA9BCA23079E1A00F29A2C /* NeoSans-MediumItalic.otf in Resources */,
+				FEDA9BC723079E1A00F29A2C /* Launch_Screen.storyboard in Resources */,
+				FEDA9BCE23079E1A00F29A2C /* NeoSansStd-Regular.otf in Resources */,
+				FEDA9BC923079E1A00F29A2C /* NeoSansStd-Light.otf in Resources */,
+				FEDA9BC423079E1A00F29A2C /* Assets.xcassets in Resources */,
+				FEDA9BD023079E1A00F29A2C /* NeoSans-Light.otf in Resources */,
+				FEDA9BCC23079E1A00F29A2C /* NeoSans.otf in Resources */,
+				FEDA9BD323079E1A00F29A2C /* NeoSans-Medium.otf in Resources */,
+				FEDA9BC323079E1A00F29A2C /* GoogleService-Info.plist in Resources */,
+				FEDA9BC823079E1A00F29A2C /* NeoSans-Bold.otf in Resources */,
+				FEDA9BC523079E1A00F29A2C /* Main.storyboard in Resources */,
+				FEDA9BCB23079E1A00F29A2C /* NeoSans-Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,18 +556,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E78C503B1F0CD5D90034226F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E78C503C1F0CD5D90034226F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = "Story Time";
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E78C503F1F0CD5D90034226F /* Debug */ = {
@@ -689,7 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RL292UUN9S;
-				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Story-Time-App/Resource Files/System/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
@@ -705,7 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RL292UUN9S;
-				INFOPLIST_FILE = "$(SRCROOT)/Story Time/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Story-Time-App/Resource Files/System/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-com.erikbatista.storytime.xxx";
